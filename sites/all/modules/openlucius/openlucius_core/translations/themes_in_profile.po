@@ -1,0 +1,301 @@
+# Dutch translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  template.php: n/a
+#  openlucius.info: n/a
+#  color/color.inc: n/a
+#  theme/html.tpl.php: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-09-25 13:32+0200\n"
+"PO-Revision-Date: 2015-09-25 13:32+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Dutch <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: template.php:155
+msgid "#!id"
+msgstr ""
+
+#: template.php:195
+msgid "Add Group"
+msgstr "Groep"
+
+#: template.php:205
+msgid "Group"
+msgstr "Groep"
+
+#: template.php:218
+msgid "Content overview"
+msgstr "Inhoud overzicht"
+
+#: template.php:239
+msgid "Message"
+msgstr "Bericht"
+
+#: template.php:249
+msgid "Todo-list"
+msgstr "Todo-lijst"
+
+#: template.php:250
+msgid "Todo"
+msgstr "Todo"
+
+#: template.php:258
+msgid "Files"
+msgstr "Bestanden"
+
+#: template.php:266
+msgid "Text-document"
+msgstr "Tekst-document"
+
+#: template.php:286
+msgid "Folder"
+msgstr "Map"
+
+#: template.php:294
+msgid "Team"
+msgstr ""
+
+#: template.php:303
+msgid "Show all recent files"
+msgstr ""
+
+#: template.php:333
+msgid "Add user"
+msgstr "Gebruiker toevoegen"
+
+#: template.php:353
+msgid "The Group this content belongs to is archived and locked."
+msgstr ""
+
+#: template.php:353
+msgid "Unarchive the Group"
+msgstr "Gearchiveerde Groepen"
+
+#: template.php:362
+msgid "Add Message"
+msgstr "Bericht"
+
+#: template.php:365
+msgid "Add File"
+msgstr "Bestand"
+
+#: template.php:368
+msgid "Add Text-document"
+msgstr "Tekst-document"
+
+#: template.php:371
+msgid "Add Todo-list"
+msgstr "Todo-lijst"
+
+#: template.php:372
+msgid "Add Todo"
+msgstr "Todo"
+
+#: template.php:381
+msgid "Blocked users"
+msgstr "Geblokkeerde gebruikers"
+
+#: template.php:385;395
+msgid "Show all"
+msgstr "Alles"
+
+#: template.php:390
+msgid "Active users"
+msgstr "Actieve gebruikers"
+
+#: template.php:402
+msgid "Add Event"
+msgstr "Event"
+
+#: template.php:408
+msgid "User's Todo Calendar"
+msgstr "Todo Kalender"
+
+#: template.php:411
+msgid "Activity"
+msgstr ""
+
+#: template.php:427
+msgid "Add Todo in this Todo-list"
+msgstr "Todo toevoegen in deze Todo-lijst"
+
+#: template.php:756
+msgid "Add file(s)"
+msgstr "Bestand(en)"
+
+#: template.php:828
+msgid "@user's picture"
+msgstr "afbeelding van @user"
+
+#: template.php:982
+msgid "« first"
+msgstr "« eerste"
+
+#: template.php:982
+msgid "Go to first page"
+msgstr "Ga naar eerste pagina"
+
+#: template.php:983
+msgid "‹ previous"
+msgstr "‹ vorige"
+
+#: template.php:983
+msgid "Go to previous page"
+msgstr "Ga naar vorige pagina"
+
+#: template.php:984
+msgid "next ›"
+msgstr "volgende ›"
+
+#: template.php:984
+msgid "Go to next page"
+msgstr "Ga naar volgende pagina"
+
+#: template.php:985
+msgid "last »"
+msgstr "laatste »"
+
+#: template.php:985
+msgid "Go to last page"
+msgstr "Ga naar laatste pagina"
+
+#: template.php:992
+msgid "Go to page @number"
+msgstr "Ga naar pagina @number"
+
+#: openlucius.info:0
+msgid "Bootstrap OpenLucius"
+msgstr ""
+
+#: openlucius.info:0
+msgid "A Bootstrap Sub-theme."
+msgstr ""
+
+#: openlucius.info:0
+msgid "Navigation"
+msgstr "Navigatie"
+
+#: openlucius.info:0
+msgid "Top Bar"
+msgstr ""
+
+#: openlucius.info:0
+msgid "Highlighted"
+msgstr "Geaccentueerd"
+
+#: openlucius.info:0
+msgid "Help"
+msgstr "Help"
+
+#: openlucius.info:0
+msgid "Content"
+msgstr "Inhoud"
+
+#: openlucius.info:0
+msgid "Primary"
+msgstr ""
+
+#: openlucius.info:0
+msgid "Secondary"
+msgstr ""
+
+#: openlucius.info:0
+msgid "Footer"
+msgstr "Voet"
+
+#: openlucius.info:0
+msgid "Page top"
+msgstr "Bovenkant pagina"
+
+#: openlucius.info:0
+msgid "Page bottom"
+msgstr "Onderkant pagina"
+
+#: color/color.inc:11
+msgid "Menu background"
+msgstr ""
+
+#: color/color.inc:12
+msgid "Menu background hover"
+msgstr ""
+
+#: color/color.inc:13
+msgid "Main menu text"
+msgstr ""
+
+#: color/color.inc:14
+msgid "Sidebar heading"
+msgstr ""
+
+#: color/color.inc:15
+msgid "Background body"
+msgstr ""
+
+#: color/color.inc:16
+msgid "Background content"
+msgstr ""
+
+#: color/color.inc:17
+msgid "Text color"
+msgstr "Tekstkleur"
+
+#: color/color.inc:18
+msgid "Link"
+msgstr "Link"
+
+#: color/color.inc:19
+msgid "Link hover"
+msgstr ""
+
+#: color/color.inc:20
+msgid "Tab border"
+msgstr ""
+
+#: color/color.inc:21
+msgid "Tab background"
+msgstr ""
+
+#: color/color.inc:22
+msgid "Tab text"
+msgstr ""
+
+#: color/color.inc:23
+msgid "Tab border hover"
+msgstr ""
+
+#: color/color.inc:24
+msgid "Tab background hover"
+msgstr ""
+
+#: color/color.inc:25
+msgid "Tab text hover"
+msgstr ""
+
+#: color/color.inc:26
+msgid "Activity stream link"
+msgstr ""
+
+#: color/color.inc:27
+msgid "Activity stream link hover"
+msgstr ""
+
+#: color/color.inc:28
+msgid "Activity stream background"
+msgstr ""
+
+#: color/color.inc:34
+msgid "Openlucius default"
+msgstr ""
+
+#: theme/html.tpl.php:65
+msgid "Skip to main content"
+msgstr "Overslaan en naar de inhoud gaan"
+

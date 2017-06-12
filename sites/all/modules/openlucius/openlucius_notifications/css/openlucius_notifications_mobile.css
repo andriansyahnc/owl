@@ -1,0 +1,21 @@
+@media (max-width: 1000px) {
+  a.direct-message-add {
+    right: -10px;
+  }
+}
+@media (max-width: 530px) {
+  li.mobile_fullwidth {
+    position: static !important;
+  }
+  li.mobile_fullwidth .openlucius_notifications,
+  li.mobile_fullwidth .openlucius_direct_messages {
+    left: 0 !important;
+    right: 0;
+    max-height: 200px;
+    overflow: scroll;
+  }
+  li.mobile_fullwidth a.direct-message,
+  li.mobile_fullwidth a.notification-center-item {
+    width: auto;
+  }
+}

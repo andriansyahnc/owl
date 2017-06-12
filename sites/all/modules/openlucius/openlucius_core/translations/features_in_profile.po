@@ -1,0 +1,1388 @@
+# Dutch translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  openlucius_core_1/openlucius_core_1.context.inc: n/a
+#  openlucius_core_1/openlucius_core_1.features.field_instance.inc: n/a
+#  openlucius_core_2/openlucius_core_2.context.inc: n/a
+#  openlucius_core_2/openlucius_core_2.views_default.inc: n/a
+#  openlucius_core_2/openlucius_core_2.features.field_instance.inc: n/a
+#  openlucius_core_social/openlucius_core_social.features.field_instance.inc: n/a
+#  openlucius_core_1/openlucius_core_1.features.inc: n/a
+#  openlucius_core_social/openlucius_core_social.features.inc: n/a
+#  openlucius_variables/openlucius_variables.features.field_instance.inc: n/a
+#  openlucius_core_1/openlucius_core_1.features.menu_custom.inc: n/a
+#  openlucius_core_1/openlucius_core_1.features.menu_links.inc: n/a
+#  openlucius_core_1/openlucius_core_1.info: n/a
+#  openlucius_core_2/openlucius_core_2.info: n/a
+#  openlucius_core_social/openlucius_core_social.info: n/a
+#  openlucius_permissions/openlucius_permissions.info: n/a
+#  openlucius_variables/openlucius_variables.info: n/a
+#  openlucius_core_social/openlucius_core_social.context.inc: n/a
+#  openlucius_core_social/openlucius_core_social.module: n/a
+#  openlucius_core_social/templates/openlucius_core_social_header_block.tpl.php: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-09-25 13:31+0200\n"
+"PO-Revision-Date: 2015-09-25 13:31+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Dutch <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: openlucius_core_1/openlucius_core_1.context.inc:42 openlucius_core_1/openlucius_core_1.features.field_instance.inc:3297 openlucius_core_2/openlucius_core_2.context.inc:319
+msgid "Files"
+msgstr "Bestanden"
+
+#: openlucius_core_1/openlucius_core_1.context.inc:80 openlucius_core_2/openlucius_core_2.context.inc:675
+msgid "Text-document"
+msgstr "Tekst-document"
+
+#: openlucius_core_1/openlucius_core_1.context.inc:114
+msgid "Tabs"
+msgstr ""
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3287
+msgid "About me"
+msgstr "Over mij"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3288
+msgid "Alt Text"
+msgstr "Alternatieve tekst"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3289
+msgid "Alternative text is used by screen readers, search engines, and when the image cannot be loaded. By adding alt text you improve accessibility and search engine optimization."
+msgstr "Alternatieve tekst wordt gebruikt door schermlezers, zoekmachines, en wanneer de afbeelding niet geladen kan worden. Door het toevoegen van een alternatieve tekst neemt de toegankelijkheid zoekoptimaliteit toe."
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3290 openlucius_core_2/openlucius_core_2.views_default.inc:1525;3679;7147;7371
+msgid "Assigned to"
+msgstr "Toegewezen aan"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3291 openlucius_core_2/openlucius_core_2.features.field_instance.inc:400 openlucius_core_social/openlucius_core_social.features.field_instance.inc:326
+msgid "Body"
+msgstr "Inhoud"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3292
+msgid "Comment"
+msgstr "Reactie"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3293
+msgid "Date"
+msgstr "Datum"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3294
+msgid "Description"
+msgstr "Beschrijving"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3295
+msgid "Due Date"
+msgstr "Vervaldag"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3296 openlucius_core_2/openlucius_core_2.features.field_instance.inc:401
+msgid "Email"
+msgstr "E-mail"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3298
+msgid "Group reference"
+msgstr "Groep"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3299
+msgid "Group with Clients?"
+msgstr "Groep met klanten?"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3300 openlucius_core_2/openlucius_core_2.views_default.inc:2237;3940
+msgid "Groups"
+msgstr "Groepen"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3301
+msgid "Hash"
+msgstr ""
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3302 openlucius_core_2/openlucius_core_2.views_default.inc:2242
+msgid "Labels"
+msgstr ""
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3303
+msgid "Location"
+msgstr "Locatie"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3304 openlucius_core_2/openlucius_core_2.views_default.inc:2234
+msgid "Phone"
+msgstr "Telefoon"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3305
+msgid "Show Clients"
+msgstr "Zichtbaar voor klanten"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3306
+msgid "Show clients"
+msgstr "Zichtbaar voor Klant"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3307
+msgid "Signature"
+msgstr "Ondertekening"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3308 openlucius_core_2/openlucius_core_2.views_default.inc:1527;3675;7150
+msgid "Status"
+msgstr "Status"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3309 openlucius_core_2/openlucius_core_2.views_default.inc:2240;7658
+msgid "Teams"
+msgstr ""
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3310
+msgid "Title Text"
+msgstr "Titel Tekst"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3311
+msgid "Title text is used in the tool tip when a user hovers their mouse over the image. Adding title text makes it easier to understand the context of an image and improves usability."
+msgstr "De titel tekst wordt gebruikt in de tool tip wanneer een gebruiker de muis over een afbeelding zweeft. Het toevoegen van titel tekst maakt het gemakkelijker om de context van een afbeelding te begrijpen en het verbetert de toegankelijkheid."
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3312
+msgid "Todo List"
+msgstr "Todo-lijst"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3313 openlucius_core_2/openlucius_core_2.views_default.inc:3644;7560
+msgid "Type"
+msgstr "Type"
+
+#: openlucius_core_1/openlucius_core_1.features.field_instance.inc:3314
+msgid "Weight"
+msgstr "Gewicht"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:590
+msgid "File"
+msgstr "Bestand"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:592
+msgid "Handles Files in Groups for OpenLucius"
+msgstr "Hanteert Bestanden in Groepen voor OpenLucius"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:594;602;610;618;626;634;642;650;658 openlucius_core_2/openlucius_core_2.views_default.inc:3647 openlucius_core_social/openlucius_core_social.features.inc:152
+msgid "Titel"
+msgstr ""
+
+#: openlucius_core_1/openlucius_core_1.features.inc:598
+msgid "Event"
+msgstr "Evenement"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:600
+msgid "Handles Events within OpenLucius"
+msgstr "Hanteert evenementen binnen OpenLucius"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:606 openlucius_core_2/openlucius_core_2.views_default.inc:2569
+msgid "Folder"
+msgstr "Map"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:608
+msgid "Handles File folders in OpenLucius"
+msgstr "Hanteert Bestandsmappen in OpenLucius"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:614 openlucius_core_2/openlucius_core_2.views_default.inc:1570;3964;5331;5473;7562
+msgid "Group"
+msgstr "Groep"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:616
+msgid "Handles Groups in OpenLucius"
+msgstr "Hanteert Groepen in OpenLucius"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:622 openlucius_variables/openlucius_variables.features.field_instance.inc:67
+msgid "Message"
+msgstr "Bericht"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:624
+msgid "Facilitates OpenLucius Messages in Groups"
+msgstr "Faciliteert OpenLucius berichten in Groepen"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:630
+msgid "Text document"
+msgstr "Tekstdocument"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:632
+msgid "Facilitates Text-documents in OpenLucius"
+msgstr "Faciliteert tekstdocumenten in OpenLucius"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:638 openlucius_core_2/openlucius_core_2.context.inc:74;444;716 openlucius_core_2/openlucius_core_2.views_default.inc:7142
+msgid "Todo"
+msgstr "Todo"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:640
+msgid "Handles Todo's for OpenLucius ToDo-lists"
+msgstr "Hanteert Todo's voor OpenLucius Todo lijsten"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:646 openlucius_core_2/openlucius_core_2.views_default.inc:1537
+msgid "Todo list"
+msgstr "Todo lijst"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:648
+msgid "Handles ToDo-lists for OpenLucius"
+msgstr "Hanteert Todo lijsten binnen OpenLucius"
+
+#: openlucius_core_1/openlucius_core_1.features.inc:654
+msgid "Team"
+msgstr ""
+
+#: openlucius_core_1/openlucius_core_1.features.inc:656
+msgid "Facilitates Teams in OpenLucius. A Team is a group of people bundles together within a Company. Meant for clustering, adding people in batch to a Group, send batch notifications, etc."
+msgstr ""
+
+#: openlucius_core_1/openlucius_core_1.features.menu_custom.inc:31
+msgid "Main menu"
+msgstr "Hoofdmenu"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_custom.inc:32
+msgid "The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar."
+msgstr ""
+"Het <em>Hoofdmenu</em> wordt vaak gebruikt om de hoofdonderdelen van "
+"de website aan te geven bijvoorbeeld in een menu bovenaan de pagina."
+
+#: openlucius_core_1/openlucius_core_1.features.menu_custom.inc:33
+msgid "The <em>User</em> menu contains links related to the user's account, as well as the 'Log out' link."
+msgstr ""
+"Het <em>Gebruikersmenu</em> bevat links die verband houden met het "
+"gebruikersaccount en bevat de uitloggen-link."
+
+#: openlucius_core_1/openlucius_core_1.features.menu_custom.inc:34
+msgid "User menu"
+msgstr "Gebruikers menu"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:366
+msgid "All Files"
+msgstr "Alle Bestanden"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:367 openlucius_core_2/openlucius_core_2.views_default.inc:5328
+msgid "All Messages"
+msgstr "Alle Berichten"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:368 openlucius_core_2/openlucius_core_2.views_default.inc:6365
+msgid "All Text-documents"
+msgstr "Alle Tekst-documenten"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:369
+msgid "All Todo's"
+msgstr "Alle Todo's"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:370 openlucius_core_2/openlucius_core_2.views_default.inc:3963
+msgid "Archived Groups"
+msgstr "Archief Groepen"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:371
+msgid "Calendar"
+msgstr "Kalender"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:372
+msgid "Configuration"
+msgstr "Instellingen"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:373
+msgid "Edit my profile"
+msgstr "Wijzig mijn profiel"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:374 openlucius_core_2/openlucius_core_2.views_default.inc:8189
+msgid "Everyone"
+msgstr "Iedereen"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:375
+msgid "Everything"
+msgstr "Alles"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:376
+msgid "Log out"
+msgstr "Uitloggen"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:377
+msgid "Me"
+msgstr "Ik"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:378
+msgid "My Dashboard"
+msgstr "Mijn Dashboard"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:379
+msgid "My Todo-Calendar"
+msgstr "Mijn Todo-Kalender"
+
+#: openlucius_core_1/openlucius_core_1.features.menu_links.inc:380 openlucius_core_2/openlucius_core_2.views_default.inc:7542
+msgid "Trashcan"
+msgstr "Prullenbak"
+
+#: openlucius_core_1/openlucius_core_1.info:0
+msgid "OpenLucius Core 1"
+msgstr ""
+
+#: openlucius_core_1/openlucius_core_1.info:0
+msgid "Content types, Comments, Fields, Image styles, Menu's, Roles, Text formats, Wysiwyg profiles, Facet API"
+msgstr ""
+
+#: openlucius_core_1/openlucius_core_1.info:0 openlucius_core_2/openlucius_core_2.info:0 openlucius_core_social/openlucius_core_social.info:0 openlucius_permissions/openlucius_permissions.info:0 openlucius_variables/openlucius_variables.info:0
+msgid "Features"
+msgstr "Features"
+
+#: openlucius_core_2/openlucius_core_2.context.inc:42;106;237;287;351
+msgid "User"
+msgstr "Gebruiker"
+
+#: openlucius_core_2/openlucius_core_2.context.inc:138
+msgid "Groups "
+msgstr "Groepen"
+
+#: openlucius_core_2/openlucius_core_2.context.inc:139;172;205
+msgid "calender"
+msgstr "kalender"
+
+#: openlucius_core_2/openlucius_core_2.context.inc:171
+msgid "All groups"
+msgstr "Alle groepen"
+
+#: openlucius_core_2/openlucius_core_2.context.inc:204
+msgid "User's Todo calendar"
+msgstr "Gebruikers' todo kalender"
+
+#: openlucius_core_2/openlucius_core_2.context.inc:490
+msgid "Heartbeat"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.context.inc:491
+msgid "Support for legacy homepage: heartbeat/tweet"
+msgstr "Ondersteuning voor legacy voorpagina: heartbeat/tweet"
+
+#: openlucius_core_2/openlucius_core_2.context.inc:557 openlucius_core_2/openlucius_core_2.views_default.inc:5653
+msgid "Recent Stuff"
+msgstr "Recente activiteit"
+
+#: openlucius_core_2/openlucius_core_2.context.inc:607;628
+msgid "search"
+msgstr "zoeken"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1496;1976;2223;2549;3631;3939;5288;5464;5652;6337;6691;7131;7355;7541;7657;8164
+msgid "Master"
+msgstr "Hoofd"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1497
+msgid "Your open Todo's"
+msgstr "Jouw open todo's"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1498;1978;2224;2551;3633;3941;5290;5466;5654;6339;6693;7132;7356;7543;7659;8166
+msgid "more"
+msgstr "meer"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1499;1979;2225;3634;3942;5291;8167
+msgid "Filter"
+msgstr "Filter"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1500;1980;2226;2553;3635;3943;5292;5468;5656;6341;6695;7134;7358;7545;7661;8168
+msgid "Reset"
+msgstr "Alles zien"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1501;2227;3944;5293;5469;6367;6696;7135;7359;7546
+msgid "Order by"
+msgstr "Rangschikken op"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1502;1982;2228;2555;3637;3945;5294;5470;6343;6697;7136;7360;7547;8170
+msgid "Ascending"
+msgstr "Oplopend"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1503;1983;2229;2556;3638;3946;5295;5471;6344;6698;7137;7361;7548;8171
+msgid "Descending"
+msgstr "Aflopend"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1504
+msgid "<h5>\r\n<span class=\"glyphicon glyphicon-plus-sign\"></span>\r\n<a href=\"node/add/todo\">Add Todo-list</a>\r\n<span class=\"glyphicon glyphicon-list\"></span>\r\n<a href=\"node/add/todo\">View all overdue Todo's in this Group</a>\r\n<span class=\"glyphicon glyphicon-list\"></span>\r\n<a href=\"node/add/todo\">Show completed Todo's in this Group</a>\r\n\r\n</h5>\r\n\r\n"
+msgstr "<h5>\r\n<span class=\"glyphicon glyphicon-plus-sign\"></span>\r\n<a href=\"node/add/todo\">Voeg todo lijst toe</a>\r\n<span class=\"glyphicon glyphicon-list\"></span>\r\n<a href=\"node/add/todo\">Bekijk alle vervallen todo's in deze Groep</a>\r\n<span class=\"glyphicon glyphicon-list\"></span>\r\n<a href=\"node/add/todo\">Toon afgeronde todo's in deze groep</a>\r\n\r\n</h5>\r\n\r\n"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1515;6706
+msgid "@total open Todo's"
+msgstr "@total Open Todo's"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1516;1991;5305;6354;8180
+msgid "<h4>No results</h4>"
+msgstr "<h4>Geen resultaten</h4>"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1517;6707
+msgid "field_todo_list_reference"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1518;7140;7373
+msgid "Laatste activiteit"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1519;7367
+msgid "ToDo"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1520;6708
+msgid "<h5><span class=\"glyphicon glyphicon-list-alt\"></span> [field_todo_list_reference] </h5>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1521
+msgid "<span class=\"glyphicon glyphicon-paperclip\"></span> [field_todo_attachments] "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1522;2563;5310;6358
+msgid "<span class=\"glyphicon glyphicon-comment\"></span> [comment_count]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1523;2564;5311;5670;6359;6711;7145;7369
+msgid "."
+msgstr "."
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1524;2565;5312;5671;6360;6712;7146;7370
+msgid ","
+msgstr ","
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1526
+msgid "<italic>Unassigned</italic>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1528;2236;7151
+msgid "<span class=\"glyphicon glyphicon-minus\"></span>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1529;1995;2244;2571;3639;5314;6718;7152;7374;7563;7666;8185
+msgid "<span class=\"glyphicon glyphicon-edit\"></span>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1530;5315;6719;7153
+msgid "bewerken"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1531;5316;6720;7154;7375
+msgid "<span class=\"glyphicon glyphicon-remove-circle\"></span>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1532
+msgid "<h4>[field_todo_completed]</h4>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1533;5317;6721;7155;7376
+msgid "<span class=\"glyphicon glyphicon-certificate\" ></span>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1534;2246;2566;3643;5319;6361;6722;7156;8186
+msgid "Alle"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1535
+msgid "Afgerond"
+msgstr "Todo afgerond"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1536
+msgid "Toegewezen aan"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1538;2006
+msgid "Label"
+msgstr "Label"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1539
+msgid "Todo group reference (field_todo_group_reference)"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1540
+msgid "Group Todo-lists"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1541;6692
+msgid "Todo-lists"
+msgstr "Todo-lijsten"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1542;2557;3954;5303;6352;7138;8192
+msgid "@start - @end of @total"
+msgstr "@start - @end van @total"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1543;5313;7158
+msgid "Last activity"
+msgstr "Laatste activiteit"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1544;5326;7143
+msgid "<span class=\"glyphicon glyphicon-paperclip\"></span> [delta]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1545;7159
+msgid "Due date"
+msgstr "Vervaldag"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1546
+msgid "edit"
+msgstr "bewerken"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1547
+msgid "Todo Title"
+msgstr "Todo titel"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1548
+msgid "Due date Todo"
+msgstr "Vervaldag Todo"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1549
+msgid "Todo-List Published"
+msgstr "Todo-lijst actief"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1550
+msgid "All Todo-lists"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1551
+msgid "Todo's all Groups"
+msgstr "Todo's in alle Groepen"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1552;1984;3655;3947;5296;5660;6345;6699;7549;8172
+msgid "Items per page"
+msgstr "Items per pagina"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1553;1985;3656;3948;5297;5661;6346;6700;7550;8173
+msgid "- All -"
+msgstr "- Alle -"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1554;1986;3657;3949;5298;5662;6347;6701;7551;8174
+msgid "Offset"
+msgstr "Startpunt"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1555;1987;3658;3950;5299;5663;6348;6702;7552;8175
+msgid "« first"
+msgstr "« eerste"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1556;1988;3659;3951;5300;5664;6349;6703;7553;8176
+msgid "‹ previous"
+msgstr "‹ vorige"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1557;1989;3660;3952;5301;5665;6350;6704;7554;8177
+msgid "next ›"
+msgstr "volgende ›"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1558;1990;3661;3953;5302;5666;6351;6705;7555;8178
+msgid "last »"
+msgstr "laatste »"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1559
+msgid "Displaying @start - @end of @total "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1560;2560;5306;6355;7557
+msgid "author"
+msgstr "auteur"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1561;3662;5307;5472;6368
+msgid "field_shared_group_reference"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1562
+msgid "Nid"
+msgstr "Nid"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1563
+msgid "Group reference nid"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1564
+msgid "<h5><span class=\"glyphicon glyphicon-list-alt\"></span> [field_todo_list_reference]\r\n<a href=\"node/add/ol-todo/[field_shared_group_reference_1]/[field_todo_list_reference_1]\" class=\"btn btn-default btn-xs add-todo-from-all-todos\">\r\n<span class=\"glyphicon glyphicon-plus-sign\"> Todo</span>\r\n</a></h5>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1568
+msgid "<h4><span class=\"glyphicon glyphicon-record\"></span> [field_shared_group_reference]</h4>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1569
+msgid "Status Todo"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1571
+msgid "Due Date Todo"
+msgstr "Vervaldag Todo"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1572
+msgid "Todo-list published"
+msgstr "Todo-lijst actief"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1573
+msgid "Group Active"
+msgstr "Groep actief"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1574
+msgid "(My) Open Todo's"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1575
+msgid "&nbsp;"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1576
+msgid "<h2 class=\"block-title\">User's Assigned Todo's</h2>"
+msgstr "<h2 class=\"block-title\">Toegewezen Todo's</h2>"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1577
+msgid "No open Todo's assigned to this user <br /> <br />"
+msgstr "Geen open Todo's toegewezen aan deze gebruiker. <br /> <br />"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1578
+msgid "<h4><span class=\"glyphicon glyphicon-record\"></span> [field_shared_group_reference] </h4>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1579
+msgid "Status "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1977
+msgid "Bedrijven & Teams"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1981;3636
+msgid "Sort"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1992
+msgid "field_user_teams"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1993
+msgid "field_team_company_reference_nid"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1994;2230;3956;8201
+msgid "field_groups"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1996
+msgid "<h2><span class=\"glyphicon glyphicon-home\"></span> [field_team_company_reference] </h2>[edit_node_2] "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1997
+msgid "<h2>TEAMS WITHOUT COMPANY</h2>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1998
+msgid "<h3><span class=\"glyphicon glyphicon-unchecked\"></span> [title]  </h3> [edit_node_1]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:1999
+msgid "No Team"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2000;2233;5325;8182
+msgid "<span class=\"glyphicon glyphicon-user\"></span>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2001
+msgid "No users"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2002;2243
+msgid "<span class=\"glyphicon glyphicon-tag\"></span> [field_user_tags] "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2003
+msgid "Aangemaakt: [created]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2004
+msgid "<span class=\"glyphicon glyphicon-record\"></span>[field_groups]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2005
+msgid "Naam"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2007
+msgid "Team "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2008
+msgid "Bedrijf"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2009;3962;5476;5673
+msgid "Page"
+msgstr "Pagina"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2231
+msgid "<span class=\"glyphicon glyphicon-envelope\"></span> E-mail "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2232
+msgid "[picture] <br /> <br />  [mail] "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2235
+msgid "<span class=\"glyphicon glyphicon-phone-alt\"></span> [field_user_phone-value] "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2238
+msgid "About"
+msgstr "Over"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2239
+msgid "<h4><span class=\"glyphicon glyphicon-user\"></span> About </h4>[field_user_about_me] "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2241
+msgid "<span class=\"glyphicon glyphicon-unchecked\"></span> [field_user_teams] "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2245
+msgid "<span class=\"glyphicon glyphicon-remove\"></span>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2247;3652;6723;7377
+msgid "Block"
+msgstr "Blok"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2550;6338
+msgid "Text-documents"
+msgstr "Tekst-documenten"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2552;6340
+msgid "Search"
+msgstr "Zoeken"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2554;6342;8169
+msgid "sort"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2558;5304;6353
+msgid "<h5><span class=\"glyphicon glyphicon-comment\"></span> <a href=\"/me2/group-messages/60\">All Messages <span class=\"badge\">42</span></a></h5>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2559
+msgid "<h4>No folders</h4>"
+msgstr "<h6>Nog geen mappen aangemaakt</h6>"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2561;6356
+msgid "<span class=\"glyphicon glyphicon-floppy-disk\"></span> [name],  [last_updated]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2562;6357
+msgid "<span class=\"glyphicon glyphicon-record\"></span> [field_shared_group_reference]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2567;5320;6362
+msgid "Zoektermen"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2568
+msgid "File folder nav"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:2570
+msgid "<span class=\"glyphicon glyphicon-folder-close\"></span>  [title]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3632
+msgid "Group calender "
+msgstr "Groep kalender"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3640
+msgid "[title] [edit_node]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3641
+msgid "<span class=\"views-field-field-shared-group-reference\"><span class=\"glyphicon glyphicon-record\"></span> [field_shared_group_reference] </span>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3642
+msgid "<span class=\"glyphicon glyphicon-user\"></span> [field_todo_user_reference] "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3645
+msgid "Group month"
+msgstr "Groepsmaand"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3646
+msgid "Group Calendar"
+msgstr "Groepskalender"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3648
+msgid "Todo assigned to"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3649
+msgid "Week"
+msgstr "Week"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3650
+msgid "Day"
+msgstr "Dag"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3651
+msgid "Year"
+msgstr "Jaar"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3653
+msgid "Upcoming events home"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3654
+msgid "Upcoming events"
+msgstr "Aankomende evenementen"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3663
+msgid "<span class=\"glyphicon glyphicon-record\"> </span> [field_shared_group_reference] "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3664
+msgid "[title] <br />\r\n<span class=\"small\"> [field_shared_group_reference] </span>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3666
+msgid "Feed"
+msgstr "Feed"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3667
+msgid "Todo Calender "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3668
+msgid "Month user"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3669
+msgid "My Todo Calender"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3670
+msgid "<span class=\"glyphicon glyphicon-record\"></span> [field_shared_group_reference] "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3671
+msgid "<span class=\"glyphicon glyphicon-list-alt\"></span> [field_todo_list_reference]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3672
+msgid "Todo titel"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3673
+msgid "Todo Status"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3674
+msgid "Todo-list"
+msgstr "Todo-lijst"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3676
+msgid "All month"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3677
+msgid "Calendar All Groups"
+msgstr "Kalender alle Groepen"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3678
+msgid "Status (field_todo_label)"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3680
+msgid "All Feed"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3681
+msgid "Todo Calendar"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3955
+msgid "<h4>No Results</h4>"
+msgstr "<h4>Geen resultaat</h4>"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3957
+msgid "<h4>\r\n<span class=\"glyphicon glyphicon-record\"></span> [title]\r\n</h4>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3960
+msgid "<h5> <span class=\"glyphicon glyphicon-user\"> Leden: [name] </h5>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3961
+msgid "Updated date"
+msgstr "Wijzigingsdatum"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3965
+msgid "Date Archived"
+msgstr "Datum depublicatie"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3966
+msgid "Date created"
+msgstr "Aanmaakdatum"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3967
+msgid "Members"
+msgstr "Leden"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:3968;7559
+msgid "Title"
+msgstr "Titel"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5289
+msgid "Important Messages"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5308
+msgid "Author"
+msgstr "Auteur"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5309
+msgid "Post date"
+msgstr "Datum toegevoegd"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5318
+msgid "Picture"
+msgstr "Afbeelding"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5321
+msgid "Messages in this Group"
+msgstr "Berichten in deze Groep"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5322
+msgid "Messages"
+msgstr "Berichten"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5323;8179
+msgid "@start - @end van @total"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5324
+msgid "Messages block for group index"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5327
+msgid "<span class=\"glyphicon glyphicon-transfer\"></span> [last_updated] "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5329
+msgid "Messages all Groups"
+msgstr "Berichten in alle Groepen"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5330
+msgid "Added"
+msgstr "Aangemaakt"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5332
+msgid "Messages user block"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5333
+msgid "User's Messages"
+msgstr "Berichten"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5334
+msgid "This user didn't add any Messages yet"
+msgstr "Nog geen Berichten toegevoegd door deze gebruiker"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5335
+msgid "Messages Home"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5336
+msgid "Messages Homepage"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5337
+msgid "<strong>[title]</strong> <br/><span class=\"glyphicon glyphicon-time\"> </span> <span class=\"small\"> [created] </span><br />\r\n<span class=\"glyphicon glyphicon-record\"> </span> <span class=\"small\">[field_shared_group_reference] </span>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5465
+msgid "Node title suggestions for autocompletion"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5467;6694;7133;7357;7544
+msgid "Submit"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5474
+msgid "[field_shared_group_reference] > [type] > [title] "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5475
+msgid "titel"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5655;7660
+msgid "Apply"
+msgstr "Toepassen"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5657;7662
+msgid "Sort by"
+msgstr "Sorteren op"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5658;7663
+msgid "Asc"
+msgstr "Oplopend"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5659;7664
+msgid "Desc"
+msgstr "Aflopend"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5667
+msgid "No items yet. Start by adding items in a group and this timeline will show all recent stuff. Happy Collaborating! :-)"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5668
+msgid "User ID"
+msgstr "Gebruikers-ID"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5669
+msgid "content"
+msgstr "inhoud"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:5672
+msgid "Has new content"
+msgstr "Heeft nieuwe inhoud"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6363
+msgid "Text-documents in Group"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6364
+msgid "Text-documents on Dashboard"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6366
+msgid "Text-documents in all Groups"
+msgstr "Tekst-documenten in alle Groepen"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6369
+msgid "Text-documents User"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6370
+msgid "User's Text-documents"
+msgstr "Tekst-bestanden"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6371
+msgid "This user didn't add any Text-documents yet"
+msgstr "Nog geen Tekst-documenten toegevoegd door deze gebruiker"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6372
+msgid "Text-documents Nav"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6373
+msgid "<none>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6374
+msgid "<span class=\"glyphicon glyphicon-file\"></span> [title]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6375
+msgid "Text-documents Node Nav"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6709;7141
+msgid "<span class=\"glyphicon glyphicon-transfer\"></span> [last_updated]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6710
+msgid "<span class=\"glyphicon glyphicon-paperclip\"></span> [delta] "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6713;7144;7368
+msgid "<span class=\"glyphicon glyphicon-comment\"></span> [comment_count] "
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6714;7148
+msgid "<span class=\"glyphicon glyphicon-user\"></span>  [field_todo_user_reference]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6715
+msgid "<span class=\"glyphicon glyphicon-user\"></span> <span class=\"glyphicon glyphicon-minus\"></span>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6716
+msgid "<span class=\"glyphicon glyphicon-calendar\"></span> [field_todo_due_date_singledate]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:6717
+msgid "<span class=\"glyphicon glyphicon-calendar\"></span>  <span class=\"glyphicon glyphicon-minus\"></span>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:7139
+msgid "<h3>No open Todo's in this Todo-list</h3>"
+msgstr "<h3>Geen open Todo's in deze Todo-lijst</h3>"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:7149
+msgid "Unassigned"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:7157
+msgid "Block: Todos on Todo-list page"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:7362
+msgid "<h5>\r\n<span class=\"glyphicon glyphicon-plus-sign\"></span>\r\n<a href=\"node/add/todo\">Add Todo in this Todo-list</a>\r\n</h5>\r\n"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:7372
+msgid "[field_todo_user_reference]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:7556
+msgid "<h2>No items in Trashcan</h2>"
+msgstr "<h2>Geen items in de prullenbak</h2>"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:7558
+msgid "Verwijderd"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:7561
+msgid "Auteur"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:7564
+msgid "Trash"
+msgstr "Prullenbak"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:7665
+msgid "<h6>No teams added yet</h6>"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8165
+msgid "Group Members"
+msgstr "Groepsleden"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8181
+msgid "[name]"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8183
+msgid "Seen"
+msgstr "Gezien"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8184
+msgid "Created"
+msgstr "Aangemaakt"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8187
+msgid "Users in this group"
+msgstr "Leden in deze Groep"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8188
+msgid "Never"
+msgstr "Nooit"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8190
+msgid "All Members"
+msgstr "Iedereen"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8193
+msgid "<h3>No results</h3>"
+msgstr "<h3>Geen resultaten</h3>"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8194
+msgid "All"
+msgstr "Alle"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8195
+msgid "Blocked users"
+msgstr "Geblokkeerde gebruikers"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8196
+msgid "Blocked Users"
+msgstr "Geblokkeerde gebruikers"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8197
+msgid "Name"
+msgstr "Naam"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8198
+msgid "Recent users"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8199
+msgid "New users"
+msgstr "Nieuwe gebruikers"
+
+#: openlucius_core_2/openlucius_core_2.views_default.inc:8200
+msgid "Recent users home"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.info:0
+msgid "OpenLucius Core 2"
+msgstr ""
+
+#: openlucius_core_2/openlucius_core_2.info:0
+msgid "Views, Contexts, Rules, Heartbeat"
+msgstr ""
+
+#: openlucius_core_social/openlucius_core_social.context.inc:42;82;114
+msgid "Social"
+msgstr "Social"
+
+#: openlucius_core_social/openlucius_core_social.features.field_instance.inc:327
+msgid "Cover image"
+msgstr "Omslag afbeelding"
+
+#: openlucius_core_social/openlucius_core_social.features.field_instance.inc:328
+msgid "Group logo"
+msgstr "Groep logo"
+
+#: openlucius_core_social/openlucius_core_social.features.field_instance.inc:329
+msgid "Photo"
+msgstr "Foto"
+
+#: openlucius_core_social/openlucius_core_social.features.field_instance.inc:330
+msgid "Slogan"
+msgstr "Slagzin"
+
+#: openlucius_core_social/openlucius_core_social.features.inc:148
+msgid "Status update"
+msgstr "Status update"
+
+#: openlucius_core_social/openlucius_core_social.features.inc:150
+msgid "Content type for posting status updates like facebook has."
+msgstr "Content type voor het plaatsen van statusupdates zoals Facebook heeft."
+
+#: openlucius_core_social/openlucius_core_social.module:30
+msgid "has been attached and will be uploaded when you post the update."
+msgstr ""
+
+#: openlucius_core_social/openlucius_core_social.module:31
+msgid "Upload progress is not supported on your browser"
+msgstr ""
+
+#: openlucius_core_social/openlucius_core_social.module:46
+msgid "Post status updates"
+msgstr "Plaats status updates"
+
+#: openlucius_core_social/openlucius_core_social.module:47
+msgid "Permission to post status updates"
+msgstr "Recht om status updates te plaatsen"
+
+#: openlucius_core_social/openlucius_core_social.module:50
+msgid "Offer access to OpenLucius Core Social configuration"
+msgstr ""
+
+#: openlucius_core_social/openlucius_core_social.module:51
+msgid "Permission to check whether the user can access the OpenLucius Core Social configuration"
+msgstr ""
+
+#: openlucius_core_social/openlucius_core_social.module:104
+msgid "Social header"
+msgstr "Social header"
+
+#: openlucius_core_social/openlucius_core_social.module:107
+msgid "Social profile header"
+msgstr "Social profiel header"
+
+#: openlucius_core_social/openlucius_core_social.module:110
+msgid "Social status updates"
+msgstr "Social status update"
+
+#: openlucius_core_social/openlucius_core_social.module:302
+msgid "Social home logo"
+msgstr "Social voorpagina logo"
+
+#: openlucius_core_social/openlucius_core_social.module:303;315
+msgid "Allowed extensions: gif png jpg jpeg"
+msgstr "Toegestane extensies: gif png jpg jpeg"
+
+#: openlucius_core_social/openlucius_core_social.module:314
+msgid "Social home cover image"
+msgstr ""
+
+#: openlucius_core_social/openlucius_core_social.module:326
+msgid "Social home intro"
+msgstr "Social voorpagina intro"
+
+#: openlucius_core_social/openlucius_core_social.module:327
+msgid "The intro text for the banner"
+msgstr "De intro tekst voor de banner"
+
+#: openlucius_core_social/openlucius_core_social.module:403
+msgid "Attach photos"
+msgstr "Voeg foto's toe"
+
+#: openlucius_core_social/openlucius_core_social.module:409
+msgid "Post update"
+msgstr "Plaats update"
+
+#: openlucius_core_social/openlucius_core_social.module:457
+msgid "Please enter some content"
+msgstr ""
+
+#: openlucius_core_social/openlucius_core_social.module:542
+msgid "Successfully posted the status update."
+msgstr "De status update is successvol geplaatst"
+
+#: openlucius_core_social/openlucius_core_social.module:653
+msgid "posted"
+msgstr "plaatste"
+
+#: openlucius_core_social/openlucius_core_social.module:703;708
+msgid "@count comment(s)"
+msgstr ""
+
+#: openlucius_core_social/openlucius_core_social.module:950
+msgid "Status updates"
+msgstr "Status updates"
+
+#: openlucius_core_social/openlucius_core_social.module:967
+msgid "Allow the option to like nodes"
+msgstr "Sta het liken van inhoud toe"
+
+#: openlucius_core_social/openlucius_core_social.module:974
+msgid "Allow the option to like comments"
+msgstr "Sta het liken van reacties toe"
+
+#: openlucius_core_social/openlucius_core_social.module:981
+msgid "Enable status updates"
+msgstr ""
+
+#: openlucius_core_social/openlucius_core_social.module:1084
+msgid "Post a reply"
+msgstr ""
+
+#: openlucius_core_social/openlucius_core_social.module:1091
+msgid "Post reply"
+msgstr ""
+
+#: openlucius_core_social/openlucius_core_social.module:1277
+msgid "wrote"
+msgstr "schreef"
+
+#: openlucius_core_social/openlucius_core_social.module:527
+msgid "Failed"
+msgstr "Mislukt"
+
+#: openlucius_core_social/openlucius_core_social.module:527
+msgid "Failed to upload file: @upload"
+msgstr "Het uploaden van de file: @upload is mislukt"
+
+#: openlucius_core_social/openlucius_core_social.module:80
+msgid "Social configuration"
+msgstr ""
+
+#: openlucius_core_social/openlucius_core_social.module:81
+msgid "Configure Openlucius Core Social."
+msgstr ""
+
+#: openlucius_core_social/openlucius_core_social.info:0
+msgid "Openlucius Core Social"
+msgstr "Openlucius Core Social"
+
+#: openlucius_core_social/openlucius_core_social.info:0
+msgid "Openlucius Core Social expansion."
+msgstr "Openlucius Core Social uitbreiding."
+
+#: openlucius_core_social/templates/openlucius_core_social_header_block.tpl.php:9
+msgid "Click here to set social heading"
+msgstr "Klik hier om de sociale heading in te stellen"
+
+#: openlucius_permissions/openlucius_permissions.info:0
+msgid "OpenLucius Permissions"
+msgstr ""
+
+#: openlucius_permissions/openlucius_permissions.info:0
+msgid "All permissions"
+msgstr ""
+
+#: openlucius_variables/openlucius_variables.info:0
+msgid "OpenLucius Variables"
+msgstr ""
+
+#: openlucius_variables/openlucius_variables.info:0
+msgid "Variables"
+msgstr ""
+

@@ -1,0 +1,355 @@
+#btn-reset-search,
+.files-tools {
+  display: inline-block;
+  cursor: pointer;
+}
+.fancytree-ext-childcounter span.fancytree-childcounter,
+.fancytree-ext-filter span.fancytree-childcounter {
+  height: auto;
+}
+.file-search-form {
+  width: 300px;
+}
+#btn-reset-search {
+  margin-top: 7px;
+}
+span.fancytree-title a {
+  height: 40px;
+}
+a.meta-info-link,
+span.meta-info-text {
+  color: #ccc !important;
+}
+/*
+ * Fancy tree as table
+ */
+#openlucius_file_tree ul.fancytree-container {
+  overflow: hidden;
+  padding: 0;
+  outline: none;
+  border: 1px solid #d3d3d3;
+  border-bottom-color: #c4c4c4;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.07);
+}
+#openlucius_file_tree li {
+  position: relative;
+  width: 100%;
+}
+#openlucius_file_tree li:hover {
+  background: #eef6ff;
+  cursor: pointer;
+}
+#openlucius_file_tree li .fancytree-node:not(.fancytree-hide) {
+  display: table;
+  padding-left: 5px;
+}
+#openlucius_file_tree li .fancytree-node {
+  vertical-align: middle;
+  margin-top: 0;
+  padding: 15px 0;
+  min-height: 81px;
+}
+#openlucius_file_tree li .fancytree-active .fancytree-title,
+#openlucius_file_tree li .fancytree-selected .fancytree-title,
+#openlucius_file_tree li .fancytree-treefocus span.fancytree-active .fancytree-title,
+#openlucius_file_tree li .fancytree-treefocus span.fancytree-selected .fancytree-title {
+  background: transparent;
+}
+#openlucius_file_tree li li .fancytree-node .fancytree-checkbox {
+  display: table-cell;
+  width: 50px;
+}
+#openlucius_file_tree li .fancytree-node .fancytree-title {
+  display: table-cell;
+  margin: 0;
+  padding: 0 3px 0 3px;
+  border: 0;
+  vertical-align: middle;
+  min-height: 51px;
+  width: 95%;
+}
+#openlucius_file_tree li .fancytree-node .fancytree-title:hover {
+  background: initial;
+  border: 0;
+  margin: 0;
+  padding: 0 3px 0 3px;
+}
+#openlucius_file_tree li .fancytree-node .fancytree-title .file,
+#openlucius_file_tree li .fancytree-node .fancytree-title .folder-title,
+#openlucius_file_tree li .fancytree-node:not(.fancytree-drag-source) .fancytree-title .operations {
+  display: table-cell;
+  vertical-align: middle;
+}
+#openlucius_file_tree li .fancytree-drag-source .operations,
+div.fancytree-drag-helper.ui-draggable-dragging .operations {
+  display: none !important;
+}
+#openlucius_file_tree li .fancytree-node .fancytree-title .file,
+#openlucius_file_tree li .fancytree-node .fancytree-title .folder-title {
+  width: 100%;
+  vertical-align: middle;
+}
+#openlucius_file_tree li .fancytree-node .fancytree-title .file a:hover {
+  text-decoration: none;
+}
+#openlucius_file_tree li .fancytree-node .fancytree-title .file .file-info br {
+  display: none;
+}
+#openlucius_file_tree li .fancytree-node .fancytree-title .file .file-info img {
+  margin-bottom: 0;
+}
+#openlucius_file_tree .file-info {
+  display: table;
+}
+#openlucius_file_tree .filelink,
+#openlucius_file_tree .file_info_wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+#openlucius_file_tree .file_info_wrapper {
+  padding-left: 5px;
+}
+#openlucius_file_tree li .fancytree-node .fancytree-title .operations .fa {
+  font-size: 20px;
+  padding: 0 10px;
+  color: #999;
+}
+.ui-effects-wrapper {
+  font-size: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#openlucius_file_tree li .fancytree-title .operations .dropdown-menu {
+  right: 25px !important;
+  top: -10px;
+  padding: 0;
+  left: initial;
+}
+/* Icons */
+span.fancytree-empty,
+span.fancytree-vline,
+span.fancytree-expander,
+span.fancytree-icon,
+span.fancytree-checkbox,
+span.fancytree-radio,
+span.fancytree-drag-helper-img,
+#fancytree-drop-marker {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  background: url(../img/openlucius-icons_material.png) no-repeat 0 0 !important;
+}
+span.fancytree-expander {
+  display: none;
+}
+span.fancytree-icon {
+  width: auto !important;
+  height: auto !important;
+  background: none;
+}
+span.fancytree-icon .fancytree-childcounter {
+  background-color: #f00;
+  border-color: #f00;
+  padding: 4px;
+}
+span.fancytree-folder > span.fancytree-checkbox {
+  display: none !important;
+}
+/** Level one expander **/
+span.fancytree-folder span.fancytree-expander,
+span.fancytree-folder span.fancytree-expander:hover {
+  display: table-cell;
+  background-position: 0 -494px !important;
+}
+span.fancytree-folder.fancytree-has-children span.fancytree-expander,
+span.fancytree-folder.fancytree-has-children span.fancytree-expander:hover {
+  display: table-cell;
+  background-position: 0 -394px !important;
+}
+span.fancytree-folder.fancytree-has-children.fancytree-exp-e span.fancytree-expander,
+span.fancytree-folder.fancytree-has-children.fancytree-exp-e span.fancytree-expander:hover,
+span.fancytree-folder.fancytree-has-children.fancytree-exp-el span.fancytree-expander,
+span.fancytree-folder.fancytree-has-children.fancytree-exp-el span.fancytree-expander:hover {
+  background-position: 0 -1050px !important;
+}
+ul.ui-fancytree ul,
+ul.ui-fancytree > li,
+ul.ui-fancytree > li li,
+span.fancytree-node.fancytree-expanded {
+  border-bottom: 1px solid #e3e3e3;
+}
+ul.ui-fancytree ul:last-child,
+ul.ui-fancytree > li:last-child,
+ul.ui-fancytree > li li:last-child {
+  border-bottom: 0;
+}
+ul.ui-fancytree li li {
+  padding-left: 30px;
+}
+ul.ui-fancytree ul.dropdown-menu li {
+  padding-left: 0;
+}
+
+/*------------------------------------------------------------------------------
+ * Expander icon
+ *
+ * Note: IE6 doesn't correctly evaluate multiples class names,
+ *		 so we create combined class names that can be used in the CSS.
+ *
+ * Prefix: fancytree-exp-
+ * 1st character: 'e': expanded, 'c': collapsed, 'n': no children
+ * 2nd character (optional): 'd': lazy (Delayed)
+ * 3rd character (optional): 'l': Last sibling
+ *----------------------------------------------------------------------------*/
+span.fancytree-expander {
+  cursor: pointer;
+}
+.fancytree-exp-n span.fancytree-expander,
+.fancytree-exp-nl span.fancytree-expander {
+  background-image: none;
+}
+.fancytree-exp-n span.fancytree-expander,
+.fancytree-exp-n span.fancytree-expander:hover {
+  background-position: 0 -939px !important;
+}
+.fancytree-exp-nl span.fancytree-expander,
+.fancytree-exp-nl span.fancytree-expander:hover {
+  background-position: 0 -989px !important;
+}
+.fancytree-exp-c span.fancytree-expander {
+  background-position: 0 -394px !important;
+}
+.fancytree-exp-c span.fancytree-expander:hover {
+  background-position: 0 -444px !important;
+}
+.fancytree-exp-cl span.fancytree-expander {
+  background-position: 0 -392px !important;
+}
+.fancytree-exp-cl span.fancytree-expander:hover {
+  background-position: 0 -442px !important;
+}
+.fancytree-exp-cd span.fancytree-expander {
+  background-position: 0 -400px !important;
+}
+.fancytree-exp-cd span.fancytree-expander:hover {
+  background-position: 0 -400px !important;
+}
+.fancytree-exp-cdl span.fancytree-expander {
+  background-position: 0 -400px !important;
+}
+.fancytree-exp-cdl span.fancytree-expander:hover {
+  background-position: 0 -450px !important;
+}
+.fancytree-exp-e span.fancytree-expander,
+.fancytree-exp-ed span.fancytree-expander {
+  background-position: 0 -1050px !important;
+}
+.fancytree-exp-e span.fancytree-expander:hover,
+.fancytree-exp-ed span.fancytree-expander:hover {
+  background-position: 0 -1050px !important;
+}
+.fancytree-exp-el span.fancytree-expander,
+.fancytree-exp-edl span.fancytree-expander {
+  background-position: 0 -492px !important;
+}
+.fancytree-exp-el span.fancytree-expander:hover,
+.fancytree-exp-edl span.fancytree-expander:hover {
+  background-position: 0 -542px !important;
+}
+/*------------------------------------------------------------------------------
+ * Checkbox icon
+ *----------------------------------------------------------------------------*/
+span.fancytree-checkbox {
+  margin-left: 3px;
+  background-position: 0 -88px !important;
+}
+span.fancytree-checkbox:hover {
+  background-position: 0 -138px !important;
+}
+.fancytree-partsel span.fancytree-checkbox {
+  background-position: 0 -300px !important;
+}
+.fancytree-partsel span.fancytree-checkbox:hover {
+  background-position: 0 -350px !important;
+}
+.fancytree-selected span.fancytree-checkbox {
+  background-position: 0 -188px !important;
+}
+.fancytree-selected span.fancytree-checkbox:hover {
+  background-position: 0 -238px !important;
+}
+.fancytree-unselectable span.fancytree-checkbox {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+.fancytree-unselectable span.fancytree-checkbox:hover {
+  background-position: 0 -100px !important;
+}
+.fancytree-unselectable.fancytree-partsel span.fancytree-checkbox:hover {
+  background-position: 0 -300px !important;
+}
+.fancytree-unselectable.fancytree-selected span.fancytree-checkbox:hover {
+  background-position: 0 -200px !important;
+}
+div.fancytree-drag-helper.fancytree-drop-accept span.fancytree-drag-helper-img {
+  background-position: 0 -700px !important;
+}
+div.fancytree-drag-helper.fancytree-drop-reject span.fancytree-drag-helper-img {
+  background-position: 0 -650px !important;
+}
+/*** Drop marker icon *********************************************************/
+#fancytree-drop-marker {
+  /*width: 32px;
+  position: absolute;
+  margin: 0;*/
+  background-position: -15px -750px !important;
+}
+#fancytree-drop-marker.fancytree-drop-after,
+#fancytree-drop-marker.fancytree-drop-before {
+  /*width: 64px;*/
+  background-position: 0 -900px !important;
+}
+#fancytree-drop-marker.fancytree-drop-copy {
+  background-position: -14px -850px !important;
+}
+#fancytree-drop-marker.fancytree-drop-move {
+  background-position: -15px -800px !important;
+}
+/* Move the indent padding to the span. */
+ul.fancytree-container ul {
+  padding: 0;
+}
+#openlucius_file_tree li .fancytree-node.fancytree-has-children .fancytree-checkbox {
+  display: none;
+}
+#openlucius_file_tree li .fancytree-node.fancytree-has-children .folder-title {
+  padding-left: 10px;
+}
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+  #openlucius_file_tree li .fancytree-node .fancytree-title {
+    width: 90%;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 600px) {
+  #openlucius_file_tree li .fancytree-node .fancytree-title {
+    width: 87%;
+  }
+}
+@media screen and (max-width: 480px) {
+  #openlucius_file_tree li .fancytree-node .fancytree-title {
+    width: 85%;
+  }
+  ul.ui-fancytree li li {
+    padding-left: 20px;
+  }
+  #openlucius_file_tree li .fancytree-node .fancytree-title .file,
+  #openlucius_file_tree li .fancytree-node .fancytree-title .folder-title {
+    max-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  #openlucius_file_tree ul li .fancytree-node .fancytree-title .file,
+  #openlucius_file_tree ul li .fancytree-node .fancytree-title .folder-title {
+    max-width: 180px;
+  }
+}

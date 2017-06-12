@@ -1,0 +1,58 @@
+.page-comment-edit #comment-form .form-todo-list-wrapper select,
+.page-comment-edit #comment-form .form-todo-label-wrapper select,
+.page-comment-edit #comment-form .form-todo-user-wrapper .form-item-field-todo-user-reference,
+.page-comment-edit #comment-form .form-todo-user-wrapper .form-item-field-todo-user-reference select,
+.page-comment-edit #comment-form .form-todo-due-date-wrapper #edit-field-todo-due-date-singledate,
+.page-comment-edit #comment-form .form-todo-due-date-wrapper #edit-field-todo-due-date-singledate .form-type-textfield,
+.page-comment-edit #comment-form .form-todo-due-date-wrapper #edit-field-todo-due-date-singledate .form-type-textfield .form-control {
+  width: 100%;
+}
+/** Comment reduction **/
+.comment {
+  margin-bottom: 25px;
+}
+#comments .collapsed-comment .comment,
+#comments .collapsed-comment .comment .content,
+#comments .collapsed-comment .comment .links,
+#comments .collapsed-comment .comment .header-holder,
+#comments .collapsed-comment .user-picture,
+.comment-excerpt {
+  display: none;
+}
+.comment-hr-holder {
+  position: relative;
+  padding: 5px;
+}
+.comment-hr-holder hr {
+  margin: 5px -5px;
+}
+.comment-hr-holder .open-comments {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 11px;
+  height: 100%;
+  font-size: 10px;
+  text-align: center;
+}
+.open-all-comments {
+  cursor: pointer;
+  display: inline-block;
+  padding: 1px 8px 1px 8px;
+}
+.collapsed-comment,
+.comment-hr-holder,
+.open-all-comments {
+  background-color: #f5f5f5;
+}
+.collapsed-comment .comment {
+  margin-bottom: 0px;
+}
+.header-holder {
+  cursor: pointer;
+}
+.collapsed-comment .comment-excerpt {
+  font-size: 12px !important;
+  display: inline-table;
+  vertical-align: middle;
+}

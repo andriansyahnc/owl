@@ -1,0 +1,227 @@
+.glyphicon-refresh-animate {
+  -animation: spin .7s infinite linear;
+  -webkit-animation: spin2 .7s infinite linear;
+}
+@-webkit-keyframes spin2 {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+  }
+}
+.notifications_badge {
+  background: rgba(255, 0, 0, .8) !important;
+  border: 2px solid #fff;
+  color: #fff !important;
+  font-size: 8px !important;
+  font-weight: 400;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 0;
+  line-height: 14px;
+  border-radius: 2px;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: none;
+}
+.notifications_button {
+  position: relative;
+  outline: 0;
+  font-size: 18px;
+}
+.nav > li.header-notifications,
+.nav > li.header-messages {
+  display: none;
+  position: relative;
+}
+.nav > li.header-notifications.header-openlucius-visible,
+.nav > li.header-messages.header-openlucius-visible,
+.nav > li.header-messages.header-openlucius-visible .openlucius_direct_messages,
+.nav > li.header-notifications.header-openlucius-visible .openlucius_notifications {
+  display: block;
+}
+.nav > li.header-notifications .openlucius_notifications,
+.nav > li.header-messages .openlucius_direct_messages {
+  position: absolute;
+  right: -45px !important;
+  top: 45px;
+  overflow-y: scroll;
+  max-height: 300px;
+}
+ul.direct-message-users,
+.nav > li.header-notifications .openlucius_notifications,
+.nav > li.header-messages .openlucius_direct_messages {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul.direct-message-users li > a,
+a.direct-message,
+a.notification-center-item {
+  position: relative;
+  padding: 12px 12px 8px 51px !important;
+  display: block;
+  float: left;
+}
+a.notification-center-item {
+  padding-left: 34px !important;
+  padding-top: 8px !important;
+}
+ul.direct-message-users li > a img,
+a.direct-message img,
+a.notification-center-item > .glyphicon {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+}
+.direct-message-users li span.last-message,
+.direct-message-users li abbr {
+  font-weight: normal !important;
+  color: #bdc1c9;
+  font-size: 10px;
+  clear: both;
+  width: 100%;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.direct-message,
+a.notification-center-item {
+  width: 360px;
+}
+#openlucius-notifications-direct-message-overview-form th:first-child,
+#openlucius-notifications-direct-message-overview-form td:first-child,
+#openlucius-notifications-direct-message-form .filter-wrapper {
+  display: none;
+}
+#openlucius-notifications-direct-message-form {
+  clear: both;
+  float: left;
+  width: 100%;
+}
+a.direct-message span.body,
+a.notification-center-item .body {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+a.direct-message.unread,
+a.notification-center-item.unread {
+  font-weight: bold !important;
+}
+a.direct-message .time-ago,
+a.notification-center-item .time-ago {
+  font-weight: normal !important;
+  font-size: 8px;
+  display: inline-block;
+  width: 100%;
+  clear: both;
+  float: left;
+  margin-top: 3px;
+}
+.align-center {
+  text-align: center;
+  font-size: 16px;
+}
+/** Message overview */
+ul#direct_messages_overview {
+  clear: both;
+  overflow-y: scroll;
+  width: 100%;
+  list-style-type: none;
+  padding: 0 20px;
+  border: 1px solid #e8e8e8;
+  overflow-wrap: break-word;
+}
+ul#direct_messages_overview li.divider {
+  border-top: 1px solid #e8e8e8;
+  color: #bdc1c9;
+  font-size: 11px;
+  margin: 17px 0 2px;
+  text-align: center;
+}
+ul#direct_messages_overview li.divider abbr {
+  background-color: #fff;
+  padding: 0 15px;
+  position: relative;
+  top: -8px;
+}
+ul#direct_messages_overview li.message-wrapper {
+  padding: 12px 8px 8px 71px !important;
+  position: relative;
+  font-size: 12px;
+}
+ul#direct_messages_overview li.message-wrapper img {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+ul#direct_messages_overview li.message-wrapper .message-time {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #bdc1c9;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 10px;
+}
+/* Direct messaging button */
+#openlucius-notifications-direct-message-form .btn {
+  padding: 6px 12px;
+}
+ul#direct_messages_overview li.message-wrapper span.operations {
+  float: right;
+}
+a.direct-message-add {
+  background-color: #fff;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  padding: 2px 10px;
+  color: #69758a !important;
+  font-size: 12px;
+  line-height: 1.5;
+  position: absolute;
+  top: 7px;
+  right: 0;
+}
+a.direct-message-add span {
+  margin-right: 5px;
+}
+ul.direct-message-users li {
+  clear: right;
+  width: 100%;
+  float: left;
+}
+#navbar .openlucius_notifications {
+  max-height: 325px;
+  overflow-y: scroll;
+}
+.openlucius_notifications li.mark-all-read,
+.openlucius_notifications li.fetch-more a.openlucius-notifications-more {
+  background-color: #5a5a5a;
+}
+.openlucius_notifications li.mark-all-read a.openlucius-notifications-mark-read,
+.openlucius_notifications li.fetch-more a.openlucius-notifications-more {
+  color: #fff;
+}
+.footer-styling {
+  margin-bottom: 1em;
+}
+#block-openlucius-notifications-openlucius-notifications-users {
+  position: relative;
+}

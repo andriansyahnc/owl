@@ -1,0 +1,87 @@
+<?php
+/**
+ * @file
+ * The install file for the openlucius_files module.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function openlucius_files_enable() {
+
+  // Set to default file manager.
+  variable_set('openlucius_files_enable_fancy_tree', 1);
+}
+
+/**
+ * Implements hook_schema().
+ */
+function openlucius_files_schema() {
+  $schema['openlucius_files'] = array(
+    // Specification for table "openlucius_files".
+    'description' => 'The base table for all files.',
+    'fields'      => array(
+      'oid'      => array(
+        'description' => 'The primary identifier for a file within openlucius.',
+        'type'        => 'serial',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+      ),
+      'pid'      => array(
+        'description' => 'The parent of the file (nid / cid).',
+        'type'        => 'int',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+        'default'     => 0,
+      ),
+      'gid'      => array(
+        'description' => 'The reference to the group node within openlucius.',
+        'type'        => 'int',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+        'default'     => 0,
+      ),
+      'fid'      => array(
+        'description' => 'The fid of the file within drupal',
+        'type'        => 'int',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+        'default'     => 0,
+      ),
+      'bundle'   => array(
+        'description' => 'The bundle {node}.type this file was attached to.',
+        'type'        => 'int',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+        'default'     => 0,
+      ),
+      'is_image' => array(
+        'description' => 'Whether this file is an image, 0 is file, 1 is an image.',
+        'type'        => 'int',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+        'default'     => 0,
+      ),
+      'folder'   => array(
+        'description' => 'The folder this file resides in',
+        'type'        => 'int',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+        'default'     => 0,
+      ),
+    ),
+    'unique keys' => array(
+      'oid' => array('oid'),
+    ),
+    'primary key' => array('oid'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Update for all older versions of openlucius files.
+ */
+function openlucius_files_update_7000() {
+  variable_set('openlucius_files_enable_fancy_tree', 0);
+}

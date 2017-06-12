@@ -1,0 +1,2231 @@
+<?php
+/**
+ * @file
+ * Openlucius files module.
+ */
+
+define('OPENLUCIUS_FILES_UNLIMITED', -1);
+define('OPENLUCIUS_FILES_WITHOUT_FOLDER', 0);
+
+/**
+ * Implements hook_menu().
+ */
+function openlucius_files_menu() {
+
+  // Initialize array.
+  $items = array();
+
+  $items['all-files'] = array(
+    'title'            => 'All Files',
+    'page callback'    => 'openlucius_files_allfiles',
+    'page arguments'   => array('all-files'),
+    'access arguments' => array('access content'),
+    'type'             => MENU_NORMAL_ITEM,
+  );
+
+  $items['group-files'] = array(
+    'page callback'    => 'openlucius_files_page_callback',
+    'title'            => 'Files',
+    'type'             => MENU_NORMAL_ITEM,
+    'page arguments'   => array(0, 1, 2),
+    'access arguments' => array('access content'),
+  );
+
+  $items['group-files/%/groups.json'] = array(
+    'page callback'    => 'openlucius_files_fetch_group_files',
+    'title'            => 'Files',
+    'type'             => MENU_NORMAL_ITEM,
+    'page arguments'   => array(1),
+    'access arguments' => array('access content'),
+  );
+
+  $items['remove-file/%/%'] = array(
+    'page callback'    => 'openlucius_files_remove_file',
+    'page arguments'   => array(1, 2),
+    'type'             => MENU_NORMAL_ITEM,
+    'access arguments' => array('delete own file content'),
+  );
+
+  // For ajax callback (folder swapping for files).
+  $items['folder-swap'] = array(
+    'page callback'    => 'openlucius_files_swap_folder',
+    'type'             => MENU_NORMAL_ITEM,
+    'access arguments' => array('administer folders'),
+  );
+
+  // For ajax callback (Adding folder in other folder).
+  $items['folder-insert-folder'] = array(
+    'page callback'    => 'openlucius_files_folder_insert_folder',
+    'type'             => MENU_NORMAL_ITEM,
+    'access arguments' => array('administer folders'),
+  );
+
+  // Page for files configuration.
+  $items['admin/config/openlucius/files'] = array(
+    'title'            => 'File configuration',
+    'description'      => 'Configure settings for OpenLucius files.',
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('openlucius_files_file_configuration_form'),
+    'access arguments' => array('administer file configuration'),
+    'type'             => MENU_LOCAL_TASK,
+    'tab_parent'       => 'admin/config/openlucius',
+  );
+
+  return $items;
+}
+
+/**
+ * Function to add / update folders in folders.
+ */
+function openlucius_files_folder_insert_folder() {
+  global $user;
+
+  // Get variables.
+  $folder = !empty($_POST['folder']) ? $_POST['folder'] : 0;
+
+  // Fetch the folders to be placed in this folder.
+  $folders = !empty($_POST['folders']) ? $_POST['folders'] : NULL;
+
+  // Fetch the group id.
+  $gid = $_POST['group'];
+
+  // Check values and token.
+  if (!is_numeric($folder) || !is_numeric($gid) || empty($folders) || !isset($_POST['token']) || !drupal_valid_token($_POST['token'])) {
+    return FALSE;
+  }
+
+  // Check if user in group and permission to administer folders or is admin.
+  if (openlucius_core_user_in_group($gid, $user->uid) && user_access('administer folders') || user_access('bypass node access') || $user->uid == 1) {
+
+    // Delete all existing entries as it is easier to create new ones.
+    db_delete('draggableviews_structure')
+      ->condition('view_name', 'file_folders', '=')
+      ->condition('view_display', 'block_3', '=')
+      ->condition('args', '["' . $gid . '"]', '=')
+      ->condition('entity_id', $folders, 'IN')
+      ->execute();
+
+    // Loop through folders.
+    foreach ($folders as $weight => $folder_id) {
+
+      // Set parent as folder.
+      $parent = $folder;
+
+      // If for some wacky reason the folder is its own parent the parent is
+      // set to root.
+      if ($folder_id == $parent) {
+        $parent = 0;
+      }
+
+      // Create folder entry.
+      db_insert('draggableviews_structure')->fields(array(
+        'view_name'    => 'file_folders',
+        'view_display' => 'block_3',
+        'args'         => '["' . $gid . '"]',
+        'entity_id'    => $folder_id,
+        'weight'       => $weight,
+        'parent'       => $parent,
+      ))->execute();
+    }
+  }
+
+  drupal_json_output(TRUE);
+  drupal_exit();
+}
+
+/**
+ * The fancy tree file page.
+ *
+ * @param string $type
+ *   The callback type.
+ * @param int $gid
+ *   The group id.
+ *
+ * @return string
+ *   Returns the html for the page.
+ *
+ * @throws Exception
+ */
+function openlucius_files_fancytree_callback($type, $gid) {
+
+  // Add jquery ui requirements.
+  drupal_add_library('system', 'ui');
+  drupal_add_library('system', 'ui.draggable');
+  drupal_add_library('system', 'ui.droppable');
+  drupal_add_library('system', 'effects');
+  drupal_add_library('system', 'effects.blind');
+
+  // Fetch path to library.
+  $path_to_library = libraries_get_path('fancytree');
+
+  // Add the fancy tree css.
+  drupal_add_css($path_to_library . '/src/skin-win7/ui.fancytree.css');
+
+  // Add the custom css.
+  drupal_add_css(drupal_get_path('module', 'openlucius_files') . '/css/openlucius_files.css');
+
+  // Add the fancy tree js and the filter plugin.
+  drupal_add_js($path_to_library . '/src/jquery.fancytree.js');
+  drupal_add_js($path_to_library . '/src/jquery.fancytree.filter.js');
+  drupal_add_js($path_to_library . '/src/jquery.fancytree.dnd.js');
+  drupal_add_js($path_to_library . '/src/jquery.fancytree.edit.js');
+
+  // Add custom js for the files.
+  drupal_add_js(array(
+    'openlucius_files' => array(
+      'path'     => url(sprintf('group-files/%d/groups.json', $gid), array('absolute' => TRUE)),
+      'token'    => drupal_get_token(),
+      'group'    => $gid,
+      'can_edit' => user_access('administer folders'),
+    ),
+  ), 'setting');
+
+  // Build a list of tools (name => path).
+  $tools = array(
+    t('Folder') => url('node/add/ol-file-folder/' . $gid, array('query' => array('destination' => 'group-files/' . $gid))),
+    t('Files')  => url('node/add/file/' . $gid, array('query' => array('destination' => 'group-files/' . $gid))),
+  );
+
+  // Allow other modules to alter the tools array.
+  drupal_alter('openlucius_files_tools', $tools);
+
+  // Build tools.
+  $html = "";
+  foreach ($tools as $name => $path) {
+    $html .= sprintf(' <a href="%s" class="btn-sm btn-default files-tools">
+      <span class="glyphicon glyphicon-plus-sign"></span>&nbsp; %s
+    </a>', $path, $name);
+  }
+
+  // Return themed files tree input.
+  return theme('openlucius_files_tree', array(
+    'tools' => filter_xss($html, array('a', 'span')),
+  ));
+}
+
+/**
+ * Function to build a json for the group files.
+ *
+ * @param int $gid
+ *   The group id for which the json is requested.
+ */
+function openlucius_files_fetch_group_files($gid) {
+  // Load the node.
+  $node = node_load($gid);
+
+  // For storing the JSON structure.
+  $json = array();
+
+  // Get destination and token for links.
+  $destination = array('destination' => 'group-files/' . $gid);
+  $destination['token'] = drupal_get_token();
+
+  // Check if we have a node and it is of the correct type.
+  if (!empty($node->type) && $node->type == 'ol_group') {
+    $file_structure = db_query("
+      SELECT d.parent AS parent, n.nid AS nid, n.title AS title, COALESCE(d.weight, 2147483647) AS weight, n.status as status
+      FROM
+      {node} n
+      LEFT JOIN {field_data_field_shared_group_reference} g
+      ON n.nid = g.entity_id
+      AND g.entity_type = 'node'
+      LEFT JOIN {draggableviews_structure} d ON n.nid = d.entity_id AND d.view_name = 'file_folders' AND d.view_display = 'block_3' AND d.args = :args
+      WHERE g.field_shared_group_reference_nid = :group AND n.status = '1' AND n.type = 'ol_file_folder'
+      ORDER BY parent ASC, weight ASC", array(
+      ':args'  => '["' . $node->nid . '"]',
+      ':group' => $node->nid,
+    ))->fetchAll();
+
+    // For quick adding folders to the tree.
+    $references = array();
+
+    // Loop through the folders.
+    foreach ($file_structure as $folder) {
+
+      // Fetch files for this folder.
+      $data = openlucius_files_allfiles('group-files', $gid, $folder->nid, TRUE);
+
+      // Get data type.
+      $data_type = gettype($data);
+
+      // Check if the type is not an array.
+      if ($data_type !== 'array') {
+        $data = $data->fetchAll();
+      }
+
+      // Top level folder so add it to JSON.
+      if ($folder->parent == 0) {
+
+        // Add folder.
+        $json[$folder->nid] = openlucius_files_process_folder($folder, $destination);
+
+        // Check if we have data.
+        if (!empty($data) && $data_type !== 'array') {
+
+          // Process files.
+          foreach ($data as $file) {
+            $json[$folder->nid]['children'][] = openlucius_files_custom_process_file($file, $destination);
+          }
+        }
+
+        // Add reference to children for easy access.
+        $references[$folder->nid] = &$json[$folder->nid]['children'];
+      }
+      else {
+
+        // Append to parent.
+        $references[$folder->parent][$folder->nid] = openlucius_files_process_folder($folder, $destination);
+
+        // Check if we have data.
+        if (!empty($data) && $data_type !== 'array') {
+
+          // Process files.
+          foreach ($data as $file) {
+            $references[$folder->parent][$folder->nid]['children'][] = openlucius_files_custom_process_file($file, $destination);
+          }
+        }
+
+        // Add reference to self.
+        $references[$folder->nid] = &$references[$folder->parent][$folder->nid]['children'];
+      }
+    }
+
+    // Select all files which are outside of folders.
+    $data = openlucius_files_allfiles('group-files', $gid, OPENLUCIUS_FILES_WITHOUT_FOLDER, TRUE);
+
+    // Get data type.
+    $data_type = gettype($data);
+
+    // Check if the type is not an array.
+    if ($data_type !== 'array') {
+      $data = $data->fetchAll();
+    }
+
+    if (!empty($data) && $data_type !== 'array') {
+      foreach ($data as $file) {
+        $json[] = openlucius_files_custom_process_file($file, $destination);
+      }
+    }
+
+    // Cleanup default numeric values.
+    $json = openlucius_core_replace_numeric_keys($json);
+
+    // Unset the references.
+    unset($references);
+  }
+
+  // Return JSON.
+  drupal_json_output($json);
+  drupal_exit();
+}
+
+/**
+ * Function to build the folder array.
+ *
+ * @param array $folder
+ *   The folder data.
+ * @param array $destination
+ *   The destination for the folder tools.
+ *
+ * @return array
+ *   Returns a rendered folder array.
+ */
+function openlucius_files_process_folder($folder, $destination) {
+
+  // Check if token set.
+  if (isset($destination['token'])) {
+    unset($destination['token']);
+  }
+
+  // Check if the user has access to edit the node.
+  if (node_access('update', (object) $folder)) {
+
+    // Initialize the operations.
+    $operations = '<span class="operations"><div class="dropdown"><span class="fa fa-ellipsis-v" type="button" data-toggle="dropdown"></span><ul class="dropdown-menu">';
+
+    // Add the edit link.
+    $operations .= '<li><a href="' . url('node/' . $folder->nid . '/edit', array('query' => $destination)) . '">' . t('Edit') . '</a></li>';
+
+    // Closed the operations.
+    $operations .= '</ul></div></span>';
+  }
+
+  return array(
+    'title'     => '<span class="folder-title">' . $folder->title . '</span>' . $operations,
+    'folder'    => TRUE,
+    'children'  => array(),
+    'folder_id' => $folder->nid,
+  );
+}
+
+/**
+ * Method for rendering files for openlucius_files.
+ *
+ * @param array $data
+ *   The file data to be rendered.
+ * @param array $destination
+ *   The destination for the file tools.
+ *
+ * @return string
+ *   Returns a rendered file link.
+ *
+ * @throws \Exception
+ */
+function openlucius_files_custom_process_file($data, $destination = NULL) {
+
+  // Check if this parent is a node.
+  $is_node = openlucius_files_is_node($data->bundle);
+
+  // Initialize the operations.
+  $operations = '<span class="operations"><div class="dropdown"><span class="fa fa-ellipsis-v" type="button" data-toggle="dropdown"></span><ul class="dropdown-menu">';
+
+  // Check if the user has access to delete the parent therefore the file.
+  if ($is_node && drupal_valid_path('node/' . $data->pid . '/delete') || !$is_node && drupal_valid_path('comment/' . $data->pid . '/delete')) {
+
+    // Add the removal link.
+    $operations .= '<li><a href="' . url('remove-file/' . $data->pid . '/' . $data->fid, array('query' => $destination)) . '" class="remove-file-link">
+    ' . t('Remove') . '
+    </a></li>';
+  }
+
+  // Closed the operations.
+  $operations .= '</ul></div></span>';
+
+  // Get the file info.
+  $file_info = openlucius_files_get_file_info($data);
+
+  // Create the file display.
+  $file_display = '<span class="file"><span class="file-info">' . $file_info . '</span></span>';
+
+  // Return the array.
+  return array(
+    'title'     => $file_display . $operations,
+    'folder_id' => $data->folder,
+    'file_id'   => $data->fid,
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function openlucius_files_theme() {
+  return array(
+    'openlucius_files_file_info' => array(
+      'variables' => array('vars' => NULL),
+      'template'  => 'templates/openlucius_files_file_info',
+    ),
+    'openlucius_files_tree'      => array(
+      'template' => 'templates/openlucius_files_tree',
+    ),
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function openlucius_files_permission() {
+  return array(
+    'administer folders'            => array(
+      'title'       => t('Administer folders'),
+      'description' => t('Move folders and assign files to folders.'),
+    ),
+    'administer file configuration' => array(
+      'title'       => t('Administer file configuration'),
+      'description' => t('Administer the configuration of OpenLucius files.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function openlucius_files_node_insert($node) {
+  // Process files if any.
+  openlucius_files_insert_into_openlucius_files($node);
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function openlucius_files_node_update($node) {
+
+  // Reset node cache.
+  entity_get_controller('node')->resetCache(array($node->nid));
+
+  // Load node.
+  $loaded_node = node_load($node->nid, NULL, TRUE);
+
+  // Process files.
+  openlucius_files_insert_into_openlucius_files($loaded_node);
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function openlucius_files_node_delete($node) {
+
+  // Get bundle for safe deletion.
+  $bundle = openlucius_files_system_name_to_integer($node->type);
+
+  // Remove all entries remaining.
+  openlucius_files_remove($node->nid, $bundle);
+}
+
+/**
+ * Implements hook_comment_insert().
+ */
+function openlucius_files_comment_insert($comment) {
+
+  // Process files.
+  openlucius_files_insert_into_openlucius_files($comment);
+}
+
+/**
+ * Implements hook_comment_update().
+ */
+function openlucius_files_comment_update($comment) {
+
+  // Process files.
+  openlucius_files_insert_into_openlucius_files($comment);
+}
+
+/**
+ * Implements hook_comment_delete().
+ */
+function openlucius_files_comment_delete($comment) {
+
+  // Get bundle for safe deletion.
+  $bundle = openlucius_files_system_name_to_integer($comment->node_type);
+
+  // Remove all entries remaining.
+  openlucius_files_remove($comment->cid, $bundle);
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function openlucius_files_block_info() {
+
+  // Initialize array.
+  $blocks = array();
+
+  // User files block.
+  $blocks['ol_user_files'] = array(
+    'info' => t("User's files"),
+  );
+
+  // Group files block.
+  $blocks['ol_group_files'] = array(
+    'info' => t('Group files'),
+  );
+
+  // Group files block.
+  $blocks['ol_files_filter'] = array(
+    'info' => t('Files filter'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function openlucius_files_block_view($delta = '') {
+
+  // Initialize array.
+  $block = array();
+
+  switch ($delta) {
+
+    // Ol user files block.
+    case 'ol_user_files':
+      $block['subject'] = t("User's files");
+      $block['content'] = openlucius_files_user_files();
+      break;
+
+    // Ol user files block.
+    case 'ol_group_files':
+      $block['subject'] = t('Files');
+      $block['content'] = openlucius_files_group_files();
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Custom function to remove file.
+ *
+ * @param int $pid
+ *   The node id.
+ * @param int $fid
+ *   The file id.
+ */
+function openlucius_files_remove_file($pid, $fid) {
+  // Load node for access check.
+  $node = node_load($pid);
+  $comment = NULL;
+
+  // This is probably not a comment but a node.
+  if (!$node) {
+    $comment = comment_load($pid);
+  }
+
+  // Check if the user has access (safety first).
+  if ((!empty($node) && node_access('delete', $node) || !empty($comment) && user_access('administer comments')) && isset($_GET['token']) && drupal_valid_token($_GET['token'])) {
+
+    // Load file for deletion.
+    $file = file_load($fid);
+
+    // Get usage list and clear all entries for this file.
+    $file_usage = file_usage_list($file);
+
+    foreach ($file_usage['file'] as $type => $entry) {
+      $keys = array_keys($entry);
+
+      // Switch on entity type.
+      switch ($type) {
+        case 'comment':
+          $entity = comment_load($keys[0]);
+
+          // Check if the field is set.
+          if (!empty($entity->field_shared_files)) {
+
+            // Loop through attached files.
+            foreach ($entity->field_shared_files[LANGUAGE_NONE] as $key => $attached_file) {
+
+              // We have a match so unset it.
+              if ($file->fid == $attached_file['fid']) {
+
+                // Clear the file field.
+                unset($entity->field_shared_files[LANGUAGE_NONE][$key]);
+              }
+            }
+            comment_save($entity);
+          }
+          break;
+
+        case 'node':
+          $entity = node_load($keys[0]);
+          // Check if the field is set.
+          if (!empty($entity->field_shared_files)) {
+
+            // Loop through attached files.
+            foreach ($entity->field_shared_files[LANGUAGE_NONE] as $key => $attached_file) {
+
+              // We have a match so unset it.
+              if ($file->fid == $attached_file['fid']) {
+
+                // Clear the file field.
+                unset($entity->field_shared_files[LANGUAGE_NONE][$key]);
+              }
+            }
+            node_save($entity);
+          }
+          break;
+      }
+    }
+
+    // Delete file.
+    file_delete($file, TRUE);
+
+    // Remove custom entry.
+    openlucius_files_remove_single_file($fid);
+
+    // Notify user that something has happened.
+    drupal_set_message(t('File @file has been successfully removed.', array('@file' => $file->filename)));
+  }
+  else {
+    // Notify that the user has no access.
+    drupal_set_message(t('You are not allowed to remove this file.'), 'error');
+  }
+
+  // Return.
+  drupal_goto();
+}
+
+/**
+ * Custom function to swap folders.
+ */
+function openlucius_files_swap_folder() {
+
+  // Get variables.
+  $fid = $_POST['fid'];
+  $folder = $_POST['folder'];
+
+  // Only numeric values.
+  if (!is_numeric($fid) || !isset($_POST['token']) || !drupal_valid_token($_POST['token'])) {
+    return FALSE;
+  }
+
+  // Update file entry.
+  db_update('openlucius_files')
+    ->fields(array('folder' => $folder))
+    ->condition('fid', $fid, '=')
+    ->execute();
+
+  // Return true.
+  drupal_json_output(TRUE);
+
+  // Prevent further execution of code.
+  drupal_exit();
+}
+
+/**
+ * Custom function, implements files stream.
+ *
+ * @param string $type
+ *   The type of page the function is called from.
+ * @param int $group_id
+ *   The groupid if for files overview.
+ * @param int $folder
+ *   The active folder.
+ *
+ * @return array|DatabaseStatementInterface
+ *   An array for Drupal render.
+ */
+function openlucius_files_page_callback($type = NULL, $group_id = NULL, $folder = NULL) {
+
+  global $user;
+
+  // Fetch the gid.
+  $gid = openlucius_core_get_active_group();
+
+  // Check if this group is an open group.
+  if (openlucius_core_is_open_group($gid)) {
+
+    // Get client status of the user.
+    $is_client = openlucius_core_user_is_client($user);
+
+    // Check if the group has clients enabled.
+    $clients_enabled = openlucius_core_group_clients_enabled($gid);
+
+    // Check if the user is client.
+    if ($is_client && !$clients_enabled) {
+      drupal_access_denied();
+      drupal_exit();
+    }
+  }
+
+  return openlucius_files_fancytree_callback($type, $group_id);
+}
+
+/**
+ * Custom function, implements files stream.
+ *
+ * @param string $type
+ *   The type of page the function is called from.
+ * @param int $group_id
+ *   The groupid if for files overview.
+ * @param int $folder
+ *   The active folder.
+ * @param bool $files_only
+ *   Whether a full table should be rendered or only files.
+ *
+ * @return array|DatabaseStatementInterface
+ *   An array for Drupal render.
+ */
+function openlucius_files_allfiles($type = NULL, $group_id = NULL, $folder = NULL, $files_only = FALSE) {
+
+  // The logged in user.
+  global $user;
+
+  // Load user groups.
+  $user_groups = openlucius_core_fetch_user_groups($user->uid);
+
+  // Return empty string if user groups is empty.
+  if (count($user_groups) == 0 && !user_access('bypass node access')) {
+    return openlucius_files_build_table(FALSE, $type, $group_id);
+  }
+
+  // If group id isset.
+  if ($group_id != NULL) {
+
+    // Check if user has access, or the user is admin.
+    if (in_array($group_id, $user_groups) || user_access('bypass node access') || $user->uid == 1) {
+
+      // Rewrite to single.
+      $user_groups = array($group_id);
+    }
+    else {
+      // You're not in this group or it doesn't exist.
+      drupal_access_denied();
+
+      // Prevent further execution.
+      drupal_exit();
+    }
+  }
+
+  // Check if value not TRUE.
+  if ($files_only !== TRUE) {
+
+    // Get and store the result.
+    $result = openlucius_files_get_files_result($user_groups, $folder, NULL, 20);
+
+    // Build and return table.
+    return openlucius_files_build_table($result, $type, $group_id);
+  }
+  else {
+
+    // Fetch the result.
+    return openlucius_files_get_files_result($user_groups, $folder, NULL, OPENLUCIUS_FILES_UNLIMITED);
+  }
+}
+
+/**
+ * Function for processing files DatabaseStatementInterface results.
+ *
+ * @param bool|DatabaseStatementInterface $result
+ *   The Statement to be processed.
+ * @param array $rows
+ *   The array where the processed results are to be stored.
+ * @param int $can_remove_file_count
+ *   The amount of files that can be removed.
+ * @param bool|FALSE $user_dashboard
+ *   Whether this method is called from the user-dashboard.
+ * @param bool|FALSE $group_files
+ *   Whether this method is called from the group-files page.
+ * @param bool|FALSE $group_page
+ *   Whether this method is called from the group page.
+ *
+ * @throws \Exception
+ */
+function openlucius_files_process_rows($result, &$rows, &$can_remove_file_count, $user_dashboard = FALSE, $group_files = FALSE, $group_page = FALSE) {
+
+  foreach ($result as $row) {
+    // Check if node or comment.
+    $is_node = openlucius_files_is_node($row->bundle);
+
+    // Default empty.
+    $folder_select = '';
+    $link_to_group = '';
+
+    // Get user friendly column name.
+    $friendly_bundle = openlucius_files_get_friendly_bundle_name($row->bundle);
+
+    if ($is_node) {
+      // Get node for title.
+      $node = db_select('node', 'n')
+        ->fields('n', array('title', 'type'))
+        ->condition('n.nid', $row->pid, '=')
+        ->addTag('node_access')
+        ->execute()
+        ->fetchObject();
+
+      if ($node->type != 'file') {
+        // Build link to node, incl. node title.
+        $link_to_content = l($node->title . ' (' . $friendly_bundle . ')', 'node/' . $row->pid);
+      }
+      else {
+        // If there is no content, show the minus sign.
+        $link_to_content = '<span class="glyphicon glyphicon-minus"></span> (' . $friendly_bundle . ')';
+      }
+
+      $group = db_select('node', 'n')
+        ->fields('n', array('nid', 'title'))
+        ->condition('n.nid', $row->gid, '=')
+        ->addTag('node_access')
+        ->execute()
+        ->fetchObject();
+
+      // Build link to group node.
+      $link_to_group = l($group->title, 'node/' . $group->nid);
+    }
+    else {
+      // Load comment.
+      $comment = comment_load($row->pid);
+      // Build link to content.
+      $link_to_content = l($comment->subject . ' (' . $friendly_bundle . ')', 'node/' . $comment->nid, array('fragment' => 'comment-' . $comment->cid));
+    }
+
+    $remove_link = '';
+    // If the user may edit he may delete the node and it's files.
+    if ($is_node && drupal_valid_path('node/' . $row->pid . '/delete') || !$is_node && drupal_valid_path('comment/' . $row->pid . '/delete')) {
+      $destination = drupal_get_destination();
+      $destination['token'] = drupal_get_token();
+      $remove_link = '
+        <a href="' . url('remove-file/' . $row->pid . '/' . $row->fid, array('query' => $destination)) . '" class="remove-file-link" data-confirm=" ' . t('Are you sure you want to delete this file?') . '">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>';
+
+      // Increase by one.
+      $can_remove_file_count++;
+    }
+
+    // Build 'uploaded by' column.
+    if (module_exists('realname')) {
+      $username = db_query("
+      SELECT CASE
+      WHEN LENGTH(r.realname) = 0
+      OR r.realname IS NULL
+      THEN u.name
+      ELSE r.realname
+      END AS name
+      FROM {realname} r
+      INNER JOIN {users} u
+      ON r.uid = u.uid
+      WHERE r.uid = :uid", array(':uid' => $row->uid))->fetchField();
+    }
+    else {
+      $username = db_select('users', 'u')
+        ->fields('u', array('name'))
+        ->condition('u.uid', $row->uid, '=')
+        ->execute()
+        ->fetchField();
+    }
+
+    // It's no image, handle is as file.
+    if (!$row->is_image) {
+
+      // Build file link.
+      $file_load = array(
+        'uri'      => $row->uri,
+        'filemime' => $row->filemime,
+        'filesize' => $row->filesize,
+        'filename' => $row->filename,
+      );
+
+      // Build link.
+      $file_link = theme('file_link', array('file' => (object) $file_load));
+    }
+    // It's an image, handle it as image.
+    else {
+      // Build image.
+      $rendered_image = theme('image_style', array(
+        'style_name' => 'ol_50x50',
+        'path'       => $row->uri,
+      ));
+
+      // Build file url.
+      $image_url = file_create_url($row->uri);
+      $file_link = l($rendered_image, $image_url, array('html' => TRUE));
+    }
+
+    // Reset form.
+    $form = array();
+
+    // Use form api for quick hidden items.
+    $form['hidden_fid'] = array(
+      '#type'       => 'hidden',
+      '#value'      => $row->fid,
+      '#attributes' => array('class' => array('fid')),
+    );
+
+    // Render item.
+    $hidden = drupal_render($form);
+
+    // We are viewing the group dashboard, or user dashboard, get folder-nid.
+    $folder_id = $row->folder;
+
+    // When folder id is not 0 get the folder-info for this file.
+    if ($folder_id == '0') {
+      $folder_value = t('No Folder');
+    }
+    else {
+      $node_object = db_query("SELECT n.title, g.field_shared_group_reference_nid
+                              FROM {node} n
+                              LEFT JOIN {field_data_field_shared_group_reference} g
+                              ON g.entity_id = n.nid
+                              WHERE nid = :nid", array(':nid' => $folder_id))->fetchObject();
+      // Build the folder link.
+      $folder_value = l($node_object->title, 'group-files/' . $node_object->field_shared_group_reference_nid . '/' . $folder_id);
+    }
+
+    if ($group_files) {
+      // We are viewing /group-files, build the drop for managing folder.
+      $folder_select = openlucius_files_fetch_folder_tree($row->gid, $row->folder);
+
+      // Check if empty.
+      if ($folder_select == "") {
+        $folder_select = t('No Folder');
+      }
+    }
+
+    // Build vars for file info.
+    $vars['filelink'] = $file_link;
+    $vars['linktocontent'] = $link_to_content;
+    $vars['timeago'] = format_interval(($_SERVER['REQUEST_TIME'] - $row->timestamp), 2);
+
+    // Add username and user id.
+    $vars['username'] = $username;
+    $vars['uid'] = $row->uid;
+
+    // Link to user.
+    $vars['userlink'] = l($username, 'user/' . $row->uid);
+
+    // Allow other modules to alter the variables.
+    drupal_alter('openlucius_files_file_info_vars', $vars);
+
+    if (!$group_files) {
+      $vars['link_to_group'] = $link_to_group;
+    }
+    $file_info = theme('openlucius_files_file_info', array('vars' => $vars));
+
+    // Place the data in an array with key/value.
+    $data = array(
+      'file'   => $hidden . $file_info,
+      'folder' => $folder_value,
+    );
+
+    // If no folder select is created, remove it from the data.
+    if ($folder_select) {
+      $data['folderselect'] = $folder_select;
+    }
+
+    // Do not show uploaded by on the user dashboard.
+    if ($user_dashboard) {
+      unset($data['uploadedby']);
+    }
+
+    // On both the group homepage, group files page and folder files
+    // hide the group.
+    if ($group_files || $group_page) {
+      unset($data['group']);
+    }
+
+    // Check if unset link is available.
+    if (!empty($remove_link)) {
+      $data['remove'] = $remove_link;
+    }
+
+    // Build row.
+    $rows[] = $data;
+  }
+
+  // If there is any delete link, populate the empty for styling.
+  foreach ($rows as $id => $row) {
+    if ($can_remove_file_count > 0 && !isset($row['remove'])) {
+      $rows[$id]['remove'] = '';
+    }
+  }
+}
+
+/**
+ * Custom rendering function for file result table.
+ *
+ * @param mixed $result
+ *   Query results for table.
+ * @param mixed $arg0
+ *   The first argument used for checking @see openlucius_files_allfiles().
+ * @param mixed $arg1
+ *   The second argument used for checking @see openlucius_files_allfiles().
+ *
+ * @return array
+ *   An array for Drupal render.
+ */
+function openlucius_files_build_table($result, $arg0 = NULL, $arg1 = NULL) {
+
+  // Initiate as FALSE.
+  $user_dashboard = $group_files = $group_page = FALSE;
+
+  // Check if its the user dashboard.
+  if ($arg0 == 'user' && $arg1 == 'dashboard') {
+    $user_dashboard = TRUE;
+  }
+  // Check if its the group files page.
+  if ($arg0 == 'group-files' && is_numeric($arg1)) {
+    $group_files = TRUE;
+  }
+  // Check if we are on the group homepage.
+  if ($arg0 == 'ol_group') {
+    $group_page = TRUE;
+  }
+
+  // Variable for file removal link counting.
+  $can_remove_file_count = 0;
+
+  // Loop through our result and build row in the end.
+  $rows = array();
+
+  // Process rows.
+  openlucius_files_process_rows($result, $rows, $can_remove_file_count, $user_dashboard, $group_files, $group_page);
+
+  // We are going to output the results in a table with a nice header.
+  $header = array(
+    'file'   => t('File'),
+    'folder' => t('Folder'),
+  );
+
+  // Add extra header for group-files.
+  if ($arg0 == 'group-files') {
+    $header['folder2'] = t('Folder swap');
+  }
+
+  // Do not show uploaded by on the user dashboard.
+  if ($user_dashboard) {
+    unset($header['uploadedby']);
+  }
+
+  // On both the group homepage, the group files page
+  // and folder files hide the group.
+  if ($group_files || $group_page) {
+    unset($header['group']);
+  }
+
+  // Add column for removal if necessary.
+  if ($can_remove_file_count > 0) {
+    $header['tools'] = t('Tools');
+  }
+
+  // If there are rows.
+  if (count($rows) > 0) {
+
+    // Add row for count results and link to 'all files in this group'.
+    if ($arg0 == 'ol_group' && is_numeric($arg1)) {
+      $files_count_link = l(t('View all @filecount files in this Group >>', array('@filecount' => openlucius_files_count_group($arg1))), 'group-files/' . $arg1);
+      $rows[] = array(
+        'data' => array(
+          array(
+            'data'    => $files_count_link,
+            'colspan' => 7,
+          ),
+        ),
+      );
+    }
+
+    // Create a render array ($build) which will be themed as table with pager.
+    $build['pager_table'] = array(
+      '#theme'  => 'table',
+      '#prefix' => '<div class="table-responsive">',
+      '#header' => $header,
+      '#rows'   => $rows,
+      '#suffix' => '</div><input type="hidden" id="updated-message" value="' . t('Success') . '" />',
+    );
+
+    // Attach the pager theme. TODO Add ajax pager.
+    if ($arg0 == 'node' || $arg0 == 'all-files' || $arg0 == 'group-files') {
+      $build['pager_pager'] = array(
+        '#theme' => 'pager',
+      );
+    }
+  }
+  else {
+    if ($group_page) {
+      return "";
+    }
+
+    $build['#markup'] = t('No Files uploaded yet');
+  }
+
+  return $build;
+}
+
+/**
+ * Custom function to get group files.
+ */
+function openlucius_files_group_files() {
+
+  $item = menu_get_object();
+  $menu = menu_get_item();
+
+  if (!empty($item) && !empty($menu)) {
+    // Get result.
+    $result = openlucius_files_get_files_result($item->nid, NULL, NULL, 5);
+
+    return openlucius_files_build_table($result, $menu['page_arguments'][0]->type, $menu['page_arguments'][0]->nid);
+  }
+}
+
+/**
+ * Custom function to get user files.
+ */
+function openlucius_files_user_files() {
+
+  // The logged in user.
+  global $user;
+
+  // Get the menu object.
+  $menu = menu_get_item();
+  $user_id = NULL;
+
+  if (!empty($menu['page_arguments'][2])) {
+    // Get user id from menu object.
+    $user_id = $menu['page_arguments'][2];
+  }
+
+  if ($menu['map'][1] == 'dashboard' && is_numeric($user_id)) {
+    if ($user->uid == 1) {
+      $result = openlucius_files_get_files_result(NULL, NULL, $user_id, 5);
+    }
+    else {
+      // Fetch user groups.
+      $usergroups = openlucius_core_fetch_user_groups($user->uid);
+
+      // If user is not in a group return empty table.
+      if (count($usergroups) == 0) {
+        return openlucius_files_build_table(FALSE);
+      }
+
+      // Get result.
+      $result = openlucius_files_get_files_result($usergroups, NULL, $user_id, 5);
+    }
+
+    // Return the build table.
+    return openlucius_files_build_table($result, $menu['map'][0], $menu['map'][1]);
+  }
+}
+
+/**
+ * Custom query for getting files.
+ *
+ * @param mixed $groups
+ *   The groups are default to NULL.
+ * @param int $folder
+ *   The folder id (default NULL).
+ * @param int $uid
+ *   The user id (default NULL).
+ * @param int $limit
+ *   The limit number (default '20').
+ */
+function openlucius_files_get_files_result($groups = NULL, $folder = NULL, $uid = NULL, $limit = 20) {
+
+  // The logged in user.
+  global $user;
+
+  // Query the database for files linked to nodes.
+  $node_query = db_select('openlucius_files', 'f')->fields('f');
+  $node_query->condition('f.bundle', array(0, 1, 2, 3, 4, 11), 'IN');
+
+  // Check if user is a client.
+  if (openlucius_core_user_is_client()) {
+
+    $node_query->condition('fd.field_shared_show_clients_value', 1, '=');
+    $node_query->leftjoin('field_data_field_shared_show_clients', 'fd', 'fd.entity_id = f.pid');
+  }
+
+  // Query the database for files linked to comments.
+  $comment_query = db_select('openlucius_files', 'f')->fields('f');
+  $comment_query->condition('f.bundle', array(5, 6, 7, 8, 9, 10), 'IN');
+
+  // Check if user is a client.
+  if (openlucius_core_user_is_client()) {
+    // Join parent node and add condition.
+    $comment_query->leftjoin('comment', 'c', 'c.cid = f.pid');
+    $comment_query->condition('pa.field_shared_show_clients_value', 1, '=');
+    $comment_query->leftjoin('field_data_field_shared_show_clients', 'pa', 'pa.entity_id = c.nid');
+  }
+
+  // Union of both selects.
+  $node_query->union($comment_query, 'UNION ALL');
+
+  // Query the database for files extend for paged / ranged calls.
+  if ($limit != OPENLUCIUS_FILES_UNLIMITED) {
+    $query = db_select('openlucius_files', 'f')->extend('PagerDefault');
+  }
+  else {
+    $query = db_select('openlucius_files', 'f');
+  }
+
+  // Join subquery.
+  $query->join($node_query, 'nq', 'f.oid = nq.oid');
+
+  // Join for timestamp and user id and check for status.
+  $query->leftjoin('file_managed', 'fu', 'f.fid = fu.fid');
+
+  // Join for.
+  $query->leftjoin('users', 's', 's.uid = fu.uid');
+
+  $query->fields('f');
+  $query->fields('fu', array(
+    'timestamp',
+    'uri',
+    'uid',
+    'filename',
+    'filemime',
+    'filesize',
+    'status',
+  ));
+
+  $query->fields('s', array('name'));
+
+  // Check if groups are set.
+  if ($groups !== NULL) {
+
+    // More than one group.
+    if (is_array($groups)) {
+      $query->condition('f.gid', $groups, 'IN');
+    }
+    else {
+      // One group.
+      $query->condition('f.gid', $groups, '=');
+    }
+  }
+
+  // If user id is set.
+  if ($uid !== NULL) {
+
+    $query->condition('s.uid', $uid, '=');
+
+    // Skip admin.
+    if ($user->uid != 1) {
+
+      // Add a check for the groups of the current user.
+      $query->condition('f.gid', $groups, 'IN');
+    }
+  }
+
+  // Check if we're in a folder.
+  if (is_numeric($folder)) {
+
+    // If set only current folder.
+    $query->condition('f.folder', $folder, '=');
+  }
+
+  // Only display active files.
+  $query->condition('fu.status', 1, '=');
+
+  // Check for unlimited amount of items.
+  if ($limit != OPENLUCIUS_FILES_UNLIMITED) {
+
+    // Limit and Order by fid.
+    $result = $query->limit($limit)->orderBy('f.fid', 'desc')->execute();
+  }
+  else {
+    $result = $query->orderBy('f.fid', 'desc')->execute();
+  }
+
+  // Return.
+  return $result;
+}
+
+/**
+ * In order to save some space in the database we've used numeric identifiers.
+ *
+ * @param int $id
+ *   The numeric identifier of the bundle.
+ *
+ * @return mixed
+ *   A textual representation of the bundle or FALSE if not found.
+ */
+function openlucius_files_get_friendly_bundle_name($id) {
+
+  // The identifiers.
+  $identifiers = array(
+    0  => t('Message'),
+    1  => t('Event'),
+    2  => t('Task List'),
+    3  => t('Task'),
+    4  => t('File'),
+    5  => t('Comment in Message'),
+    6  => t('Comment in Event'),
+    7  => t('Comment in Task List'),
+    8  => t('Comment in Task'),
+    9  => t('Comment in file'),
+    10 => t('Comment in Text-document'),
+    11 => t('Text-document'),
+  );
+
+  // Allow other modules to add bundle names.
+  drupal_alter('openlucius_files_friendly_bundle_name', $identifiers);
+
+  // Return integer.
+  if (isset($identifiers[$id])) {
+    return $identifiers[$id];
+  }
+
+  // Return FALSE if not in array.
+  return FALSE;
+}
+
+/**
+ * Custom function to convert system_name to integer.
+ *
+ * @param string $system_name
+ *   The drupal identifier of the bundle.
+ *
+ * @return mixed
+ *   The numeric representation of the bundle or FALSE if not found.
+ */
+function openlucius_files_system_name_to_integer($system_name) {
+
+  // System names to integer.
+  $system_names = array(
+    'ol_message'                    => 0,
+    'ol_event'                      => 1,
+    'ol_todo_list'                  => 2,
+    'ol_todo'                       => 3,
+    'file'                          => 4,
+    'comment_node_ol_message'       => 5,
+    'comment_node_ol_event'         => 6,
+    'comment_node_ol_todo_list'     => 7,
+    'comment_node_ol_todo'          => 8,
+    'comment_node_file'             => 9,
+    'comment_node_ol_text_document' => 10,
+    'ol_text_document'              => 11,
+  );
+
+  // Allow other modules to add system names names and their numbers.
+  drupal_alter('openlucius_files_system_name', $system_names);
+
+  // Check if system name is set.
+  if (isset($system_names[$system_name])) {
+    // Return.
+    return $system_names[$system_name];
+  }
+
+  // Return FALSE if not in array.
+  return FALSE;
+}
+
+/**
+ * Custom function to insert files into the openlucius_files table.
+ *
+ * @param object $node
+ *   The node object to be read.
+ *
+ * @return bool
+ *   Can return FALSE if either node type or the group are not set.
+ */
+function openlucius_files_insert_into_openlucius_files($node) {
+
+  // Get active menu data.
+  $item = menu_get_item();
+
+  // Check if it is a comment.
+  if (isset($node->cid) && $node->cid != 0) {
+    // Get the parent_node.
+    $parent_node = node_load($node->nid);
+
+    // Get group from node.
+    if (isset($parent_node->field_shared_group_reference[LANGUAGE_NONE])) {
+      $group = $parent_node->field_shared_group_reference[LANGUAGE_NONE][0]['nid'];
+    }
+
+    // The comment is the parent.
+    $parent = $node->cid;
+
+    // Skip empty.
+    if (!isset($node->node_type)) {
+      return FALSE;
+    }
+
+    // Get the numeric value of the bundle.
+    $bundle = openlucius_files_system_name_to_integer($node->node_type);
+  }
+  else {
+    // Get group from node.
+    if (isset($node->field_shared_group_reference[LANGUAGE_NONE][0])) {
+      $group = $node->field_shared_group_reference[LANGUAGE_NONE][0]['nid'];
+    }
+
+    // The parent is the node.
+    $parent = $node->nid;
+
+    // Get the numeric value of the bundle.
+    $bundle = openlucius_files_system_name_to_integer($node->type);
+  }
+
+  // If without a group we should skip the whole caboodle.
+  if (!isset($group)) {
+    return FALSE;
+  }
+
+  // Initialize array.
+  $files = array();
+
+  // Check if we have shared files.
+  if (isset($node->field_shared_files[LANGUAGE_NONE])) {
+
+    // Default folder is 0.
+    $folder = 0;
+
+    // Add check for direct file insertion.
+    if (!empty($node->file_folders)) {
+      $folder = $node->file_folders;
+    }
+
+    // Check if a folder is available.
+    if (!empty($item['page_arguments'][2])) {
+      $arg = $item['page_arguments'][2];
+
+      // Check if we have a fourth argument and it is a folder.
+      if (openlucius_files_is_folder($arg)) {
+        $folder = $arg;
+      }
+    }
+
+    // Loop through all files.
+    foreach ($node->field_shared_files[LANGUAGE_NONE] as $file) {
+
+      // Collect files for cleanup check.
+      $files[] = $file['fid'];
+      // Check if entry exists.
+      if (openlucius_files_file_entry_exists($group, $file['fid'])) {
+        continue;
+      }
+
+      // Load file.
+      $file_object = file_load($file['fid']);
+      // Default value is FALSE.
+      $is_image = 0;
+      // Check for image.
+      $info = image_get_info($file_object->uri);
+
+      // If mime_type is set and not 'image/psd', it's an image.
+      if ($info && $info['mime_type'] != 'image/psd') {
+        $is_image = 1;
+      }
+
+      // Insert into openlucius_files.
+      db_insert('openlucius_files')->fields(array(
+        'pid'      => $parent,
+        'gid'      => $group,
+        'fid'      => $file['fid'],
+        'bundle'   => $bundle,
+        'is_image' => $is_image,
+        'folder'   => $folder,
+      ))->execute();
+    }
+  }
+
+  // Check if this node has files.
+  if (!empty($files)) {
+
+    // Used to clean up old entries.
+    openlucius_files_cleanup_group($group, $parent, $files);
+  }
+}
+
+/**
+ * Custom function to cleanup a group after uploading / removing files.
+ *
+ * @param int $group
+ *   The number for group.
+ * @param int $parent
+ *   The number for parent.
+ * @param array $files
+ *   The file array.
+ */
+function openlucius_files_cleanup_group($group, $parent, array $files) {
+  db_delete('openlucius_files')
+    ->condition('fid', $files, 'NOT IN')
+    ->condition('gid', $group, '=')
+    ->condition('pid', $parent, '=')
+    ->execute();
+}
+
+/**
+ * Custom function to remove a single file.
+ *
+ * @param int $fid
+ *   The file id to remove.
+ */
+function openlucius_files_remove_single_file($fid) {
+
+  // Load file for deletion.
+  $file = file_load($fid);
+
+  // Delete file.
+  if ($file) {
+    file_delete($file);
+  }
+
+  // Remove from the custom table.
+  db_delete('openlucius_files')->condition('fid', $fid, '=')->execute();
+}
+
+/**
+ * Custom function to check whether a file entry exists.
+ *
+ * @param int $group
+ *   The group where the file could be in.
+ * @param int $fid
+ *   The file id to check.
+ */
+function openlucius_files_file_entry_exists($group, $fid) {
+  return db_select('openlucius_files', 'f')
+    ->fields('f', array('oid'))
+    ->condition('gid', $group, '=')
+    ->condition('fid', $fid, '=')
+    ->execute()
+    ->fetchField();
+}
+
+/**
+ * Custom function to remove file entries.
+ *
+ * @param int $id
+ *   The identifiers.
+ * @param string $bundle
+ *   The attached bundle.
+ */
+function openlucius_files_remove($id, $bundle) {
+  // To prevent unnecessary checking and comparing
+  // (remove all entries with this node id).
+  db_delete('openlucius_files')
+    ->condition('pid', $id)
+    ->condition('bundle', $bundle)
+    ->execute();
+}
+
+/**
+ * Custom function to verify that a node id belongs to a folder type node.
+ *
+ * @param int $nid
+ *   The node id number.
+ */
+function openlucius_files_is_folder($nid) {
+  return db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', 'ol_file_folder', '=')
+    ->condition('nid', $nid, '=')
+    ->execute()
+    ->fetchField();
+}
+
+/**
+ * Custom function to get file count for group.
+ *
+ * @param int $gid
+ *   The group id.
+ */
+function openlucius_files_count_group($gid) {
+  // Select files from group.
+  $query = db_select('openlucius_files', 'o')
+    ->fields('o', array('fid'))
+    ->condition('gid', $gid, '=');
+
+  // Check if user is a client.
+  if (openlucius_core_user_is_client()) {
+
+    // TODO replace by addtag ->addTag('node_access').
+    $query->condition('fd.field_shared_show_clients_value', 1, '=');
+    $query->leftjoin('field_data_field_shared_show_clients', 'fd', 'fd.entity_id = o.pid');
+  }
+
+  // Execute query.
+  $result = $query->execute();
+
+  // Return.
+  return $result->rowCount();
+}
+
+/**
+ * Custom function for node / comment identification.
+ *
+ * @param int $id
+ *   The bundle id.
+ *
+ * @return bool
+ *   Returns TRUE on node FALSE on comment.
+ */
+function openlucius_files_is_node($id) {
+  $base_file_keys = array(0, 1, 2, 3, 4, 11);
+
+  // Allow other modules to add their keys.
+  drupal_alter('openlucius_files_is_node_keys', $base_file_keys);
+
+  // 0 - 4 and 11 are the nodes.
+  return in_array($id, $base_file_keys);
+}
+
+/**
+ * Custom function to fetch and build folder with optgroup.
+ *
+ * @param int $gid
+ *   The group id.
+ * @param int $folder
+ *   The current folder.
+ * @param bool $raw
+ *   Whether the tree should be a rendered element.
+ * @param bool $unprocessed
+ *   Whether the database result should be processed.
+ *
+ * @return string
+ *   A html string containing the folder tree.
+ */
+function openlucius_files_fetch_folder_tree($gid, $folder, $raw = FALSE, $unprocessed = FALSE) {
+
+  // No access so display folder.
+  if (!user_access('administer folders') && !$raw) {
+    // Query to get folder title.
+    $query = db_select('node', 'n');
+    $query->fields('n', array('title'));
+    $query->condition('n.nid', $folder, '=');
+    $result = $query->execute();
+
+    // Return.
+    return $result->fetchField();
+  }
+
+  // Select node.
+  $query = db_select('node', 'n');
+
+  // Join for group selection.
+  $query->leftjoin('field_data_field_shared_group_reference', 'g', 'n.nid = g.entity_id');
+
+  // Join for for structure.
+  $query->leftjoin('draggableviews_structure', 'd', 'n.nid = d.entity_id');
+
+  // Select fields.
+  $query->fields('d', array('parent', 'weight'));
+  $query->fields('n', array('nid', 'title'));
+
+  // Only current group.
+  $query->condition('g.field_shared_group_reference_nid', $gid, '=');
+
+  // Only published folders.
+  $query->condition('n.status', 1, '=');
+
+  // Only select folders.
+  $query->condition('n.type', 'ol_file_folder', '=');
+
+  // Add node_access.
+  $query->addTag('node_access');
+
+  // Order by weight.
+  $result = $query->orderBy('d.weight', 'ASC')->execute();
+
+  // Fetch result.
+  $tree = $result->fetchAll();
+
+  // Return unprocessed tree.
+  if ($unprocessed) {
+    return $tree;
+  }
+
+  // Return.
+  return openlucius_files_process_folder_tree($tree, $folder, $raw);
+}
+
+/**
+ * Custom function to build opt-group from folder tree.
+ *
+ * @param array $tree
+ *   The array to be processed.
+ * @param int $folder
+ *   The default folder.
+ * @param bool $raw
+ *   Whether the tree should be a rendered element.
+ *
+ * @return string
+ *   A html string containing the folder tree.
+ */
+function openlucius_files_process_folder_tree($tree, $folder, $raw) {
+
+  // Initialize array.
+  $options = array();
+
+  // Loop through items.
+  foreach ($tree as $option) {
+
+    // Typecasting.
+    $opt = (array) $option;
+
+    // No parent whatsoever so add.
+    if ($opt['parent'] == 0) {
+      // Keep complete option as we need it later on to build sub-sub items etc.
+      $options[$opt['nid']] = $opt;
+    }
+    else {
+      // Traverse tree.
+      openlucius_files_traverse_options($opt, $options);
+    }
+  }
+
+  // Cleanup.
+  openlucius_files_traverse_cleanup($options);
+
+  // Add No folder item.
+  $options = array(0 => t('No Folder')) + $options;
+
+  // Render as raw options array.
+  if ($raw) {
+    return $options;
+  }
+
+  // Initialize $html.
+  $html = "";
+
+  // Build unsorted list.
+  openlucius_files_traverse_list($options, $html);
+
+  $form['select'] = array(
+    '#type'       => 'select',
+    '#options'    => $options,
+    '#attributes' => array(
+      'class'      => array('swapfolder'),
+      'data-token' => drupal_get_token(),
+    ),
+    // Not default_value as it is not submitted by drupal.
+    '#value'      => array($folder),
+    '#suffix'     => '<div class="select_holder"><ul class="custom-select">' . $html . '</ul></div>',
+  );
+
+  // Return drupal_render.
+  return drupal_render($form);
+}
+
+/**
+ * Custom function to traverse options list and add labels.
+ *
+ * @param array $option
+ *   The option object.
+ * @param array $options
+ *   The options array reference.
+ */
+function openlucius_files_traverse_options($option, array &$options) {
+
+  // Loop through options to find parent.
+  foreach ($options as $nid => $opt) {
+    // If it matches create a sub item by using the title
+    // and adding the full option.
+    if ($nid == $option['parent']) {
+      $options[$opt['title']][$option['nid']] = $option;
+    }
+    // Dive deeper into the $options if possible.
+    else {
+      // If we have a label we have children.
+      if (!is_numeric($nid)) {
+        // Traverse deeper.
+        openlucius_files_traverse_options($option, $options[$nid]);
+      }
+    }
+  }
+}
+
+/**
+ * Custom function to cleanup the debris.
+ *
+ * @param array $options
+ *   The options array reference.
+ */
+function openlucius_files_traverse_cleanup(array &$options) {
+
+  // Loop through the options array.
+  foreach ($options as $nid => $option) {
+
+    // It is a folder so cleanup.
+    if (is_numeric($nid)) {
+      // Replace array by value.
+      $options[$nid] = $option['title'];
+    }
+    // It is an optgroup so travel deeper.
+    else {
+      openlucius_files_traverse_cleanup($options[$nid]);
+    }
+  }
+}
+
+/**
+ * Custom recursive function to generate unsorted list.
+ *
+ * @param array $options
+ *   The options array.
+ * @param string $html
+ *   The indent value.
+ * @param int $indent
+ *   The html string.
+ */
+function openlucius_files_traverse_list(array $options, &$html, $indent = 0) {
+
+  // Loop through options.
+  foreach ($options as $nid => $option) {
+
+    // It is a folder so create list item.
+    if (is_numeric($nid)) {
+      // Append html.
+      $html .= sprintf('<li class="indent-%d" data-nid="%d">%s<span class="glyphicon"></span></li>', $indent, $nid, check_plain($option));
+    }
+    // It is an optgroup so travel deeper.
+    else {
+      $indent++;
+      openlucius_files_traverse_list($options[$nid], $html, $indent);
+    }
+  }
+}
+
+/**
+ * Function to fetch the attached files.
+ *
+ * @param \stdClass $node
+ *   The node for which the files have to be fetched.
+ *
+ * @return array
+ *   Returns an array containing the files.
+ */
+function openlucius_files_fetch_attached_files(\stdClass $node) {
+  // Fetch current group from node.
+  $current_group = $node->field_shared_group_reference[LANGUAGE_NONE][0]['nid'];
+
+  // Fetch attached comment ids.
+  $parent_ids = db_select('comment', 'c')
+    ->fields('c', array('cid'))
+    ->condition('c.nid', $node->nid, '=')
+    ->execute()
+    ->fetchCol();
+
+  // Add the node to the parent ids.
+  $parent_ids[] = $node->nid;
+
+  // Fetch all files.
+  return db_select('openlucius_files', 'f')
+    ->fields('f', array('fid'))
+    ->condition('gid', $current_group, '=')
+    ->condition('pid', $parent_ids, 'IN')
+    ->execute()
+    ->fetchCol();
+}
+
+/**
+ * Function to migrate an array of files to another group.
+ *
+ * @param array $file_ids
+ *   An array containing file ids.
+ * @param int $group
+ *   An integer containing the new group id.
+ *
+ * @return bool
+ *   Returns TRUE on success or FALSE update failure.
+ */
+function openlucius_files_migrate_files_to(array $file_ids, $group) {
+  global $user;
+
+  // Check if user is a member of this group.
+  if (is_numeric($group) && openlucius_core_user_in_group($group, $user->uid)) {
+
+    // Perform update.
+    return db_update('openlucius_files')
+      ->fields(array('gid' => $group))
+      ->condition('fid', $file_ids, 'IN')
+      ->execute();
+  }
+
+  return FALSE;
+}
+
+/**
+ * Implements hook_file_download().
+ */
+function openlucius_files_file_download($uri) {
+
+  // Get private file caching status.
+  $file_caching_enabled = variable_get('openlucius_core_cache_private_files', '');
+
+  // Check if private file caching is enabled.
+  if (!empty($file_caching_enabled) && $file_caching_enabled == 1) {
+
+    // Check if client sent a If-Modified-Since header to the server.
+    if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+
+      // Check the modified since time.
+      $ifs = strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']);
+
+      // Query the file managed table for the uri match.
+      $file = db_select('file_managed', 'fm')
+        ->fields('fm')
+        ->condition("uri", $uri)
+        ->execute()
+        ->fetchAssoc();
+
+      // Check if there is a file.
+      if (!empty($file)) {
+        $modified = $file['timestamp'];
+
+        // Check last modified.
+        if ($modified < $ifs) {
+
+          // Set the 304 header.
+          header($_SERVER['SERVER_PROTOCOL'] . ' 304 Not Modified');
+          exit();
+        }
+      }
+    }
+
+    // Don't return headers to avoid granting access to all files.
+    $max_age = variable_get('page_cache_maximum_age', 0);
+    drupal_add_http_header('Cache-Control', 'private, max-age=' . $max_age);
+    drupal_add_http_header('Last-Modified', gmdate(DATE_RFC1123, REQUEST_TIME));
+    drupal_add_http_header('ETag', strtr(md5($uri), 0, 10));
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function openlucius_files_form_file_node_form_alter(&$form, &$form_state, $form_id) {
+
+  // Get the menu item.
+  $item = menu_get_item();
+
+  // Check if group folders is set.
+  if (empty($form_state['group_folders'])) {
+    $form_state['group_folders'] = openlucius_files_fetch_folders($form['field_shared_group_reference'][LANGUAGE_NONE]['#default_value']);
+  }
+
+  // Check if the folder is required.
+  $required = variable_get('openlucius_files_file_folder_required', 0);
+
+  // Check for the node add file screen.
+  if (!empty($item) && $item['tab_root'] == 'node/add/file') {
+
+    // Check for the node id.
+    if (!empty($item['map'][0]) && $item['map'][0] == 'node' && is_numeric($item['map'][3])) {
+
+      // Check if there are folders.
+      if (count($form_state['group_folders']) == 0 && $required) {
+
+        // Set a message telling the user there is no folder yet.
+        drupal_set_message(t('To upload files there must be a folder, please add one first by clicking <a href="@here">here</a>', array(
+          '@here' => url('node/add/ol-file-folder/' . $item['map'][3], array(
+            'query' => array(
+              'destination' => 'node/add/file/' . $item['map'][3],
+            ),
+          )),
+        )), 'error');
+
+        // Disable the upload field.
+        $form['field_shared_files']['#disabled'] = TRUE;
+        $form['field_shared_files']['#attributes']['style'] = 'display:none !important;';
+      }
+    }
+
+    // Check for the group reference.
+    if (!empty($form['field_shared_group_reference'])) {
+      $options = &$form['field_shared_group_reference'][LANGUAGE_NONE]['#options'];
+      foreach ($options as $gid => $group) {
+        if (!openlucius_core_user_in_group($gid)) {
+          unset($options[$gid]);
+        }
+      }
+    }
+  }
+
+  // Add folder select.
+  $form['file_folders'] = array(
+    '#title'         => t('Folder'),
+    '#type'          => 'select',
+    '#options'       => $form_state['group_folders'],
+    '#default_value' => 0,
+    '#required'      => $required,
+  );
+}
+
+/**
+ * Function to fetch a list of folders for a given group.
+ *
+ * @param null|int $gid
+ *   The group id or NULL, defaults to the active group.
+ *
+ * @return FALSE|array
+ *   Returns either an array with nid => title or FALSE when no folders are
+ *   found.
+ */
+function openlucius_files_fetch_folders($gid = NULL) {
+
+  // If empty fetch active group.
+  if (empty($gid)) {
+    $gid = openlucius_core_get_active_group();
+  }
+
+  // Initiate query.
+  $query = db_select('node', 'n')
+    ->fields('n', array('nid', 'title'))
+    ->fields('n2', array('title'))
+    ->condition('n.status', 1, '=')
+    ->condition('n.type', 'ol_file_folder', '=')
+    ->condition('f.field_shared_group_reference_nid', $gid, '=');
+
+  // Join for group reference check.
+  $query->join('field_data_field_shared_group_reference', 'f', 'n.nid = f.entity_id');
+
+  // Join for for structure.
+  $query->leftjoin('draggableviews_structure', 'd', 'd.entity_id = n.nid');
+
+  // Left join on node table for parent title.
+  $query->leftjoin('node', 'n2', 'd.parent = n2.nid');
+
+  // Return result.
+  $folders = $query->execute()->fetchAll();
+
+  // Initiate options array.
+  $options = array();
+
+  // Build pretty parent->child structure using the direct parent.
+  foreach ($folders as $folder) {
+    $title = !empty($folder->n2_title) ? $folder->n2_title . ' >> ' : '';
+    $options[$folder->nid] = $title . $folder->title;
+  }
+
+  // Sort alphabetically.
+  asort($options);
+
+  // Check if the folder is required.
+  $required = variable_get('openlucius_files_file_folder_required', 0);
+
+  // If not, prepend no folder option.
+  if (!$required) {
+    $options = array(0 => t('No folder')) + $options;
+  }
+
+  // Return options.
+  return $options;
+}
+
+/**
+ * Function to fetch the folder id.
+ *
+ * @param int $fid
+ *   The fid for which a folder should be found.
+ *
+ * @return mixed
+ *   Returns Either the folder id or FALSE.
+ */
+function openlucius_files_get_folder($fid) {
+  return db_select('openlucius_files', 'f')
+    ->fields('f', array('folder'))
+    ->condition('fid', $fid, '=')
+    ->execute()
+    ->fetchField();
+}
+
+/**
+ * Form constructor for the file configuration form.
+ *
+ * @ingroup forms.
+ */
+function openlucius_files_file_configuration_form() {
+
+  // Initialize form.
+  $form = array();
+
+  // Checkbox for making file folders required.
+  $form['openlucius_files_file_folder_required'] = array(
+    '#title'         => t('Require files to be in a folder.'),
+    '#description'   => t('Do you want to require files to be uploaded in a folder?'),
+    '#type'          => 'checkbox',
+    '#default_value' => variable_get('openlucius_files_file_folder_required', 0),
+  );
+
+  // Return the saved settings form.
+  return system_settings_form($form);
+}
+
+/**
+ * Implements hook_openlucius_core_config_places_alter().
+ */
+function openlucius_files_openlucius_core_config_places_alter(&$places) {
+  $places[] = 'admin/config/openlucius/files';
+}
+
+/**
+ * Get the file info.
+ *
+ * @param array $data
+ *   The data array of the file.
+ *
+ * @return string
+ */
+function openlucius_files_get_file_info($data) {
+
+  // Check if node or comment.
+  $is_node = openlucius_files_is_node($data->bundle);
+
+  // Get user friendly column name.
+  $friendly_bundle = openlucius_files_get_friendly_bundle_name($data->bundle);
+
+  if ($is_node) {
+    // Get node for title.
+    $node = db_select('node', 'n')
+      ->fields('n', array('title', 'type'))
+      ->condition('n.nid', $data->pid, '=')
+      ->addTag('node_access')
+      ->execute()
+      ->fetchObject();
+
+    if ($node->type != 'file') {
+      // Build link to node, incl. node title.
+      $link_to_content = l($node->title . ' (' . $friendly_bundle . ')', 'node/' . $data->pid);
+    }
+    else {
+      // If there is no content, show the minus sign.
+      $link_to_content = '<span class="glyphicon glyphicon-minus"></span> (' . $friendly_bundle . ')';
+    }
+  }
+  else {
+    // Load comment.
+    $comment = comment_load($data->pid);
+    // Build link to content.
+    $link_to_content = l($comment->subject . ' (' . $friendly_bundle . ')', 'node/' . $comment->nid, array('fragment' => 'comment-' . $comment->cid));
+  }
+
+  // Build 'uploaded by' column.
+  if (module_exists('realname')) {
+    $username = db_query("
+      SELECT CASE
+      WHEN LENGTH(r.realname) = 0
+      OR r.realname IS NULL
+      THEN u.name
+      ELSE r.realname
+      END AS name
+      FROM {realname} r
+      INNER JOIN {users} u
+      ON r.uid = u.uid
+      WHERE r.uid = :uid", array(':uid' => $data->uid))->fetchField();
+  }
+  else {
+    $username = db_select('users', 'u')
+      ->fields('u', array('name'))
+      ->condition('u.uid', $data->uid, '=')
+      ->execute()
+      ->fetchField();
+  }
+
+  // It's no image, handle is as file.
+  if (!$data->is_image) {
+
+    // Build file link.
+    $file_load = array(
+      'uri'      => $data->uri,
+      'filemime' => $data->filemime,
+      'filesize' => $data->filesize,
+      'filename' => $data->filename,
+    );
+
+    // Build link.
+    $file_link = theme('file_link', array('file' => (object) $file_load));
+  }
+  // It's an image, handle it as image.
+  else {
+    // Build image.
+    $rendered_image = theme('image_style', array(
+      'style_name' => 'ol_50x50',
+      'path'       => $data->uri,
+    ));
+
+    // Build file url.
+    $image_url = file_create_url($data->uri);
+    $file_link = l($rendered_image, $image_url, array('html' => TRUE));
+  }
+
+  // Reset form.
+  $form = array();
+
+  // Use form api for quick hidden items.
+  $form['hidden_fid'] = array(
+    '#type'       => 'hidden',
+    '#value'      => $data->fid,
+    '#attributes' => array('class' => array('fid')),
+  );
+
+  // Build vars for file info.
+  $vars['filelink'] = $file_link;
+  $vars['linktocontent'] = $link_to_content;
+  $vars['timeago'] = format_interval(($_SERVER['REQUEST_TIME'] - $data->timestamp), 2);
+
+  // Add username and user id.
+  $vars['username'] = $username;
+  $vars['uid'] = $data->uid;
+
+  // Link to user.
+  $vars['userlink'] = l($username, 'user/' . $data->uid);
+
+  // Allow other modules to alter the variables.
+  drupal_alter('openlucius_files_file_info_vars', $vars);
+
+  // Theme the file info.
+  $file_info = theme('openlucius_files_file_info', array('vars' => $vars));
+
+  // Return the file info.
+  return $file_info;
+}

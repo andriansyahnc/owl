@@ -1,0 +1,101 @@
+<?php
+/**
+ * @file
+ * This file contains the onboarding procedure for OpenLucius installs.
+ */
+
+/**
+ * Implements hook_enable().
+ *
+ * Function to set initial variables and create the required field.
+ */
+function openlucius_onboarding_enable() {
+  // Set to trigger for first login.
+  variable_set('openlucius_onboarding_initial', 0);
+
+  // Create field so that every user is required to fill in the forms.
+  $field_name = 'onboarding_complete';
+
+  // Check if the field exists.
+  if (!field_info_field($field_name)) {
+
+    // Create the field.
+    $field = array(
+      'field_name'  => $field_name,
+      'type'        => 'list_boolean',
+      'cardinality' => 1,
+      'settings'    => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+      ),
+    );
+    field_create_field($field);
+
+    // Create field instance.
+    $field_instance = array(
+      'field_name'  => $field_name,
+      'entity_type' => 'user',
+      'bundle'      => 'user',
+      'label'       => t('Completed onboarding'),
+      'description' => t('Whether the user has been onboarded.'),
+      'widget'      => array(
+        'type'     => 'options_onoff',
+        'settings' => array(
+          // Places the label next to the actual checkbox.
+          'display_label' => 1,
+        ),
+      ),
+      // Because not ticking a checkbox omits the value from $_POST.
+      'required'    => FALSE,
+      // Hide it as we only need it for comparing who's seen what.
+      'display'     => array(
+        'default' => array(
+          'type' => 'hidden',
+        ),
+      ),
+      'settings'    => array(),
+    );
+    field_create_instance($field_instance);
+  }
+
+  // Prevent existing users from having to perform the onboarding process.
+  $users = db_select('users', 'u')
+    ->fields('u', array('uid'))
+    ->condition('status', 1, '=')
+    ->execute()
+    ->fetchCol();
+
+  // If we have more than two users set initial to true.
+  if (count($users) > 2) {
+    variable_set('openlucius_onboarding_initial', 1);
+  }
+
+  // Update all users.
+  $loaded_users = user_load_multiple($users);
+  $edit = array('onboarding_complete' => array(LANGUAGE_NONE => array(array('value' => 1))));
+  foreach ($loaded_users as $account) {
+
+    // Store the changes.
+    user_save($account, $edit);
+  }
+}
+
+/**
+ * Implements hook_disable().
+ *
+ * Remove all settings / fields that this module has created.
+ */
+function openlucius_onboarding_disable() {
+  // Delete variable.
+  variable_del('openlucius_onboarding_initial');
+
+  // Delete the created field.
+  field_delete_field('onboarding_complete');
+
+  // Remove system entry.
+  db_delete('system')
+    ->condition('name', 'openlucius_onboarding')
+    ->execute();
+}

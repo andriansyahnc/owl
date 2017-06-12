@@ -1,0 +1,1453 @@
+# Dutch translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  openlucius_backups/openlucius_backups.info: n/a
+#  openlucius_news/openlucius_news.info: n/a
+#  openlucius_personal_todos/openlucius_personal_todos.info: n/a
+#  openlucius_sla/openlucius_sla.info: n/a
+#  openlucius_social/openlucius_social.info: n/a
+#  openlucius_timetracker/openlucius_timetracker.info: n/a
+#  openlucius_webforms/openlucius_webforms.info: n/a
+#  openlucius_workflow/openlucius_workflow.info: n/a
+#  openlucius_bbrood/openlucius_bbrood.views_default.inc: n/a
+#  openlucius_dpa/openlucius_dpa.views_default.inc: n/a
+#  openlucius_personal_todos/openlucius_personal_todos.views_default.inc: n/a
+#  openlucius_webforms/openlucius_webforms.views_default.inc: n/a
+#  openlucius_weblinks/openlucius_weblinks.views_default.inc: n/a
+#  openlucius_bbrood/openlucius_bbrood.module: n/a
+#  openlucius_bbrood/openlucius_bbrood.info: n/a
+#  openlucius_dpa/openlucius_dpa.context.inc: n/a
+#  openlucius_dpa/openlucius_dpa.features.field_instance.inc: n/a
+#  openlucius_dpa/openlucius_dpa.features.menu_custom.inc: n/a
+#  openlucius_dpa/openlucius_dpa.module: n/a
+#  openlucius_weblinks/openlucius_weblinks.features.field_instance.inc: n/a
+#  openlucius_sla/openlucius_sla.module: n/a
+#  openlucius_timetracker/includes/processing.inc: n/a
+#  openlucius_webforms/openlucius_webforms.features.inc: n/a
+#  openlucius_harvesthouse/openlucius_harvesthouse.context.inc: n/a
+#  openlucius_news/openlucius_news.features.inc: n/a
+#  openlucius_news/openlucius_news.module: n/a
+#  openlucius_timetracker/includes/forms.inc: n/a
+#  openlucius_dpa/openlucius_dpa.info: n/a
+#  openlucius_harvesthouse/openlucius_harvesthouse.info: n/a
+#  openlucius_news/openlucius_news.features.field_instance.inc: n/a
+#  openlucius_personal_todos/openlucius_personal_todos.features.field_instance.inc: n/a
+#  openlucius_webforms/openlucius_webforms.features.field_instance.inc: n/a
+#  openlucius_personal_todos/openlucius_personal_todos.features.inc: n/a
+#  openlucius_weblinks/openlucius_weblinks.features.inc: n/a
+#  openlucius_news/includes/blocks.inc: n/a
+#  openlucius_news/includes/forms.inc: n/a
+#  openlucius_news/includes/functions.inc: n/a
+#  openlucius_personal_todos/openlucius_personal_todos.context.inc: n/a
+#  openlucius_personal_todos/includes/pages.inc: n/a
+#  openlucius_personal_todos/templates/views-view--personal-todos.tpl.php: n/a
+#  openlucius_personal_todos/openlucius_personal_todos.module: n/a
+#  openlucius_personal_todos/includes/blocks.inc: n/a
+#  openlucius_personal_todos/includes/permissions.inc: n/a
+#  openlucius_sla/openlucius_sla.features.field_instance.inc: n/a
+#  openlucius_timetracker/includes/blocks.inc: n/a
+#  openlucius_timetracker/openlucius_timetracker.module: n/a
+#  openlucius_timetracker/templates/views-view-table--all-todo-lists-in-a-group.tpl.php: n/a
+#  openlucius_timetracker/templates/views-view-table--todos-on-todo-list-page.tpl.php: n/a
+#  openlucius_social/openlucius_social.module: n/a
+#  openlucius_timetracker/openlucius_timetracker.context.inc: n/a
+#  openlucius_timetracker/openlucius_timetracker.features.field_instance.inc: n/a
+#  openlucius_timetracker/includes/page.inc: n/a
+#  openlucius_trial/openlucius_trial.module: n/a
+#  openlucius_trial/openlucius_trial.info: n/a
+#  openlucius_webforms/openlucius_webforms.context.inc: n/a
+#  openlucius_webforms/openlucius_webforms.module: n/a
+#  openlucius_weblinks/openlucius_weblinks.context.inc: n/a
+#  openlucius_weblinks/openlucius_weblinks.info: n/a
+#  openlucius_weblinks/openlucius_weblinks.module: n/a
+#  openlucius_workflow/openlucius_workflow.module: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-09-25 13:33+0200\n"
+"PO-Revision-Date: 2015-09-25 13:33+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Dutch <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: openlucius_backups/openlucius_backups.info:0
+msgid "Openlucius backups"
+msgstr ""
+
+#: openlucius_backups/openlucius_backups.info:0
+msgid "Facilitates the backups for Openlucius."
+msgstr ""
+
+#: openlucius_backups/openlucius_backups.info:0 openlucius_news/openlucius_news.info:0 openlucius_personal_todos/openlucius_personal_todos.info:0 openlucius_sla/openlucius_sla.info:0 openlucius_social/openlucius_social.info:0 openlucius_timetracker/openlucius_timetracker.info:0 openlucius_webforms/openlucius_webforms.info:0 openlucius_workflow/openlucius_workflow.info:0
+msgid "OpenLucius"
+msgstr "OpenLucius"
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:171 openlucius_dpa/openlucius_dpa.views_default.inc:444;935;1163 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:319 openlucius_webforms/openlucius_webforms.views_default.inc:128 openlucius_weblinks/openlucius_weblinks.views_default.inc:290
+msgid "Master"
+msgstr "Hoofd"
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:172
+msgid "Groepen"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:173 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:321 openlucius_weblinks/openlucius_weblinks.views_default.inc:292
+msgid "meer"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:174 openlucius_dpa/openlucius_dpa.views_default.inc:447;1165
+msgid "Filter"
+msgstr "Filter"
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:175 openlucius_dpa/openlucius_dpa.views_default.inc:471 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:323 openlucius_weblinks/openlucius_weblinks.views_default.inc:294
+msgid "Alles zien"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:176 openlucius_dpa/openlucius_dpa.views_default.inc:1167 openlucius_webforms/openlucius_webforms.views_default.inc:133
+msgid "Order by"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:177 openlucius_dpa/openlucius_dpa.views_default.inc:473 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:325 openlucius_weblinks/openlucius_weblinks.views_default.inc:296
+msgid "Oplopend"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:178 openlucius_dpa/openlucius_dpa.views_default.inc:474 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:326 openlucius_weblinks/openlucius_weblinks.views_default.inc:297
+msgid "Aflopend"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:179 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:327
+msgid "Items per pagina"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:180 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:328
+msgid "- Alle -"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:181 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:329
+msgid "Startpunt"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:182 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:330
+msgid "« eerste"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:183 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:331
+msgid "‹ vorige"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:184 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:332
+msgid "volgende ›"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:185 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:333
+msgid "laatste »"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:186
+msgid "<h4>Geen resultaat</h4>"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:187 openlucius_dpa/openlucius_dpa.views_default.inc:1170
+msgid "field_groups"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:188
+msgid "<h4>\r\n<span class=\"glyphicon glyphicon-record\"></span> [title]\r\n</h4>"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:191
+msgid "<h5> <span class=\"glyphicon glyphicon-user\"> Leden: [name] </h5>"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:192
+msgid "Updated date"
+msgstr "Wijzigingsdatum"
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:193
+msgid "Page"
+msgstr "Pagina"
+
+#: openlucius_bbrood/openlucius_bbrood.views_default.inc:194 openlucius_dpa/openlucius_dpa.views_default.inc:446;937;1164 openlucius_webforms/openlucius_webforms.views_default.inc:137 openlucius_weblinks/openlucius_weblinks.views_default.inc:302
+msgid "more"
+msgstr "meer"
+
+#: openlucius_bbrood/openlucius_bbrood.module:15
+msgid "Is user manager"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.module:16
+msgid "Can manager users but not groups."
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.module:19
+msgid "Can change user language"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.module:20
+msgid "Users with this permission can change their language."
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.info:0
+msgid "openlucius_bbrood"
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.info:0
+msgid "Contains the bbrood features."
+msgstr ""
+
+#: openlucius_bbrood/openlucius_bbrood.info:0
+msgid "OpenLucius BBrood"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.context.inc:54;111;150;183
+msgid "dpa"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.context.inc:55
+msgid "dpa everyone"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.context.inc:112
+msgid "dpa frontpage"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.context.inc:151
+msgid "dpa social"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.context.inc:184
+msgid "dpa userprofile"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.features.field_instance.inc:536 openlucius_dpa/openlucius_dpa.views_default.inc:967;1173
+msgid "Certificates"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.features.field_instance.inc:537
+msgid "Comment"
+msgstr "Reactie"
+
+#: openlucius_dpa/openlucius_dpa.features.field_instance.inc:538 openlucius_dpa/openlucius_dpa.views_default.inc:482;968;1174
+msgid "Employable as"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.features.field_instance.inc:539 openlucius_dpa/openlucius_dpa.views_default.inc:483;969;1171
+msgid "Experience"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.features.field_instance.inc:540 openlucius_dpa/openlucius_dpa.views_default.inc:484;970;1172
+msgid "Expertise"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.features.field_instance.inc:541 openlucius_dpa/openlucius_dpa.views_default.inc:1175
+msgid "Hobbies"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.features.field_instance.inc:542 openlucius_dpa/openlucius_dpa.views_default.inc:1180
+msgid "Linkedin"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.features.field_instance.inc:543 openlucius_dpa/openlucius_dpa.views_default.inc:1179
+msgid "Mobile"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.features.field_instance.inc:544 openlucius_dpa/openlucius_dpa.views_default.inc:1178
+msgid "Telephone"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.features.field_instance.inc:545 openlucius_dpa/openlucius_dpa.views_default.inc:1176
+msgid "User company"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.features.field_instance.inc:546
+msgid "User mail"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.features.field_instance.inc:547 openlucius_dpa/openlucius_dpa.views_default.inc:1177
+msgid "User title"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.features.menu_custom.inc:31 openlucius_dpa/openlucius_dpa.module:274;307
+msgid "Direct links"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.features.menu_custom.inc:32 openlucius_dpa/openlucius_dpa.module:200;277;312
+msgid "Information"
+msgstr "Informatie"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:445;936
+msgid "Group Members"
+msgstr "Groepsleden"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:448;939;1166 openlucius_webforms/openlucius_webforms.views_default.inc:132
+msgid "Reset"
+msgstr "Alles zien"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:449
+msgid "sort"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:450;1168 openlucius_webforms/openlucius_webforms.views_default.inc:134
+msgid "Ascending"
+msgstr "Oplopend"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:451;1169 openlucius_webforms/openlucius_webforms.views_default.inc:135
+msgid "Descending"
+msgstr "Aflopend"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:452;944
+msgid "Items per page"
+msgstr "Items per pagina"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:453;945
+msgid "- All -"
+msgstr "- Alle -"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:454;946
+msgid "Offset"
+msgstr "Startpunt"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:455;947
+msgid "« first"
+msgstr "« eerste"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:456;948
+msgid "‹ previous"
+msgstr "‹ vorige"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:457;949
+msgid "next ›"
+msgstr "volgende ›"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:458;950
+msgid "last »"
+msgstr "laatste »"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:459;951
+msgid "@start - @end van @total"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:460;952
+msgid "<h4>No results</h4>"
+msgstr "<h4>Geen resultaten</h4>"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:461;953
+msgid "[name]"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:462;954
+msgid "<span class=\"glyphicon glyphicon-user\"></span>"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:463;955
+msgid "Seen"
+msgstr "Gezien"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:464;956
+msgid "Created"
+msgstr "Aangemaakt"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:465;957 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:342
+msgid "<span class=\"glyphicon glyphicon-edit\"></span>"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:466;480
+msgid "Name"
+msgstr "Naam"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:467;958;1182 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:346
+msgid "Alle"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:468;959
+msgid "Everyone"
+msgstr "Iedereen"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:469;960
+msgid "All Members"
+msgstr "Iedereen"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:470
+msgid "Search"
+msgstr "Zoeken"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:472 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:324 openlucius_weblinks/openlucius_weblinks.views_default.inc:295
+msgid "Sorteren op"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:475;943
+msgid "Select any filter and click on Apply to see results"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:477;962
+msgid "@start - @end of @total"
+msgstr "@start - @end van @total"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:478;963
+msgid "<h3>No results</h3>"
+msgstr "<h3>Geen resultaten</h3>"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:479;964
+msgid "All"
+msgstr "Alle"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:481
+msgid "Certificates "
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:938 openlucius_webforms/openlucius_webforms.views_default.inc:131
+msgid "Apply"
+msgstr "Toepassen"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:940
+msgid "Sort by"
+msgstr "Sorteren op"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:941
+msgid "Asc"
+msgstr "Oplopend"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:942
+msgid "Desc"
+msgstr "Aflopend"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:965
+msgid "Active"
+msgstr "Actief"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:966
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:1181
+msgid "Link to profile"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.views_default.inc:1183
+msgid "Block"
+msgstr "Blok"
+
+#: openlucius_dpa/openlucius_dpa.module:28
+msgid "Offer access to DPA frontpage configuration"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:29
+msgid "Permission to check whether the user can access the DPA frontpage configuration"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:32
+msgid "Offer access to DPA menu configuration"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:33
+msgid "Permission to check whether the user can access the DPA menu configuration"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:36
+msgid "Offer access to DPA news configuration"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:37
+msgid "Permission to check whether the user can access the DPA news configuration"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:40
+msgid "Offer comments access for admins"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:41
+msgid "Permission to check whether the user can access the comment settings for a node"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:53
+msgid "Frontpage configuration"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:62
+msgid "Menu configuration"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:71
+msgid "News configuration"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:80
+msgid "DPA Intranet"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:112
+msgid "Frontpage image"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:113
+msgid "Allowed extensions: gif png jpg jpeg"
+msgstr "Toegestane extensies: gif png jpg jpeg"
+
+#: openlucius_dpa/openlucius_dpa.module:128
+msgid "Text to use on the frontpage"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:149
+msgid "Select the group that will have the news published on the front page"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:157
+msgid "Amount of news items to show on the front page"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:199
+msgid "Direct Links"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:205
+msgid "Menu settings"
+msgstr "Menu-instellingen"
+
+#: openlucius_dpa/openlucius_dpa.module:225
+msgid "The amount of links"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:226
+msgid "How many links."
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:235 openlucius_weblinks/openlucius_weblinks.features.field_instance.inc:161
+msgid "Link"
+msgstr "Link"
+
+#: openlucius_dpa/openlucius_dpa.module:242 openlucius_sla/openlucius_sla.module:237 openlucius_timetracker/includes/processing.inc:240;650;662 openlucius_webforms/openlucius_webforms.features.inc:36
+msgid "Title"
+msgstr "Titel"
+
+#: openlucius_dpa/openlucius_dpa.module:248
+msgid "Path"
+msgstr "Pad"
+
+#: openlucius_dpa/openlucius_dpa.module:268
+msgid "Openlucius Frontpage block"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:271
+msgid "Everyone Buttons"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:280;317 openlucius_harvesthouse/openlucius_harvesthouse.context.inc:80 openlucius_news/openlucius_news.features.inc:22 openlucius_news/openlucius_news.module:92
+msgid "News"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:302
+msgid "Actions"
+msgstr "Acties"
+
+#: openlucius_dpa/openlucius_dpa.module:330 openlucius_timetracker/includes/forms.inc:440
+msgid "All users"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:331
+msgid "Blocked users"
+msgstr "Geblokkeerde gebruikers"
+
+#: openlucius_dpa/openlucius_dpa.module:332
+msgid "Add user"
+msgstr "Gebruiker toevoegen"
+
+#: openlucius_dpa/openlucius_dpa.module:333
+msgid "Add teams"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:494
+msgid "Edit"
+msgstr "Bewerken"
+
+#: openlucius_dpa/openlucius_dpa.module:54
+msgid "Configure the frontpage for Openlucius."
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:63
+msgid "Configure the menu links for Openlucius."
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:72
+msgid "Configure the news group for Openlucius."
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.module:81
+msgid "Dpa intranet frontpage."
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.info:0
+msgid "Openlucius DPA"
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.info:0
+msgid "Contains DPA specific settings."
+msgstr ""
+
+#: openlucius_dpa/openlucius_dpa.info:0
+msgid "OpenLucius DPA"
+msgstr ""
+
+#: openlucius_harvesthouse/openlucius_harvesthouse.context.inc:42;112
+msgid "Recent Stuff"
+msgstr "Recente activiteit"
+
+#: openlucius_harvesthouse/openlucius_harvesthouse.info:0
+msgid "Openlucius HarvestHouse"
+msgstr ""
+
+#: openlucius_harvesthouse/openlucius_harvesthouse.info:0
+msgid "Contains HarvestHouse specific settings."
+msgstr ""
+
+#: openlucius_harvesthouse/openlucius_harvesthouse.info:0
+msgid "OpenLucius Harvest House"
+msgstr ""
+
+#: openlucius_news/openlucius_news.features.field_instance.inc:120 openlucius_personal_todos/openlucius_personal_todos.features.field_instance.inc:283 openlucius_webforms/openlucius_webforms.features.field_instance.inc:75
+msgid "Body"
+msgstr "Inhoud"
+
+#: openlucius_news/openlucius_news.features.field_instance.inc:121 openlucius_personal_todos/openlucius_personal_todos.features.field_instance.inc:285
+msgid "Files"
+msgstr "Bestanden"
+
+#: openlucius_news/openlucius_news.features.inc:24
+msgid "Content type for global news items that do not belong in a group."
+msgstr ""
+
+#: openlucius_news/openlucius_news.features.inc:26 openlucius_personal_todos/openlucius_personal_todos.features.inc:41 openlucius_weblinks/openlucius_weblinks.features.inc:40
+msgid "Titel"
+msgstr ""
+
+#: openlucius_news/openlucius_news.module:18
+msgid "Promote news"
+msgstr ""
+
+#: openlucius_news/openlucius_news.module:19
+msgid "Permission to promote news"
+msgstr ""
+
+#: openlucius_news/openlucius_news.module:49
+msgid "News settings"
+msgstr ""
+
+#: openlucius_news/openlucius_news.module:50
+msgid "Configure news settings."
+msgstr ""
+
+#: openlucius_news/openlucius_news.info:0
+msgid "OpenLucius News"
+msgstr ""
+
+#: openlucius_news/openlucius_news.info:0
+msgid "Facilitates OpenLucius News functions"
+msgstr ""
+
+#: openlucius_news/includes/blocks.inc:13
+msgid "News items"
+msgstr ""
+
+#: openlucius_news/includes/blocks.inc:16
+msgid "Promoted news items"
+msgstr ""
+
+#: openlucius_news/includes/forms.inc:59
+msgid "News limit"
+msgstr ""
+
+#: openlucius_news/includes/forms.inc:60
+msgid "The amount of news items to show on each page"
+msgstr ""
+
+#: openlucius_news/includes/functions.inc:164
+msgid "Add news item"
+msgstr ""
+
+#: openlucius_news/includes/functions.inc:187
+msgid "posted"
+msgstr "plaatste"
+
+#: openlucius_personal_todos/openlucius_personal_todos.context.inc:48
+msgid "Personal Todos"
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.features.field_instance.inc:282
+msgid "Assigned to"
+msgstr "Toegewezen aan"
+
+#: openlucius_personal_todos/openlucius_personal_todos.features.field_instance.inc:284
+msgid "Due Date"
+msgstr "Vervaldag"
+
+#: openlucius_personal_todos/openlucius_personal_todos.features.field_instance.inc:286 openlucius_personal_todos/openlucius_personal_todos.views_default.inc:347 openlucius_timetracker/includes/forms.inc:446 openlucius_timetracker/includes/processing.inc:241;651;663
+msgid "Status"
+msgstr "Status"
+
+#: openlucius_personal_todos/openlucius_personal_todos.features.inc:37 openlucius_personal_todos/includes/pages.inc:29 openlucius_personal_todos/templates/views-view--personal-todos.tpl.php:59
+msgid "Personal todo"
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.features.inc:39
+msgid "A content type for managing personal todos only visible to you."
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.views_default.inc:320
+msgid "Your personal todos"
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.views_default.inc:322 openlucius_weblinks/openlucius_weblinks.views_default.inc:293
+msgid "Toepassen"
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.views_default.inc:334
+msgid "You don't have any personal todos."
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.views_default.inc:335
+msgid "<span class=\"glyphicon glyphicon-transfer\"></span> [last_updated]"
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.views_default.inc:336
+msgid "<span class=\"glyphicon glyphicon-paperclip\"></span> [delta] "
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.views_default.inc:337
+msgid "."
+msgstr "."
+
+#: openlucius_personal_todos/openlucius_personal_todos.views_default.inc:338
+msgid ","
+msgstr ","
+
+#: openlucius_personal_todos/openlucius_personal_todos.views_default.inc:339
+msgid "<span class=\"glyphicon glyphicon-comment\"></span> [comment_count] "
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.views_default.inc:340
+msgid "<span class=\"glyphicon glyphicon-calendar\"></span> [field_todo_due_date_singledate]"
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.views_default.inc:341
+msgid "<span class=\"glyphicon glyphicon-calendar\"></span>  <span class=\"glyphicon glyphicon-minus\"></span>"
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.views_default.inc:343
+msgid "bewerken"
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.views_default.inc:344
+msgid "<span class=\"glyphicon glyphicon-remove-circle\"></span>"
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.views_default.inc:345
+msgid "<span class=\"glyphicon glyphicon-certificate\" ></span>"
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.views_default.inc:348
+msgid "My Personal Todos"
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.module:38
+msgid "My personal todo's"
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.info:0
+msgid "OpenLucius Personal Todos"
+msgstr ""
+
+#: openlucius_personal_todos/openlucius_personal_todos.info:0
+msgid "Personal todos that only you can see"
+msgstr ""
+
+#: openlucius_personal_todos/includes/blocks.inc:25
+msgid "Show closed"
+msgstr ""
+
+#: openlucius_personal_todos/includes/blocks.inc:29
+msgid "Show open"
+msgstr ""
+
+#: openlucius_personal_todos/includes/pages.inc:26
+msgid "You don't have any personal todos"
+msgstr ""
+
+#: openlucius_personal_todos/includes/pages.inc:41
+msgid "You don't have any closed personal todos"
+msgstr ""
+
+#: openlucius_personal_todos/includes/permissions.inc:13
+msgid "View own personal todos"
+msgstr ""
+
+#: openlucius_personal_todos/includes/permissions.inc:14
+msgid "Permission to check whether the user can see their personal todos"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.features.field_instance.inc:59
+msgid "Shared SLA"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:60
+msgid "View SLA overview page"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:61
+msgid "View the SLA overview page for a group."
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:64
+msgid "Administer"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:65
+msgid "Allows the adding of new SLA hours."
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:155
+msgid "Openlucius time tracker SLA remaining"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:159
+msgid "Openlucius time tracker openstaande fakturen"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:233
+msgid "edit"
+msgstr "bewerken"
+
+#: openlucius_sla/openlucius_sla.module:297;507
+msgid "Group"
+msgstr "Groep"
+
+#: openlucius_sla/openlucius_sla.module:297
+msgid "SLA remaining"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:299
+msgid "Items in the table below do not have a real SLA"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:335
+msgid "Add date"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:335;519
+msgid "Faktuurnummer"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:335;513 openlucius_timetracker/includes/processing.inc:199
+msgid "Hours"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:353 openlucius_timetracker/includes/blocks.inc:132 openlucius_timetracker/includes/processing.inc:218;275;677
+msgid "Total"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:354
+msgid "Used for cases"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:358
+msgid "Remaining"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:423
+msgid "When using a filter the total is not shown."
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:430
+msgid "SLA overview for :title"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:445
+msgid "Message to display when a sla is nearing 0"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:452
+msgid "Message to display when a sla is lower than or equal to 0"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:459
+msgid "If a group gets below this amount of hours the above message is displayed"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:465
+msgid "Select term to use for defining a SLA"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:472
+msgid "Select term to use for defining a \"meerwerk\" project"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:479
+msgid "Select term to use for a status that needs faktuurnummer"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:525
+msgid "Faktuur datum"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:554
+msgid "Succesfully inserted !hours hours into !title."
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:657 openlucius_timetracker/openlucius_timetracker.module:32 openlucius_timetracker/includes/processing.inc:62;243;652;664 openlucius_timetracker/templates/views-view-table--all-todo-lists-in-a-group.tpl.php:31 openlucius_timetracker/templates/views-view-table--todos-on-todo-list-page.tpl.php:31
+msgid "Time"
+msgstr "Tijd"
+
+#: openlucius_sla/openlucius_sla.module:15
+msgid "SLA overview"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:23
+msgid "SLA add"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:24
+msgid "Add new SLA for Openlucius groups."
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:33
+msgid "SLA Configuration"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.module:34
+msgid "Configure the SLA for Openlucius."
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.info:0
+msgid "OpenLucius SLA"
+msgstr ""
+
+#: openlucius_sla/openlucius_sla.info:0
+msgid "Extension for Openlucius Timetracker to support SLA"
+msgstr ""
+
+#: openlucius_social/openlucius_social.module:14
+msgid "Configure social media settings"
+msgstr ""
+
+#: openlucius_social/openlucius_social.module:32
+msgid "The facebook page you want to use"
+msgstr ""
+
+#: openlucius_social/openlucius_social.module:38
+msgid "The width of the facebook feed"
+msgstr ""
+
+#: openlucius_social/openlucius_social.module:44
+msgid "The height of the facebook feed"
+msgstr ""
+
+#: openlucius_social/openlucius_social.module:50
+msgid "The widget code for the twitter page you want to use"
+msgstr ""
+
+#: openlucius_social/openlucius_social.module:64
+msgid "Openlucius Facebook feed"
+msgstr ""
+
+#: openlucius_social/openlucius_social.module:68
+msgid "Openlucius Twitter feed"
+msgstr ""
+
+#: openlucius_social/openlucius_social.module:84
+msgid "OpenLucius Facebook feed"
+msgstr ""
+
+#: openlucius_social/openlucius_social.module:89
+msgid "OpenLucius Twitter feed"
+msgstr ""
+
+#: openlucius_social/openlucius_social.module:13
+msgid "Social configuration"
+msgstr ""
+
+#: openlucius_social/openlucius_social.info:0
+msgid "OpenLucius Social"
+msgstr ""
+
+#: openlucius_social/openlucius_social.info:0
+msgid "Facilitates OpenLucius social media integration"
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.context.inc:45;87;153
+msgid "Timetracker"
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.context.inc:119
+msgid "Places the openlucius_timetracker block in the secondary sidebar region."
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.context.inc:120
+msgid "Todo"
+msgstr "Todo"
+
+#: openlucius_timetracker/openlucius_timetracker.features.field_instance.inc:193 openlucius_timetracker/includes/blocks.inc:131;169
+msgid "Budget"
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.features.field_instance.inc:194 openlucius_timetracker/includes/processing.inc:56
+msgid "Effective"
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.features.field_instance.inc:195
+msgid "Estimated maximum time (in full hours)"
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.features.field_instance.inc:196
+msgid "Maximum time"
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.features.field_instance.inc:197
+msgid "Timetracker Type"
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.module:86
+msgid "View reports page"
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.module:87
+msgid "View the reports page containing all the entries for all users."
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.module:90
+msgid "Create time entries"
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.module:91
+msgid "Allow clocking and viewing of the node times."
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.module:206
+msgid "Start timer"
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.module:248
+msgid "Chart.js library could not be loaded"
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.module:43
+msgid "Time overview"
+msgstr "Mijn Tijdsoverzicht"
+
+#: openlucius_timetracker/openlucius_timetracker.module:52
+msgid "My time reports"
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.module:60
+msgid "Timetracker Configuration"
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.module:61
+msgid "Configure the timetracker for Openlucius."
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.info:0
+msgid "OpenLucius Time Tracker"
+msgstr ""
+
+#: openlucius_timetracker/openlucius_timetracker.info:0
+msgid "Facilitates OpenLucius time tracking"
+msgstr ""
+
+#: openlucius_timetracker/includes/blocks.inc:17
+msgid "Openlucius time tracker timer"
+msgstr ""
+
+#: openlucius_timetracker/includes/blocks.inc:22
+msgid "Openlucius time tracker active timers"
+msgstr ""
+
+#: openlucius_timetracker/includes/blocks.inc:26
+msgid "Openlucius time tracker filter"
+msgstr ""
+
+#: openlucius_timetracker/includes/blocks.inc:31
+msgid "Openlucius time tracker budget remaining"
+msgstr ""
+
+#: openlucius_timetracker/includes/blocks.inc:90
+msgid "Active timers"
+msgstr ""
+
+#: openlucius_timetracker/includes/blocks.inc:169 openlucius_timetracker/includes/processing.inc:62
+msgid "Project"
+msgstr ""
+
+#: openlucius_timetracker/includes/blocks.inc:169
+msgid "Start"
+msgstr ""
+
+#: openlucius_timetracker/includes/blocks.inc:169
+msgid "Clocked"
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:18
+msgid "Message to display when a case has reached its maximum."
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:19
+msgid "Clocking is not possible, this case has exceeded 100%."
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:98
+msgid "Time tracking"
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:232
+msgid "Your tracked time"
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:233
+msgid "Total tracked time"
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:234
+msgid "Current progress"
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:235
+msgid "Time limit"
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:299;457 openlucius_timetracker/includes/processing.inc:199
+msgid "User"
+msgstr "Gebruiker"
+
+#: openlucius_timetracker/includes/forms.inc:306
+msgid "Provide a date for the time correction."
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:319;323
+msgid "-"
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:323
+msgid "+"
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:328
+msgid "Type"
+msgstr "Type"
+
+#: openlucius_timetracker/includes/forms.inc:335
+msgid "Extra hours"
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:336
+msgid "Provide the time in hours."
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:343
+msgid "Extra minutes"
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:344
+msgid "Provide the time in minutes."
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:351
+msgid "Description"
+msgstr "Beschrijving"
+
+#: openlucius_timetracker/includes/forms.inc:352
+msgid "Provide a description for the extra time."
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:357
+msgid "Add time"
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:376;381
+msgid "Time value can only be numeric"
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:386
+msgid "A description for the extra time is required"
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:468
+msgid "Last activity"
+msgstr "Laatste activiteit"
+
+#: openlucius_timetracker/includes/forms.inc:476
+msgid "From"
+msgstr ""
+
+#: openlucius_timetracker/includes/forms.inc:487
+msgid "until"
+msgstr ""
+
+#: openlucius_timetracker/includes/page.inc:86;138
+msgid "back to !node"
+msgstr ""
+
+#: openlucius_timetracker/includes/processing.inc:199
+msgid "Date"
+msgstr "Datum"
+
+#: openlucius_timetracker/includes/processing.inc:199
+msgid "Message"
+msgstr "Bericht"
+
+#: openlucius_timetracker/includes/processing.inc:242
+msgid "Assigned"
+msgstr ""
+
+#: openlucius_timetracker/includes/processing.inc:244;655;667
+msgid "Max"
+msgstr ""
+
+#: openlucius_timetracker/includes/processing.inc:245
+msgid "Completed"
+msgstr "Afgerond"
+
+#: openlucius_timetracker/includes/processing.inc:246
+msgid "Modified"
+msgstr ""
+
+#: openlucius_timetracker/includes/processing.inc:653
+msgid "User total"
+msgstr ""
+
+#: openlucius_timetracker/includes/processing.inc:654;666
+msgid "Case Total"
+msgstr ""
+
+#: openlucius_timetracker/includes/processing.inc:677
+msgid "hours"
+msgstr ""
+
+#: openlucius_trial/openlucius_trial.module:15
+msgid "The trial for this site is expired. Contact us at !link for details."
+msgstr ""
+
+#: openlucius_trial/openlucius_trial.module:15
+msgid "Openlucius"
+msgstr ""
+
+#: openlucius_trial/openlucius_trial.info:0;0
+msgid "OpenLucius Trial"
+msgstr ""
+
+#: openlucius_trial/openlucius_trial.info:0
+msgid "Extension for Openlucius that restricts trial access."
+msgstr ""
+
+#: openlucius_webforms/openlucius_webforms.context.inc:56
+msgid "Openlucius webforms"
+msgstr ""
+
+#: openlucius_webforms/openlucius_webforms.context.inc:57 openlucius_webforms/openlucius_webforms.views_default.inc:129
+msgid "Webforms"
+msgstr ""
+
+#: openlucius_webforms/openlucius_webforms.features.inc:32 openlucius_webforms/openlucius_webforms.views_default.inc:136
+msgid "Webform"
+msgstr ""
+
+#: openlucius_webforms/openlucius_webforms.features.inc:34
+msgid "Create a new form or questionnaire accessible to users. Submission results and statistics are recorded and accessible to privileged users."
+msgstr ""
+
+#: openlucius_webforms/openlucius_webforms.views_default.inc:130
+msgid "More"
+msgstr "Meer"
+
+#: openlucius_webforms/openlucius_webforms.views_default.inc:138
+msgid "All webforms"
+msgstr ""
+
+#: openlucius_webforms/openlucius_webforms.views_default.inc:139
+msgid "<span class=\"glyphicon glyphicon-list\"></span> [title]"
+msgstr ""
+
+#: openlucius_webforms/openlucius_webforms.module:26
+msgid "Openlucius add Webforms"
+msgstr ""
+
+#: openlucius_webforms/openlucius_webforms.module:44
+msgid "Add Webform"
+msgstr ""
+
+#: openlucius_webforms/openlucius_webforms.info:0
+msgid "OpenLucius Webforms"
+msgstr ""
+
+#: openlucius_webforms/openlucius_webforms.info:0
+msgid "Facilitates OpenLucius webforms integration"
+msgstr ""
+
+#: openlucius_weblinks/openlucius_weblinks.context.inc:42 openlucius_weblinks/openlucius_weblinks.views_default.inc:305
+msgid "Home"
+msgstr "Home"
+
+#: openlucius_weblinks/openlucius_weblinks.features.field_instance.inc:159
+msgid "Category"
+msgstr "Categorie"
+
+#: openlucius_weblinks/openlucius_weblinks.features.field_instance.inc:160
+msgid "Frontpage"
+msgstr ""
+
+#: openlucius_weblinks/openlucius_weblinks.features.inc:36
+msgid "Weblink"
+msgstr ""
+
+#: openlucius_weblinks/openlucius_weblinks.views_default.inc:291
+msgid "Weblinks"
+msgstr ""
+
+#: openlucius_weblinks/openlucius_weblinks.views_default.inc:298
+msgid "term from field_weblink_tag_category"
+msgstr ""
+
+#: openlucius_weblinks/openlucius_weblinks.views_default.inc:299
+msgid "[title]"
+msgstr ""
+
+#: openlucius_weblinks/openlucius_weblinks.views_default.inc:300
+msgid "(edit)"
+msgstr ""
+
+#: openlucius_weblinks/openlucius_weblinks.views_default.inc:301
+msgid "Weblink block"
+msgstr ""
+
+#: openlucius_weblinks/openlucius_weblinks.views_default.inc:303 openlucius_weblinks/openlucius_weblinks.info:0
+msgid "OpenLucius Weblinks"
+msgstr ""
+
+#: openlucius_weblinks/openlucius_weblinks.views_default.inc:304
+msgid "Weblinks 2 columns"
+msgstr ""
+
+#: openlucius_weblinks/openlucius_weblinks.views_default.inc:306
+msgid "Weblinks 3 columns"
+msgstr ""
+
+#: openlucius_weblinks/openlucius_weblinks.module:18
+msgid "Add weblink"
+msgstr ""
+
+#: openlucius_weblinks/openlucius_weblinks.module:26
+msgid "All weblinks"
+msgstr ""
+
+#: openlucius_weblinks/openlucius_weblinks.info:0
+msgid "Custom feature for adding and placing weblinks."
+msgstr ""
+
+#: openlucius_weblinks/openlucius_weblinks.info:0
+msgid "OpenLucius Zonvaart"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:86
+msgid "Due date is required for status @status"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:112
+msgid "The user %user is not allowed to have the status %status."
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:351
+msgid "Automatic workflow configuration"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:356
+msgid "Enable the robot"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:362
+msgid "Select user to act as the robot"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:369
+msgid "Select status the todo should be on"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:376
+msgid "Select status the todo should be set to"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:383
+msgid "The amount of time before it expires"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:386
+msgid "You can use string like \"-1 week\", \"-2 weeks\", \"-3 days\""
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:390
+msgid "Subject to use for the robots comment"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:396
+msgid "Text to use for the robots comment"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:402
+msgid "The todo statuses which have to be moved to the next month."
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:411;313
+msgid "Workflow configuration"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:417
+msgid "Select which status is allowed for each role. This forces a certain workflow and keeps todo's from getting lost."
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:421
+msgid "All empty is means nobody may have this status (not assigned)."
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:435
+msgid "Todo requirements"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:439
+msgid "The todo statuses which require a due date."
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:446
+msgid "Trigger per status type for the robot"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:457
+msgid "Updated"
+msgstr "Bijgewerkt"
+
+#: openlucius_workflow/openlucius_workflow.module:458
+msgid "Due date"
+msgstr "Vervaldag"
+
+#: openlucius_workflow/openlucius_workflow.module:466
+msgid "Field visibility"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:471
+msgid "Select fields you want to hide for a specific role."
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:475
+msgid "Disabling some fields might have unexpected results."
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.module:314
+msgid "Configure the workflow for Openlucius."
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.info:0
+msgid "OpenLucius Workflow"
+msgstr ""
+
+#: openlucius_workflow/openlucius_workflow.info:0
+msgid "Extension for Openlucius that contains workflow integration."
+msgstr ""
+

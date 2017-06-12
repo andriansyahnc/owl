@@ -1,0 +1,116 @@
+<?php
+/**
+ * @file
+ * This file contains the onboarding module.
+ */
+
+define('OPENLUCIUS_ONBOARDING_INVITE_LIMIT', 4);
+
+/**
+ * Implements hook_menu().
+ */
+function openlucius_onboarding_menu() {
+  return array(
+    'onboarding/%ctools_js/form'         => array(
+      'title'            => 'Welcome aboard',
+      'page callback'    => 'openlucius_onboarding_form',
+      'page arguments'   => array(1),
+      'access arguments' => array('access content'),
+      'type'             => MENU_CALLBACK,
+      'file'             => 'includes/form.inc',
+    ),
+    'admin/config/openlucius/onboarding' => array(
+      'title'            => 'Onboarding',
+      'description'      => 'The configuration form for the onboarding.',
+      'file'             => 'includes/form.inc',
+      'page callback'    => 'drupal_get_form',
+      'page arguments'   => array('openlucius_onboarding_settings_form'),
+      'access arguments' => array('administer onboarding configuration'),
+      'type'             => MENU_LOCAL_TASK,
+      'tab_parent'       => 'admin/config/openlucius',
+    ),
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function openlucius_onboarding_permission() {
+  return array(
+    'administer onboarding configuration' => array(
+      'title'       => t('Configure onboarding.'),
+      'description' => t('Allow users to configure the onboarding settings.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_openlucius_core_config_places_alter().
+ */
+function openlucius_onboarding_openlucius_core_config_places_alter(&$places) {
+  $places[] = 'admin/config/openlucius/onboarding';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function openlucius_onboarding_theme($existing, $type, $theme, $path) {
+  $directory = drupal_get_path('module', 'openlucius_onboarding') . '/templates';
+
+  $items['openlucius_onboarding_start'] = array(
+    'render element' => 'form',
+    'template'       => 'start',
+    'path'           => $directory,
+  );
+
+  $items['openlucius_onboarding_profile'] = array(
+    'render element' => 'form',
+    'template'       => 'profile',
+    'path'           => $directory,
+  );
+
+  $items['openlucius_onboarding_team'] = array(
+    'render element' => 'form',
+    'template'       => 'team',
+    'path'           => $directory,
+  );
+
+  $items['openlucius_onboarding_name'] = array(
+    'render element' => 'form',
+    'template'       => 'name',
+    'path'           => $directory,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function openlucius_onboarding_form_alter(&$form, &$form_state, $form_id) {
+
+  // Show 'onboarding complete' check only for uid1 on user/%uid/edit.
+  if ($form_id == 'user_profile_form' || $form_id == 'user_register_form') {
+
+    global $user;
+
+    if ($user->uid != 1) {
+      $form['onboarding_complete']['#access'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_page_build().
+ */
+function openlucius_onboarding_page_build(&$page) {
+  global $user;
+
+  // Load account.
+  $account = user_load($user->uid);
+
+  // Check if there is a reason to start the onboarding process.
+  if (user_is_logged_in() && $user->uid != 1 && (variable_get('openlucius_onboarding_initial', 0) === 0 || empty($account->onboarding_complete[LANGUAGE_NONE][0]['value']))) {
+    $page['content']['#attached']['js'][] = drupal_get_path('module', 'openlucius_onboarding') . '/js/openlucius_onboarding_trigger.js';
+  }
+}

@@ -1,0 +1,91 @@
+/**
+ * @file
+ * This css file contains all the required css for the onboarding.
+ */
+.wizard-trail {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.openlucius-onboarding .center {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+}
+.openlucius-onboarding .openlucius-boarded-user {
+  display: inline-block;
+  margin: 0 5px;
+}
+.openlucius-onboarding .openlucius-boarded-user img {
+  max-width: 50px;
+  clear: both;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  padding: 2px;
+}
+.openlucius-onboarding .openlucius-boarded-user p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50px;
+  white-space: nowrap;
+}
+.openlucius-onboarding {
+  max-width: 600px;
+  margin: auto;
+}
+.openlucius-onboarding-navigation #edit-next {
+  float: right;
+}
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+  margin: 0 0 20px;
+}
+#onboarding-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.openlucius-onboarding .profile-image {
+  max-height: 147px;
+  max-width: 147px;
+  height: auto;
+}
+.openlucius-onboarding .profile-image img {
+  height: 147px;
+  width: 147px;
+  float: right;
+  border-radius: 50%;
+  border: 2px dotted #ccc;
+  padding: 5px;
+  cursor: pointer;
+}
+.openlucius-onboarding .form-type-file {
+  visibility: hidden;
+}
+.onboarding-user-table {
+  display: table;
+  width: 100%;
+}
+.onboarding-user-table .user-image,
+.onboarding-user-table .user-invite {
+  display: table-cell;
+  vertical-align: middle;
+}
+.onboarding-user-table .user-image {
+  width: 50px;
+  vertical-align: top;
+}
+.onboarding-user-table .user-image img {
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  height: 40px;
+  width: auto;
+  padding: 5px;
+}
+#modalBackdrop.opaque {
+  opacity: 1 !important;
+}

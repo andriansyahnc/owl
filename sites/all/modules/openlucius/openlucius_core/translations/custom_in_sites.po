@@ -1,0 +1,492 @@
+# Dutch translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  openlucius_direct_links/openlucius_direct_links.module: n/a
+#  openlucius_direct_links/openlucius_direct_links.info: n/a
+#  openlucius_events_extras/openlucius_events_extras.info: n/a
+#  openlucius_ldap/openlucius_ldap.info: n/a
+#  openlucius_mail/openlucius_mail.info: n/a
+#  openlucius_stack_alter/openlucius_stack_alter.info: n/a
+#  openlucius_events_extras/openlucius_events_extras.context.inc: n/a
+#  openlucius_events_extras/openlucius_events_extras.features.field_instance.inc: n/a
+#  openlucius_events_extras/openlucius_events_extras.module: n/a
+#  openlucius_ldap/openlucius_ldap.features.field_instance.inc: n/a
+#  openlucius_ldap/openlucius_ldap.module: n/a
+#  openlucius_mail/openlucius_mail.module: n/a
+#  openlucius_mail/includes/admin.page.inc: n/a
+#  openlucius_mail/includes/imap.inc: n/a
+#  openlucius_support/openlucius_support.context.inc: n/a
+#  openlucius_support/openlucius_support.features.field_instance.inc: n/a
+#  openlucius_support/openlucius_support.features.menu_links.inc: n/a
+#  openlucius_support/openlucius_support.views_default.inc: n/a
+#  openlucius_support/openlucius_support.module: n/a
+#  openlucius_support/includes/openlucius_support.inc: n/a
+#  openlucius_support/openlucius_support.info: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-09-25 13:33+0200\n"
+"PO-Revision-Date: 2015-09-25 13:33+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Dutch <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: openlucius_direct_links/openlucius_direct_links.module:48
+msgid "Administer direct links"
+msgstr ""
+
+#: openlucius_direct_links/openlucius_direct_links.module:49
+msgid "Allows the adding of new direct links."
+msgstr "Geeft het recht om nieuwe direct links toe te voegen"
+
+#: openlucius_direct_links/openlucius_direct_links.module:59;73;94;16;31
+msgid "Direct links"
+msgstr "Directe links"
+
+#: openlucius_direct_links/openlucius_direct_links.module:110
+msgid "Link"
+msgstr "Link"
+
+#: openlucius_direct_links/openlucius_direct_links.module:117
+msgid "Title"
+msgstr "Titel"
+
+#: openlucius_direct_links/openlucius_direct_links.module:125
+msgid "Path"
+msgstr "Pad"
+
+#: openlucius_direct_links/openlucius_direct_links.module:134
+msgid "Add first"
+msgstr "Voeg 1e toe"
+
+#: openlucius_direct_links/openlucius_direct_links.module:134
+msgid "Add another"
+msgstr "Voeg nog een toe"
+
+#: openlucius_direct_links/openlucius_direct_links.module:17
+msgid "Add direct links for the Openlucius frontpage."
+msgstr "Voeg directe links toe aan de OpenLucius voorpagina"
+
+#: openlucius_direct_links/openlucius_direct_links.module:32
+msgid "The direct links for the Openlucius frontpage."
+msgstr "De directe links voor de OpenLucius voorpagina"
+
+#: openlucius_direct_links/openlucius_direct_links.info:0
+msgid "OpenLucius Direct Links"
+msgstr "OpenLucius directe links"
+
+#: openlucius_direct_links/openlucius_direct_links.info:0
+msgid "Direct links functionality for OpenLucius"
+msgstr "Directe links functionaliteit voor OpenLucius"
+
+#: openlucius_direct_links/openlucius_direct_links.info:0 openlucius_events_extras/openlucius_events_extras.info:0 openlucius_ldap/openlucius_ldap.info:0 openlucius_mail/openlucius_mail.info:0 openlucius_stack_alter/openlucius_stack_alter.info:0
+msgid "OpenLucius"
+msgstr "OpenLucius"
+
+#: openlucius_events_extras/openlucius_events_extras.context.inc:51
+msgid "Displays the attend block for an event"
+msgstr "Toont het aanwezig blok voor een evenement"
+
+#: openlucius_events_extras/openlucius_events_extras.context.inc:52
+msgid "event"
+msgstr "evenement"
+
+#: openlucius_events_extras/openlucius_events_extras.features.field_instance.inc:67
+msgid "Reason"
+msgstr "reden"
+
+#: openlucius_events_extras/openlucius_events_extras.features.field_instance.inc:68
+msgid "Why are you not attending?"
+msgstr "Waarom ben je niet aanwezig?"
+
+#: openlucius_events_extras/openlucius_events_extras.module:27
+msgid "Be able to unflag attending events"
+msgstr "In staat zijn om niet meer aanwezig te zijn"
+
+#: openlucius_events_extras/openlucius_events_extras.module:28
+msgid "Permission to check whether the user can unflag attending"
+msgstr "Toestemming om te controleren of de gebruiker de markering aanwezig kan opheffen"
+
+#: openlucius_events_extras/openlucius_events_extras.module:31
+msgid "In staat zijn om de markering aanwezig op te heffen"
+msgstr ""
+
+#: openlucius_events_extras/openlucius_events_extras.module:32
+msgid "Permission to check whether the user can unflag not attending"
+msgstr "Toestemming om te controleren of de gebruiker niet aanwezig kan opheffen"
+
+#: openlucius_events_extras/openlucius_events_extras.module:35
+msgid "Offer access to OpenLucius event configuration"
+msgstr "Toegang bieden aan OpenLucius evenement configuratie"
+
+#: openlucius_events_extras/openlucius_events_extras.module:36
+msgid "Permission to check whether the user can access the OpenLucius event configuration"
+msgstr "Toestemming om te controleren of de gebruiker toegang heeft tot de OpenLucius evenement configuratie"
+
+#: openlucius_events_extras/openlucius_events_extras.module:39
+msgid "Offer access to send OpenLucius event reminders"
+msgstr "Toegang bieden om OpenLucius evenement herinneringen te sturen"
+
+#: openlucius_events_extras/openlucius_events_extras.module:40
+msgid "Permission to check whether the user can send the OpenLucius event reminders"
+msgstr "Toegang om te controleren of de gebruiker evenement herinneringen kan sturen"
+
+#: openlucius_events_extras/openlucius_events_extras.module:77
+msgid "Event flag"
+msgstr "Evenement flag"
+
+#: openlucius_events_extras/openlucius_events_extras.module:80
+msgid "Openlucius maps"
+msgstr "Openlucius maps"
+
+#: openlucius_events_extras/openlucius_events_extras.module:186
+msgid "Attending"
+msgstr "Aanwezig"
+
+#: openlucius_events_extras/openlucius_events_extras.module:190
+msgid "Not attending"
+msgstr "Niet aanwezig"
+
+#: openlucius_events_extras/openlucius_events_extras.module:290;294
+msgid "x"
+msgstr "x"
+
+#: openlucius_events_extras/openlucius_events_extras.module:346
+msgid "Send reminders"
+msgstr "Verstuur herinneringen"
+
+#: openlucius_events_extras/openlucius_events_extras.module:440
+msgid "Event reminder email title"
+msgstr "Evenement herinnering email titel"
+
+#: openlucius_events_extras/openlucius_events_extras.module:446
+msgid "Event reminder email text"
+msgstr "Evenement herinnering email tekst"
+
+#: openlucius_events_extras/openlucius_events_extras.module:52
+msgid "Event settings"
+msgstr "Evenement instellingen"
+
+#: openlucius_events_extras/openlucius_events_extras.module:53
+msgid "Configure event settings."
+msgstr "Configureer evenement instellingen"
+
+#: openlucius_events_extras/openlucius_events_extras.module:62
+msgid "Ubsubscribe user"
+msgstr "Gebruiker afmelden"
+
+#: openlucius_events_extras/openlucius_events_extras.module:63
+msgid "Unsubscribe user from event"
+msgstr "Meld gebruiker af van evenement"
+
+#: openlucius_events_extras/openlucius_events_extras.info:0
+msgid "Openlucius Events Extra's"
+msgstr "Openlucius Events Extra's"
+
+#: openlucius_events_extras/openlucius_events_extras.info:0
+msgid "Contains"
+msgstr "Bevat"
+
+#: openlucius_ldap/openlucius_ldap.features.field_instance.inc:66
+msgid "Display name"
+msgstr "Naam voor weergave"
+
+#: openlucius_ldap/openlucius_ldap.module:22
+msgid "LDAP configurations"
+msgstr "LDAP configuratie"
+
+#: openlucius_ldap/openlucius_ldap.module:93
+msgid "Global mapping form"
+msgstr "Formulier voor globale indeling"
+
+#: openlucius_ldap/openlucius_ldap.module:97
+msgid "Global mapping"
+msgstr "Globale indeling"
+
+#: openlucius_ldap/openlucius_ldap.module:100
+msgid "Add the global space, this space is the space every user is added to up login"
+msgstr "Voeg de globale ruimte toe, dit is de ruimte waarin iedere gebruiker toegevoegd wordt na inloggen"
+
+#: openlucius_ldap/openlucius_ldap.module:292
+msgid "%name: name mismatch. Please check your selection."
+msgstr "%name: naam inconsistencie. Check de selectie a.u.b."
+
+#: openlucius_ldap/openlucius_ldap.module:313
+msgid "%name: found no valid user with that name."
+msgstr "%name: geen geldige gebruiker met die naam"
+
+#: openlucius_ldap/openlucius_ldap.module:402
+msgid "(Importing user @user)"
+msgstr "(@user importeren"
+
+#: openlucius_ldap/openlucius_ldap.module:417
+msgid "User Import"
+msgstr "Gebruiker importeren"
+
+#: openlucius_ldap/openlucius_ldap.module:418
+msgid "Initializing"
+msgstr "Initialiseren"
+
+#: openlucius_ldap/openlucius_ldap.module:419
+msgid "An error occurred"
+msgstr "Er is een fout opgetreden"
+
+#: openlucius_ldap/openlucius_ldap.module:502
+msgid "Finished batch!"
+msgstr "Batch afgerond!"
+
+#: openlucius_ldap/openlucius_ldap.info:0
+msgid "OpenLucius LDAP"
+msgstr "OpenLucius LDAP"
+
+#: openlucius_ldap/openlucius_ldap.info:0
+msgid "Facilitates OpenLucius ldap functions"
+msgstr "Faciliteert OpenLucius ldap functies"
+
+#: openlucius_mail/openlucius_mail.module:16
+msgid "Reply above this line"
+msgstr "Reageer boven deze regel"
+
+#: openlucius_mail/openlucius_mail.module:48
+msgid "Offer access to mail configuration"
+msgstr "Geef mail configuratie toegang"
+
+#: openlucius_mail/openlucius_mail.module:49
+msgid "Permission to check whether the user can access the mail configuration"
+msgstr "Toestemming om te controleren of de gebruiker mail configuratie toegang heeft"
+
+#: openlucius_mail/openlucius_mail.module:339
+msgid "Response by email"
+msgstr "Antwoord per email"
+
+#: openlucius_mail/openlucius_mail.module:377;383
+msgid "openlucius_mail"
+msgstr "openlucius_mail"
+
+#: openlucius_mail/openlucius_mail.module:377
+msgid "Failed to mark an email as being read"
+msgstr "Het is mislukt om een e-mail markeren als gelezen"
+
+#: openlucius_mail/openlucius_mail.module:383
+msgid "Read :counter emails"
+msgstr ":counter gelezen emails"
+
+#: openlucius_mail/openlucius_mail.module:28
+msgid "Mail configuration"
+msgstr "Mail configuratie"
+
+#: openlucius_mail/openlucius_mail.module:29
+msgid "Configure the mail for Openlucius."
+msgstr "Configureer de mail voor openlucius"
+
+#: openlucius_mail/openlucius_mail.info:0
+msgid "OpenLucius Mail"
+msgstr "OpenLucius Mail"
+
+#: openlucius_mail/openlucius_mail.info:0
+msgid "Facilitates OpenLucius mail integration"
+msgstr "Faciliteert OpenLucius mail integratie"
+
+#: openlucius_mail/includes/admin.page.inc:19
+msgid "Hostname"
+msgstr "Hostnaam"
+
+#: openlucius_mail/includes/admin.page.inc:22
+msgid "Insert hostname here, for example: {imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX"
+msgstr "Voer hier de hostnaam in, bijvoorbeeld: {imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX"
+
+#: openlucius_mail/includes/admin.page.inc:31
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: openlucius_mail/includes/admin.page.inc:34
+msgid "Insert username here."
+msgstr "Voer hier de gebruikersnaam in"
+
+#: openlucius_mail/includes/admin.page.inc:43
+msgid "Password"
+msgstr ""
+"Wachtwoord (<a href=\"password?destination=user/login\">Wachtwoord "
+"vergeten?</a>)"
+
+#: openlucius_mail/includes/admin.page.inc:46
+msgid "Insert password here."
+msgstr "Voer hier het watchwoord in"
+
+#: openlucius_mail/includes/admin.page.inc:55
+msgid "Reply address"
+msgstr "Antwoord adres"
+
+#: openlucius_mail/includes/admin.page.inc:56
+msgid "The reply address which should be used for this environment"
+msgstr "Het reactieadres dat moet gebruikt worden voor deze omgeving"
+
+#: openlucius_mail/includes/admin.page.inc:60
+msgid "Insert reply address here, defaults to the site-mail address"
+msgstr "Voer hier het reactieadres in, dit is standaard het site-mail adres"
+
+#: openlucius_mail/includes/admin.page.inc:69
+msgid "The default user"
+msgstr "De standaard gebruiker"
+
+#: openlucius_mail/includes/admin.page.inc:70
+msgid "The default user for emails from outside of this environment"
+msgstr "De standaard gebruiker voor emails buiten deze omgeving"
+
+#: openlucius_mail/includes/admin.page.inc:73
+msgid "Enter the user who should be used as default"
+msgstr "Voer de standaard te gebruiken gebruiker in"
+
+#: openlucius_mail/includes/imap.inc:154;155
+msgid "Connection failed: :error"
+msgstr "Connectie mislukt: :error"
+
+#: openlucius_mail/includes/imap.inc:166
+msgid "An error occurred: :error"
+msgstr "Er is een fout opgetreden :error"
+
+#: openlucius_mail/includes/imap.inc:155;167
+msgid "openlucius_imap"
+msgstr "openlucius_imap"
+
+#: openlucius_mail/includes/imap.inc:167
+msgid "An error occurred: :error occurred"
+msgstr "Er is een fout opgetreden: :error"
+
+#: openlucius_stack_alter/openlucius_stack_alter.info:0
+msgid "OpenLucius Stack alters"
+msgstr "OpenLucius Stack aanpassingen"
+
+#: openlucius_stack_alter/openlucius_stack_alter.info:0
+msgid "Contains alters that are for the openlucius stack only"
+msgstr "Bevat aanpassingen alleen voor de OpenLucius stack"
+
+#: openlucius_support/openlucius_support.context.inc:42
+msgid "Support"
+msgstr ""
+
+#: openlucius_support/openlucius_support.features.field_instance.inc:81
+msgid "Invoice number"
+msgstr "Factuur nummer"
+
+#: openlucius_support/openlucius_support.features.menu_links.inc:36
+msgid "Open invoices"
+msgstr "Open facturen"
+
+#: openlucius_support/openlucius_support.views_default.inc:155;298
+msgid "Master"
+msgstr "Hoofd"
+
+#: openlucius_support/openlucius_support.views_default.inc:156
+msgid "Open Invoices"
+msgstr "Open facturen"
+
+#: openlucius_support/openlucius_support.views_default.inc:157;300
+msgid "meer"
+msgstr ""
+
+#: openlucius_support/openlucius_support.views_default.inc:158;301
+msgid "Toepassen"
+msgstr ""
+
+#: openlucius_support/openlucius_support.views_default.inc:159;302
+msgid "Alles zien"
+msgstr ""
+
+#: openlucius_support/openlucius_support.views_default.inc:160;303
+msgid "Sorteren op"
+msgstr ""
+
+#: openlucius_support/openlucius_support.views_default.inc:161;304
+msgid "Oplopend"
+msgstr ""
+
+#: openlucius_support/openlucius_support.views_default.inc:162;305
+msgid "Aflopend"
+msgstr ""
+
+#: openlucius_support/openlucius_support.views_default.inc:163
+msgid "field_todo_list_reference"
+msgstr ""
+
+#: openlucius_support/openlucius_support.views_default.inc:164
+msgid "term from field_timetracker_type"
+msgstr ""
+
+#: openlucius_support/openlucius_support.views_default.inc:165;307
+msgid "Block"
+msgstr "Blok"
+
+#: openlucius_support/openlucius_support.views_default.inc:166;308
+msgid "more"
+msgstr "meer"
+
+#: openlucius_support/openlucius_support.views_default.inc:167
+msgid "Page"
+msgstr "Pagina"
+
+#: openlucius_support/openlucius_support.views_default.inc:299
+msgid "Actie nodig"
+msgstr ""
+
+#: openlucius_support/openlucius_support.views_default.inc:306
+msgid "field_shared_group_reference"
+msgstr ""
+
+#: openlucius_support/openlucius_support.module:49
+msgid "View open invoices page"
+msgstr ""
+
+#: openlucius_support/openlucius_support.module:50
+msgid "View the invoices page containing all open invoices"
+msgstr "Bekijk de facturen pagina met alle open facturen"
+
+#: openlucius_support/openlucius_support.module:86
+msgid "Inline todo configuration"
+msgstr "Inline todo configuratie"
+
+#: openlucius_support/openlucius_support.module:92
+msgid "Select the default status for each role. If the user is able to see the form this setting can be overriden."
+msgstr "Select de standaard status voor elke rol. Als de gebruiker het recht heeft om dit formulier te zien kan dit worden overschreven"
+
+#: openlucius_support/openlucius_support.module:95
+msgid "Make sure to only select each role once!"
+msgstr "Wees zeker dat iedere rol maar een keer geselecteerd wordt"
+
+#: openlucius_support/openlucius_support.module:203 openlucius_support/includes/openlucius_support.inc:14
+msgid "I agree, close this todo"
+msgstr "Akkoord, Todo afsluiten"
+
+#: openlucius_support/openlucius_support.module:266
+msgid "The date is required"
+msgstr "De datum is verplicht"
+
+#: openlucius_support/openlucius_support.module:339
+msgid "Show users from the following roles in the filter"
+msgstr "Toon gebruikers uit de volgende rollen in de filter"
+
+#: openlucius_support/openlucius_support.module:31
+msgid "Support configuration"
+msgstr "Support configuratie"
+
+#: openlucius_support/openlucius_support.module:32
+msgid "Configure the support for Openlucius."
+msgstr "Configureer de ondersteuning voor OpenLucius"
+
+#: openlucius_support/openlucius_support.info:0;0
+msgid "OpenLucius Support"
+msgstr ""
+
+#: openlucius_support/openlucius_support.info:0
+msgid "Facilitates custom code for support.openlucius.nl"
+msgstr "Faciliteert aangepaste code voor support.openlucius.nl"
+
+#: openlucius_support/includes/openlucius_support.inc:12;15
+msgid "The comment to be posted when the todo becomes closed"
+msgstr "De reactie die geplaatst wordt wanneer de todo gesloten wordt."
+

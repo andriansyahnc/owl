@@ -1,0 +1,19 @@
+name = OpenLucius Core
+description = Facilitates OpenLucius core functions
+core = 7.x
+package = OpenLucius
+dependencies[] = views
+dependencies[] = filter
+files[] = openlucius_core_group_access_plugin.inc
+files[] = openlucius_core_ical_feed_access_plugin.inc
+
+scripts[] = 'js/ol_forms.js'
+scripts[] = 'js/ol_add_todo.js'
+scripts[] = 'js/openlucius_core.js'
+
+; Information added by Drupal.org packaging script on 2017-01-11
+version = "7.x-1.7"
+core = "7.x"
+project = "openlucius"
+datestamp = "1484151828"
+

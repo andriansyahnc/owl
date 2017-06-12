@@ -1,0 +1,422 @@
+<?php
+/**
+ * @file
+ * This file contains the required methods / updates for the core install.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function openlucius_core_install() {
+
+  // Install the node reference schema.
+  drupal_install_schema('openlucius_core_node_references');
+
+  // Install bookmarks schema.
+  drupal_install_schema('openlucius_core_bookmarks');
+
+  // Enable fancytree for document navigation.
+  variable_set('openlucius_core_fancytree_documents', 1);
+  variable_set('openlucius_core_enable_teams', 0);
+
+  // Enable search_autocomplete by default.
+  module_enable(array('search_autocomplete'));
+
+  // Run update on install for default values.
+  openlucius_core_update_7015();
+}
+
+/**
+ * Adds hashes to existing users.
+ */
+function openlucius_core_update_7000() {
+  $users = db_select('users', 'u')
+    ->fields('u', array('uid'))
+    ->condition('uid', array(0, 1), 'NOT IN')
+    ->condition('status', 1, '=')
+    ->execute()
+    ->fetchAllKeyed(0, 0);
+
+  if (!empty($users)) {
+    foreach (array_keys($users) as $uid) {
+      $user = user_load($uid);
+      user_save($user);
+    }
+  }
+}
+
+/**
+ * Create a table for node references.
+ */
+function openlucius_core_update_7001() {
+  // Check if table exists, if not install the schema.
+  if (db_table_exists('openlucius_core_node_references') == FALSE) {
+    drupal_install_schema('openlucius_core_node_references');
+  }
+}
+
+/**
+ * Schema for openlucius core node references.
+ */
+function openlucius_core_node_references_schema() {
+
+  // Create a new database table schema.
+  $schema['openlucius_core_node_references'] = array(
+    'description' => 'The base table for the openlucius core node references.',
+    'fields'      => array(
+      'id'              => array(
+        'description' => 'The primary identifier for a node reference.',
+        'type'        => 'serial',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+      ),
+      'rid'             => array(
+        'description' => 'The relation id for a node reference.',
+        'type'        => 'int',
+      ),
+      'type'            => array(
+        'description' => 'The type of reference, node or comment.',
+        'type'        => 'varchar',
+        'length'      => '255',
+        'not null'    => TRUE,
+      ),
+      'node_references' => array(
+        'description' => 'The serialized string of all node references to this node.',
+        'type'        => 'text',
+        'not null'    => TRUE,
+      ),
+    ),
+    'primary key' => array(
+      'id',
+    ),
+    'unique keys' => array(
+      'id' => array(
+        'id',
+      ),
+    ),
+  );
+
+  // Return the schema.
+  return $schema;
+}
+
+/**
+ * Let everyone receive email per default.
+ */
+function openlucius_core_update_7002() {
+  $result = db_select('users', 'u')
+    ->fields('u', array('uid'))
+    ->condition('uid', array(0, 1), 'NOT IN')
+    ->condition('status', 1, '=')
+    ->execute()
+    ->fetchCol();
+
+  if (!empty($result)) {
+    // Load the users.
+    $users = user_load_multiple($result);
+    foreach ($users as $user) {
+      $user->field_user_notify_mail[LANGUAGE_NONE][0]['value'] = 1;
+      user_save($user);
+    }
+  }
+}
+
+/**
+ * Load and save all users to change the hash.
+ */
+function openlucius_core_update_7004() {
+  $users = db_select('users', 'u')
+    ->fields('u', array('uid'))
+    ->condition('uid', array(0, 1), 'NOT IN')
+    ->condition('status', 1, '=')
+    ->execute()
+    ->fetchAllKeyed(0, 0);
+
+  if (!empty($users)) {
+    // Load the users.
+    $users = user_load_multiple($users);
+    foreach ($users as $user) {
+      user_save($user);
+    }
+  }
+}
+
+/**
+ * Schema for openlucius core bookmarks.
+ */
+function openlucius_core_bookmarks_schema() {
+
+  // Create a new database table schema.
+  $schema['openlucius_core_bookmarks'] = array(
+    'description' => 'The base table for the openlucius core bookmarks.',
+    'fields'      => array(
+      'id'     => array(
+        'description' => 'The primary identifier for a bookmark.',
+        'type'        => 'serial',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+      ),
+      'uid'    => array(
+        'description' => 'The {users}.uid relation for a bookmark',
+        'type'        => 'int',
+        'not null'    => TRUE,
+      ),
+      'status' => array(
+        'description' => 'The status of the bookmark.',
+        'type'        => 'int',
+        'not null'    => TRUE,
+      ),
+    ),
+    'primary key' => array(
+      'id',
+    ),
+    'unique keys' => array(
+      'id'  => array(
+        'id',
+      ),
+      'uid' => array(
+        'uid',
+      ),
+    ),
+  );
+
+  // Return the schema.
+  return $schema;
+}
+
+/**
+ * Create a table to keep status of who bookmarked OpenLucius.
+ */
+function openlucius_core_update_7005() {
+
+  // Check if table exists, if not install the schema.
+  if (db_table_exists('openlucius_core_bookmarks') == FALSE) {
+    drupal_install_schema('openlucius_core_bookmarks');
+  }
+}
+
+/**
+ * Enable fancytree documents navigation.
+ */
+function openlucius_core_update_7006() {
+  variable_set('openlucius_core_fancytree_documents', 1);
+}
+
+/**
+ * Remove everyone link.
+ */
+function openlucius_core_update_7008() {
+
+  // Fetch the menu item.
+  $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path AND menu_name = :menu_name LIMIT 0, 1", array(
+    ':link_path' => 'all-users',
+    'menu_name'  => 'user-menu',
+  ))->fetchObject();
+
+  // Check for the result.
+  if (!empty($result)) {
+
+    // Remove it.
+    menu_link_delete($result->mlid);
+  }
+}
+
+/**
+ * Remove user calendar link.
+ */
+function openlucius_core_update_7009() {
+
+  // Fetch the menu item.
+  $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path AND menu_name = :menu_name LIMIT 0, 1", array(
+    ':link_path' => 'user-calendar/month',
+    ':menu_name' => 'user-menu',
+  ))->fetchObject();
+
+  // Check for the result.
+  if (!empty($result)) {
+
+    // Remove it.
+    menu_link_delete($result->mlid);
+  }
+}
+
+/**
+ * Remove all-todo-lists link.
+ */
+function openlucius_core_update_7010() {
+
+  // Fetch the menu item.
+  $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path AND menu_name = :menu_name LIMIT 0, 1", array(
+    ':link_path' => 'all-todo-lists',
+    ':menu_name' => 'user-menu',
+  ))->fetchObject();
+
+  // Check for the result.
+  if (!empty($result)) {
+
+    // Remove it.
+    menu_link_delete($result->mlid);
+  }
+}
+
+/**
+ * Update all group order settings for todos to become tasks.
+ */
+function openlucius_core_update_7011() {
+
+  // Get all order settings and update the todos to become tasks.
+  $settings = variable_get('openlucius_core_group_settings_order', array());
+
+  // Check all settings.
+  if (!empty($settings)) {
+
+    // Loop through the settings.
+    foreach ($settings as &$values) {
+
+      // Loop through the values.
+      foreach ($values as &$name) {
+
+        // Check for the name.
+        if ($name == 'todos') {
+
+          // Change the name.
+          $name = 'tasks';
+        }
+      }
+    }
+
+    // Save the new settings.
+    variable_set('openlucius_core_group_settings_order', $settings);
+  }
+}
+
+/**
+ * Remove old calendar link.
+ */
+function openlucius_core_update_7012() {
+
+  // Fetch the menu item.
+  $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path AND menu_name = :menu_name LIMIT 0, 1", array(
+    ':link_path' => 'all-calendar/month',
+    ':menu_name' => 'main-menu',
+  ))->fetchObject();
+
+  // Check for the result.
+  if (!empty($result)) {
+
+    // Remove it.
+    menu_link_delete($result->mlid);
+  }
+}
+
+/**
+ * Remove old text documents link.
+ */
+function openlucius_core_update_7013() {
+  // Fetch the menu item.
+  $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path AND menu_name = :menu_name LIMIT 0, 1", array(
+    ':link_path' => 'all-text-documents',
+    'menu_name'  => 'main-menu',
+  ))->fetchObject();
+
+  // Check for the result.
+  if (!empty($result)) {
+
+    // Remove it.
+    menu_link_delete($result->mlid);
+  }
+}
+
+/**
+ * Update the group settings todos to tasks as well.
+ */
+function openlucius_core_update_7014() {
+
+  // Get all order settings and update the todos to become tasks.
+  $settings = variable_get('openlucius_core_group_settings', array());
+
+  // Check all settings.
+  if (!empty($settings)) {
+
+    // Loop through the settings.
+    foreach ($settings as $key => &$values) {
+
+      // Loop through the values.
+      foreach ($values as $key2 => &$name) {
+
+        // Check for the name.
+        if ($key2 == 'todos') {
+
+          // Change the name.
+          $name = 'tasks';
+        }
+      }
+
+      // Flip the array.
+      $settings[$key] = array_flip($settings[$key]);
+
+      // Change the key as well.
+      $settings[$key]['tasks'] = 'tasks';
+
+      // Flip the array back.
+      $settings[$key] = array_flip($settings[$key]);
+    }
+
+    // Save the new settings.
+    variable_set('openlucius_core_group_settings', $settings);
+  }
+}
+
+/**
+ * Fetch buttons and enable them by default.
+ */
+function openlucius_core_update_7015() {
+  $default_buttons = openlucius_core_default_group_header_buttons();
+
+  foreach ($default_buttons as $key => $button_settings) {
+    variable_set('openlucius_core_' . $key . '_enabled', 1);
+    variable_set('openlucius_core_' . $key . '_weight', $button_settings['weight']);
+  }
+}
+
+/**
+ * Unset activity settings as they no longer exists.
+ */
+function openlucius_core_update_7016() {
+  // Get all order settings and update the todos to become tasks.
+  $settings = variable_get('openlucius_core_group_settings', array());
+  $order = variable_get('openlucius_core_group_settings_order', array());
+
+  // Check all settings.
+  if (!empty($settings)) {
+
+    // Loop through the settings.
+    foreach ($settings as &$values) {
+      if (isset($values['activity'])) {
+        unset($values['activity']);
+      }
+    }
+
+    // Save the new settings.
+    variable_set('openlucius_core_group_settings', $settings);
+  }
+
+  // Check if we have stored orders.
+  if (!empty($order)) {
+
+    // Loop through order items.
+    foreach ($order as &$order_item) {
+
+      // Loop through items.
+      foreach ($order_item as $weight => $order_app) {
+
+        // Unset activity.
+        if ($order_app == 'activity') {
+          unset($order_item[$weight]);
+        }
+      }
+    }
+  }
+
+  variable_set('openlucius_core_group_settings_order', $order);
+}

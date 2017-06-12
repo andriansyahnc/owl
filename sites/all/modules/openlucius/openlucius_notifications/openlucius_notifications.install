@@ -1,0 +1,266 @@
+<?php
+/**
+ * @file
+ * This file contains the required methods / updates for the install.
+ */
+
+/**
+ * Adds table to keep track of who has been notified.
+ */
+function openlucius_notifications_update_7000() {
+
+  // Check if table exists, if not install the schema.
+  if (db_table_exists('openlucius_notifications') == FALSE) {
+    drupal_install_schema('openlucius_notifications');
+  }
+}
+
+/**
+ * Fixes users field size so it can store more users.
+ */
+function openlucius_notifications_update_7001() {
+
+  // Check if table exists, if not install the schema.
+  if (db_table_exists('openlucius_notifications') == FALSE) {
+    drupal_install_schema('openlucius_notifications');
+  }
+  else {
+
+    // New field spec.
+    $long_text = array(
+      'type'     => 'text',
+      'size'     => 'big',
+      'not null' => FALSE,
+    );
+
+    // Change the old field to the new specifications.
+    db_change_field('openlucius_notifications', 'users', 'users', $long_text);
+  }
+}
+
+/**
+ * Adds the notification center table for the notifications center.
+ */
+function openlucius_notifications_update_7003() {
+
+  // Check if the table exists.
+  if (db_table_exists('openlucius_notifications_notification') == FALSE) {
+
+    // Fetch module schema.
+    $schema = openlucius_notifications_schema();
+
+    // Create table.
+    db_create_table('openlucius_notifications_notification', $schema['openlucius_notifications_notification']);
+  }
+}
+
+/**
+ * Adds the direct messages table for the direct messages functionality.
+ */
+function openlucius_notifications_update_7004() {
+
+  // Check if the table exists.
+  if (db_table_exists('openlucius_notifications_direct_messages') == FALSE) {
+
+    // Fetch module schema.
+    $schema = openlucius_notifications_schema();
+
+    // Create table.
+    db_create_table('openlucius_notifications_direct_messages', $schema['openlucius_notifications_direct_messages']);
+  }
+}
+
+/**
+ * Fixes the table index as the id is not unique.
+ *
+ * A node and a comment can have the same id.
+ */
+function openlucius_notifications_update_7005() {
+
+  // Check if the nid field does not exist.
+  if (!db_field_exists('openlucius_notifications', 'nid')) {
+
+    // Drop primary.
+    db_drop_primary_key('openlucius_notifications');
+
+    // Change the old field to integer.
+    db_change_field('openlucius_notifications', 'id', 'id', array(
+      'type'     => 'int',
+      'not null' => TRUE,
+    ));
+
+    // Add the new field.
+    db_add_field('openlucius_notifications', 'nid', array(
+      'type'     => 'serial',
+      'not null' => TRUE,
+    ), array(
+      'primary key' => array('nid'),
+      'unique keys' => array(
+        'nid' => array(
+          'nid',
+        ),
+      ),
+    ));
+
+    // Make certain it is no longer unique.
+    db_drop_unique_key('openlucius_notifications', 'id');
+
+    // Drop index.
+    db_drop_index('openlucius_notifications', 'id');
+  }
+}
+
+/**
+ * Schema for openlucius notifications.
+ */
+function openlucius_notifications_schema() {
+
+  // Create a new database table schema.
+  $schema['openlucius_notifications'] = array(
+    'description' => 'The base table for the openlucius notifications module.',
+    'fields'      => array(
+      'nid'   => array(
+        'description' => 'The primary identifier for a notification.',
+        'type'        => 'serial',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+      ),
+      'id'    => array(
+        'description' => 'The entity this notification is about.',
+        'type'        => 'int',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+      ),
+      'type'  => array(
+        'description' => 'The type of notification, node or comment.',
+        'type'        => 'varchar',
+        'length'      => '255',
+        'not null'    => TRUE,
+      ),
+      'users' => array(
+        'description' => 'The serialized string of users that have been notified.',
+        'type'        => 'text',
+        'size'        => 'big',
+        'not null'    => FALSE,
+      ),
+    ),
+    'primary key' => array(
+      'nid',
+    ),
+    'unique keys' => array(
+      'nid' => array(
+        'nid',
+      ),
+    ),
+  );
+
+  // The schema for the notifications for the notification center.
+  $schema['openlucius_notifications_notification'] = array(
+    'description' => 'The base table for the notification center',
+    'fields'      => array(
+      'nid'       => array(
+        'description' => 'Primary key of the notification entity',
+        'type'        => 'serial',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+      ),
+      'uid'       => array(
+        'description' => 'The user who reacted on the entity.',
+        'type'        => 'int',
+        'not null'    => TRUE,
+      ),
+      'tuid'      => array(
+        'description' => 'The target user who should know this has occurred.',
+        'type'        => 'int',
+        'not null'    => TRUE,
+      ),
+      'eid'       => array(
+        'description' => 'The entity which was reacted on.',
+        'type'        => 'int',
+        'not null'    => TRUE,
+      ),
+      'ntype'     => array(
+        'description' => 'The type of entity which was reacted on.',
+        'type'        => 'varchar',
+        'length'      => '255',
+        'not null'    => TRUE,
+      ),
+      'timestamp' => array(
+        'description' => 'The time this notification was constructed.',
+        'type'        => 'int',
+        'not null'    => TRUE,
+      ),
+      'nread'     => array(
+        'description' => 'Whether this notification was seen or not.',
+        'type'        => 'int',
+        'not null'    => TRUE,
+      ),
+      'seen'      => array(
+        'description' => 'Whether this notification was read or not.',
+        'type'        => 'int',
+        'not null'    => TRUE,
+      ),
+    ),
+    'primary key' => array('nid'),
+  );
+
+  // The schema for the direct messages.
+  $schema['openlucius_notifications_direct_messages'] = array(
+    'description' => 'The base table for the direct messages',
+    'fields'      => array(
+      'did'       => array(
+        'description' => 'Primary key of the direct message entity',
+        'type'        => 'serial',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+      ),
+      'uid'       => array(
+        'description' => 'The user who sent the message.',
+        'type'        => 'int',
+        'not null'    => TRUE,
+      ),
+      'tuid'      => array(
+        'description' => 'The target user who should know this has occurred.',
+        'type'        => 'int',
+        'not null'    => TRUE,
+      ),
+      'message'   => array(
+        'description' => 'The message sent to the other user.',
+        'type'        => 'text',
+        'not null'    => TRUE,
+      ),
+      'timestamp' => array(
+        'description' => 'The time this message was constructed.',
+        'type'        => 'int',
+        'not null'    => TRUE,
+      ),
+      'nread'     => array(
+        'description' => 'Whether this message was seen or not.',
+        'type'        => 'int',
+        'not null'    => TRUE,
+      ),
+    ),
+    'primary key' => array('did'),
+  );
+
+  // Return the schema.
+  return $schema;
+}
+
+/**
+ * Add the seen column to mark items seen when you click the globe.
+ */
+function openlucius_notifications_update_7006() {
+
+  // Check if the nid field does not exist.
+  if (!db_field_exists('openlucius_notifications_notification', 'seen')) {
+    $spec = array(
+      'type'        => 'int',
+      'description' => 'Whether this notification was seen or not.',
+      'length'      => 11,
+      'default'     => 0,
+      'not null'    => TRUE,
+    );
+    db_add_field('openlucius_notifications_notification', 'seen', $spec);
+  }
+}
