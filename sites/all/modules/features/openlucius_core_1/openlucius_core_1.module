@@ -1,0 +1,26 @@
+<?php
+/**
+ * @file
+ * Code for the OpenLucius Core feature.
+ */
+
+include_once 'openlucius_core_1.features.inc';
+
+/**
+ * Implements hook_post_features_revert().
+ */
+function openlucius_core_1_post_features_revert($component) {
+  openlucius_core_1_wysiwyg_feature_post_revert_trigger($component);
+}
+
+/**
+ * Custom hook for triggering on feature revert.
+ */
+function openlucius_core_1_wysiwyg_feature_post_revert_trigger($component) {
+  if ($component === 'wysiwyg' &&
+    count(module_implements('openlucius_core_1_wysiwyg_feature_post_revert_trigger')) > 0) {
+
+    // Call modules that implement the hook.
+    module_invoke_all('openlucius_core_1_wysiwyg_feature_post_revert_trigger');
+  }
+}

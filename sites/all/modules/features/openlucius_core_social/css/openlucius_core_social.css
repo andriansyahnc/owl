@@ -1,0 +1,498 @@
+/* Status update form */
+#status-updates #openlucius-core-social-post-status-update-form {
+  border: 1px solid rgba(194, 194, 194, .75);
+  border-radius: 2px;
+  margin: 0 0 .75em;
+}
+#status-updates #openlucius-core-social-post-status-update-form .form-type-textarea {
+  background-color: #fff;
+  position: relative;
+  margin: 0;
+}
+#status-updates #openlucius-core-social-post-status-update-form .form-textarea-wrapper,
+#status-updates #openlucius-core-social-post-status-update-form .alert {
+  padding-top: 15px;
+}
+#status-updates #openlucius-core-social-post-status-update-form .alert {
+  margin-bottom: 0;
+}
+#status-updates #openlucius-core-social-post-status-update-form textarea {
+  overflow: hidden;
+  word-wrap: break-word;
+  resize: none;
+  height: 75px;
+  border: none;
+  display: block;
+  margin-left: 15px;
+  min-height: 75px;
+  outline: 0;
+  padding: 0;
+  width: 95%;
+  box-shadow: none;
+  transition: none;
+  overflow-y: auto;
+}
+#status-updates #openlucius-core-social-post-status-update-form .grippie {
+  display: none;
+}
+#status-updates #openlucius-core-social-post-status-update-form .status-update-buttons {
+  background-color: #f4f4f4;
+  height: 34px;
+}
+#status-updates #openlucius-core-social-post-status-update-form .upload-files-button-wrapper {
+  background-color: #f4f4f4;
+  border: none;
+  color: #252729;
+  display: inline-block;
+  /*font-family: "Proxima N W01 Reg",sans-serif;*/
+  font-size: 12px;
+  /*padding: 9px 21px 7px 22px;*/
+  padding: 10px 21px 7px 11px;
+  height: 34px;
+}
+#status-updates #openlucius-core-social-post-status-update-form .upload-files-button-wrapper:hover {
+  cursor: pointer;
+}
+#status-updates #openlucius-core-social-post-status-update-form .upload-files-button-wrapper .camera-icon {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAdCAYAAADPa766AAAAAXNSR0IArs4c6QAAAzlJREFUSA3VVk1ME1EQntldKggYI5gYOfgXypZaKGhUotF4MHrh4IGjejH+nYgaTfTkwUQ9kXAwJl70ivHiAWNMjJGk0aC2kHWXEn84YDRwIKBCf3af81677aYt7S6BAC/pvnkz8775dt7M6yK4HIFA4FDagohLd6fbq/Ex/aRTUUqWSilXQ6e4Daooykw6lZ5265/3QyMvrwMJ/S2BqbXAU2EAjWuCiIPELCKMO9YrLjIGzRRkEw+UL1bESNz4cmrFozsCNKutL4Ex0drrr30dL5ITg8HgtqQJxxHYdgCclUD6ZBijH3MOWUFVDzRY8OeiWCL7ENf114U++aMptJRZt7W11S4kUg+SaesyuSEVPA0GJlhA6f4sg3yOCI0KNT2sqvmtLMnuijWDPpqLiHg+GlVt9y8k0iMU/AoBogB3PhjrsMAc9qvBC051JdkTkZ6eHtmC1FMGbDcHJhaTiHhbRrkbEC+RLN6UMeajDPWraijE/Rrq6iZQxqPi51P6ua5weDqa2KjWS0EOchAEHNpY4+uORqMzDtBHLYHgTcuy7nEyJppPyNYZiUTmaX7n8CsSPWWEyuB8FmFBQt+ZAhLCNKZr9+3MUGt2UFb2FUUtoXBNpKurq4aOROUYlI1hw4j+KIEnVFQ/z2ybBVanLZebXROZm5sTN2AGDCfLgcogOezMsW/xXa6J0IfRNKU8lYFi7YtDApjMzNkZ4M9yvrbNNZGBgQGTNr3lG/kR+QN7T9sgzjkcDm+mbuL3Cx/MJ8ObjFj+6ZqIgJHxDs2WkJn1uJCMqoZ3/ptPvqAaaeI+ROihpmm/hH+Fh6f2jWvakF9t7aPWvEq/LcDM5/6WVvoCwxi9fJPJEvspXjWPSQX9rXqDcqNC/JzZExG+a8+uHbe+fp+gzmS9tJQynZTpJhuVaum9BFVnR0Zif21dpdnb0RDa4OBggj4XrqEiHeP3Rb6ARRYMWl9vDwUPG0YsXim40+45I/Zmfkwkn+DXvq7rjfX19bPZGxSIqO3mel4yETtCtpt+2+ulzjki9F9e6w+FxM25VDDP+5JmLXWYGDkiVHRHIJnWPYMt0wbPxbpMcYtgeEb4F9Oqj/++SgTWt2e8XgAAAABJRU5ErkJggg==);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  -moz-background-size: 17px auto;
+  -o-background-size: 17px auto;
+  -webkit-background-size: 17px auto;
+  background-size: 17px 14px;
+  display: inline-block;
+  height: 14px;
+  margin-right: 6px;
+  vertical-align: top;
+  width: 17px;
+}
+#status-updates #openlucius-core-social-post-status-update-form .add-status-update-wrapper {
+  /*font-family: "Proxima N W01 Reg",sans-serif;*/
+  background: #e0e0e0;
+  border: none;
+  color: #c2c2c2;
+  cursor: default;
+  float: right;
+  font-size: 12px;
+  height: 34px;
+  letter-spacing: 2px;
+  padding: 10px 15px;
+  text-align: center;
+}
+#status-updates #openlucius-core-social-post-status-update-form .add-status-update-wrapper button {
+  padding: initial;
+  background: initial;
+  border: initial;
+  color: initial;
+  font-weight: initial;
+  font-size: 12px;
+  display: inline;
+  vertical-align: baseline;
+}
+#openlucius-core-social-post-status-update-form .form-type-file {
+  visibility: hidden;
+  position: absolute;
+  top: -115px;
+}
+.node-type-ol-text-document .like-this-node {
+  margin-top: 30px;
+}
+.like-this-node,
+.like-this-comment {
+  clear: left;
+  padding-top: 15px;
+  width: 100%;
+  display: inline-block;
+}
+.content .field-name-body + .like-this-node,
+.content .field-name-field-shared-files + .like-this-node {
+  padding-top: 0px;
+}
+.status-update-like .flag-flagged-message,
+.like-this-node .flag-flagged-message,
+.like-this-comment .flag-flagged-message {
+  position: relative;
+  top: 0;
+  color: #43ac6a;
+}
+.status-update-like .flag-unflagged-message,
+.like-this-node .flag-unflagged-message,
+.like-this-comment .flag-unflagged-message {
+  position: relative;
+  top: 0;
+  color: #f04124;
+}
+.status-update-like .flag-flagged-message,
+.status-update-like .flag-unflagged-message {
+  top: 0;
+}
+.main-container .row .region-content #status-updates {
+  display: none;
+}
+.region-content #status-updates.active {
+  display: block !important;
+}
+#status-updates .content #openlucius-core-social-post-status-update-form {
+  margin-top: 30px;
+}
+#status-updates .timeline.status-update {
+  margin-top: 30px;
+}
+/* ------------------------------------------------------ */
+#status-updates .timeline:before {
+  top: inherit;
+  bottom: inherit;
+  position: inherit;
+  content: inherit;
+  width: inherit;
+  background-color: inherit;
+  left: inherit;
+  margin-right: inherit;
+}
+li.status-update {
+  border: 1px solid #d4d4d4;
+  border-radius: 2px;
+  padding: 20px;
+}
+#status-updates li.status-update a:hover h5,
+#status-updates li.status-update a:hover .text-muted,
+#status-updates li.status-update a:hover .glyphicon,
+#status-updates li.status-update a:hover .comment_count {
+  color: #ff8a8a;
+}
+#status-updates li.status-update a:hover blockquote,
+#status-updates li.status-update a:hover blockquote li {
+  color: #000;
+}
+#status-updates li.status-update a:hover {
+  text-decoration: none;
+}
+#status-updates li.status-update,
+#status-updates li.status-update img {
+  max-width: 100%;
+}
+/* ------------------------------------------------------ */
+.social-heading,
+.social-heading-profile {
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding: 30px 0;
+}
+.social-heading {
+  margin-bottom: -40px;
+  min-height: 197px;
+}
+.social-heading-profile {
+  margin: -20px -20px 40px;
+  position: relative;
+  min-height: 135px;
+}
+.social-heading .logo {
+  position: relative;
+}
+.social-heading .logo,
+.profile_picture {
+  border-radius: 11px;
+  display: inline-block;
+  background-color: #fff;
+}
+.social-heading .logo,
+.profile_picture:not(.no-image) {
+  border: 5px solid #fff;
+}
+.social-heading-profile img,
+.social-heading .logo img {
+  max-width: 137px;
+  border-radius: 8px;
+}
+.social-heading-profile .cover-gradient {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+}
+.profile_picture {
+  max-height: 147px;
+  max-width: 147px;
+  border-width: 5px;
+  z-index: 1;
+  padding: 0;
+  margin: 0 0 0 20px;
+  position: relative;
+}
+.social-heading-profile .profile_picture span.profile_name,
+.social-heading .social-intro {
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 0 3px rgba(0, 0, 0, .4);
+  white-space: nowrap;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: absolute;
+}
+.social-heading-profile .profile_picture span.profile_name {
+  bottom: -9px;
+  left: 160px;
+}
+.social-heading-profile .profile_picture span.profile_name.no-image {
+  left: 0;
+}
+.social-heading .social-intro {
+  bottom: 0;
+  left: calc(100% + 33px);
+}
+#openlucius-core-social-post-status-update-form .progress {
+  display: none;
+  margin-top: 15px;
+}
+/* Status update comments */
+.status-update-actions {
+  margin-top: 15px;
+}
+.status-update-actions .status-update-like {
+  float: left;
+  margin-right: 10px;
+  clear: both;
+}
+.status-update-actions .status-update-comments {
+  line-height: 30px;
+}
+li.status-update a.show-comments {
+  display: block;
+  margin-top: 15px;
+  cursor: pointer;
+}
+li.status-update .comment-container {
+  display: none;
+}
+li.status-update h5.timeline-title {
+  color: #008cba;
+}
+li.status-update .comment-container .comment-wrapper {
+  display: table;
+  width: 100%;
+}
+li.status-update .comment-container .comment-wrapper .comment-user {
+  display: table-cell;
+  width: 40px;
+}
+li.status-update .comment-container .comment-wrapper .comment-body {
+  display: table-cell;
+  width: 500px;
+  vertical-align: top;
+}
+li.status-update .comment-container .comment-items-wrapper {
+  margin-top: 20px;
+  float: left;
+  width: 100%;
+}
+li.status-update .comment-container .comment-items-wrapper #edit-openlucius-core-social-comment-body {
+  width: 100%;
+}
+li.status-update .comment-container .comment-item {
+  margin-bottom: 10px;
+  display: inline-block;
+  width: 100%;
+}
+li.status-update .comment-container .comment-user {
+  float: left;
+}
+li.status-update .comment-container .comment-body .comment-body-username {
+  float: left;
+  margin-right: 5px;
+}
+li.status-update .comment-container .comment-body {
+  font-size: 12px;
+}
+li.status-update .comment-container .comment-user img {
+  margin-right: 10px;
+}
+#openlucius-core-social-comment-on-status-update-form .form-textarea-wrapper {
+  margin-top: 0;
+}
+#openlucius-core-social-comment-on-status-update-form .form-type-textarea label {
+  display: block;
+}
+/* New badge */
+.timeline-heading .comments-unread .glyphicon,
+.timeline-heading .comments-unread .count {
+  color: #ff9797;
+}
+/* Likes on status update */
+.status-update-actions .status-update-likes {
+  float: left;
+  width: 30px;
+  line-height: 30px;
+}
+.frontpage-tabs li .badge {
+  background: rgba(255, 0, 0, .8) !important;
+  color: #fff !important;
+  font-size: 8px !important;
+  font-weight: 400;
+  padding: 2px 4px;
+  min-width: 20px;
+  line-height: 14px;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: none;
+}
+.social-heading-profile,
+.social-heading-profile .profile_picture {
+  position: relative;
+}
+.social-heading-profile .edit-cover-picture,
+.social-heading-profile .profile_picture .edit-profile-picture {
+  position: absolute;
+  right: -2px;
+  top: -2px;
+  opacity: 0;
+}
+.social-heading-profile .edit-btn:hover {
+  cursor: pointer;
+}
+.social-heading-profile:hover .edit-cover-picture,
+.social-heading-profile .profile_picture:hover .edit-profile-picture {
+  opacity: 1;
+}
+.social-heading-profile .edit-cover-picture,
+.social-heading-profile .edit-profile-picture {
+  background-color: #000;
+  border: 1px solid rgba(255, 255, 255, .8);
+  box-sizing: border-box;
+  color: #fff;
+  padding: 6px 12px;
+  transition: opacity .3s cubic-bezier(.175, .885, .32, 1.275), width .3s step-end;
+  overflow: hidden;
+  position: absolute;
+  font-weight: bold;
+}
+.social-heading-profile .edit-cover-picture {
+  box-shadow: 0 0 6px rgba(0, 0, 0, .6);
+  white-space: nowrap;
+  word-wrap: normal;
+  border-radius: 2px;
+  top: 10px;
+  right: 10px;
+}
+#block-openlucius-core-social-social-profile-header .form-edit-profile-picture,
+#edit-openlucius-core-social-avatar-ajax-wrapper {
+  visibility: hidden;
+  position: absolute;
+  top: -100px;
+}
+.social-heading-profile .profile_picture span.profile_name.no-image {
+  margin-bottom: -75px;
+}
+.social-heading-profile .glyphicon-pencil {
+  font-size: 25px;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+}
+/* Who liked this */
+.who-liked {
+  padding: 10px 0 0 10px;
+  margin-left: 10px;
+  font-size: 10px;
+}
+.who-liked .show-less-likes,
+.who-liked .show-more-likes {
+  cursor: pointer;
+}
+.who-liked .last,
+.who-liked .show-less-likes,
+.who-liked.shown .show-more-likes {
+  display: none;
+}
+.who-liked.shown .last,
+.who-liked.shown .show-less-likes {
+  display: inline-block;
+}
+.who-liked.shown .first {
+  margin-right: -4px;
+}
+.status-update-actions .who-liked {
+  margin: 10px 0 0 -11px;
+}
+/* Status updates actions */
+.status-update .actions-wrapper {
+  float: right;
+}
+.status-update .glyphicon-chevron-down:hover {
+  color: #000;
+  cursor: pointer;
+}
+.status-update .actions-inner {
+  display: none;
+  position: absolute;
+  top: 45px;
+  right: 10px;
+  width: 250px;
+  text-align: left;
+  color: #1d2129;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 3px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+}
+.status-update .actions-wrapper.shown .actions-inner {
+  display: block;
+  z-index: 5;
+}
+.status-update .edit-link-wrapper,
+.status-update .delete-link-wrapper {
+  position: relative;
+  padding: 5px;
+}
+.status-update i.edit-link-icon,
+.status-update i.delete-link-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+  color: #000;
+}
+.status-update .edit-link-wrapper:hover,
+.status-update .delete-link-wrapper:hover {
+  background-color: #4285f4;
+}
+.status-update .edit-link-wrapper:hover .edit-link-icon,
+.status-update .edit-link-wrapper:hover .edit-link-inner,
+.status-update .edit-link-wrapper:hover .edit-link-text,
+.status-update .edit-link-wrapper:hover .edit-link-description,
+.status-update .delete-link-wrapper:hover .delete-link-icon,
+.status-update .delete-link-wrapper:hover .delete-link-inner,
+.status-update .delete-link-wrapper:hover .delete-link-text,
+.status-update .delete-link-wrapper:hover .delete-link-description {
+  color: #fff;
+}
+.status-update a.edit-link-inner,
+.status-update a.delete-link-inner {
+  padding: 3px 0 0 25px;
+  display: block;
+}
+.status-update .edit-link-text,
+.status-update .delete-link-text {
+  color: #1d2129;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 18px;
+  white-space: normal;
+}
+.status-update .edit-link-description,
+.status-update .delete-link-description {
+  color: #90949c;
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 20px;
+  white-space: normal;
+  padding: 3px 0;
+}

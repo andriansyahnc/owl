@@ -1,0 +1,1820 @@
+<?php
+/**
+ * @file
+ * Code for the Openlucius Core Social feature.
+ */
+
+include_once 'openlucius_core_social.features.inc';
+
+// Define openlucius status updates limit.
+define('OPENLUCIUS_CORE_SOCIAL_STATUS_UPDATES_LIMIT', 10);
+
+// Define openlucius recent stuff limit.
+define('OPENLUCIUS_CORE_SOCIAL_STATUS_UPDATE_TIMEOUT', 60);
+
+// Define openlucius recent stuff limit.
+define('OPENLUCIUS_CORE_SOCIAL_STATUS_UPDATE_WINDOW', 60);
+
+// Define flags.
+define('OPENLUCIUS_CORE_SOCIAL_LIKE_NODE_FLAG', 'openlucius_core_social_like_node');
+define('OPENLUCIUS_CORE_SOCIAL_LIKE_COMMENT_FLAG', 'openlucius_core_social_like_comm');
+
+/**
+ * Implements hook_page_build().
+ */
+function openlucius_core_social_page_build(&$page) {
+  global $base_url;
+
+  $item = menu_get_item();
+  $enabled = variable_get('openlucius_core_social_status_updates_enabled', 0);
+  $path_to_module = drupal_get_path('module', 'openlucius_core_social');
+
+  // Only add the javascript if the status updates are enabled.
+  if (drupal_is_front_page() && $enabled == 1) {
+    drupal_add_js(array(
+      'update_timeout'       => OPENLUCIUS_CORE_SOCIAL_STATUS_UPDATE_TIMEOUT,
+      'base_url'             => $base_url,
+      'uploaded_string'      => t('has been attached and will be uploaded when you post the update.'),
+      'not_supported_string' => t('Upload progress is not supported on your browser'),
+    ), 'setting');
+
+    // Add social js.
+    drupal_add_js($path_to_module . '/js/openlucius_core_social.js');
+  }
+
+  drupal_add_js($path_to_module . '/js/openlucius_core_social.js');
+
+  // Add javascript for user dashboard.
+  if (!empty($item['path']) && $item['path'] == 'user/dashboard') {
+    drupal_add_js($path_to_module . '/js/openlucius_core_social_profile.js');
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function openlucius_core_social_permission() {
+  return array(
+    'post status updates'                        => array(
+      'title'       => t('Post status updates'),
+      'description' => t('Permission to post status updates'),
+    ),
+    'view status updates'                        => array(
+      'title'       => t('View status updates'),
+      'description' => t('Permission to view status updates'),
+    ),
+    'administer openlucius social configuration' => array(
+      'title'       => t('Offer access to OpenLucius Core Social configuration'),
+      'description' => t('Permission to check whether the user can access the OpenLucius Core Social configuration'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function openlucius_core_social_menu() {
+
+  // Initialize items.
+  $items = array();
+
+  $items['status-updates'] = array(
+    'page callback'    => 'openlucius_core_social_get_status_updates',
+    'type'             => MENU_NORMAL_ITEM,
+    'access arguments' => array('access content'),
+  );
+  $items['latest-status-update'] = array(
+    'page callback'    => 'openlucius_core_social_get_latest_status_update',
+    'type'             => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+  );
+  $items['flag-count'] = array(
+    'page callback'    => 'openlucius_core_social_get_flag_count',
+    'type'             => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+  );
+  $items['admin/config/openlucius/social'] = array(
+    'title'            => 'Social configuration',
+    'description'      => 'Configure Openlucius Core Social.',
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('openlucius_core_social_config_form'),
+    'access arguments' => array('administer openlucius social configuration'),
+    'type'             => MENU_LOCAL_TASK,
+    'tab_parent'       => 'admin/config/openlucius',
+  );
+  $items['status-update-file-upload'] = array(
+    'page callback'    => 'openlucius_core_social_process_file_upload',
+    'type'             => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+  );
+
+  // Return items.
+  return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function openlucius_core_social_block_info() {
+  return array(
+    'social_header'         => array(
+      'info' => t('Social header'),
+    ),
+    'social_profile_header' => array(
+      'info' => t('Social profile header'),
+    ),
+    'social_status_updates' => array(
+      'info' => t('Social status updates'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function openlucius_core_social_block_view($delta = '') {
+
+  // Initialize array.
+  $block = array();
+
+  switch ($delta) {
+    // The social header image.
+    case 'social_header':
+      $block['subject'] = NULL;
+      $block['content'] = openlucius_core_social_get_social_header();
+      break;
+
+    // The profile header image.
+    case 'social_profile_header':
+      $block['subject'] = NULL;
+      $block['content'] = openlucius_core_social_profile_header();
+      $block['weight'] = -100;
+      break;
+
+    // The status updates stream.
+    case 'social_status_updates':
+      $block['subject'] = NULL;
+      $block['content'] = openlucius_core_social_get_status_updates();
+      break;
+  }
+
+  // Return.
+  return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function openlucius_core_social_theme() {
+  return array(
+    'openlucius_core_social_header_block'           => array(
+      'template' => 'templates/openlucius_core_social_header_block',
+    ),
+    'openlucius_core_social_header_profile_block'   => array(
+      'template' => 'templates/openlucius_core_social_header_profile_block',
+    ),
+    'openlucius_core_social_status_update'          => array(
+      'variables' => array('vars' => NULL),
+      'template'  => 'templates/openlucius_core_social_status_update',
+    ),
+    'openlucius_core_social_status_updates'         => array(
+      'variables' => array('vars' => NULL),
+      'template'  => 'templates/openlucius_core_social_status_updates',
+    ),
+    'openlucius_core_social_status_update_comment'  => array(
+      'variables' => array('vars' => NULL),
+      'template'  => 'templates/openlucius_core_social_status_update_comment',
+    ),
+    'openlucius_core_social_status_update_comments' => array(
+      'variables' => array('vars' => NULL),
+      'template'  => 'templates/openlucius_core_social_status_update_comments',
+    ),
+    'openlucius_core_social_likes'                  => array(
+      'variables' => array('vars' => NULL),
+      'template'  => 'templates/openlucius_core_social_likes',
+    ),
+    'openlucius_core_social_liked_block'            => array(
+      'template' => 'templates/openlucius_core_social_liked_block',
+    ),
+  );
+}
+
+/**
+ * Function to get the social header.
+ *
+ * @return string
+ *   Returns the social header content as string.
+ */
+function openlucius_core_social_get_social_header() {
+  // Initialize empty string.
+  $html = "";
+  $logo = variable_get('openlucius_core_social_home_logo', '');
+  if (!empty($logo)) {
+    $image = file_load($logo);
+    $logo = theme('image_style', array(
+      'style_name' => 'ol_logo',
+      'path'       => $image->uri,
+    ));
+  }
+
+  // Fetch background-image.
+  $background = variable_get('openlucius_core_social_home_image', '');
+  if (!empty($background)) {
+    $file = file_load($background);
+    $background = file_create_url($file->uri);
+  }
+  else {
+    return $html;
+  }
+
+  $variables = array(
+    'logo'       => $logo,
+    'background' => $background,
+    'intro'      => variable_get('openlucius_core_social_home_intro', ''),
+  );
+
+  // Allow other modules to alter / add variables.
+  drupal_alter('openlucius_core_social_header_variables', $variables);
+
+  // Render the html.
+  $html = theme('openlucius_core_social_header_block', $variables);
+
+  // Return the themed html or empty string.
+  return $html;
+}
+
+/**
+ * Function to render the Social profile header.
+ *
+ * @return string
+ *   The rendered html or an empty string if nothing was found.
+ *
+ * @throws \Exception
+ */
+function openlucius_core_social_profile_header() {
+
+  global $user;
+
+  // Get the menu item.
+  $menu = menu_get_item();
+
+  if (!empty($menu['path'])) {
+    $variables = array();
+
+    // Switch on the menu path.
+    switch ($menu['path']) {
+
+      // Build the header for the user profile page.
+      case 'user/dashboard':
+
+        // Load the user account.
+        $account = user_load($menu['original_map'][2]);
+
+        // Check if the user has a cover image.
+        if (!empty($account->field_shared_cover_image)) {
+          $variables['background'] = $account->field_shared_cover_image[LANGUAGE_NONE][0]['uri'];
+        }
+
+        // Fetch the username.
+        $variables['text'] = isset($account->display_name) ? $account->display_name : $account->name;
+
+        // Fetch the default profile image.
+        $default_image_path = drupal_get_path('profile', 'openlucius') . '/themes/openlucius/images/avatar.png';
+        $variables['image'] = isset($account->picture->uri) ? $account->picture->uri : $default_image_path;
+
+        // Check for user id to match.
+        if ($account->uid == $user->uid) {
+          $variables['edit_profile_picture_button'] = '<span class="edit-profile-picture"><span class="edit-btn"><i class="glyphicon glyphicon-camera"></i></span></span>';
+          $variables['edit_cover_picture_button'] = '<div class="edit-cover-picture"><span class="edit-btn"><i class="glyphicon glyphicon-camera"></i> ' . t('Change cover image') . '</span></div>';
+
+          // The upload form.
+          $variables['form'] = drupal_get_form('openlucius_core_social_edit_profile_picture_form');
+        }
+
+        break;
+
+      case 'node/%':
+        $node = $menu['page_arguments'][0];
+
+        // Check if the group has a cover image.
+        if (!empty($node->field_shared_cover_image)) {
+          $variables['background'] = $node->field_shared_cover_image[LANGUAGE_NONE][0]['uri'];
+        }
+
+        // Use the slogan as text.
+        if (!empty($node->field_group_slogan)) {
+          $variables['text'] = $node->field_group_slogan[LANGUAGE_NONE][0]['value'];
+        }
+
+        // Use the slogan as text.
+        if (!empty($node->body)) {
+          $variables['description'] = $node->body[LANGUAGE_NONE][0]['value'];
+        }
+
+        // Fetch group logo if any.
+        if (!empty($node->field_group_logo)) {
+          $variables['image'] = $node->field_group_logo[LANGUAGE_NONE][0]['uri'];
+        }
+        break;
+    }
+
+    if (!empty($variables['image']) || !empty($variables['background'])) {
+
+      // Check if we have a background if so create a path to the url.
+      if (isset($variables['background'])) {
+        $variables['background'] = file_create_url($variables['background']);
+      }
+
+      // Check if we have an image to be used as logo or picture.
+      if (isset($variables['image'])) {
+        $variables['image'] = theme('image', array('path' => $variables['image']));
+      }
+
+      // Allow other modules to change the variables.
+      drupal_alter('openlucius_core_social_header_profile', $variables);
+
+      // Theme the block.
+      return theme('openlucius_core_social_header_profile_block', $variables);
+    }
+  }
+
+  // Return empty block.
+  return "";
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function openlucius_core_social_form_openlucius_core_default_configuration_form_alter(&$form, &$form_state, $form_id) {
+
+  // Get the default schema for uploading.
+  $default_schema = file_default_scheme();
+
+  $form['openlucius_core_social_home_logo'] = array(
+    '#title'              => t('Social home logo'),
+    '#description'        => t('Allowed extensions: gif png jpg jpeg'),
+    '#type'               => 'managed_file',
+    '#upload_location'    => $default_schema . '://social_home',
+    '#upload_validators'  => array(
+      'file_validate_extensions' => array('gif png jpg jpeg'),
+    ),
+    '#progress_indicator' => 'bar',
+    '#default_value'      => variable_get('openlucius_core_social_home_logo', ''),
+    '#weight'        => 20,
+  );
+
+  $form['openlucius_core_social_home_image'] = array(
+    '#title'              => t('Social home cover image'),
+    '#description'        => t('Allowed extensions: gif png jpg jpeg'),
+    '#type'               => 'managed_file',
+    '#upload_location'    => $default_schema . '://social_home',
+    '#upload_validators'  => array(
+      'file_validate_extensions' => array('gif png jpg jpeg'),
+    ),
+    '#progress_indicator' => 'bar',
+    '#default_value'      => variable_get('openlucius_core_social_home_image', ''),
+    '#weight'        => 21,
+  );
+
+  $form['openlucius_core_social_home_intro'] = array(
+    '#title'         => t('Social home intro'),
+    '#description'   => t('The intro text for the banner'),
+    '#type'          => 'textfield',
+    '#default_value' => variable_get('openlucius_core_social_home_intro', ''),
+    '#weight'        => 22,
+  );
+
+  // Custom form submit for making the image permanent.
+  $form['#submit'][] = 'openlucius_core_social_configuration_submit';
+}
+
+/**
+ * Form submission handler for openlucius_core_default_configuration_form().
+ */
+function openlucius_core_social_configuration_submit($form, &$form_state) {
+
+  // The form state values.
+  $values = $form_state['values'];
+
+  // The keys containing the images.
+  $keys = array(
+    'openlucius_core_social_home_logo',
+    'openlucius_core_social_home_image',
+  );
+
+  foreach ($keys as $key) {
+    if (!empty($values[$key])) {
+
+      // Load the file.
+      $file = file_load($values[$key]);
+
+      // Change status to permanent.
+      $file->status = FILE_STATUS_PERMANENT;
+
+      // Save.
+      file_save($file);
+
+      // Record that the module is using the file.
+      file_usage_add($file, 'openlucius_core', $key, $values[$key]);
+    }
+  }
+}
+
+/**
+ * Form constructor for the status updates.
+ *
+ * @ingroup forms
+ */
+function openlucius_core_social_post_status_update_form($form, &$form_state) {
+
+  // Initialize the form.
+  $form = array();
+
+  // Add the form-data.
+  $form['#attributes']['enctype'] = 'multipart/form-data';
+
+  // The form container for Ajax wrapper.
+  $form['container'] = array(
+    '#prefix' => '<div id="update-container">',
+    '#suffix' => '</div>',
+  );
+
+  // The body form element.
+  $form['openlucius_core_social_body'] = array(
+    '#type'       => 'textarea',
+    '#required'   => TRUE,
+    '#rows'       => 3,
+    '#attributes' => array(
+      'placeholder' => t('What is happening?'),
+    ),
+  );
+
+  $form['openlucius_core_social']['#prefix'] = '<div class="status-update-buttons">';
+
+  // The photo form element.
+  $form['openlucius_core_social']['openlucius_core_social_photo'] = array(
+    '#type'  => 'file',
+    '#name'  => 'files',
+    '#title' => '',
+  );
+
+  // The 'button' for attaching photos.
+  $form['openlucius_core_social']['openlucius_core_social_button'] = array(
+    '#type'   => 'markup',
+    '#markup' => '<div class="upload-files-button-wrapper"><div class="camera-icon"></div><btn class="upload-files-button">' . t('Attach photo') . '</btn></div>',
+  );
+
+  // The ajax form submit.
+  $form['openlucius_core_social']['submit'] = array(
+    '#type'       => 'submit',
+    '#value'      => t('Post update'),
+    '#attributes' => array(
+      'class' => array(
+        'add-status-update',
+      ),
+    ),
+    '#ajax'       => array(
+      'callback' => 'openlucius_core_social_ajax_callback',
+      'wrapper'  => 'update-container',
+      'effect'   => 'fade',
+      'progress' => array(
+        'message' => ' ',
+        'type'    => 'throbber',
+      ),
+    ),
+    '#prefix'     => '<div class="add-status-update-wrapper">',
+    '#suffix'     => '</div>',
+  );
+
+  $form['openlucius_core_social']['#suffix'] = '</div>';
+
+  // The 'button' for attaching photos.
+  $form['openlucius_core_social_status'] = array(
+    '#type'   => 'markup',
+    '#markup' => '<div class="progress progress-striped active"><div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div></div>',
+  );
+
+  // Return the form.
+  return $form;
+}
+
+/**
+ * Ajax form submit callback function.
+ */
+function openlucius_core_social_ajax_callback($form, &$form_state) {
+
+  // The logged in user.
+  global $user, $language;
+
+  // The ajax commands array.
+  $commands = array();
+
+  // The form state values.
+  $values = $form_state['values'];
+
+  // Replace emoticons.
+  $values['openlucius_core_social_body'] = _openlucius_core_social_remove_emoticons($values['openlucius_core_social_body']);
+
+  // Check for the body.
+  if (empty($values['openlucius_core_social_body'])) {
+
+    // Set a message.
+    drupal_set_message(t('Please enter some content'), 'error');
+
+    // Add the message with ajax command.
+    $commands[] = ajax_command_remove('div.alert-block');
+    $commands[] = ajax_command_after('#update-container', theme('status_messages'));
+  }
+  else {
+    // Create a new status update node object.
+    $node = new StdClass();
+    $node->type = 'ol_status_update';
+    $node->language = $language->language;
+    $node->body[LANGUAGE_NONE][0]['value'] = $values['openlucius_core_social_body'];
+
+    // Prepare the node object for editing.
+    node_object_prepare($node);
+
+    if (!empty($values['openlucius_core_social_body'])) {
+
+      // Split the text in words.
+      $pieces = explode(" ", $values['openlucius_core_social_body']);
+
+      // Get the first 3 words for the title.
+      $node->title = implode(" ", array_splice($pieces, 0, 6));
+    }
+
+    // The author.
+    $node->uid = $user->uid;
+
+    // Check for files.
+    if (!empty($_FILES['files']['name'])) {
+
+      // Set the file validators.
+      $validators = array(
+        'file_validate_extensions' => 'jpg jpeg gif png',
+        'file_validate_size'       => array(),
+      );
+
+      // Get the default file scheme for file destination.
+      $directory = file_default_scheme() . '://status_update';
+
+      // Get the directory path.
+      if (!file_stream_wrapper_valid_scheme(file_uri_scheme($directory))) {
+
+        // Only trim if we're not dealing with a stream.
+        $directory = rtrim($directory, '/\\');
+      }
+
+      file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
+
+      // Alter single file array for Drupal usage.
+      foreach ($_FILES['files'] as $key => &$val) {
+        $val = array($val);
+      }
+
+      // Loop through the files.
+      foreach ($_FILES['files']['name'] as $key => $val) {
+
+        // Let the file module handle the upload and moving.
+        if ($file = file_save_upload($key, $validators, $directory, FILE_EXISTS_RENAME)) {
+
+          // Make file permanent.
+          $file->status = FILE_STATUS_PERMANENT;
+
+          // Save the file.
+          file_save($file);
+
+          // Record that the module is using the file.
+          file_usage_add($file, 'openlucius_core_social', 'openlucius_core_social_status_update', $file->fid);
+        }
+        else {
+          watchdog('Failed', 'Failed to upload file: @upload', array('@upload' => $key));
+        }
+
+        // Check the file id.
+        if ($file->fid) {
+          $node->field_shared_files[LANGUAGE_NONE][] = array(
+            'fid'      => $file->fid,
+            'display'  => 1,
+            'filename' => $file->filename,
+          );
+        }
+      }
+    }
+
+    // Set a message.
+    drupal_set_message(t('Successfully posted the status update.'));
+
+    // Save the node.
+    node_save($node);
+
+    // Add the message with ajax command.
+    $commands[] = ajax_command_remove('div.alert-block');
+    $commands[] = ajax_command_after('#update-container', theme('status_messages'));
+
+    // Build the commands array.
+    $commands[] = ajax_command_invoke(NULL, 'statusUpdateAdded');
+  }
+
+  // Return.
+  return array(
+    '#type'     => 'ajax',
+    '#commands' => $commands,
+  );
+}
+
+/**
+ * Function to get status updates stream.
+ */
+function openlucius_core_social_get_status_updates() {
+  global $user;
+
+  // Get the post status update form first.
+  $output = '';
+
+  // Check if the status updates are enabled.
+  $enabled = variable_get('openlucius_core_social_status_updates_enabled', 0);
+  $allowed = user_access('view status updates');
+
+  // Get the user access.
+  $delete_own = user_access('delete own ol_status_update content');
+  $delete_any = user_access('delete any ol_status_update content');
+
+  if ($enabled == 1 && $allowed) {
+
+    // Check if the user has access.
+    if (user_access('post status updates')) {
+
+      // Fetch the form.
+      $form = drupal_get_form('openlucius_core_social_post_status_update_form');
+
+      // Append the form.
+      $output .= drupal_render($form);
+    }
+
+    // Unique pager id for ajax.
+    $pager_id = openlucius_core_pager_counter('status-updates');
+
+    // Initialize build.
+    $build = array();
+
+    // Basic select query.
+    $query = db_select('node', 'n');
+
+    // Join on the data body table.
+    $query->leftJoin('field_data_body', 'b', 'b.entity_id = n.nid');
+
+    // Select fields from heartbeat activity table.
+    $query->fields('n', array(
+      'uid',
+      'nid',
+      'created',
+    ));
+
+    // Select fields from node table.
+    $query->fields('n', array('title', 'uid'));
+
+    // Select fields from data body table.
+    $query->fields('b', array('body_value'));
+
+    // Filter on published items.
+    $query->condition('n.status', 1, '=');
+
+    // Filter on status updates.
+    $query->condition('n.type', 'ol_status_update', '=');
+
+    // Group by node id.
+    $query->groupBy('n.nid');
+
+    // Extend pager.
+    $query = $query->extend('PagerDefault');
+
+    // Set the pager id.
+    $query->element($pager_id);
+
+    // Limit the results (for the pager).
+    $query->limit(OPENLUCIUS_CORE_SOCIAL_STATUS_UPDATES_LIMIT);
+
+    // Order by heartbeat activity id.
+    $query->orderby('nid', 'desc');
+
+    // Respect grants.
+    $query->addTag('node_access');
+
+    $result = $query->execute();
+
+    // Initialize recent stuff items variable.
+    $vars['recent_status_updates'] = '';
+
+    // Loop through the results.
+    foreach ($result as $node) {
+
+      // Initialize item array.
+      $item = array();
+
+      // Do a user load.
+      $account = user_load($node->uid);
+
+      // Get picture.
+      $item['picture'] = openlucius_core_fetch_user_image($account, '65x65');
+
+      $item['uid'] = $node->uid;
+      $item['user_path'] = url('user/' . $account->uid);
+      $item['username'] = check_plain($account->name);
+      $item['time_ago'] = format_interval(($_SERVER['REQUEST_TIME'] - $node->created), 1);
+
+      // Render read more.
+      if (!empty($node->body_value)) {
+        openlucius_core_render_read_more($node->body_value, $item, TRUE);
+      }
+
+      // Get the attachments.
+      $attachment_query = db_select('field_data_field_shared_files', 'f')
+        ->fields('f', array('field_shared_files_fid'))
+        ->condition('f.field_shared_files_display', 1, '=')
+        ->condition('entity_type', 'node', '=')
+        ->condition('entity_id', $node->nid, '=');
+
+      // Fetch all.
+      $fid = $attachment_query->execute()->fetchField();
+
+      // Check the file id.
+      if (!empty($fid)) {
+
+        // Do a file load for the uri.
+        $file = file_load($fid);
+
+        // Do a theme image style.
+        $item['file'] = theme('image_style', array(
+          'style_name' => 'large',
+          'path'       => $file->uri,
+        ));
+
+        $item['gallery'] = l($item['file'], file_create_url($file->uri), array(
+          'attributes' => array(
+            'data-lightbox' => 'status-update-' . $node->nid,
+            'rel'           => 'lightbox',
+          ),
+          'html'       => TRUE,
+        ));
+      }
+
+      $item['like'] = flag_create_link(OPENLUCIUS_CORE_SOCIAL_LIKE_NODE_FLAG, $node->nid);
+
+      // Check the author.
+      if ($node->uid == $user->uid) {
+
+        // Check if the user may delete.
+        if ($delete_own || $delete_any) {
+          $item['operations']['delete_link'] = l(t('Delete'), 'node/' . $node->nid . '/delete');
+        }
+      }
+      else {
+        if ($delete_any) {
+          $item['operations']['delete_link'] = l(t('Delete'), 'node/' . $node->nid . '/delete');
+        }
+      }
+
+      // Get the comments.
+      $comments = openlucius_core_comments_on_node($node->nid);
+
+      // Check if there are comments.
+      if (!empty($comments)) {
+
+        // Initialize the comments array.
+        $item['comments'] = array();
+
+        // Loop through the comments.
+        foreach ($comments as $c => $comment) {
+
+          // Load the user of the comment.
+          $comment_user = user_load($comment->uid);
+
+          // The comment uid and user path.
+          $item['comments'][$c]['uid'] = $comment->uid;
+          $item['comments'][$c]['user_path'] = url('user/' . $comment->uid);
+
+          // Check for realname.
+          if (module_exists('realname')) {
+
+            // Check if the realname was found.
+            if (!empty($comment_user->realname)) {
+              $item['comments'][$c]['username'] = check_plain($comment_user->realname);
+            }
+          }
+          else {
+            $item['comments'][$c]['username'] = check_plain($comment_user->name);
+          }
+
+          // Empty it otherwise a user without an image will get an image from
+          // another use.
+          $item['comments'][$c]['picture'] = '';
+
+          // Get picture.
+          $picture = openlucius_core_fetch_user_image($comment_user, 'ol_30x30');
+
+          // Check picture.
+          if (!empty($picture)) {
+
+            // Set picture.
+            $item['comments'][$c]['picture'] = $picture;
+          }
+
+          // Check for the comment body value.
+          if (!empty($comment->comment_body_value)) {
+            $item['comments'][$c]['comment_body_value'] = $comment->comment_body_value;
+          }
+
+          $item['comments'][$c]['like'] = openlucius_core_social_create_like_comment_flag($comment->cid);
+
+          // Check the timestamp.
+          if (!empty($comment->changed)) {
+            $item['comments'][$c]['timestamp'] = format_interval(($_SERVER['REQUEST_TIME'] - $comment->changed), 1);
+          }
+
+          // Allow other modules to alter the variables.
+          drupal_alter('openlucius_core_social_recent_stuff_item_comment_variables', $item['comments'][$c]);
+        }
+
+        // Get the threshold for hidden.
+        $item['comment_count'] = count($item['comments']);
+      }
+
+      $item['nid'] = $node->nid;
+      $item['node_path'] = url('node/' . $node->nid);
+
+      // Get the likers.
+      $likers = openlucius_core_social_get_likes('node', $node->nid, OPENLUCIUS_CORE_SOCIAL_LIKE_NODE_FLAG);
+
+      $item['like_count'] = '';
+
+      if (!empty($likers)) {
+        $item['like_count'] = count($likers);
+      }
+
+      // Add border if possible.
+      openlucius_stream_item_border($item);
+
+      // Add the like string.
+      openlucius_core_social_format_likers_string($likers, $item);
+
+      // Load the logged in user.
+      $user_picture = openlucius_core_fetch_user_image($user->uid, 'ol_30x30');
+      $item['user_picture'] = $user_picture;
+
+      // Do show the comment form.
+      $item['show_comment_form'] = TRUE;
+
+      // Load the forms.
+      module_load_include('inc', 'openlucius_core', 'includes/forms');
+
+      // Get the reply form.
+      $form = drupal_get_form('openlucius_core_activity_item_reply_form', $node->nid);
+
+      // Add comment form to reply directly on the status update.
+      $item['comment_form'] = drupal_render($form);
+
+      // Allow other modules to alter the variables.
+      drupal_alter('openlucius_core_social_recent_stuff_item_variables', $item);
+
+      // Build rows.
+      $vars['recent_stuff_items'] .= theme('openlucius_core_recent_stuff_item', $item);
+    }
+
+    // Stuff rows in wrapper.
+    $content = theme('openlucius_core_recent_stuff', array('vars' => $vars));
+
+    // Add the content.
+    $build['content'] = array('#markup' => $content);
+
+    $build['pager'] = array(
+      '#markup' => theme('pager', array(
+        'element'  => $pager_id,
+        'quantity' => OPENLUCIUS_CORE_SOCIAL_STATUS_UPDATES_LIMIT,
+      )),
+    );
+
+    // Add the rendered build to the html.
+    $output .= drupal_render($build);
+  }
+
+  // Return the html.
+  return $output;
+}
+
+/**
+ * Get latest status update for the polling of the stream.
+ */
+function openlucius_core_social_get_latest_status_update() {
+
+  // Get timestamp.
+  $time = intval($_GET['timestamp']);
+
+  $query = db_select('node', 'n')
+    ->fields('n', array('nid', 'title', 'created'))
+    ->fields('u', array('name'))
+    ->fields('f', array('uri'))
+    ->fields('b', array('body_value'));
+
+  $query->join('users', 'u', 'n.uid = u.uid');
+  $query->join('field_data_body', 'b', 'n.nid = b.entity_id');
+  $query->leftJoin('file_managed', 'f', 'u.picture = f.fid');
+
+  $query->condition('n.status', 1, '=');
+  $query->condition('n.type', 'ol_status_update', '=');
+
+  // Filter them within the timeout.
+  $query->condition('n.created', array(
+    $time - OPENLUCIUS_CORE_SOCIAL_STATUS_UPDATE_WINDOW,
+    $time + OPENLUCIUS_CORE_SOCIAL_STATUS_UPDATE_WINDOW,
+  ), 'BETWEEN');
+
+  // Fetch all items.
+  $status_updates = $query->execute()->fetchAll();
+
+  // Initialize nids array.
+  $items = array();
+
+  // Check items.
+  if (is_array($status_updates)) {
+
+    // Loop through items.
+    foreach ($status_updates as $update) {
+
+      // Build rows.
+      $html = openlucius_core_social_format_status_update($update);
+
+      // Add to array.
+      $items[] = array(
+        'nid'  => $update->nid,
+        'html' => $html,
+      );
+    }
+  }
+
+  // Return the html as json output.
+  drupal_json_output($items);
+  drupal_exit();
+}
+
+/**
+ * Implements hook_preprocess_comment().
+ */
+function openlucius_core_social_preprocess_node(&$variables) {
+
+  // Get the content types with like button.
+  $content_types = openlucius_core_get_content_types_with_like_button();
+
+  // Check the content type and whether or not is is allowed.
+  if (isset($variables['type']) && in_array($variables['type'], $content_types)) {
+
+    // Get the setting for liking nodes.
+    $like_setting = variable_get('openlucius_core_social_like_nodes');
+
+    // Check if it's there and TRUE.
+    if (!empty($like_setting) && $like_setting == 1) {
+
+      // Add like flag.
+      $variables['like'] = flag_create_link(OPENLUCIUS_CORE_SOCIAL_LIKE_NODE_FLAG, $variables['nid']);
+
+      // Get the likers.
+      $liked_by = openlucius_core_social_get_likes('node', $variables['nid'], OPENLUCIUS_CORE_SOCIAL_LIKE_NODE_FLAG);
+
+      $item['like_count'] = 0;
+
+      if (!empty($liked_by)) {
+        $item['like_count'] = count($liked_by);
+      }
+
+      // Add the like string.
+      openlucius_core_social_format_likers_string($liked_by, $item);
+
+      // Build likers block.
+      $variables['liked_by'] = theme('openlucius_core_social_liked_block', $item);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_comment().
+ */
+function openlucius_core_social_preprocess_comment(&$variables) {
+
+  // Get the content types with like button.
+  $content_types = openlucius_core_get_content_types_with_like_button();
+
+  // Check the content type and whether or not is is allowed.
+  if (isset($variables['node']) && in_array($variables['node']->type, $content_types)) {
+
+    // Get the setting for liking nodes.
+    $like_setting = variable_get('openlucius_core_social_like_comments');
+
+    // Check if it's there and TRUE.
+    if (!empty($like_setting) && $like_setting == 1) {
+
+      // Add like flag.
+      $variables['like'] = flag_create_link(OPENLUCIUS_CORE_SOCIAL_LIKE_COMMENT_FLAG, $variables['comment']->cid);
+
+      // Get the likers.
+      $liked_by = openlucius_core_social_get_likes('comment', $variables['comment']->cid, OPENLUCIUS_CORE_SOCIAL_LIKE_COMMENT_FLAG);
+
+      $item['like_count'] = 0;
+
+      if (!empty($liked_by)) {
+        $item['like_count'] = count($liked_by);
+      }
+
+      // Add the like string.
+      openlucius_core_social_format_likers_string($liked_by, $item);
+
+      // Build likers block.
+      $variables['liked_by'] = theme('openlucius_core_social_liked_block', $item);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_flag().
+ */
+function openlucius_core_social_preprocess_flag(&$vars) {
+
+  // Check the flag name.
+  if (!empty($vars['flag']->name)) {
+
+    // These are the flags we want to preprocess.
+    if ($vars['flag']->name == 'openlucius_core_social_like_node' || $vars['flag']->name == 'openlucius_core_social_like_comm') {
+
+      // Create the flag string.
+      $flag_string = '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ' . t('Like');
+
+      // Get likes on this flag.
+      $flag_entity = flag_get_entity_flags($vars['flag']->entity_type, $vars['entity_id'], $vars['flag']->name);
+
+      // Check if someone flagged it.
+      if (!empty($flag_entity)) {
+
+        // Initialize users array.
+        $users = array();
+
+        // Loop through the people that flagged it.
+        foreach ($flag_entity as $object) {
+
+          // Add the username to the list.
+          $users[] = openlucius_core_fetch_user_name($object->uid);
+        }
+
+        // Add users that like this to the vars array.
+        $vars['user_likes'] = $users;
+      }
+
+      // Change the flag text.
+      $vars['link_text'] = $flag_string;
+    }
+  }
+}
+
+/**
+ * Get the flag count for a flag.
+ */
+function openlucius_core_social_get_flag_count() {
+  $flag = flag_get_flag($_GET['name']);
+  drupal_json_output($flag->get_count($_GET['id']));
+}
+
+/**
+ * Implements openlucius_core_frontpage_tabs_alter().
+ */
+function openlucius_core_social_openlucius_core_frontpage_tabs_alter(&$items) {
+
+  // Check if the status updates are enabled.
+  $enabled = variable_get('openlucius_core_social_status_updates_enabled', 0);
+  $allowed = user_access('view status updates');
+
+  // Check if status updates are enabled and you're allowed to see them.
+  if ($enabled == 1 && $allowed) {
+
+    // Get the count of unread items.
+    $unread_count = openlucius_core_fetch_unread_count('ol_status_update');
+
+    // Build item.
+    $item = array(
+      'list-class' => '',
+      'target'     => 'status-updates',
+      'title'      => t('Status updates'),
+      'link-class' => 'status-updates',
+      'weight'     => 1,
+    );
+
+    if ($unread_count > 0) {
+
+      // Fetch unread.
+      $unread = openlucius_core_fetch_unread_count('ol_status_update', TRUE);
+
+      // Add unread.
+      $item['unread'] = $unread;
+      $item['mark_read'] = 'ol_status_update';
+    }
+
+    // Add item for status updates.
+    $items[] = $item;
+  }
+}
+
+/**
+ * Form constructor for the content like form.
+ *
+ * @ingroup forms
+ */
+function openlucius_core_social_config_form($form, &$form_state) {
+
+  // Initialize the form.
+  $form = array();
+
+  // Checkbox for the like on nodes.
+  $form['openlucius_core_social_like_nodes'] = array(
+    '#title'         => t('Allow the option to like nodes'),
+    '#type'          => 'checkbox',
+    '#default_value' => variable_get('openlucius_core_social_like_nodes'),
+  );
+
+  // Checkbox for the like on comments.
+  $form['openlucius_core_social_like_comments'] = array(
+    '#title'         => t('Allow the option to like comments'),
+    '#type'          => 'checkbox',
+    '#default_value' => variable_get('openlucius_core_social_like_comments'),
+  );
+
+  // Amount of people that liked this to show by default.
+  $form['openlucius_core_social_likes_shown'] = array(
+    '#title'         => t('Show this many likes in node / comment'),
+    '#type'          => 'textfield',
+    '#default_value' => variable_get('openlucius_core_social_likes_shown', 5),
+  );
+
+  // Checkbox for the status updates.
+  $form['openlucius_core_social_status_updates_enabled'] = array(
+    '#title'         => t('Enable status updates'),
+    '#type'          => 'checkbox',
+    '#default_value' => variable_get('openlucius_core_social_status_updates_enabled', 0),
+  );
+
+  // Return the form.
+  return system_settings_form($form);
+}
+
+/**
+ * Implements hook_form_comment_node_ol_status_update_alter().
+ */
+function openlucius_core_social_form_comment_node_ol_status_update_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form['field_wrapper'])) {
+    unset($form['field_wrapper']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function openlucius_core_social_preprocess_block(&$variables) {
+  if ($variables['block']->module == 'openlucius_core_social' && $variables['block']->delta == 'social_status_updates') {
+    $variables['block_html_id'] = drupal_html_id('status-updates');
+  }
+}
+
+/**
+ * Function to create a like flag for a node.
+ *
+ * @param int $nid
+ *   The node to create the like flag for.
+ */
+function openlucius_core_social_create_like_node_flag($nid) {
+  return flag_create_link(OPENLUCIUS_CORE_SOCIAL_LIKE_NODE_FLAG, $nid);
+}
+
+/**
+ * Function to create a like flag for a comment.
+ *
+ * @param int $cid
+ *   The comment to create the like flag for.
+ */
+function openlucius_core_social_create_like_comment_flag($cid) {
+  return flag_create_link(OPENLUCIUS_CORE_SOCIAL_LIKE_COMMENT_FLAG, $cid);
+}
+
+/**
+ * Function to create html for a comment on a status update.
+ *
+ * @param array $variables
+ *   The array of variables for the comment.
+ *
+ * @return string
+ *   Returns the html for the comment.
+ */
+function openlucius_core_social_format_comment(array $variables = array()) {
+
+  // Check if array.
+  if (is_array($variables)) {
+
+    // The default 'avatar' image.
+    $default_uri = drupal_get_path('profile', 'openlucius') . '/themes/openlucius/images/avatar.png';
+
+    // Generate array for theming social comments with a template.
+    $comment = array();
+
+    $comment['uid'] = $variables['uid'];
+    $comment['user_path'] = 'user/' . $variables['uid'];
+    $comment['username'] = (!empty($variables['name']) ? $variables['name'] : '');
+    $comment['comment_body_value'] = (!empty($variables['body']) ? $variables['body'] : '');
+    $comment['timestamp'] = (!empty($variables['timestamp']) ? $variables['timestamp'] : '');
+
+    // Default to an empty string.
+    $comment['picture'] = '';
+
+    // Check the user picture.
+    if (isset($variables['picture'])) {
+
+      // Do a file load for the uri.
+      $image = file_load($variables['picture']);
+
+      // Set the themed user picture.
+      $comment['picture'] = theme('image_style', array(
+        'style_name' => 'ol_30x30',
+        'path'       => $image->uri,
+        'width'      => 30,
+        'height'     => 30,
+      ));
+    }
+    else {
+      // The default 'avatar' image.
+      $comment['picture'] = theme('image', array(
+        'style_name' => 'ol_30x30',
+        'path'       => $default_uri,
+        'width'      => 30,
+        'height'     => 30,
+      ));
+    }
+
+    // Allow other modules to change the formatted comment.
+    drupal_alter('openlucius_core_social_format_comment', $comment);
+
+    // Return the themed comment.
+    return theme('openlucius_core_activity_item_comment', $comment);
+  }
+
+  // Return FALSE if not an array.
+  return FALSE;
+}
+
+/**
+ * Function to create html for a status update.
+ *
+ * @param mixed $update
+ *   The array of variables for the status update.
+ *
+ * @return string
+ *   Returns the html for the status update.
+ */
+function openlucius_core_social_format_status_update($update) {
+  // Initialize item array.
+  $item = array();
+
+  // Add variables.
+  $item['title'] = check_plain($update->title);
+  $item['link'] = url('node/' . $update->nid);
+  $item['nid'] = $update->nid;
+  $item['time_ago'] = format_interval(($_SERVER['REQUEST_TIME'] - $update->created), 2);
+  $item['between_text'] = t('wrote');
+  $item['body'] = check_markup($update->body_value);
+  $item['username'] = check_plain($update->name);
+
+  // Initialize empty picture.
+  $item['picture'] = '';
+
+  // Create an image styled picture.
+  if (isset($update->uri)) {
+    $item['picture'] = theme('image_style', array(
+      'style_name' => 'ol_50x50',
+      'path'       => $update->uri,
+    ));
+  }
+
+  // Get the attachments.
+  $attachment_query = db_select('field_data_field_shared_files', 'f')
+    ->fields('f', array('field_shared_files_fid'))
+    ->condition('f.field_shared_files_display', 1, '=')
+    ->condition('entity_type', 'node', '=')
+    ->condition('entity_id', $update->nid, '=');
+
+  // Fetch result.
+  $fid = $attachment_query->execute()->fetchField();
+
+  // Check the file id.
+  if (!empty($fid)) {
+
+    // Do a file load for the uri.
+    $file = file_load($fid);
+
+    // Do a theme image style.
+    $item['file'] = theme('image_style', array(
+      'style_name' => 'large',
+      'path'       => $file->uri,
+    ));
+  }
+
+  // Status update like button.
+  $item['comment_like'] = openlucius_core_social_create_like_node_flag($update->nid);
+
+  // Replacement pattern, as flag uses detination.
+  $pattern = '/(destination=latest-status-update%3Ftimestamp%3D\d+\&)/';
+  $replace = 'destination=recent-stuff&';
+  $item['comment_like'] = preg_replace($pattern, $replace, $item['comment_like']);
+
+  // Get the likes on the status update.
+  $item['likes'] = openlucius_core_social_get_like_count($update->nid, 'openlucius_core_social_like_node');
+
+  // Create the html of the status update.
+  $html = theme('openlucius_core_social_status_update', array('vars' => $item));
+
+  // Return the html of the status update.
+  return $html;
+}
+
+/**
+ * Implements hook_openlucius_core_content_types_with_like_button_alter().
+ */
+function openlucius_core_social_openlucius_core_content_types_with_like_button_alter(&$content_types) {
+  $content_types[] = 'ol_status_update';
+}
+
+/**
+ * Function to get likes on specific nodes.
+ *
+ * @param int $nid
+ *   The node id to get the likes for.
+ * @param string $flag
+ *   The flag to get the likes for.
+ *
+ * @return bool
+ *   Returns the count or FALSE.
+ */
+function openlucius_core_social_get_like_count($nid, $flag) {
+
+  // Get the flag.
+  $flag = flag_get_flag($flag);
+
+  // Check the flag.
+  if (!empty($flag)) {
+
+    // Return the flag count as string.
+    return (string) $flag->get_count($nid);
+  }
+
+  // Return false if no flag.
+  return FALSE;
+}
+
+/**
+ * Function to get likes on specific nodes.
+ *
+ * @param string $type
+ *   The type being node or comment.
+ * @param int $nid
+ *   The node id to get the likes for.
+ * @param string $flag
+ *   The flag to get the likes for.
+ *
+ * @return bool
+ *   Returns the users or FALSE.
+ */
+function openlucius_core_social_get_likes($type, $nid, $flag) {
+
+  // Get the flag.
+  $flag = flag_get_flag($flag);
+
+  // Initialize user id array.
+  $users = array();
+
+  // Check the flag.
+  if (!empty($flag)) {
+
+    // Get the entities.
+    $entities = flag_get_entity_flags($type, $nid, $flag->name);
+
+    // Check the entities.
+    if (!empty($entities)) {
+
+      // Use uasort to preserve the keys, with an anonymous function (5.3+).
+      uasort($entities, function ($a, $b) {
+        return $a->timestamp - $b->timestamp;
+      });
+
+      foreach ($entities as $u) {
+        $users[$u->uid] = user_load($u->uid);
+      }
+    }
+  }
+
+  return (!empty($users) ? $users : FALSE);
+}
+
+/**
+ * Placeholder method for the xhr call.
+ */
+function openlucius_core_social_process_file_upload() {
+  drupal_exit();
+}
+
+/**
+ * Implements openlucius_notifications_build_node_view_link().
+ */
+function openlucius_core_social_openlucius_notifications_build_node_view_link_alter(&$path, &$fragment, &$query, $entity) {
+
+  // Fetch the node type.
+  $node_type = openlucius_core_fetch_node_type($entity->eid);
+
+  // Alter the path for status update to the front-page on tab status updates.
+  if ($node_type == 'ol_status_update') {
+    $path = 'recent-stuff';
+    $query['tab'] = 'status-updates';
+
+    // Mark it as read as soon as it is rendered.
+    module_load_include('inc', 'openlucius_notifications', 'includes/functions');
+    openlucius_notifications_mark_read($entity->eid);
+  }
+}
+
+/**
+ * Function to remove the emoticons.
+ *
+ * @param string $text
+ *   The text to remove the emoticons from.
+ *
+ * @return string
+ *   Returns the text without emoticons.
+ */
+function _openlucius_core_social_remove_emoticons($text) {
+  return preg_replace('/([0-9|#][\x{20E3}])|[\x{00ae}|\x{00a9}|\x{203C}|\x{2047}|\x{2048}|\x{2049}|\x{3030}|\x{303D}|\x{2139}|\x{2122}|\x{3297}|\x{3299}][\x{FE00}-\x{FEFF}]?|[\x{2190}-\x{21FF}][\x{FE00}-\x{FEFF}]?|[\x{2300}-\x{23FF}][\x{FE00}-\x{FEFF}]?|[\x{2460}-\x{24FF}][\x{FE00}-\x{FEFF}]?|[\x{25A0}-\x{25FF}][\x{FE00}-\x{FEFF}]?|[\x{2600}-\x{27BF}][\x{FE00}-\x{FEFF}]?|[\x{2900}-\x{297F}][\x{FE00}-\x{FEFF}]?|[\x{2B00}-\x{2BF0}][\x{FE00}-\x{FEFF}]?|[\x{1F000}-\x{1F6FF}][\x{FE00}-\x{FEFF}]?/u', '', $text);
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function openlucius_core_social_node_presave($node) {
+
+  // Check node type.
+  if ($node->type == 'ol_status_update') {
+
+    // Remove emoticons.
+    $node->body[LANGUAGE_NONE][0]['value'] = _openlucius_core_social_remove_emoticons($node->body[LANGUAGE_NONE][0]['value']);
+  }
+}
+
+/**
+ * Function to render the social like buttons.
+ *
+ * @param string $type
+ *   The type of entity this like flag is being rendered for.
+ * @param array $variables
+ *   The variables array containing the required data.
+ *
+ * @return string
+ *   Returns either an empty string or a rendered flag with a counter.
+ */
+function openlucius_core_social_render_like($type, $variables) {
+
+  switch ($type) {
+    case 'comment':
+      $id = $variables['comment']->cid;
+      $name = OPENLUCIUS_CORE_SOCIAL_LIKE_COMMENT_FLAG;
+      break;
+
+    case 'node':
+      $id = $variables['node']->nid;
+      $name = OPENLUCIUS_CORE_SOCIAL_LIKE_NODE_FLAG;
+      break;
+  }
+
+  // Check if the variables are set.
+  if (isset($name) && isset($id)) {
+
+    // Get the flag.
+    $flag = flag_get_flag($name);
+
+    // Check the flag.
+    if (!empty($flag)) {
+
+      // Render the flag link.
+      $flag_render = flag_create_link($name, $id);
+
+      // Render the like.
+      return sprintf('<div class="like-this-%s"> %s </div>', $type, $flag_render, $type, $id);
+    }
+  }
+
+  return '';
+}
+
+/**
+ * Implements hook_openlucius_core_config_places_alter().
+ */
+function openlucius_core_social_openlucius_core_config_places_alter(&$places) {
+  $places[] = 'admin/config/openlucius/social';
+}
+
+/**
+ * Form constructor for uploading a new profile picture.
+ */
+function openlucius_core_social_edit_profile_picture_form($form, &$form_state) {
+  // The profile picture photo form element.
+  $form['openlucius_core_social_profile_picture'] = array(
+    '#type'  => 'file',
+    '#title' => t('Profile picture'),
+  );
+
+  // The cover image photo form element.
+  $form['field_shared_cover_image'] = array(
+    '#type'  => 'file',
+    '#title' => t('Cover image'),
+  );
+
+  // The submit field.
+  $form['submit'] = array(
+    '#type'       => 'submit',
+    '#value'      => t('Change'),
+    '#attributes' => array(
+      'class' => array('btn btn-xs'),
+    ),
+  );
+
+  $form['#validate'][] = 'openlucius_core_social_edit_profile_picture_form_validate';
+
+  // Return.
+  return $form;
+}
+
+/**
+ * Form validate for uploading a new profile picture.
+ *
+ * @see openlucius_core_social_edit_profile_picture_form()
+ */
+function openlucius_core_social_edit_profile_picture_form_validate($form, &$form_state) {
+  global $user;
+
+  // Load the user account.
+  $account = user_load($user->uid);
+
+  // Initialize empty strings.
+  $field = $picture_directory = '';
+
+  // We don't care about the minimum dimensions.
+  $min_dimensions = 0;
+
+  // Define max dimensions.
+  $max_dimensions = '800x600';
+
+  // Check the files array.
+  if (!empty($_FILES)) {
+
+    // Check the profile picture field.
+    if (!empty($_FILES['files']['name']['openlucius_core_social_profile_picture'])) {
+
+      // Remove user picture.
+      if (!empty($account->picture->fid)) {
+        file_usage_delete($account->picture, 'user', 'user', $account->uid);
+        file_delete($account->picture);
+      };
+
+      // Set this to the name of the form's file field.
+      $field = 'openlucius_core_social_profile_picture';
+
+      // Fetch user picture dimensions from the variable.
+      $max_dimensions = variable_get('user_picture_dimensions', '800x600');
+
+      // Fetch the picture directory.
+      $picture_directory = file_default_scheme() . '://pictures/';
+    }
+
+    // Check the cover image field.
+    if (!empty($_FILES['files']['name']['field_shared_cover_image'])) {
+
+      // Remove old picture.
+      if (!empty($account->field_shared_cover_image[LANGUAGE_NONE][0]['fid'])) {
+
+        // Load the cover image.
+        $cover_image = file_load($account->field_shared_cover_image[LANGUAGE_NONE][0]['fid']);
+
+        // Remove the cover image.
+        file_usage_delete($cover_image, 'user', 'user', $account->uid);
+        file_delete($cover_image);
+      }
+
+      // Set this to the name of the form's file field.
+      $field = 'field_shared_cover_image';
+      $picture_directory = file_default_scheme() . '://cover_image/';
+
+      // Fetch field information for dimensions.
+      $info = field_info_instance('user', $field, 'user');
+
+      // Check if we have settings.
+      if (!empty($info['settings'])) {
+
+        // Override the dimensions using the field settings.
+        $max_dimensions = $info['settings']['max_resolution'];
+      }
+    }
+  }
+
+  // Check if the field is not empty.
+  if (!empty($field) && !empty($picture_directory)) {
+
+    // Get the directory path.
+    if (!file_stream_wrapper_valid_scheme(file_uri_scheme($picture_directory))) {
+
+      // Only trim if we're not dealing with a stream.
+      $picture_directory = rtrim($picture_directory, '/\\');
+    }
+
+    // Specify the validators.
+    $validators = array(
+      'file_validate_image_resolution' => array(
+        $max_dimensions,
+        $min_dimensions,
+      ),
+    );
+
+    // Prepare the directory.
+    if (file_prepare_directory($picture_directory, FILE_CREATE_DIRECTORY)) {
+
+      // Let the file module handle the upload and moving.
+      if ($file = file_save_upload($field, $validators, $picture_directory, FILE_EXISTS_RENAME)) {
+
+        // Check the field.
+        if ($field == 'openlucius_core_social_profile_picture') {
+          openlucius_core_social_update_user_image($file, $user->uid);
+        }
+        if ($field == 'field_shared_cover_image') {
+          openlucius_core_social_update_cover_image_table($file, $user->uid);
+        }
+      }
+      else {
+        watchdog('Failed', 'Failed to upload file: @upload', array('@upload' => $file->fid));
+      }
+    }
+  }
+}
+
+/**
+ * Function to update the user table with the new picture file id.
+ *
+ * @param \stdClass $picture
+ *   The file object.
+ * @param int $user_id
+ *   The user id.
+ */
+function openlucius_core_social_update_user_image(\stdClass $picture, $user_id) {
+
+  // Load the user.
+  $account = user_load($user_id);
+
+  // If the picture is a temporary file move it to its final location and
+  // make it permanent.
+  if (!$picture->status) {
+    $info = image_get_info($picture->uri);
+    $picture_directory = file_default_scheme() . '://' . variable_get('user_picture_path', 'pictures');
+
+    // Prepare the pictures directory.
+    file_prepare_directory($picture_directory, FILE_CREATE_DIRECTORY);
+    $destination = file_stream_wrapper_uri_normalize($picture_directory . '/picture-' . $user_id . '-' . REQUEST_TIME . '.' . $info['extension']);
+
+    // Move the temporary file into the final location.
+    if ($picture = file_move($picture, $destination, FILE_EXISTS_RENAME)) {
+      $picture->status = FILE_STATUS_PERMANENT;
+      $account->picture = file_save($picture);
+      file_usage_add($picture, 'user', 'user', $account->uid);
+    }
+  }
+
+  // Save the user.
+  user_save($account);
+
+  // Set the message.
+  drupal_set_message(t('Your picture has been changed.'));
+}
+
+/**
+ * Function to update the cover image table with the new picture file id.
+ *
+ * @param \stdClass $file
+ *   The file object.
+ * @param int $user_id
+ *   The user id.
+ */
+function openlucius_core_social_update_cover_image_table(\stdClass $file, $user_id) {
+
+  // Load the user.
+  $account = user_load($user_id);
+
+  // Get image info.
+  $info = image_get_info($file->uri);
+
+  // Create table row for cover image.
+  $cover_image = array(
+    'fid'       => $file->fid,
+    'uid'       => $user_id,
+    'filename'  => $file->filename,
+    'uri'       => $file->uri,
+    'filemime'  => $info['mime_type'],
+    'filesize'  => $info['file_size'],
+    'status'    => 1,
+    'timestamp' => time(),
+    'alt'       => '',
+    'title'     => '',
+    'width'     => $info['width'],
+    'height'    => $info['height'],
+  );
+
+  // Set the cover image.
+  $account->field_shared_cover_image[LANGUAGE_NONE][0] = $cover_image;
+
+  // Save the user.
+  user_save($account);
+
+  drupal_set_message(t('Your cover image has been changed.'));
+}
+
+/**
+ * Function for formatting the likers string.
+ *
+ * @param array $likers
+ *   The array of people who like it.
+ * @param array $item
+ *   The item the processed text is placed in.
+ */
+function openlucius_core_social_format_likers_string($likers, &$item) {
+
+  global $user;
+
+  // Check the likers.
+  if (!empty($likers)) {
+
+    $count = count($likers);
+
+    $first = array_splice($likers, 0, 1);
+    $first = $first[0];
+
+    // Set the user path.
+    $item['first_liker_path'] = url('user/' . $first->uid);
+
+    // Check if you're it.
+    if ($first->uid == $user->uid) {
+
+      // Get first liker.
+      $item['first_liker_name'] = t('You');
+    }
+    else {
+
+      // Get first liker.
+      $item['first_liker_name'] = $first->name;
+    }
+
+    // Recheck the rest of the likers.
+    if (!empty($likers)) {
+
+      $item['other_likers_count'] = $count;
+
+      // Check the likers count.
+      if ($count == 1) {
+        $item['other_likers_string'] = t('like this');
+      }
+      else {
+
+        // Get the other likers.
+        $item['other_likers_string'] = format_plural(count($likers), '@count other like this', '@count others like this');
+
+        if (!empty($likers)) {
+          $item['other_likers_names'] = implode(', ', array_map(function ($liker) {
+            return l($liker->name, 'user/' . $liker->uid);
+          }, $likers));
+        }
+      }
+    }
+    else {
+      if ($first->uid == $user->uid) {
+        $item['other_likers_string'] = t('like this');
+      }
+      else {
+        $item['other_likers_string'] = t('likes this');
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function openlucius_core_social_form_ol_group_node_form_alter(&$form, &$form_state, $form_id) {
+
+  // Set the title and placeholder.
+  $form['field_group_slogan'][LANGUAGE_NONE][0]['value']['#title'] = t('Short description');
+  $form['field_group_slogan'][LANGUAGE_NONE][0]['value']['#attributes']['placeholder'] = t('Enter a short description for this group..');
+}
