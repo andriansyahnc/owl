@@ -279,7 +279,7 @@ function openlucius_core_social_profile_header() {
         $variables['text'] = isset($account->display_name) ? $account->display_name : $account->name;
 
         // Fetch the default profile image.
-        $default_image_path = drupal_get_path('profile', 'openlucius') . '/themes/openlucius/images/avatar.png';
+        $default_image_path = drupal_get_path('theme', 'openlucius') . '/images/avatar.png';
         $variables['image'] = isset($account->picture->uri) ? $account->picture->uri : $default_image_path;
 
         // Check for user id to match.
@@ -1216,7 +1216,7 @@ function openlucius_core_social_format_comment(array $variables = array()) {
   if (is_array($variables)) {
 
     // The default 'avatar' image.
-    $default_uri = drupal_get_path('profile', 'openlucius') . '/themes/openlucius/images/avatar.png';
+    $default_uri = drupal_get_path('theme', 'openlucius') . '/images/avatar.png';
 
     // Generate array for theming social comments with a template.
     $comment = array();

@@ -869,7 +869,7 @@ function openlucius_notifications_fetch_direct_messages($timestamp = 0) {
     if (!empty($messages)) {
 
       // The default 'avatar' image.
-      $default_uri = drupal_get_path('profile', 'openlucius') . '/themes/openlucius/images/avatar.png';
+      $default_uri = drupal_get_path('theme', 'openlucius') . '/images/avatar.png';
 
       // Loop through items and build the list of notifications.
       foreach ($messages as $timestamp_messages) {
@@ -1013,7 +1013,7 @@ function openlucius_notifications_fetch_message_users() {
     $item = array();
 
     // The default 'avatar' image.
-    $default_uri = drupal_get_path('profile', 'openlucius') . '/themes/openlucius/images/avatar.png';
+    $default_uri = drupal_get_path('theme', 'openlucius') . '/images/avatar.png';
 
     $item['image'] = theme('image', array(
       'style_name' => 'ol_50x50',

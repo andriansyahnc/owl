@@ -158,7 +158,7 @@ function openlucius_core_fetch_user_image($u, $style = 'ol_50x50', $alt = "", $t
   $account = is_numeric($u) ? user_load($u) : $u;
 
   // The default 'avatar' image.
-  $default_uri = drupal_get_path('profile', 'openlucius') . '/themes/openlucius/images/avatar.png';
+  $default_uri = drupal_get_path('theme', 'openlucius') . '/images/avatar.png';
 
   // Check if the user has a picture.
   if (!empty($account->picture)) {

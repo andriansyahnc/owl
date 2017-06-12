@@ -54,7 +54,7 @@ function openlucius_menu_link(array $variables) {
         $name = isset($user_object->realname) ? $user_object->realname : $user_object->name;
 
         // Create the default avatar image path.
-        $default_image_path = drupal_get_path('profile', 'openlucius') . '/themes/openlucius/images/avatar.png';
+        $default_image_path = drupal_get_path('theme', 'openlucius') . '/images/avatar.png';
 
         // Check if the user has an avatar, otherwise use default image.
         $image_path = isset($user_object->picture->uri) ? $user_object->picture->uri : $default_image_path;
