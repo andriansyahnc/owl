@@ -1,0 +1,105 @@
+/* ---------- Color Module Styles ----------- */
+.page-group-textdocuments .region-content,
+body,
+.comment-wrapper,
+.indented {
+  background-color: #f2f2f2 !important;
+}
+.navbar-default,
+.navbar-default .dropdown-menu {
+  background-color: #4285f4 !important;
+}
+#block-openlucius-core-ol-mygroups .unseen-content {
+  color: #76849b !important;
+}
+.navbar-default .navbar-brand,
+.navbar-default a,
+button.selectpicker,
+button.selectpicker:hover,
+.bootstrap-select .btn,
+.bootstrap-select .btn:hover,
+.menu-left .home-btn span,
+.menu-left .home-btn:hover span,
+.menu-left .home-btn span:hover,
+.notifications_button .glyphicon,
+.question_button .glyphicon,
+.header-notifications .glyphicon,
+.direct-messages-button .glyphicon,
+.todos-button .glyphicon,
+.calendar-button .glyphicon,
+.everyone-button .glyphicon,
+.reports-button .glyphicon,
+.header-messages .openlucius_direct_messages .glyphicon,
+.menu-right .everyone .glyphicon {
+  color: #fff !important;
+}
+.dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: #272727 !important;
+}
+.well,
+.social-heading .logo,
+.profile_picture {
+  background-color: #fffffe !important;
+}
+.region-sidebar-first h2,
+.region-sidebar-second h2,
+#dpa-news h2.block-title,
+#block-system-main.block-openlucius-core h2.block-title {
+  background-color: #f7f7f7 !important;
+}
+/** Main content area */
+.main-container {
+  color: #222 !important;
+}
+.main-container .activity-item-container a {
+  color: #252729;
+}
+.activity-item-actions a.unflag-action {
+  color: #008cbb;
+}
+.main-container a:hover,
+.main-container a:focus {
+  color: #f00;
+}
+/** Tabs */
+.nav-tabs > li > a {
+  border: 1px solid #f7f7f6 !important;
+}
+.region-content .nav li a {
+  color: #b8b8b8 !important;
+  background-color: #f7f7f7 !important;
+}
+.nav-tabs > li > a:hover {
+  border: 1px solid #ddd !important;
+}
+.region-content .nav li a:hover {
+  color: #000 !important;
+  background-color: #fffffd !important;
+}
+/** Activity stream */
+.main-container .activity_item a {
+  color: #008cbb !important;
+}
+.main-container .activity_item a:hover h5,
+.main-container .activity_item a:hover .text-muted,
+.main-container .activity_item a:hover .glyphicon,
+.main-container .activity_item a:hover .comment_count {
+  color: #ff8a8a !important;
+}
+.timeline > li > .activity_item > .timeline-panel {
+  background-color: #fffffc !important;
+}
+.timeline > li > .activity_item > .timeline-panel:after {
+  border-right: 14px solid #fffffc !important;
+}
+/** Rich snippets **/
+div.search-result-wrapper h3.title a {
+  color: #008cbb !important;
+}

@@ -1,0 +1,651 @@
+/* Customization for OpenLucius, based on Bootstrap => Bootwatch => Yeti theme */
+
+/**
+ * Global customization
+ *
+ */
+.content th {
+  color: #a3a3a3;
+}
+table .odd,
+table .inline-added-todo {
+  background-color: #f9f9f9 !important;
+}
+table .even {
+  background-color: #fbfbfb !important;
+}
+.page-groups .region-content .glyphicon,
+.node-type-ol-todo-list .glyphicon,
+.page-all-todo-lists .glyphicon,
+.page-group-todo-lists .glyphicon,
+.field-type-node-reference .glyphicon {
+  color: #a7a7a7;
+}
+.page-groups li.views-fluid-grid-item {
+  background-color: #f9f9f9;
+}
+.well {
+  background-color: #fff;
+  border-right: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  -webkit-box-shadow: 2px 2px 2px #e5e5e5;
+  box-shadow: 2px 2px 2px #e5e5e5;
+}
+body {
+  background-color: #fcf7ef;
+}
+a:hover,
+a:hover .glyphicon {
+  color: #f30000;
+}
+.region-content a .glyphicon,
+button .glyphicon-plus-sign {
+  color: #76849b;
+}
+.glyphicon {
+  color: #bdbdbd;
+}
+.glyphicon-list-alt {
+  color: #6e6e6e;
+}
+table h5 a {
+  color: #4e4e4e !important;
+}
+.views-field-last-updated,
+.views-field-comment-count {
+  color: #a8a8a8;
+}
+.views-field-delta,
+.views-field-created,
+.views-field-field-todo-attachments,
+.views-field-access {
+  color: #a8a8a8;
+}
+.region-content .glyphicon-certificate {
+  color: #7599af;
+}
+.btn-default .badge {
+  color: #90a0bd !important;
+}
+.btn-default {
+  color: #69758a !important;
+}
+.field-collection-container .field-item {
+  background-color: #f9f9f9;
+}
+.region-content .views-exposed-widget .btn {
+  background-color: #ececec;
+  border-color: #ccc;
+  color: #818181;
+}
+#page-header .field-type-node-reference a {
+  color: #8d8d8d;
+}
+.view-id-messages_in_a_group .glyphicon-user {
+  color: #eaeaea;
+}
+a.tabledrag-handle .handle {
+  background: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #a7a7a7;
+}
+.view-id-all_todo_lists_in_a_group td.views-field-field-todo-label,
+.view-id-todos_in_group_dashboard td.views-field-field-todo-label {
+  color: #9f9f9f;
+}
+.views-field-field-todo-user-reference,
+.views-field-field-todo-due-date-singledate {
+  color: #a8a8a8;
+}
+.node-type-ol-group .view-header {
+  color: #a8a8a8;
+}
+/* Front page */
+.node-type-ol-group .block-title a,
+.page-user-dashboard .block-title {
+  color: #d3403c;
+}
+.block-title .btn-default,
+.btn-openlucius {
+  color: #333;
+  background-color: #fff;
+  border-color: #dadada;
+}
+/* Text documents */
+.view-text-documents-in-a-group .views-fluid-grid-item .views-field-title a {
+  color: #000;
+}
+ul.views-fluid-grid-items-h-margin-10px li.views-fluid-grid-item {
+  margin-left: 5px;
+}
+.region-sidebar-second .view-text-documents-in-a-group .glyphicon,
+.region-sidebar-second .view-text-documents-in-a-group .views-field-comment-count {
+  color: #a5a1a1;
+}
+.region-sidebar-second .textdoc_infowrapper {
+  color: #999898;
+}
+.node-type-ol-text-document .region-sidebar-second .glyphicon-certificate,
+.page-group-textdocuments .region-sidebar-second .glyphicon-certificate {
+  color: #90a0bd;
+}
+/* Attachments */
+.field-collection-view .field-label,
+.view-files-all .views-field-field-label-s- a,
+.field-collection-view .field-items {
+  color: #a4a4a4;
+}
+.view-files-all .views-field-title a,
+.view-files-all .views-field-subject a {
+  color: #717171;
+}
+.view-id-files_all .views-row {
+  border-top: 1px solid #ededed;
+  background-color: #fcfcfc;
+}
+.itu-attachment-list .even {
+  background-color: #fcfcfc;
+}
+.view-files-all .glyphicon-user {
+  color: #d8d8d8 !important;
+}
+.region-content .ol_textdoc_tabs .nav li a {
+  color: #b8b8b8;
+  color: #333;
+  background-color: #f9f9f9;
+  border-color: #dadada;
+}
+.region-content .nav li a {
+  color: #b8b8b8;
+  background-color: #f7f7f7;
+}
+.region-content .nav li a:hover {
+  color: #000;
+  background-color: #fff;
+}
+/* Comments */
+.comment {
+  border-top: 2px solid #ccc;
+}
+/* User dashboard */
+.page-user-dashboard .view-grouping {
+  border-bottom: 10px solid #f6f6f6;
+}
+/* Files */
+#edit-field-files-tags-tid-wrapper,
+.field-name-field-files-tags {
+  border: 1px solid #ccc;
+  background-color: #f4e6c8;
+  border-top: 3px solid #c8bda3;
+}
+/* Todo-list detail page */
+.node-type-ol-todo-list #block-views-todos-on-todo-list-page-block {
+  border-bottom: 10px #f2f2f2 solid;
+}
+.node-ol-todo-list .comment-wrapper {
+  border-top: 10px solid #f6f6f6;
+}
+.view-header,
+.view-footer {
+  color: #a8a8a8;
+}
+.field-name-field-todo-completed .field-label,
+.field-name-field-todo-completed .field-items,
+.field-name-field-todo-completed-date .field-label,
+.field-name-field-todo-completed-date .field-items,
+.field-name-field-todo-completed-by .field-label,
+.field-name-field-todo-completed-by .field-items,
+.field-name-field-todolist-type .field-label,
+.field-name-field-todolist-type .field-items,
+.field-name-field-todo-comm-show-clients .field-label,
+.field-name-field-todo-comm-show-clients .field-items,
+.field-name-field-todo-due-date .field-label,
+.field-name-field-todo-due-date .field-items {
+  border-bottom: 1px solid #e6e6e6;
+  color: #9f9898;
+}
+.field-name-field-todo-list-reference .field-label,
+.field-name-field-todo-list-reference .field-items,
+.field-name-field-todo-user-reference .field-label,
+.field-name-field-todo-user-reference .field-items,
+.field-name-field-todo-label .field-label,
+.field-name-field-todo-label .field-items,
+.field-name-field-todo-due-date-singledate .field-label,
+.field-name-field-todo-due-date-singledate .field-items,
+.field-name-field-shared-show-clients .field-label,
+.field-name-field-shared-show-clients .field-items,
+ul.openlucius_meta_info li {
+  color: #9f9898;
+  font-weight: normal;
+}
+/* All users */
+.view-id-users_in_groups .glyphicon-user,
+.view-id-dashboard_blocks .views-field-picture .glyphicon-user {
+  color: #d7d7d7;
+}
+.page-groups .glyphicon-user {
+  color: #848484;
+}
+/* Calendar */
+.calendar-calendar td .views-field-field-shared-group-reference a {
+  color: #90a0bd;
+}
+.calendar-calendar td .views-field-field-todo-user-reference a,
+.calendar-calendar td .views-field-field-todo-list-reference a {
+  color: #8f8f8f;
+}
+.calendar-calendar .month-view .full td.multi-day div.monthview,
+.calendar-calendar .week-view .full td.multi-day div.weekview,
+.calendar-calendar .day-view .full td.multi-day div.dayview,
+.calendar-calendar .month-view .full td.multi-day .inner .monthview .continues,
+.calendar-calendar .month-view .full td.multi-day .inner .monthview .cutoff,
+.calendar-calendar .week-view .full td.multi-day .inner .weekview .continues,
+.calendar-calendar .week-view .full td.multi-day .inner .weekview .cutoff {
+  background: #e0ffe2;
+}
+/* Companies, teams and users */
+.page-companies-teams .views-field-field-user-tags,
+.page-companies-teams .views-field-field-user-about-me {
+  color: #666;
+}
+.notifies {
+  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.05);
+}
+/* Tiny MCE tuning, less is more */
+.defaultSkin .mceIframeContainer {
+  background-color: #fff;
+}
+.defaultSkin td.mceToolbar {
+  background-color: #f5f5f5 !important;
+}
+/* Drag & drop uploads */
+.droppable {
+  border: 1px dashed #ccc;
+}
+.tooltip-inner {
+  background: #43ac6a;
+  border-color: #3c9a5f;
+}
+.tooltip.right .tooltip-arrow {
+  border-right-color: #43ac6a;
+}
+/* Group-users */
+.page-group-users .glyphicon-remove {
+  color: #ccc;
+}
+#edit-comment-body-und-0-value,
+.form-item-body-und-0-value #edit-body-und-0-value {
+  clear: both;
+}
+.view-todos-in-group-dashboard .form-type-textfield {
+  display: inline-block;
+}
+.view-todos-in-group-dashboard .add-todo {
+  height: 27px;
+  vertical-align: top;
+}
+.todo-list-quick-add .todo_input_field {
+  height: 28px;
+  padding: 0;
+  -webkit-appearance: none;
+  outline: none;
+  border: none;
+  border-bottom: 1px dotted #b3b3b3;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  margin-right: 5px;
+  width: 150px;
+  float: left;
+}
+.todo-list-quick-add .form-type-select {
+  float: left;
+}
+.todo-list-quick-add .form-type-select .todo_status {
+  width: auto;
+}
+.form-type-select.form-item-field-todo-user-reference #edit-field-todo-user-reference,
+.form-type-select.form-item-field-todo-user-reference,
+.container-inline-date,
+input.todo_due_date {
+  vertical-align: top;
+  width: 150px;
+  display: inline-block;
+}
+.container-inline-date {
+  vertical-align: top;
+  margin: 0 3px 0 0;
+  display: inline-block;
+}
+.container-inline-date.end-date-wrapper {
+  width: 300px;
+}
+.form-item-field-todo-due-date-singledate-date label,
+.form-item-field-todo-user-reference optgroup {
+  display: none;
+}
+.container-inline-date.end-date-wrapper > .form-group > label {
+  padding-top: 13px;
+  float: left;
+  padding-right: 15px;
+}
+.container-inline-date.end-date-wrapper .date-padding {
+  width: 200px;
+}
+.todo_status,
+.todo_assign_to {
+  height: 28px;
+  padding: 3px;
+}
+.todo_due_date {
+  height: 28px;
+}
+.form-item-field-todo-user-reference {
+  margin-bottom: 0;
+}
+.table-responsive {
+  overflow-x: auto;
+  border: 0px;
+}
+.todo-list-quick-add .hide_form {
+  vertical-align: top;
+  height: 35px;
+  display: inline-block;
+  margin-top: 5px;
+}
+.node-type-ol-todo .ol-content .field-name-body,
+.node-type-ol-message .ol-content .field-name-body {
+  margin-top: 20px;
+}
+.timeline_wrapper span.activity {
+  color: #dde6ec;
+}
+/* Support for legacy frontpage (Heartbeat stream) */
+td.views-field.views-field-field-event-date {
+  background-color: #ebebeb;
+  color: #858585;
+  font-size: 11px !important;
+  width: 24%;
+}
+.page-heartbeat-tweet .region-sidebar-second h2,
+.page-heartbeat-tweet .region-sidebar-first h2 {
+  font-size: 16px;
+  padding: 10px;
+  color: #333;
+  background-color: #f5f5f5;
+  border-color: #ddd;
+}
+.page-heartbeat-tweet .region-content .btn {
+  padding: 5px 20px;
+  float: right;
+  font-size: 12px;
+}
+.page-heartbeat-tweet .avatar {
+  margin: 0 10px 10px 0;
+  border-radius: 55px;
+}
+#heartbeat-status-wrapper {
+  margin-bottom: 40px;
+}
+.heartbeat-stream {
+  font-size: 12px;
+  font-family: Roboto, sans-serif;
+}
+.heartbeat-stream a {
+  color: #0079a1;
+}
+.heartbeat-stream a.username {
+  margin-right: 4px;
+}
+.heartbeat-more-messages-wrapper {
+  margin: 20px;
+}
+a.heartbeat-older-messages,
+a:hover.heartbeat-older-messages {
+  padding: 5px 20px;
+  color: #fff;
+  background-color: #008cba;
+  border-color: #0079a1;
+  float: right;
+}
+.page-heartbeat-tweet td.views-field.views-field-picture {
+  width: 1%;
+}
+.page-heartbeat-tweet span.glyphicon.glyphicon-user {
+  font-size: 48px;
+}
+.page-heartbeat-tweet a span.small {
+  color: #bdbdbd;
+}
+.page-heartbeat-tweet a:hover span.small {
+  color: #f00;
+}
+.page-heartbeat-tweet .views-field-timestamp {
+  width: 1%;
+}
+.page-heartbeat-tweet a.btn.btn-default.btn-xs {
+  float: right;
+}
+.page-heartbeat-tweet div#block-system-main {
+  margin-top: 30px;
+}
+.page-dashboard td.views-field.views-field-picture {
+  width: 1%;
+}
+.page-dashboard span.glyphicon.glyphicon-user {
+  font-size: 48px;
+}
+.page-dashboard a span.small {
+  color: #bdbdbd;
+}
+.page-dashboard a:hover span.small {
+  color: #f00;
+}
+.page-dashboard .views-field-timestamp {
+  width: 1%;
+}
+.page-dashboard a.btn.btn-default.btn-xs {
+  float: right;
+}
+.page-dashboard div#block-system-main {
+  margin-top: 30px;
+}
+blockquote img {
+  max-width: 100%;
+  height: auto;
+}
+#block-openlucius-core-ol-node-operations + #block-openlucius-timetracker-openlucius-active-timers {
+  padding-top: 10px;
+  clear: both;
+}
+#block-openlucius-timetracker-openlucius-active-timers h3.block-title {
+  padding: 0;
+  margin: 0;
+}
+#block-openlucius-core-ol-mygroups a {
+  color: #222;
+}
+/* Overrides node/7362  */
+
+body {
+  font-family: Roboto, sans-serif;
+}
+.well,
+.activity-item-wrapper {
+  box-shadow: 2px 2px 2px #e5e5e5;
+  border: 1px solid rgba(194, 194, 194, .75);
+  border-radius: 2px;
+}
+.activity-item-wrapper {
+  margin-bottom: 25px;
+}
+#block-openlucius-core-frontpage-tabs .well {
+  border-top: 0px;
+}
+.openlucius-board-item .label a {
+  color: #d0d0d0;
+}
+.openlucius-board-item .label {
+  border-bottom: 1px dotted #d9d9d9;
+}
+.openlucius-board-item.is-due-past .label {
+  border-bottom: 1px dotted #ececec;
+}
+.openlucius-board-item.is-due-past .label a {
+  color: #ceb7b7;
+}
+ul.views-fluid-grid-items-box-shadow li.views-fluid-grid-item {
+  box-shadow: 2px 2px 2px #e5e5e5;
+  border: 1px solid rgba(194, 194, 194, .75);
+  border-radius: 2px;
+  background: #fff;
+}
+@media (min-width: 768px) {
+  #block-openlucius-core-ol-group-heading .group-navigation li a.active,
+  #block-openlucius-core-ol-group-heading .group-navigation li a:hover {
+    padding-bottom: 10px !important;
+  }
+}
+.page-group-users .views-field-created,
+.page-group-calendar h1.page-header,
+.page-group-task-lists h1.page-header,
+.page-group-messages h1.page-header,
+.page-group-users h1.page-header,
+.page-group-textdocuments h1.page-header,
+.page-group-files h1.page-header {
+  display: none;
+}
+/* Cleaning text-docs node/7282 */
+.page-group-textdocuments ul.fancytree-container {
+  border: 0;
+}
+.region-sidebar-second ul.fancytree-container {
+  font-family: Roboto, sans-serif;
+  font-size: 9pt;
+  padding: 0 5px;
+  margin: 0 0 0 -24px;
+}
+.region-sidebar-second #matches {
+  display: block;
+  color: #ccc;
+  font-size: 12px;
+  margin: 5px;
+}
+#block-openlucius-core-ol-textdoc .move-button {
+  display: none;
+}
+#block-openlucius-core-ol-document-navigation .block-title {
+  display: none;
+}
+.region-sidebar-second #btn-reset-search {
+  padding: 5px 10px;
+}
+.region-sidebar-second input.file-search-form {
+  width: 190px;
+}
+.page-node-add-ol-text-document #block-openlucius-core-ol-textdoc {
+  display: none;
+}
+/* Overrides +buttons node/7383  */
+.page-node-add-ol-text-document #block-openlucius-core-ol-textdoc {
+  display: none;
+}
+.view-all_users h4 {
+  font-size: 14px;
+}
+.view-actionlink h4 {
+  background-color: #fff;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  padding: 9px 18px;
+  font-size: 11px;
+  color: #69758a !important;
+}
+.view-actionlink h4 a {
+  color: #69758a !important;
+  font-family: Roboto, sans-serif;
+}
+
+.btn-primary {
+  background-color: #e7e7e7;
+  border-color: #dadada;
+  color: #69758a !important;
+}
+.btn-primary:hover {
+  background-color: #d3d3d3;
+  border-color: #bbb;
+}
+.comment-form button.btn-success,
+#modal-content .btn-primary.form-submit,
+#block-openlucius-core-ol-node-operations .form-submit {
+  padding: 20px 60px;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  background-color: #4caf50;
+  color: #fff !important;
+  border: 0;
+}
+#edit-actions .btn-primary.form-submit:hover,
+#edit-actions .btn-primary.form-submit:focus,
+#block-openlucius-core-ol-node-operations .form-submit:hover,
+#block-openlucius-core-ol-node-operations .form-submit:focus {
+  background-color: #59b75c;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* Fixes for event repeat node/7429 */
+#repeat-settings-fieldset {
+  margin-left: 20px;
+  font-size: 12px;
+}
+#repeat-settings-fieldset label {
+  font-size: 18px;
+  margin: 15px 10px 13px 0;
+}
+#repeat-settings-fieldset #edit-field-event-date-und-0-rrule-count-child {
+  margin: 10px 0;
+}
+#repeat-settings-fieldset #edit-field-event-date-und-0-rrule-until-child {
+  margin-top: -16px;
+}
+#repeat-settings-fieldset .form-item-field-event-date-und-0-rrule-until-child-datetime-date label,
+#repeat-settings-fieldset .container-inline-date label {
+  font-size: 12px;
+}
+#repeat-settings-fieldset #edit-field-event-date-und-0-rrule-range-of-repeat-until,
+#repeat-settings-fieldset .date-prefix-inline {
+  margin-top: -50px;
+}
+#repeat-settings-fieldset #edit-field-event-date-und-0-rrule-weekly-byday label,
+#edit-field-event-date-und-0-rrule-monthly-day-month label,
+#edit-field-event-date-und-0-rrule-yearly label,
+#edit-field-event-date-und-0-rrule-weekly label {
+  font-size: 12px;
+}
+.form-item-field-event-date-und-0-rrule-weekly-BYDAY-MO {
+  margin-top: 0;
+}
+#repeat-settings-fieldset .form-control {
+  display: block;
+  width: 100%;
+}
+#repeat-settings-fieldset .form-item-field-event-date-und-0-rrule-show-exceptions,
+#repeat-settings-fieldset .form-item-field-event-date-und-0-rrule-show-additions {
+  padding-left: 0;
+}
+#date-repeat-exceptions-field_event_date-und-0-rrule .btn-success,
+#date-repeat-additions-field_event_date-und-0-rrule .btn-success {
+  margin-top: 55px;
+}
+button#edit-field-event-date-und-0-rrule-additions-additions-add {
+  margin-top: 52px;
+}
+/* Modal background white instead of black. */
+#modalBackdrop {
+  background-color: #fff !important;
+  opacity: .9 !important;
+  z-index: 1036 !important;
+}

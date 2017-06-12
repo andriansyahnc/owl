@@ -1,0 +1,3904 @@
+body.admin-menu {
+  padding-top: 5px;
+}
+html body.admin-menu .navbar-fixed-top {
+  top: 27px;
+}
+html.openlucius-core-no-scroll,
+html.openlucius-core-no-scroll body {
+  overflow: hidden;
+}
+#navbar .btn-group.open .dropdown-toggle,
+#navbar .btn-group.open .dropdown-toggle:active,
+#navbar .form-group .form-control,
+#navbar .btn:active,
+#navbar .btn.active {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#navbar .img-responsive {
+  display: inline;
+}
+#navbar .form-group {
+  margin-bottom: 0;
+}
+#navbar .form-group > .form-control {
+  background: transparent;
+  border: 0;
+}
+#navbar .bootstrap-select.form-control {
+  padding: 0;
+}
+.navbar-header {
+  width: 100%;
+}
+.navbar-fixed-top {
+  z-index: 1035;
+}
+.navbar-nav > li {
+  float: left;
+}
+/* fix for navbar ipad behaviour */
+.fixfixed .navbar-fixed-top,
+.fixfixed .navbar-fixed-bottom {
+  position: absolute;
+  top: 0 !important;
+}
+.content th {
+  font-weight: normal;
+}
+body:not(.page-admin-config-openlucius) .form-type-textarea label,
+#heartbeat-stream-tweet_siteactivity blockquote p,
+#heartbeat-stream-useractivity blockquote p {
+  display: none;
+}
+.field-name-field-user-about-me label {
+  display: block;
+}
+.page-all-messages .page-header .glyphicon,
+.node-type-ol-message .page-header .glyphicon,
+.page-group-messages .page-header .glyphicon {
+  top: 3px;
+}
+.navbar-collapse .secondary .dropdown-menu .last a {
+  font-size: 13px;
+  padding: 12px 15px;
+}
+blockquote {
+  font-size: 15px;
+  font-weight: 300;
+}
+#admin-menu-wrapper {
+  padding: 6px 10px 0 5px;
+}
+h5 {
+  text-align: left;
+}
+.views-field-last-updated,
+.views-field-comment-count {
+  font-size: 9px;
+}
+.views-field-delta,
+.views-field-created,
+.views-field-field-todo-attachments,
+.views-field-access {
+  font-size: 10px;
+}
+li.views-fluid-grid-item p,
+li.views-fluid-grid-item li {
+  font-size: 12px;
+}
+li.views-fluid-grid-item .views-field-title,
+li.views-fluid-grid-item .views-field-body {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  margin-bottom: 15px;
+}
+li.views-fluid-grid-item .views-field-body p {
+  width: 100%;
+  word-wrap: break-word;
+}
+.page-header {
+  margin-bottom: 15px;
+  border-bottom: 0px;
+}
+.region-content {
+  position: relative;
+  min-height: 1000px !important;
+  overflow: hidden;
+}
+.front .view-id-groups .view-content {
+  float: left;
+}
+.page-companies-teams .view-header,
+.view-actionlink {
+  float: right;
+  margin-top: -13px;
+}
+.view-actionlink {
+  margin-left: 10px;
+  position: relative;
+  z-index: 10;
+}
+.view-actionlinks,
+.view-blocked_users,
+.view-all_users {
+  float: right;
+  margin-top: -40px;
+  margin-right: 10px;
+}
+.ol-detailpage-nopicture {
+  font-size: 46px;
+}
+/*
+ * Work around for not showing 'publish button' from
+ * that module on node/add page
+ *
+ */
+.page-node #edit-publish {
+  display: none;
+}
+.page-node .node-ol_todo_list-form #edit-publish {
+  display: inline;
+}
+.field-collection-container .field-items .field-item {
+  margin: 20px;
+}
+.field-type-taxonomy-term-reference .field-items .field-item {
+  margin: 0;
+}
+.navbar-nav.secondary > li.last > .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+.navbar-nav.secondary {
+  float: right !important;
+}
+/*
+ * Less is more,
+hide unnecessary text for now with css in future
+ * maybe some some form_alters will be better
+ */
+
+/* @FIXME: me thinks this aint gonna
+ * work when OpenLucius goes i18nizzle ==> some
+ * form_alter needed */
+.field-name-field-shared-files .help-block,
+#edit-body-und-0-value_path_row,
+#edit-comment-body-und-0-value_path_row,
+.region-content label[for*=edit-comment-body-],
+.region-content label[for*=edit-body-],
+.region-content label[for*=edit-title],
+.region-content label[for*=edit-field-shared-files-] {
+  display: none;
+}
+.node-type-ol-group .region-content label[for*=edit-title],
+.page-node-add-ol-group .region-content label[for*=edit-title] {
+  display: block;
+}
+.region-sidebar-second h2 {
+  font-size: 16px;
+}
+.region-sidebar-second {
+  overflow: hidden;
+}
+.region-content .views-exposed-widget .btn {
+  width: 135px;
+  height: 33px;
+  padding: 5px 10px;
+  font-size: 12px;
+  margin: 0px;
+}
+/**
+ * 'Crumbs'
+ */
+.field-name-field-todo-description {
+  margin-top: 15px;
+}
+#page-header .field-type-node-reference a {
+  margin-right: 2px;
+  line-height: 1.428571429;
+  border-radius: 0;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-bottom-color: transparent !important;
+  border-radius: 4px 4px 0 0;
+  border: 1px solid #ddd;
+}
+/**
+ * Group detail page
+ */
+#block-fieldblock-node-ol-group-default-body {
+  margin-top: 20px;
+}
+.view-id-files_in_group_dashboard h2 {
+  font-size: 20px;
+  margin-left: 15px;
+  margin-top: 5px;
+}
+.view-text-documents-in-a-group li.views-fluid-grid-item,
+.view-id-groups li.views-fluid-grid-item {
+  padding: 15px;
+}
+.ol_group-detailpage {
+  margin-top: 20px;
+}
+.view-id-messages_in_a_group .glyphicon-user {
+  font-size: 26px;
+}
+.node-type-ol-group .views-field-last-updated,
+.page-group-textdocuments .views-field-last-updated,
+.page-all-text-documents .views-field-last-updated {
+  margin-top: 20px;
+}
+.node-type-ol-group #block-openlucius_core-ol-group-heading .block-title {
+  display: none;
+}
+/**
+ * Todo tables
+ */
+
+#views-form-todos-on-todo-list-page-block {
+  padding-top: 23px;
+}
+.tabledrag-toggle-weight-wrapper {
+  display: none;
+}
+a.tabledrag-handle .handle {
+  font-size: 10px;
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+}
+a.tabledrag-handle .handle:before {
+  content: "\e068";
+}
+.view-id-all_todo_lists_in_a_group td.views-field.views-field-title,
+.view-id-todos_in_group_dashboard td.views-field.views-field-title,
+.node-type-ol-todo-list .views-field-title {
+  width: 28%;
+}
+.view-id-all_todo_lists_in_a_group td.views-field-comment-count,
+.view-id-todos_in_group_dashboard td.views-field-comment-count {
+  width: 5%;
+}
+.view-id-all_todo_lists_in_a_group td.views-field-field-todo-user-reference,
+.view-id-todos_in_group_dashboard td.views-field-field-todo-user-reference {
+  width: 13%;
+}
+.view-id-all_todo_lists_in_a_group td.views-field-field-todo-due-date,
+.view-id-todos_in_group_dashboard td.views-field-field-todo-due-date {
+  width: 13%;
+}
+.view-id-all_todo_lists_in_a_group td.views-field-last-updated,
+.view-id-todos_in_group_dashboard td.views-field-last-updated {
+  width: 13%;
+}
+.view-id-all_todo_lists_in_a_group td.views-field-field-todo-label,
+.view-id-todos_in_group_dashboard td.views-field-field-todo-label {
+  width: 15%;
+}
+.view-id-messages_in_a_group .views-field-title,
+.page-user-dashboard #block-views-messages-in-a-group-block-2 .views-field-title {
+  width: 20%;
+}
+.views-field-field-user-phone {
+  min-width: 120px;
+}
+/**
+ * Todo page
+ *
+ */
+.field-name-field-todo-description {
+  margin-top: 15px;
+}
+/**
+ * MESSAGES
+ *
+ */
+.page-all-messages .views-field-created {
+  width: 15%;
+}
+.node-type-ol-group .view-header {
+  font-size: 11px;
+}
+.page-group-messages .views-field-created {
+  width: 10%;
+}
+/**
+ * SEARCH PAGE
+ *
+ */
+
+.page-search-content .region-sidebar-first h2 {
+  font-size: 17px;
+}
+.page-search-content .region-sidebar-first ul {
+  padding-left: 0px;
+}
+.page-search-content .region-sidebar-first li {
+  padding-bottom: 5px;
+}
+.page-search-content .region-sidebar-first,
+.page-search-content .region-sidebar-first a {
+  font-size: 13px;
+}
+.navbar .header-search {
+  max-width: 290px;
+  margin: 5px 0 0 0;
+  float: left;
+  z-index: 9999;
+}
+/* Front page */
+.node-type-ol-group .block-title a,
+.page-user-dashboard .block-title {
+  font-size: 28px;
+}
+.block-title .btn-default,
+.btn-openlucius {
+  border-radius: 5px;
+  padding: 2px 10px;
+}
+#block-views-todos-in-group-dashboard-block {
+  margin-bottom: 50px;
+}
+/* Text documents */
+.view-id-text_documents_in_a_group .views-field-field-textdocument-body {
+  font-size: 12px;
+}
+.view-text-documents-in-a-group .views-fluid-grid-item,
+.node-type-ol-text-document .region-content {
+  border: 1px solid #cfcfcf;
+  border-right: 1px solid #b7b7b7;
+  border-left: 1px solid #b7b7b7;
+}
+.view-text-documents-in-a-group .views-field-comment-count,
+.view-text-documents-in-a-group .views-field-last-updated,
+.view-text-documents-in-a-group .views-field-last-updated a {
+  font-size: 10px;
+}
+.node-type-ol-text-document .region-sidebar-second button {
+  padding: 20px 10px;
+  margin-bottom: 10px;
+}
+/* Text documents button */
+.node-type-ol-text-document .region-content {
+  border: 1px solid #cfcfcf;
+  border-right: 1px solid #b7b7b7;
+  border-left: 1px solid #b7b7b7;
+  box-shadow: 2px 2px 2px #ccc;
+  padding-top: 50px;
+  -webkit-box-shadow: 2px 2px 2px #ccc;
+}
+.textdoc_latest {
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  color: #69758a;
+}
+.textdoc_back {
+  border-bottom: dotted #ccc 2px;
+}
+.textdoc_infowrapper,
+.textdoc_index {
+  border-bottom: dotted #ccc 2px;
+}
+.textdoc_backlink {
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  color: #69758a;
+  text-align: center;
+  width: 100%;
+  float: left;
+}
+#block-fieldblock-node-ol-text-document-default-field-shared-show-clients h2,
+#block-diff-inline h2 {
+  font-size: 16px;
+}
+.page-node .ol-content-textdoc {
+  margin-right: 10px;
+}
+.page-node p {
+  clear: both;
+  display: inline-block;
+  margin: 0 0 11px !important;
+  width: 100%;
+}
+.node-ol-text-document .field-name-field-shared-show-clients {
+  margin-top: -25px;
+  margin-bottom: 25px;
+}
+.textdoc_info {
+  font-size: 11px;
+  margin-bottom: 15px;
+}
+.textdoc_latest {
+  font-size: 12px;
+  padding: 7px 20px;
+  white-space: nowrap;
+  text-align: center;
+}
+ul.views-fluid-grid-items-h-margin-10px li.views-fluid-grid-item {
+  margin-left: 5px;
+}
+.textdoc_back {
+  margin-bottom: 20px;
+  padding-bottom: 25px;
+}
+.textdoc_latestblock {
+  padding-bottom: 25px;
+}
+.textdoc_infowrapper,
+.textdoc_index {
+  padding-bottom: 10px;
+}
+div.indentation {
+  float: left;
+  height: 1.7em;
+  margin: -0.4em 0.2em -0.4em -0.4em;
+  padding: 0.42em 0 0.42em 0.6em;
+  width: 10px;
+  color: #ccc;
+}
+.textdoc_backlink {
+  font-size: 12px;
+  padding: 7px 20px;
+  white-space: nowrap;
+}
+.region-sidebar-second .view-text-documents-in-a-group {
+  margin-top: 25px;
+}
+.region-sidebar-second .active,
+.region-sidebar-first .active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+/* nasty for now,
+@FIXME later */
+.region-sidebar-second .view-text-documents-in-a-group .view-actionlink {
+  display: none;
+}
+.region-sidebar-second .view-text-documents-in-a-group td {
+  padding: 5px 0 5px 0px;
+}
+.region-sidebar-second .view-text-documents-in-a-group div.indentation {
+  width: 8px;
+  margin-left: 0;
+}
+#block-views-a5ed397cfeebc6da17ea7491e5232a30 {
+  margin-top: -15px;
+}
+.region-sidebar-second .view-text-documents-in-a-group .glyphicon,
+.region-sidebar-second .view-text-documents-in-a-group .views-field-comment-count {
+  font-size: 9px;
+}
+.page-group-textdocuments .region-sidebar-second a.tabledrag-handle .handle {
+  padding: 0;
+}
+.node-type-ol-text-document #block-diff-inline .block-title {
+  display: none;
+}
+.node-type-ol-text-document .region-sidebar-second #block-diff-inline .content {
+  margin-top: 20px;
+}
+.node-type-ol-text-document .region-sidebar-second .glyphicon-certificate,
+.page-group-textdocuments .region-sidebar-second .glyphicon-certificate {
+  margin-left: 5px;
+}
+.node-type-ol-text-document .region-sidebar-second .glyphicon-file,
+.page-group-textdocuments .region-sidebar-second .glyphicon-file {
+  margin-left: -3px;
+}
+/* Attachments */
+.field-collection-view .field-label,
+.view-files-all .views-field-field-label-s- a,
+.field-collection-view .field-items {
+  width: auto;
+  font-weight: normal;
+  font-size: 11px !important;
+  padding-bottom: 20px;
+}
+.view-files-all .views-field-title a,
+.view-files-all .views-field-subject a {
+  font-size: 12px !important;
+}
+.view-files-all .views-row {
+  margin-bottom: 20px;
+}
+.view-files-all .views-field-field-label-s- {
+  padding-bottom: 30px;
+}
+.view-id-files_all .field-content a {
+  font-size: 14px;
+}
+.itu-attachments {
+  margin: 20px 0px;
+}
+.itu-attachments td {
+  padding: 10px !important;
+}
+.view-files-all .glyphicon-user {
+  font-size: 26px;
+}
+.field-collection-container {
+  border: 0px;
+}
+/* Content nodes */
+.page-node .ol-node,
+.page-comment-reply .ol-node {
+  margin: 0 0 0 70px;
+}
+.user-picture,
+.region-content .user-picture {
+  padding-top: 5px;
+  margin-left: -5px;
+  position: absolute;
+}
+.node .user-picture {
+  position: relative;
+}
+/* User edit */
+#edit-picture .user-picture {
+  position: relative;
+  margin-left: 0px;
+  padding-top: 0px;
+}
+#edit-picture .checkbox {
+  padding-left: 0px;
+}
+#edit-picture .panel-body {
+  padding-top: 0px;
+}
+.node .nav-tabs,
+.links.list-inline {
+  float: right;
+}
+.page-header {
+  margin: 0px 0 20px 15px !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+/* Local tasks */
+.ol_textdoc_tabs {
+  float: right;
+  margin-top: -49px;
+  margin-right: -20px;
+}
+.region-content .ol_textdoc_tabs .nav li a {
+  font-size: 12px;
+  padding: 10px 20px;
+}
+.region-content .nav li.active a {
+  display: none;
+}
+.region-content .nav li a {
+  padding: 5px;
+  font-size: 10px;
+}
+.nav-tabs,
+.links.list-inline {
+  border-bottom: 0px;
+}
+.view-id-dashboard_blocks .table {
+  background-color: #f7f7f7;
+  border: 1px solid #e0e0e0;
+  border-right: 1px solid #c4c4c4;
+  border-bottom: 1px solid #c4c4c4;
+  -webkit-box-shadow: 2px 2px 2px #ccc;
+  box-shadow: 2px 2px 2px #ccc;
+}
+/* Comments */
+#comments {
+  clear: left;
+}
+.ol-new {
+  margin-top: 135px;
+  margin-left: -75px;
+  float: left;
+}
+.indented {
+  padding-left: 60px;
+}
+#comments .form-item-field-todo-comm-show-clients-und {
+  padding: 10px 0px 5px 22px;
+}
+#comments .openlucius-hidden-comment {
+  background: #e2e2e2 !important;
+}
+.openlucius-hidden-comment {
+  background: #e2e2e2 !important;
+  border: solid #d8d8d8;
+  border-width: 1px 0 1px 0;
+}
+.view-id-dashboard_blocks .glyphicon-user {
+  font-size: 27px;
+}
+.field-name-field-todo-description {
+  margin-top: 15px;
+}
+.page-user-dashboard .views-field-field-user-company {
+  width: 18%;
+}
+.page-user-dashboard .views-field-field-user-teams {
+  width: 14%;
+}
+.page-user-dashboard .view-grouping {
+  margin-bottom: 20px;
+}
+.page-user-dashboard .region-content ul {
+  padding-left: 15px;
+}
+.page-user-dashboard .view-grouping-header {
+  margin-top: 30px;
+}
+.itu-attachment-thumb {
+  float: left;
+}
+.view-id-files_all ul {
+  list-style-type: none;
+  margin-left: -15px;
+}
+.view-id-files_all .views-field-subject,
+.view-id-files_all .views-field-title {
+  margin-left: -18px;
+}
+.field-name-field-todo-description {
+  margin-top: 15px;
+}
+#edit-field-files-tags-tid-wrapper,
+.field-name-field-files-tags {
+  padding: 10px;
+  font-size: 12px;
+  width: 150px;
+  margin-top: 10px;
+}
+.node-teaser #edit-field-files-tags-tid-wrapper,
+.node-teaser .field-name-field-files-tags {
+  float: right;
+}
+table.itu-attachment-list .file a {
+  font-size: 12px;
+}
+/* Todo-list detail page */
+.node-type-ol-todo-list #block-views-todos-on-todo-list-page-block {
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+.field-name-field-todo-description {
+  margin-top: 15px;
+}
+.block-views-todos-on-todo-list-page-block {
+  margin-bottom: 30px;
+}
+.node-ol-todo-list .comment-wrapper {
+  margin-top: 40px;
+}
+.comment-wrapper {
+  clear: both;
+  overflow: hidden;
+}
+#block-views-todos-on-todo-list-page-block .view-header {
+  margin-bottom: 15px;
+}
+.view-header,
+.view-footer {
+  font-size: 11px;
+  margin-bottom: 15px;
+}
+.region-content .views-exposed-form {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+.page-all-todo-lists .view-grouping {
+  margin-bottom: 30px;
+}
+.region-content .field-name-field-todo-list-reference,
+.field-name-field-todo-user-reference,
+.field-name-field-todo-label,
+.field-name-field-todo-completed,
+.field-name-field-todo-due-date-singledate,
+.field-name-field-shared-show-clients,
+.field-name-field-todo-completed-date,
+.field-name-field-todo-completed-by,
+.field-name-field-todolist-type,
+.field-name-field-todo-comm-show-clients,
+.field-name-field-todo-due-date .field-items,
+.submitted,
+ul.openlucius_meta_info li {
+  font-size: 11px;
+}
+/* All users */
+.field-name-field-todo-description {
+  margin-top: 15px;
+}
+.view-id-users_in_groups .views-field-created {
+  font-size: 10px;
+  padding-top: 10px;
+}
+.view-id-users_in_groups .glyphicon-user,
+.view-id-dashboard_blocks .views-field-picture .glyphicon-user {
+  font-size: 77px;
+}
+.views-field-picture .img-responsive {
+  display: inline-block;
+}
+.view-id-users_in_groups .views-field-name {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  line-height: 1.3;
+  color: inherit;
+  margin-top: 10.5px;
+  margin-bottom: 10.5px;
+}
+.view-id-users_in_groups ul.views-fluid-grid-items-height-200 li.views-fluid-grid-item {
+  height: 235px;
+}
+.view-id-users_in_groups ul.views-fluid-grid-items-height-200 li.views-fluid-grid-item .views-field-picture {
+  margin-bottom: 15px;
+}
+/* Calendar */
+/* @FIXME Needs work for responsiveness */
+.page-group-calendar .view-header {
+  margin-right: 80px;
+}
+.page-group-calendar .view-filters {
+  float: left;
+}
+.calendar-calendar td .views-field-field-shared-group-reference a {
+  font-weight: normal;
+}
+.calendar-calendar td .views-field-field-todo-user-reference a,
+.calendar-calendar td .views-field-field-todo-list-reference a {
+  font-weight: normal;
+}
+.page-user-calendar .calendar-calendar td .views-field-title a {
+  font-size: 12px;
+}
+/* Companies,
+teams and users */
+.page-companies-teams .views-field-name {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  width: 15%;
+  font-size: 16px;
+}
+.page-companies-teams .region-content ul {
+  padding-left: 20px;
+}
+.inividual-fieldset .form-checkboxes .form-type-checkbox,
+#edit-notify-individual .form-type-checkbox,
+#edit-notify-company .form-type-checkbox,
+#edit-notify-team .form-type-checkbox {
+  display: inline-block;
+  float: left;
+  width: 50%;
+  margin: 0;
+}
+#edit-notify-individual .form-type-checkbox label,
+#edit-notify-company .form-type-checkbox label,
+#edit-notify-team .form-type-checkbox label,
+.inividual-fieldset .form-type-checkbox label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  white-space: nowrap;
+}
+#edit-notify-individual,
+#edit-notify-company,
+#edit-notify-team,
+.inividual-fieldset .form-checkboxes {
+  clear: both;
+  float: left;
+  margin-bottom: 20px;
+}
+.form-wrapper .form-type-checkboxes > label {
+  float: left;
+  width: 100%;
+}
+#openlucius-core-add-form {
+  max-width: 275px;
+  float: right;
+  margin-top: 10px;
+  clear: right;
+}
+#openlucius-core-add-form .btn {
+  border-color: #ccc;
+  background-color: #eee;
+}
+#edit-unpublish {
+  float: right;
+}
+.views-field-field-shared-group-reference,
+.views-field-field-shared-group-reference span,
+.views-field-field-shared-group-reference a {
+  font-size: 10px !important;
+}
+/* Comment and notifications styling */
+.page-comment-reply .content .node h2 {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-top: 0px;
+}
+#edit-field-todo-due-date-singledate {
+  clear: right;
+}
+.main-container #block-system-main {
+  float: left;
+  width: 100%;
+}
+.checkbox input[type="checkbox"] {
+  float: none;
+  margin: 0 5px 0 0;
+  position: relative;
+}
+.notifies {
+  border: 0px;
+  float: left;
+  clear: both;
+}
+.notifies > .panel-body {
+  padding: 0px;
+  float: left;
+}
+body:not(.page-node-add-ol-text-document) .notifies > .panel-body fieldset.inividual-fieldset {
+  width: 69%;
+  float: left;
+  margin-right: 10px;
+}
+.notifies > .panel-body fieldset.inividual-fieldset.no-teams {
+  width: 100% !important;
+}
+.notifies > .panel-body fieldset.inividual-fieldset.no-teams + fieldset.team-companies {
+  display: none !important;
+}
+body:not(.page-node-add-ol-text-document) .notifies > .panel-body fieldset.team-companies {
+  width: 29%;
+  float: left;
+}
+.notifies > .panel-body fieldset.inividual-fieldset,
+.notifies > .panel-body fieldset.team-companies {
+  height: 100%;
+  margin-bottom: 0px;
+}
+fieldset#edit-field-wrapper.notifies.panel.panel-default.form-wrapper {
+  width: 100%;
+}
+.notifies .panel-body {
+  width: 100%;
+}
+.check-all,
+.uncheck-all,
+.icon-right {
+  font-size: 12px;
+  float: right;
+}
+.check-all .glyphicon,
+.uncheck-all .glyphicon {
+  margin-left: 5px;
+}
+.check-all,
+.uncheck-all {
+  cursor: pointer;
+}
+/* Tiny MCE tuning,
+less is more */
+span.mce_pastetext,
+.mceButton.mce_pastetext {
+  display: none !important;
+}
+.form-type-item {
+  display: none;
+}
+/* Editor button,
+disable this btn,
+so text is álways pasted as plain text. */
+a#edit-body-und-0-value_pastetext {
+  display: none;
+}
+/* Drag & drop uploads */
+.form-type-dragndrop-upload .input-group,
+.droppable {
+  width: 100%;
+}
+.droppable {
+  float: left;
+  padding: 2px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  text-align: center;
+  margin: 5px 0;
+  height: 100px;
+}
+.droppable-standard-upload {
+  min-height: 30px;
+}
+.droppable-message {
+  line-height: 40px;
+}
+.droppable-controls {
+  display: none;
+}
+#edit-field-shared-files-und-ajax-wrapper legend {
+  display: none;
+}
+#edit-field-shared-files-und {
+  margin-top: -0px;
+  border: 0px;
+}
+/* Filters */
+.region-sidebar-second .views-exposed-widget {
+  clear: both;
+}
+.region-sidebar-second .view-filters {
+  float: right;
+}
+.region-content .views-exposed-form .views-exposed-widget .form-submit {
+  margin-top: 0px;
+}
+.region-content .views-exposed-form {
+  border-bottom: 10px solid #e7e7e7;
+}
+/* File folders */
+.view-id-file_folders .glyphicon {
+  margin-right: 5px;
+}
+.region-sidebar-second .view-id-file_folders td {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.region-content label[for=edit-field-event-location-und-0-value] {
+  display: block;
+}
+/* Loop-in e-mails */
+.field-add-more-submit {
+  font-size: 11px;
+  padding: 10px 20px;
+}
+.notified,
+html .page-node .content .notified,
+div.field-name-field-shared-loopin-email {
+  padding: 5px 0;
+  margin: 10px;
+  font-size: 10px;
+  float: right;
+}
+#modalContent .notified,
+html .page-node .content .notified,
+div.field-name-field-shared-loopin-email {
+  margin: 0;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  text-align: left;
+  color: #ccc;
+}
+div.field-name-field-shared-loopin-email .field-label {
+  font-weight: normal;
+}
+.notified span,
+.notified a.show-more,
+.notified a.show-less {
+  vertical-align: middle;
+}
+#modalContent .comment-wrapper .notified,
+html .comment-wrapper .notified,
+.comment-wrapper div.field-name-field-shared-loopin-email {
+  padding-left: 39px !important;
+}
+#modalContent .notified.shown,
+html .page-node .content .notified.shown {
+  white-space: normal;
+  display: inline;
+}
+#modalContent .notified.shown .first,
+html .page-node .content .notified.shown .first {
+  width: 100%;
+  display: inline;
+}
+#modalContent .notified .first,
+html .page-node .content .notified .first {
+  max-width: 50%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+div.field-name-field-shared-loopin-email {
+  padding: 0px;
+  margin: 0px 0px 20px 0px;
+}
+.notified,
+.who-liked,
+.comment-reply-by-email {
+  color: #7c7c7c;
+}
+.comment-reply-by-email {
+  margin-left: 2px;
+  font-size: 10px;
+}
+.who-liked .text {
+  font-weight: bold;
+}
+.node > .content > .notified {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+.swapfolder {
+  visibility: hidden;
+  position: absolute;
+}
+.select_holder {
+  position: relative;
+  width: 115px;
+  top: -15px;
+  height: 15px;
+  margin-right: 10px;
+  float: left;
+}
+ul.custom-select {
+  list-style-type: none;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 0px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #f9f9f9;
+  z-index: 100;
+  width: 100%;
+  max-height: 10em;
+  overflow-y: scroll;
+}
+ul.custom-select li {
+  padding: 4px 10px;
+  cursor: pointer !important;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  display: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+ul.custom-select.open {
+  z-index: 101;
+  left: auto;
+  right: 0px;
+  top: 0;
+  width: 300px;
+}
+table tr:last-child ul.custom-select.open {
+  top: auto;
+  bottom: -25px;
+}
+ul.custom-select li.selected,
+ul.custom-select.open li {
+  display: block;
+}
+ul.custom-select li span {
+  position: absolute;
+  right: 5px;
+  top: 7px;
+}
+ul.custom-select li.selected span:before {
+  content: "\e114";
+}
+ul.custom-select.open li.selected span:before {
+  content: "\e113";
+}
+ul.custom-select li:hover,
+ul.custom-select li.selected {
+  background-color: #fff;
+}
+ul.custom-select li:hover {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+ul.custom-select li.selected:hover {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+ul.custom-select li:first-child {
+  border-top: 0px !important;
+}
+ul.custom-select li:last-child {
+  border-bottom: 0px !important;
+}
+ul.custom-select.open li.indent-1 {
+  padding-left: 18px;
+}
+ul.custom-select.open li.indent-2 {
+  padding-left: 28px;
+}
+ul.custom-select.open li.indent-3 {
+  padding-left: 38px;
+}
+ul.custom-select.open li.indent-4 {
+  padding-left: 48px;
+}
+ul.custom-select.open li.indent-5 {
+  padding-left: 58px;
+}
+ul.custom-select.open li.indent-6 {
+  padding-left: 68px;
+}
+ul.custom-select.open li.indent-7 {
+  padding-left: 78px;
+}
+/* Group-users */
+.page-group-users .glyphicon-remove {
+  font-size: 10px;
+}
+/* Sheetnodes (Heavy testing still needed before releasing) */
+/*'Removing' and tuning sheets,
+doesn't work properly and we haven't tested
+ * extensively */
+td[id*='-edittab'],
+td[id*='-sorttab'],
+td[id*='-commenttab'],
+td[id*='-namestab'],
+img[id*='-formulafunctions'] {
+  display: none !important;
+}
+div[id*='-edittools'] {
+  height: 60px;
+  margin-top: -13px;
+}
+#te_toplevel {
+  margin-top: 10px;
+}
+/* Remove publish button for adding todo list */
+.page-node-add-ol-todo-list .form-actions #edit-publish {
+  display: none;
+}
+/* View all-users edit button on top right */
+.view-id-users_in_groups ul li {
+  position: relative;
+}
+.view-id-users_in_groups ul li .views-field-edit-node a {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+/* Make the username break with dot dot dot for longer names*/
+.view-id-users_in_groups .views-field-name {
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 120px;
+}
+/* All-users */
+@media screen and (max-width: 510px) {
+  .view-id-users_in_groups .view-header {
+    margin-bottom: 50px;
+  }
+  .view-id-users_in_groups .view-actionlinks,
+  .view-blocked_users {
+    height: 70px;
+  }
+  .view-id-users_in_groups .view-actionlinks,
+  .view-blocked_users,
+  .view-all_users {
+    display: block;
+    width: 100%;
+    clear: both;
+    padding-left: 10px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .navbar .header-search {
+    max-width: 255px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .navbar .header-search {
+    display: none;
+  }
+}
+header.navbar.container.navbar-default {
+  width: 100%;
+}
+.navbar.container {
+  max-width: inherit;
+}
+#admin-menu.admin-menu-position-fixed {
+  z-index: 9999 !important;
+}
+.navbar .logo {
+  padding: 0 15px 0 0;
+}
+.navbar-default .navbar-nav > li > a.logo:hover,
+.navbar-default .navbar-nav > li > a.logo:active,
+.navbar-default .navbar-nav > li > a.logo:focus {
+  background: transparent !important;
+}
+.view .date-nav-wrapper .date-prev {
+  right: 112px !important;
+}
+/* User dashboard info baseline */
+.view-dashboard-blocks .views-table td {
+  vertical-align: top;
+}
+.form-item-roles {
+  display: none;
+}
+/* Clear the blocks */
+.page-user-dashboard .region-content .block-system {
+  clear: both;
+}
+.views-table thead th {
+  font-weight: bold;
+}
+/* Recent activity */
+.front td.views-field.views-field-picture {
+  width: 1%;
+}
+.front span.glyphicon.glyphicon-user {
+  font-size: 48px;
+}
+.front a span.small {
+  color: #bdbdbd;
+}
+.front a:hover span.small {
+  color: #f00;
+}
+.front .views-field-field-event-date {
+  background-color: #ebebeb;
+  color: #858585;
+  font-size: 11px;
+  width: 24%;
+}
+.front .views-field-timestamp {
+  width: 1%;
+}
+.views-field-timestamp .glyphicon-certificate {
+  color: #f00;
+}
+/* h2 in sidebars */
+.region-sidebar-first h2.block-title,
+.region-sidebar-second h2.block-title {
+  font-size: 16px;
+  padding: 10px 19px;
+  color: #333;
+  background-color: #f9f9f9;
+  border-color: #ddd;
+}
+.region-sidebar-first h2,
+.region-sidebar-second h2 {
+  margin: -19px -19px 10.5px;
+}
+.region-sidebar-first .block,
+.region-sidebar-second .block {
+  margin-bottom: 19px;
+}
+.heartbeat-time-ago {
+  margin-left: 10px;
+}
+#heartbeat-stream-tweet_siteactivity .username {
+  margin-right: 10px;
+}
+.heartbeat_tweet div,
+.heartbeat_tweet img,
+.heartbeat_tweet a {
+  display: inline;
+}
+.heartbeat-stream span.flag-wrapper,
+.heartbeat-stream span.hover-delete,
+.heartbeat-attachment-button {
+  background: none;
+}
+.heartbeat-messages-wrapper .heartbeat-activity {
+  float: none;
+  min-height: 75px;
+}
+li.views-fluid-grid-item {
+  background-color: transparent;
+  border: 0px;
+}
+#block-views-users-in-groups-block-1 ul.views-fluid-grid-list {
+  width: 100%;
+  clear: both;
+}
+#block-views-users-in-groups-block-1 li.views-fluid-grid-inline {
+  width: 32%;
+  min-width: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#block-views-users-in-groups-block-1 .view-users-in-groups .views-field-picture {
+  text-align: center;
+}
+#block-views-users-in-groups-block-1 .views-field-name {
+  max-width: none;
+}
+.no-absolute {
+  padding-top: 6px;
+}
+.no-absolute .form-select {
+  width: auto !important;
+}
+.no-absolute .dropdown-menu.inner {
+  position: relative;
+}
+.no-absolute .dropdown-menu.inner li.selected,
+.no-absolute .dropdown-menu.inner li .glyphicon {
+  display: none;
+}
+.no-absolute .dropdown-menu.inner li {
+  cursor: pointer;
+}
+.no-absolute .form-group {
+  margin-bottom: 0px;
+}
+button.selectpicker,
+button.selectpicker:hover {
+  background: transparent !important;
+  color: #fff !important;
+  border: 0px !important;
+}
+.bootstrap-select .btn,
+.bootstrap-select .btn:hover {
+  background: transparent !important;
+  border: 0px !important;
+}
+.main-container {
+  margin-top: 62px;
+}
+.front .main-container .region-content {
+  padding-top: 0px;
+}
+.front .front-buttons {
+  margin-bottom: 65px;
+}
+.btn-group .dropdown-toggle.selectpicker.btn-default ~ .dropdown-menu {
+  overflow: visible !important;
+}
+#block-views-users-in-groups-block-1 .views-field-name a {
+  font-size: 12px;
+}
+.form-required {
+  color: #f00;
+}
+input.error {
+  border: 1px solid #f00;
+}
+.password-confirm .error {
+  color: #e55;
+}
+.password-confirm .ok {
+  color: #008000;
+}
+/**
+ * Password strength indicator
+ */
+.password-strength {
+  width: 200px;
+  padding-bottom: 10px;
+}
+.password-strength-title {
+  display: inline;
+}
+.password-strength-text {
+  float: right; /*LTR*/
+  font-weight: bold;
+}
+.password-indicator {
+  background-color: #ccc;
+  height: 5px;
+  width: 100%;
+}
+.password-indicator div {
+  height: 100%;
+  width: 0%;
+  background-color: #4c6;
+}
+/**
+ * Password confirmation checker
+ */
+div.password-confirm {
+  visibility: hidden;
+}
+.container-inline div,
+.container-inline label {
+  display: inline;
+}
+.container-inline .fieldset-wrapper {
+  display: block;
+}
+.nowrap {
+  white-space: nowrap;
+}
+html.js .js-hide {
+  display: none;
+}
+.element-hidden {
+  display: none;
+}
+.element-invisible {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+#openlucius_core-remove-clients-from-group-form {
+  text-align: center;
+}
+#openlucius_core-remove-clients-from-group-form h2 {
+  margin-bottom: 25px;
+}
+.heartbeat-activity img.avatar {
+  width: 50px;
+}
+.node-file-form .form-item-title {
+  display: none;
+}
+#node-admin-content .form-horizontal .form-group {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+#node-admin-content div.form-type-select,
+#node-admin-content div.form-type-select label {
+  float: left;
+}
+#node-admin-content div.form-type-select .col-sm-10 {
+  width: auto !important;
+}
+.views-field-field-groups li {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  list-style-position: inside;
+  float: left;
+  width: 100px !important;
+  clear: both;
+}
+.panel-default > .panel-heading {
+  float: left;
+}
+img.file-icon {
+  margin: 1px 2px 0px 0px;
+  float: left;
+}
+.filelink a {
+  font-size: 16px;
+  word-break: break-all;
+}
+.filelink img {
+  margin-bottom: 5px;
+}
+.file_info_wrapper .link_to_group,
+.file_info_wrapper .userlink {
+  margin-left: 10px;
+}
+span.file_info_wrapper {
+  margin-left: 3px;
+}
+.view-file-folders h4 {
+  font-size: 14px;
+  color: #ccc;
+  margin-left: 10px;
+}
+.page-group-files span.glyphicon.glyphicon-edit {
+  float: right;
+}
+.file_info_wrapper,
+.file_info_wrapper a {
+  color: #a7a7a7;
+  font-size: 10px;
+}
+.files_backlink {
+  padding-left: 5px;
+  color: #9f9f9f;
+}
+.tabledrag-changed-warning.messages.warning {
+  background-color: #ffe675;
+  padding: 10px;
+}
+.table-responsive {
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -webkit-overflow-scrolling: touch;
+}
+.content .personal_email {
+  position: absolute;
+  bottom: 10px;
+}
+.user-picture img {
+  max-width: 66px;
+}
+#edit-picture .user-picture img {
+  max-width: none;
+}
+.block-facetapi .facetapi-facetapi-links {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 1em;
+  line-height: 1.428571429;
+  font-size: 13px;
+}
+.block-facetapi .facetapi-facetapi-links ul {
+  padding: 0 0 0 1em;
+  list-style-type: none;
+}
+.block-facetapi .facetapi-facetapi-links ul li:before {
+  display: inline-block;
+  content: "-";
+  width: 1em;
+}
+div.header-holder {
+  position: relative;
+}
+div.header-holder .submitted {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+div.header-holder h3 {
+  margin-top: 5px;
+}
+blockquote p {
+  font-size: 15px;
+}
+table.comment-alter-diff {
+  font-size: 70%;
+}
+.submitted {
+  color: #9f9898;
+}
+.links.list-inline {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.links.list-inline > li {
+  float: left;
+  margin-bottom: -1px;
+  position: relative;
+  display: block;
+  padding: 0px;
+}
+.links.list-inline > li a {
+  color: #b8b8b8;
+  background-color: #f7f7f7;
+  padding: 5px;
+  font-size: 10px;
+  margin-right: 2px;
+  line-height: 1.428571429;
+  border: 1px solid transparent;
+  border-radius: 0;
+  position: relative;
+  display: block;
+  text-decoration: none;
+}
+.links.list-inline > li a:hover {
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #f7f7f7;
+}
+h5.empty-todo-list a {
+  color: #4e4e4e;
+  margin-left: 5px;
+}
+.bootstrap-select .dropdown-menu.open {
+  overflow: visible !important;
+}
+.page-comment-reply .comment {
+  border-top: 0;
+  margin: 0 0 0 70px;
+}
+/* My Groups block */
+
+.page-recent-stuff span.glyphicon.glyphicon-user.my_groups_group_usercount {
+  font-size: 10px;
+  color: #e2e2e2;
+}
+.page-recent-stuff .badge {
+  color: #cdcdcd;
+  font-size: 10px;
+  background-color: #f7f7f7;
+}
+#block-openlucius-core-ol-mygroups span.mygroups-title .inline-title {
+  max-width: 150px;
+  display: inline-block;
+  word-wrap: break-word;
+}
+#block-openlucius-core-ol-mygroups span.mygroups-title .fa {
+  margin-right: 5px;
+}
+#block-openlucius-core-ol-mygroups a.btn.btn-default.btn-xs,
+#block-views-file-folders-block-3 a.btn.btn-default.btn-xs {
+  float: right;
+  margin-top: -2px;
+}
+.region-sidebar-first {
+  font-size: 12px;
+}
+/* Recent stuff */
+.timeline_wrapper span.activity {
+  float: right;
+  font-size: 46px;
+  margin-left: 5px;
+}
+.page-recent-stuff .view-ol-home-heartbeat-activity- .new_comments .badge {
+  color: #fff;
+  font-size: 10px;
+  background-color: #ff8a8a;
+}
+.page-recent-stuff span.new_comments,
+.page-recent-stuff span.new_comments .glyphicon,
+.page-recent-stuff span.new_comments_count {
+  color: #fff;
+}
+/* Recent stuff block */
+.timeline-panel .activity {
+  float: right;
+  font-size: 46px;
+  margin-left: 5px;
+}
+.timeline span.glyphicon.glyphicon-user {
+  font-size: 32px;
+  color: #ccc;
+  margin-top: 5px;
+}
+.page-recent-stuff .views-field-picture img,
+.page-group-activity .views-field-picture img,
+#user-activity .views-field-picture img {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.activity_item .timeline-heading .glyphicon {
+  color: #dde6ec;
+}
+/* Media Queries for 'my groups' block on recent activity page */
+@media screen and (min-width: 767px) and (max-width: 1200px) {
+  .region-sidebar-first .badge {
+    display: none;
+  }
+  .region-sidebar-first h2 {
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 767px) and (max-width: 992px) {
+  .region-sidebar-first .plus-text {
+    display: none;
+  }
+}
+/* Round profile picture */
+
+.views-field-picture img,
+.my_groups_groupmembers img,
+.user-picture img {
+  /* Chrome and Safari */
+  -webkit-border-radius: 55px;
+  /* Firefox */
+  -moz-border-radius: 55px;
+  /* Opera */
+  -o-border-radius: 55px;
+  /* W3C standard--when adopted across the board */
+  border-radius: 55px;
+}
+/* Help blocks styling */
+#block-system-help {
+  padding: 18px 24px;
+  margin: 30px;
+  width: auto;
+  font-size: 16px;
+  background: url('../images/bg_help.png');
+  color: #fff;
+  z-index: 2;
+}
+#block-system-help .front-buttons {
+  display: none; /* work around for now */
+}
+/* Recent activity timeline */
+.timeline {
+  list-style: none;
+  padding: 0px 0 20px;
+  position: relative;
+}
+.timeline:before {
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  width: 3px;
+  background-color: #eee;
+  left: 25px;
+  margin-right: -1.5px;
+}
+.timeline > li {
+  margin-bottom: 20px;
+  position: relative;
+  margin-right: 3px;
+}
+.timeline > li:before,
+.timeline > li:after {
+  content: " ";
+  display: table;
+}
+.timeline > li:after {
+  clear: both;
+}
+.timeline > li:before,
+.timeline > li:after {
+  content: " ";
+  display: table;
+}
+.timeline > li:after {
+  clear: both;
+}
+.timeline > li > .activity_item > .timeline-panel {
+  /* Safari 5.1.7 fallback */
+  width: 85%;
+  width: calc(100% - 75px);
+  float: right;
+  border: 1px solid #d4d4d4;
+  border-radius: 2px;
+  padding: 20px;
+  position: relative;
+  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.175);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.175);
+  background-color: #fff;
+}
+.timeline > li > .activity_item > .timeline-panel .itu-attachments {
+  overflow: scroll;
+  max-width: 100%;
+  width: 100%;
+}
+.timeline > li > .activity_item > .timeline-panel:before {
+  position: absolute;
+  top: 26px;
+  left: -15px;
+  display: inline-block;
+  border-top: 15px solid transparent;
+  border-right: 15px solid #ccc;
+  border-left: 0 solid #ccc;
+  border-bottom: 15px solid transparent;
+  content: " ";
+}
+.timeline > li > .activity_item > .timeline-panel:after {
+  position: absolute;
+  top: 27px;
+  left: -14px;
+  display: inline-block;
+  border-top: 14px solid transparent;
+  border-right: 14px solid #fff;
+  border-left: 0 solid #fff;
+  border-bottom: 14px solid transparent;
+  content: " ";
+}
+.timeline > li > .activity_item > .timeline-badge {
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.4em;
+  text-align: center;
+  position: absolute;
+  top: 16px;
+  left: 0px;
+  margin-right: -25px;
+  background-color: #999;
+  z-index: 100;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+.timeline-title {
+  margin-top: 0;
+  color: inherit;
+}
+.timeline-body > p,
+.timeline-body > ul {
+  margin-bottom: 0;
+}
+.timeline-body > p + p {
+  margin-top: 5px;
+}
+.timeline-body {
+  display: none;
+}
+.timeline-panel blockquote {
+  margin-top: 15px;
+}
+.timeline-heading > p {
+  font-size: 12px;
+}
+.timeline .text-muted {
+  font-size: 80%;
+}
+.page-recent-stuff span.new_comments {
+  float: right;
+  margin-right: 20px;
+}
+.page-recent-stuff span.certificate_new {
+  float: right;
+  color: #fff;
+  margin: 22px -51px;
+  position: relative;
+  font-size: 12px;
+  width: 40px;
+  text-align: center;
+}
+.page-recent-stuff span.comment_count {
+  margin-left: 10px;
+  font-size: 10px;
+  color: #d2c7c7;
+}
+.page-recent-stuff .region-content a .glyphicon.glyphicon-comment {
+  color: #ccc;
+}
+.activity_item {
+  display: block;
+}
+.activity_item a:hover h5,
+.activity_item a:hover .text-muted,
+.activity_item a:hover .glyphicon,
+.activity_item a:hover .comment_count {
+  color: #ff8a8a;
+}
+.activity_item a:hover blockquote,
+.activity_item a:hover blockquote li {
+  color: #000;
+}
+.activity_item a:hover {
+  text-decoration: none;
+}
+.page-recent-stuff .view-empty {
+  text-align: center;
+  padding: 33px 24px 24px 24px;
+  margin: 30px;
+  width: auto;
+  font-size: 16px;
+  background: url('../images/bg_help.png');
+  color: #fff;
+  z-index: 2;
+}
+.page-group-activity blockquote,
+.page-user-dashboard blockquote {
+  border-left: 0;
+  padding: 5px 0;
+  margin: 0 0 10px;
+}
+.page-recent-stuff small.text-muted {
+  margin-right: 10px;
+}
+.page-recent-stuff h5 {
+  margin-bottom: 5px;
+}
+/* +File Button */
+
+.add-file a.btn.btn-default.btn-xs.btn-openlucius {
+  height: 50px;
+  margin-bottom: 20px;
+  padding: 15px 30px;
+  font-size: 14px;
+  width: 100%;
+}
+.region-content .activity_item span.glyphicon.glyphicon-user {
+  font-size: 32px;
+  color: #ccc;
+  margin-top: 5px;
+}
+a:hover.activity_item .glyphicon.glyphicon-user {
+  color: #e5e5e5 !important;
+}
+/* Node delete button */
+button#edit-delete {
+  float: right;
+  margin-left: 10px;
+}
+/**
+ * Fixes for collapsible tables.
+ */
+.collapsed > td {
+  padding: 0 !important;
+}
+.view-text-documents-in-a-group .table,
+.view-file-folders .table {
+  border-top: 1px solid #ddd;
+  table-layout: fixed;
+}
+.view-text-documents-in-a-group .table tr td,
+.view-file-folders .table tr td {
+  transition: padding .1s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #008cba;
+}
+.view-text-documents-in-a-group .table tr.collapsed td,
+.view-file-folders .table tr.collapsed td {
+  height: 0px;
+  border: 0px;
+}
+.view-text-documents-in-a-group .table tr.folder,
+.view-file-folders .table tr.folder {
+  cursor: pointer;
+}
+.td-slider {
+  display: none;
+}
+.view-text-documents-in-a-group div.indentation,
+.view-file-folders div.indentation {
+  width: 2.2em !important;
+}
+.view-text-documents-in-a-group div.indentation:before {
+  content: '';
+}
+.region-sidebar-second .view-text-documents-in-a-group tr a,
+.region-sidebar-second .view-file-folders tr a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.region-sidebar-second .view-id-text_documents_in_a_group.view-display-id-block_4 tr.folder .views-field-title .glyphicon,
+.region-sidebar-second .view-file-folders tr.folder .views-field-title .glyphicon {
+  margin-left: 8px;
+}
+.td-slider {
+  overflow: hidden;
+  white-space: nowrap;
+  word-break: break-all;
+  width: 100%;
+}
+.region-sidebar-second .view-text-documents-in-a-group tr,
+.region-sidebar-second .view-file-folders tr {
+  white-space: nowrap;
+}
+.view-file-folders td.views-field-edit-node {
+  width: 30px !important;
+}
+.region-sidebar-second .view-file-folders td.views-field-edit-node a,
+.region-sidebar-second .view-file-folders a.tabledrag-handle {
+  margin-left: 0px;
+}
+.region-sidebar-second .view-file-folders td.views-field-edit-node a {
+  display: inline-block;
+  width: 17px;
+  height: 13px;
+}
+/* Show sidebar button */
+.fixed-right {
+  display: none;
+}
+#block-openlucius-core-ol-group-heading .add-button {
+  display: none;
+}
+#block-openlucius-core-ol-group-heading.sticky {
+  position: fixed;
+  z-index: 100;
+}
+tr.todo-strike,
+tr.todo-strike a {
+  text-decoration: line-through;
+  color: #ccc !important;
+}
+#navbar li.last .dropdown-toggle img {
+  vertical-align: bottom;
+  margin-right: 3px;
+}
+#navbar li.last .dropdown-toggle .username {
+  vertical-align: bottom;
+}
+/* Remove the add content link */
+.page-admin-content .action-links > li {
+  display: none;
+}
+/* Who has been notified or who liked */
+.notified .show-less,
+.notified .show-more {
+  cursor: pointer;
+}
+.notified .last,
+.notified .show-less,
+.notified.shown .show-more {
+  display: none;
+}
+.notified.shown .last,
+.notified.shown .show-less {
+  display: inline-block;
+}
+.notified.shown .first {
+  margin-right: -4px;
+}
+.notified a.show-less,
+.notified a.show-more {
+  color: #ccc !important;
+}
+.region-sidebar-second #block-openlucius-core-ol-textdoc .move-button {
+  width: 100%;
+  height: 45px;
+}
+.page-node-move .form-item-tid {
+  display: none;
+}
+#move-todo-list-wrapper {
+  display: none;
+}
+.node-type-ol-todo #move-todo-list-wrapper {
+  display: block;
+}
+.todo-breakdown {
+  float: right;
+  clear: right;
+  outline: none;
+  border: 0;
+  background-color: transparent;
+  font-size: 25px;
+  display: none;
+}
+/**
+ * Animations for the theme.
+ */
+@-webkit-keyframes Spinning {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes Spinning {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+#spinner {
+  font-size: 400%;
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  left: 47%;
+  top: 47%;
+  -webkit-animation: Spinning 2000ms infinite linear;
+  -moz-animation: Spinning 2000ms infinite linear;
+  -o-animation: Spinning 2000ms infinite linear;
+  animation: Spinning 2000ms infinite linear;
+  vertical-align: middle;
+}
+/**
+ * Overlay styling.
+ */
+.openlucius_throbber {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background-color: #000;
+  opacity: .6;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+}
+.node-ol-todo .field.field-name-field-todo-list-reference,
+.node-ol-todo .field.field-name-field-todo-due-date-singledate,
+.node-ol-todo .field.field-type-taxonomy-term-reference,
+.node-ol-todo .field.field-name-field-todo-user-reference,
+.node-ol-todo .field.field-name-field-shared-show-clients {
+  float: left;
+  clear: left;
+}
+.node-ol-todo .field.field-name-field-shared-files,
+.field-name-field-todo-invoice-number,
+.ol-content .field-name-field-shared-loopin-email,
+.ol-content-textdoc .field-name-field-shared-loopin-email {
+  clear: left;
+}
+.referenced-from-wrapper,
+.related-wrapper {
+  clear: both;
+  width: 100%;
+  display: inline-block;
+}
+.navbar-toggle {
+  margin-bottom: 0px;
+}
+.region-header {
+  clear: both;
+  margin-top: 35px;
+}
+.navbar-header .logo img {
+  max-height: 32px;
+}
+.menu-right .navbar-toggle {
+  margin-right: 0;
+}
+.menu-right .navbar-toggle .glyphicon {
+  color: #fff;
+}
+.btn-custom {
+  display: inline-block;
+  padding: 6px 12px;
+  text-align: center;
+  border: 1px solid transparent;
+  color: #fff;
+  background: none transparent;
+  margin-top: 7px;
+}
+.btn-custom .glyphicon {
+  color: #fff;
+  font-size: 18px;
+}
+.navbar-header .menu {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+/** Sidebar */
+.nav-main .nav-main-heading {
+  padding: 22px 35px 6px 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+.nav-main a.nav-submenu {
+  position: relative;
+  padding-right: 30px;
+}
+.nav-main a {
+  display: block;
+  padding: 10px 35px 10px 20px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.nav-main a.nav-submenu:before {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 30px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  color: rgba(255, 255, 255, 0.25);
+  content: "\e114";
+}
+.nav-main ul {
+  margin: 0;
+  padding: 0 0 0 50px;
+  height: 0;
+  list-style: none;
+  background-color: rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+.nav-main ul > li {
+  opacity: 0;
+  -webkit-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+  -webkit-transform: translateX(-15px);
+  -ms-transform: translateX(-15px);
+  transform: translateX(-15px);
+}
+.nav-main ul a {
+  padding: 8px 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+.nav-main ul a:hover,
+.nav-main ul a:focus {
+  color: #fff;
+  background-color: transparent;
+}
+.nav-main ul a > i {
+  margin-right: 10px;
+}
+.nav-main ul ul {
+  padding-left: 12px;
+}
+.nav-main li.open > a.nav-submenu {
+  color: #fff;
+}
+.nav-main li.open > a.nav-submenu > i {
+  color: #fff;
+}
+.nav-main li.open > a.nav-submenu:before {
+  content: "\e113";
+}
+.nav-main li.open > ul {
+  height: auto;
+}
+.nav-main li.open > ul > li {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+.nav-header {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav-header:before,
+.nav-header:after {
+  content: " ";
+  display: table;
+}
+.nav-header:after {
+  clear: both;
+}
+.nav-header > li {
+  margin-right: 12px;
+  float: left;
+}
+.nav-header > li > a,
+.nav-header > li > .btn-group > a {
+  padding: 0 12px;
+  display: block;
+  line-height: 34px;
+  font-weight: 600;
+}
+.nav-header.pull-right > li {
+  margin-right: 0;
+  margin-left: 12px;
+  float: left;
+}
+.nav-header .header-content {
+  line-height: 34px;
+}
+.nav-header .header-search {
+  width: 360px;
+}
+#sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 1040;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -webkit-transition: all 0.28s ease-out;
+  transition: all 0.28s ease-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+#sidebar {
+  width: 230px;
+  background-color: #2c343f;
+}
+.sidebar-l #sidebar {
+  left: 0;
+  -webkit-transform: translateX(-100%) translateY(0) translateZ(0);
+  -ms-transform: translateX(-100%) translateY(0);
+  transform: translateX(-100%) translateY(0) translateZ(0);
+}
+.sidebar-r #sidebar {
+  right: 0;
+  -webkit-transform: translateX(100%) translateY(0) translateZ(0);
+  -ms-transform: translateX(100%) translateY(0);
+  transform: translateX(100%) translateY(0) translateZ(0);
+}
+.side-header {
+  margin: 0 auto;
+  min-height: 60px;
+}
+.side-header:before,
+.side-header:after {
+  content: " ";
+  display: table;
+}
+.side-header:after {
+  clear: both;
+}
+.side-header.side-content {
+  overflow: visible;
+}
+.side-header > span,
+.side-header > a {
+  display: inline-block;
+  line-height: 34px;
+  color: #fff;
+}
+.side-header img {
+  display: inline-block;
+  margin: -2px 10px 0 0;
+}
+.side-content {
+  margin: 0 auto;
+  padding: 13px 20px 1px;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+#side-overlay .side-content {
+  padding: 13px 0 1px;
+}
+.side-content p,
+.side-content .push,
+.side-content .block,
+.side-content .items-push > div {
+  margin-bottom: 13px;
+}
+.side-content .items-push-2x > div {
+  margin-bottom: 26px;
+}
+.side-content .items-push-3x > div {
+  margin-bottom: 39px;
+}
+.side-content.side-content-full {
+  padding-bottom: 13px;
+}
+.side-content.side-content-full .pull-b {
+  margin-bottom: -13px;
+}
+.side-content .pull-t {
+  margin-top: -13px;
+}
+.side-content .pull-r-l {
+  margin-right: -20px;
+  margin-left: -20px;
+}
+.side-content .pull-b {
+  margin-bottom: -1px;
+}
+.nav-main {
+  margin: 0 -20px;
+  padding: 0;
+  list-style: none;
+}
+.menu-left .logo {
+  margin: 10px 0 5px 0 !important;
+}
+.menu-left .home-btn {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.menu-left .home-btn .glyphicon {
+  color: #fff;
+}
+.menu-right .navbar-toggle {
+  display: none;
+}
+.sidebar-second .menu-right .navbar-toggle,
+.two-sidebars .menu-right .navbar-toggle {
+  display: block;
+}
+/* Frontpage tabs */
+.region-content .frontpage-tabs li.active a,
+.region-content .user-dashboard-tabs li.active a {
+  display: block;
+}
+.region-content #block-system-main {
+  display: none;
+}
+.not-logged-in .region-content #block-system-main,
+.region-content #block-system-main.active {
+  display: block !important;
+}
+#block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs,
+.user-dashboard-tabs {
+  margin-top: 15px;
+}
+#block-openlucius-core-user-dashboard-tabs ul.user-dashboard-tabs {
+  padding-left: 0;
+}
+#block-openlucius-core-user-dashboard-tabs {
+  display: table;
+  margin: 0 auto;
+  padding-bottom: 15px;
+}
+#block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs ul {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+#block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs ul li {
+  font-size: 12px;
+  font-weight: 300;
+  width: auto;
+  background: transparent;
+  border: none;
+}
+#block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a,
+#block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a:focus,
+#block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a:active,
+#block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a:hover {
+  border: 0 !important;
+  background: transparent none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  width: 100%;
+}
+#block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a {
+  text-decoration: none;
+  padding: 0 15px 0;
+  display: inline;
+  text-align: center;
+  font-size: 12px !important;
+  color: #ccc;
+}
+#block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li span.tab-icon {
+  display: none;
+  color: #ccc;
+}
+#block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li:hover span.tab-icon,
+#block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li:hover a,
+#block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li.active a,
+#block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li.active span.tab-icon {
+  color: #4285f4 !important;
+}
+#use-as-app .content {
+  padding-top: 20px;
+}
+/* Hide help for uploads */
+.field-name-field-group-logo .help-block,
+.field-name-field-shared-cover-image .help-block {
+  display: none;
+}
+.field-name-field-shared-cover-image {
+  width: 100%;
+}
+.field-name-field-group-logo .form-control.form-file,
+.field-name-field-shared-cover-image .form-control.form-file {
+  float: left;
+  width: 250px;
+  max-width: 250px;
+}
+.add-todo-from-all-todos {
+  background-color: #fff;
+  border-color: #dadada;
+  border-radius: 5px;
+  padding: 2px 10px;
+}
+#user-profile-form .field-name-field-user-signature label {
+  display: block;
+}
+.navbar-header .menu-right .everyone .glyphicon {
+  color: #fff;
+}
+.menu-right li.everyone a {
+  font-size: 18px;
+}
+button.btn-custom.notifications_button.direct-messages-button {
+  padding-right: 4px;
+}
+.timeline_wrapper .activity_item .timeline-heading .status {
+  margin-bottom: 10px;
+  color: #f00;
+  font-size: 11px;
+}
+.timeline_wrapper .activity_item .timeline-heading .status .glyphicon {
+  color: #f00;
+}
+/* Show all recent files on group files */
+#block-views-file-folders-block-3 a.files_backlink {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 15px 0;
+}
+.vertical-tabs-list li a[href="#edit-comment-settings"] {
+  display: inline-block !important;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  color: #222 !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#edit-comment-settings .panel-body {
+  padding: 0;
+}
+.show-all-individuals {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+#block-openlucius-core-ol-group-heading {
+  margin-top: -21px;
+}
+#block-openlucius-core-ol-group-heading .group-heading {
+  padding-bottom: 10px;
+}
+#block-openlucius-core-ol-group-heading .group-heading-title {
+  margin: 21px 0;
+}
+#block-openlucius-core-ol-group-heading .group-heading-title .fa,
+#block-openlucius-core-ol-mygroups span.mygroups-title .fa,
+.group-local-tasks-wrapper .fa {
+  color: #ccc;
+}
+#block-openlucius-core-ol-group-heading .group-heading-title h1 {
+  font-size: 24px;
+  margin: 0 0 10px 0;
+}
+#block-openlucius-core-ol-group-heading .group-heading-title,
+#block-openlucius-core-ol-group-heading .group-navigation,
+#block-openlucius-core-frontpage-tabs {
+  display: table;
+  margin: 0 auto;
+}
+#block-openlucius-core-ol-group-heading .group-navigation ul,
+#block-openlucius-core-frontpage-tabs ul#tabs {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+#block-openlucius-core-frontpage-tabs ul#tabs {
+  margin-bottom: -10px;
+}
+#block-openlucius-core-ol-group-heading .group-navigation li,
+#block-openlucius-core-frontpage-tabs ul#tabs li {
+  display: inline;
+  font-size: 12px;
+  font-weight: 300;
+  width: auto;
+}
+#block-openlucius-core-ol-group-heading .group-navigation li a,
+#block-openlucius-core-frontpage-tabs ul#tabs li a {
+  text-decoration: none;
+  padding: 0 15px 0;
+  display: inline;
+  text-align: center;
+}
+#block-openlucius-core-ol-group-heading .group-navigation li a:not(.active),
+#block-openlucius-core-frontpage-tabs ul#tabs li:not(.active) a {
+  color: #ccc;
+}
+#block-openlucius-core-ol-group-heading .group-navigation li a:hover,
+#block-openlucius-core-frontpage-tabs ul#tabs li a:hover {
+  text-decoration: none;
+}
+#block-openlucius-core-ol-group-heading .group-navigation li:not(.search-user) a:hover,
+#block-openlucius-core-ol-group-heading .group-navigation li:not(.search-user) a:hover span,
+#block-openlucius-core-frontpage-tabs ul#tabs li a:hover,
+#block-openlucius-core-frontpage-tabs ul#tabs li a:hover span {
+  color: #008cba !important;
+}
+#block-openlucius-core-frontpage-tabs {
+  width: 100%;
+  text-align: center;
+  margin-top: -22px;
+}
+/* User search combined filter */
+#views-exposed-form-user-search-page #edit-combine-wrapper label {
+  display: none;
+}
+#views-exposed-form-user-search-page .views-exposed-form .views-exposed-widgets {
+  display: table;
+  width: 100%;
+}
+#views-exposed-form-user-search-page .views-exposed-form .views-exposed-widgets #edit-combine-wrapper,
+#views-exposed-form-user-search-page .views-exposed-form .views-exposed-widgets .views-submit-button {
+  padding-right: 0;
+  display: table-cell;
+  float: none;
+  height: 34px;
+}
+#views-exposed-form-user-search-page .views-exposed-form .views-exposed-widgets .views-submit-button {
+  width: 135px;
+}
+#views-exposed-form-user-search-page .views-exposed-form .views-exposed-widgets #edit-combine-wrapper input,
+#views-exposed-form-user-search-page .views-exposed-form .views-exposed-widgets .views-submit-button .btn {
+  height: 34px;
+}
+#views-exposed-form-user-search-page .views-exposed-form .views-exposed-widgets .views-submit-button .btn {
+  margin-left: -1px;
+}
+#views-exposed-form-user-search-page .views-exposed-form .views-exposed-widgets #edit-combine-wrapper {
+  vertical-align: top;
+}
+.group-navigation li.search-user {
+  position: relative;
+}
+/* Text documents */
+.view-text-documents-in-a-group .tabledrag-handle .handle {
+  margin-left: 15px;
+}
+.region-sidebar-second .view-text-documents-in-a-group tr.draggable .views-field-title {
+  padding: 5px 0 5px 7px;
+}
+.region-sidebar-second tr.draggable .tabledrag-handle + .glyphicon-plus,
+.region-sidebar-second tr.draggable .tabledrag-handle + .glyphicon-minus,
+.region-sidebar-second tr.draggable .tabledrag-handle + .glyphicon-folder-close {
+  margin-left: 0 !important;
+}
+.region-sidebar-second .view-text-documents-in-a-group .tabledrag-handle + a {
+  margin-left: 3px;
+}
+/* Somehow * does not seem to work for numbers here. */
+.region-sidebar-second .view-text-documents-in-a-group .depth-0:not(.folder):not(.draggable) .views-field-title,
+.region-sidebar-second .view-text-documents-in-a-group .depth-1:not(.folder):not(.draggable) .views-field-title,
+.region-sidebar-second .view-text-documents-in-a-group .depth-2:not(.folder):not(.draggable) .views-field-title,
+.region-sidebar-second .view-text-documents-in-a-group .depth-3:not(.folder):not(.draggable) .views-field-title,
+.region-sidebar-second .view-text-documents-in-a-group .depth-4:not(.folder):not(.draggable) .views-field-title,
+.region-sidebar-second .view-text-documents-in-a-group .depth-5:not(.folder):not(.draggable) .views-field-title,
+.region-sidebar-second .view-text-documents-in-a-group .depth-6:not(.folder):not(.draggable) .views-field-title,
+.region-sidebar-second .view-text-documents-in-a-group .depth-7:not(.folder):not(.draggable) .views-field-title,
+.region-sidebar-second .view-text-documents-in-a-group .depth-8:not(.folder):not(.draggable) .views-field-title,
+.region-sidebar-second .view-text-documents-in-a-group .depth-9:not(.folder):not(.draggable) .views-field-title {
+  padding-left: 11px !important;
+}
+/* Files */
+.region-sidebar-second .view-file-folders tr:not(.draggable).folder .views-field-title .glyphicon,
+.region-sidebar-second .view-file-folders tr.draggable .tabledrag-handle .handle {
+  margin-left: 0;
+}
+ul.openlucius_meta_info {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.views-table.draggable + .form-actions button.form-submit {
+  width: 100%;
+}
+/* Text documents */
+.view-text-documents-in-a-group .views-fluid-grid-inline {
+  cursor: pointer;
+}
+.view-text-documents-in-a-group .views-fluid-grid-inline:hover {
+  cursor: pointer;
+}
+.view-text-documents-in-a-group .views-fluid-grid-inline .views-field-title {
+  margin-bottom: 40px;
+}
+.view-text-documents-in-a-group .views-fluid-grid-inline .views-field-title a {
+  position: absolute;
+  height: 100%;
+  max-height: 320px;
+  width: 220px;
+}
+.view-text-documents-in-a-group .views-fluid-grid-inline .views-field-body {
+  max-height: 230px;
+}
+.view-text-documents-in-a-group .views-fluid-grid-inline .field-content blockquote {
+  font-size: 12px;
+}
+.region-sidebar-second .views-exposed-widget,
+.region-sidebar-second .form-type-textfield,
+.region-sidebar-second .form-control.form-text,
+.region-sidebar-second .edit-date-filter-value-wrapper,
+.region-sidebar-second .edit-date-filter-value-inside-wrapper,
+.region-sidebar-second .container-inline-date,
+.region-sidebar-second .form-type-date-popup,
+.region-sidebar-second #edit-date-filter-value,
+.region-sidebar-second .views-exposed-widget .btn.form-submit,
+.region-sidebar-second .container-inline-date label[for="edit-timestart"],
+.region-sidebar-second .container-inline-date label[for="edit-timeend"],
+.region-sidebar-second .container-inline-date + .btn.form-submit,
+.region-sidebar-second .container-inline-date #edit-timestart,
+.region-sidebar-second .container-inline-date #edit-timeend,
+.region-sidebar-second #node-submit {
+  width: 100%;
+  float: left;
+}
+.region-sidebar-second .container-inline-date .form-item-timeend,
+.region-sidebar-second .container-inline-date + .btn.form-submit {
+  margin-top: 1em;
+}
+.region-sidebar-second .container-inline-date label[for="edit-timestart-datepicker-popup-0"],
+.region-sidebar-second .container-inline-date label[for="edit-timeend-datepicker-popup-0"] {
+  display: none;
+}
+#ol-group-node-form .field-name-field-group-is-open {
+  margin-bottom: 10px;
+}
+#ol-group-node-form .form-item-field-group-is-open-und {
+  padding: 5px 0;
+}
+.front .timeline-heading p,
+.front .timeline-heading li,
+.front .timeline-heading blockquote,
+.front .block-openlucius-news .comment-container .comment-item,
+.timeline-heading strong,
+.page-user-dashboard .timeline-heading,
+.page-node h1.page-header,
+.comment .field-name-comment-body p {
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+.main-container .row .region-content #user-info,
+.main-container .row .region-content #user-activity,
+.main-container .row .region-content #user-messages,
+.main-container .row .region-content #user-files,
+.main-container .row .region-content #user-text-documents,
+.main-container .row .region-content #use-as-app {
+  display: none;
+}
+.main-container .row .region-content #user-info.active,
+.main-container .row .region-content #user-activity.active,
+.main-container .row .region-content #user-messages.active,
+.main-container .row .region-content #user-files.active,
+.main-container .row .region-content #user-text-documents.active,
+.main-container .row .region-content #use-as-app.active {
+  display: block !important;
+}
+.openlucius-bookmark-modal {
+  display: block;
+  overflow-y: hidden;
+}
+.openlucius-bookmark-modal .modal-dialog {
+  margin: 46px auto;
+}
+.openlucius-bookmark-modal .modal-body > blockquote {
+  padding: 0 55px 20px 55px;
+  background: transparent url(../images/blockquote.png) no-repeat top left;
+}
+.openlucius-bookmark-modal .modal-footer {
+  margin: 0;
+}
+/* Group local tasks dropdown */
+.group-local-tasks-wrapper .group-local-tasks {
+  display: none;
+}
+.group-local-tasks-wrapper .fa {
+  cursor: pointer;
+}
+.group-local-tasks-wrapper.shown {
+  position: relative;
+}
+.group-local-tasks-wrapper.shown .group-local-tasks {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+}
+.bottom i.fa.fa-angle-down {
+  font-size: 28px;
+}
+span.group-local-tasks-wrapper.bottom {
+  float: right;
+  padding: 0 30px 0 0;
+}
+.node-user-likes,
+.comment-user-likes {
+  margin-top: 10px;
+}
+.group-local-tasks-wrapper.shown .group-local-tasks li a:hover {
+  color: #ccc;
+}
+/** New files table for easy navigation. */
+td.views-field-openlucius-files-folder a.tabledrag-handle {
+  margin-left: -5px;
+}
+.view-file-folders td.views-field-openlucius-files-folder {
+  padding: 8px 0 !important;
+}
+.view-file-folders tr.collapsed td.views-field-openlucius-files-folder {
+  padding: 0 !important;
+}
+.openlucius-folder-wrapper {
+  display: none;
+}
+a.has-no-files,
+a.has-no-files:hover {
+  color: #000;
+  text-decoration: none;
+}
+a.has-files {
+  cursor: pointer;
+}
+.openlucius-folder-contents {
+  display: table;
+  font-size: 12px;
+  width: 100%;
+}
+.openlucius-folder-contents .folder-row {
+  display: table-row;
+}
+.openlucius-folder-contents .folder-row .folder-cell {
+  display: table-cell;
+  padding: 8px 0;
+  line-height: 1.428571429;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+.openlucius-folder-contents .folder-row .folder-cell.folder-file {
+  width: 80%;
+}
+.openlucius-folder-contents .folder-row .folder-cell.folder-remove a {
+  float: right;
+}
+/** Indentations as we can't use the indentation div. */
+.depth-0 .folder-cell.folder-file {
+  padding-left: 2.2em;
+}
+.depth-1 .folder-cell.folder-file {
+  padding-left: 4.4em;
+}
+.depth-2 .folder-cell.folder-file {
+  padding-left: 6.6em;
+}
+.depth-3 .folder-cell.folder-file {
+  padding-left: 8.8em;
+}
+.depth-4 .folder-cell.folder-file {
+  padding-left: 11em;
+}
+.depth-5 .folder-cell.folder-file {
+  padding-left: 13.2em;
+}
+.depth-6 .folder-cell.folder-file {
+  padding-left: 15.4em;
+}
+.depth-7 .folder-cell.folder-file {
+  padding-left: 17.6em;
+}
+.depth-8 .folder-cell.folder-file {
+  padding-left: 19.8em;
+}
+.depth-9 .folder-cell.folder-file {
+  padding-left: 22em;
+}
+#block-openlucius-core-ol-mygroups .unseen-content {
+  color: #76849b;
+  font-size: 22px;
+  line-height: 0;
+  width: 8px;
+  vertical-align: middle;
+}
+.btn-openlucius.todo_notify,
+.todo_notify_holder {
+  vertical-align: top;
+  min-height: 28px;
+}
+.todo_notify_holder {
+  display: inline-block;
+  margin-right: 3px;
+}
+.openlucius-notify-modal .modal-header .notify-everyone {
+  margin-left: 15px;
+}
+.openlucius-notify-modal .modal-body {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+.openlucius-notify-modal .modal-header .glyphicon {
+  top: 5px;
+  right: 5px;
+}
+.todo-list-quick-add .container-inline-date .form-item,
+.todo-list-quick-add .container-inline-date .form-item input {
+  width: 150px;
+}
+.openlucius-bookmark-modal .modal-body {
+  padding: 0 20px;
+}
+.openlucius-bookmark-modal .modal-body .nav-tabs {
+  padding: 15px 0 0 0;
+}
+.openlucius-bookmark-modal .tab-pane .row {
+  padding-top: 15px;
+}
+.openlucius-bookmark-modal .star-blue {
+  color: #00f;
+}
+/* Node add/edit screen */
+form.node-form .form-item-title {
+  margin-bottom: 30px;
+}
+form.node-form .field-name-field-shared-files,
+form.node-form .field-name-field-shared-files .panel,
+form.comment-form .field-name-field-shared-files,
+form.comment-form .field-name-field-shared-files .panel {
+  margin-bottom: 0;
+}
+form.node-form .field-name-field-shared-files .panel-body,
+form.comment-form .field-name-field-shared-files .panel-body {
+  padding: 0;
+}
+form.node-form fieldset.notifies,
+form.comment-form fieldset.notifies {
+  margin-bottom: 25px;
+  width: 100%;
+}
+form.node-form fieldset.notifies > .panel-body #edit-notify-individual {
+  margin-bottom: 0;
+}
+form.node-form fieldset.notifies > .panel-body fieldset.inividual-fieldset input[type=checkbox] {
+  float: left;
+  margin-right: 5px;
+}
+form.node-form fieldset.notifies > .panel-body #edit-notify-individual .form-type-checkbox label,
+.inividual-fieldset .form-type-checkbox label {
+  position: relative;
+  top: -6px;
+  left: 4px;
+}
+form.node-form .field-name-field-todo-list-reference,
+form.node-form .field-name-field-todo-label,
+form.node-form .field-name-field-todo-user-reference,
+form.node-form .field-name-field-todo-due-date-singledate,
+form.node-form .field-name-field-todo-list-reference .form-type-select,
+form.node-form .field-name-field-todo-label .form-type-select,
+form.node-form .field-name-field-todo-user-reference .form-type-select,
+form.node-form .field-name-field-todo-due-date-singledate .form-type-select,
+form.comment-form .field-name-field-todo-list-reference,
+form.comment-form .field-name-field-todo-label,
+form.comment-form .field-name-field-todo-user-reference,
+form.comment-form .field-name-field-todo-due-date-singledate,
+form.comment-form .field-name-field-todo-list-reference .form-type-select,
+form.comment-form .field-name-field-todo-label .form-type-select,
+form.comment-form .field-name-field-todo-user-reference .form-type-select,
+form.comment-form .field-name-field-todo-due-date-singledate .form-type-select {
+  margin-bottom: 0;
+}
+/* Field show clients */
+.node-form .field-name-field-shared-show-clients {
+  display: table-cell;
+  vertical-align: middle;
+}
+.field-name-field-shared-show-clients .form-type-radios label {
+  float: left;
+  margin-right: 15px;
+}
+.field-name-field-shared-show-clients .form-type-radio {
+  float: left;
+  margin: 0;
+  padding: 0 0 0 20px;
+}
+.field-name-field-shared-show-clients .form-type-radio label {
+  line-height: 21px;
+}
+/* Reset bootstrap checkbox and radio. */
+.field-name-field-shared-show-clients .radio + .radio,
+.checkbox + .checkbox {
+  margin: 0;
+}
+/* Last updated field for todo list table */
+.view-todos-in-group-dashboard .views-field-last-updated {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.itu-attachment-images {
+  clear: both;
+}
+.side-header .logo img {
+  max-height: 80px;
+  width: auto;
+}
+.field-name-body img,
+.field-name-comment-body img {
+  max-width: 100%;
+  height: auto;
+}
+#edit-openlucius-core-group-settings .checkbox {
+  margin: 0 !important;
+  padding: 5px 0;
+}
+/** Inline editing **/
+.views-field-edit-node .btn {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+.due_date_inline {
+  width: 100px;
+}
+.cancel-edit {
+  cursor: pointer;
+}
+/* Smaller last updated */
+.view-todos-in-group-dashboard .views-field-last-updated {
+  width: 80px !important;
+  max-width: 80px !important;
+}
+/* Vertical align field title. */
+.view-todos-in-group-dashboard td.views-field {
+  vertical-align: middle;
+}
+.group-navigation.sortable {
+  padding: 15px;
+  border: 1px dotted #ccc;
+}
+.openlucius-single-day-column {
+  line-height: initial !important;
+  min-height: 5px !important;
+}
+.calendar-calendar .month-view .full tr.single-day .no-entry,
+.calendar-calendar .month-view .full tr.single-day .no-entry .inner {
+  height: 100% !important;
+  min-height: 44px !important;
+}
+aside .region-sidebar-second {
+  padding: 0 0 19px 0;
+}
+aside .region-sidebar-second > div {
+  margin: 19px;
+}
+.mobile_fullwidth.todos-button a,
+.mobile_fullwidth.calendar-button a,
+.mobile_fullwidth.everyone-button a,
+.mobile_fullwidth.reports-button a,
+.everyone-button span.glyphicon.glyphicon-user {
+  outline: 0;
+  font-size: 18px;
+}
+.page-all-files .files-tools {
+  float: right;
+  margin: 0 0 15px;
+}
+.page-node-add-file .field-type-node-reference {
+  display: block;
+}
+/* Files widgets */
+.form-type-managed-file .image-widget-data {
+  font-size: 12px;
+}
+.form-type-managed-file .image-widget-data img.file-icon {
+  display: none;
+}
+.form-type-managed-file .image-widget-data .btn-danger {
+  padding: 5px 10px;
+  margin-left: 5px;
+}
+#block-openlucius-core-frontpage-tabs ul#tabs li.active a,
+#block-openlucius-core-frontpage-tabs ul#tabs li a:hover {
+  border-bottom: 2px solid #4285f4;
+  padding-bottom: 9px;
+}
+/** Modal fixes */
+#modalContent {
+  overflow: visible !important;
+  max-width: 850px;
+  z-index: 1037 !important;
+}
+#modalContent .ctools-modal-dialog {
+  max-width: 850px;
+}
+#modalContent .form-submit {
+  float: right;
+}
+#modalContent,
+#modalContent .ctools-modal-dialog {
+  max-width: 850px;
+}
+#modalContent #modal-content {
+  overflow: scroll !important;
+  width: auto !important;
+}
+#modalBackdrop {
+  background-color: #222 !important;
+  border: 1px solid #d8d8d8;
+}
+#modalContent #modal-content .dropdown-menu.group-local-tasks {
+  left: auto;
+  right: 0;
+}
+/** Popover fixes */
+body.modal-open {
+  overflow: hidden;
+}
+.board-meta .popover .arrow {
+  top: -11px !important;
+  left: 50% !important;
+}
+.board-meta .popover .close {
+  color: #fff;
+}
+.popover-content .btn {
+  width: 100%;
+}
+#modal-content .submitted {
+  margin-bottom: 1.5em;
+}
+#modal-content .comment-holder .comment {
+  padding-left: 70px;
+}
+#modalContent #edit-publish,
+#modalContent button[id^="edit-publish"] {
+  display: none;
+}
+#modal-content .user-picture {
+  position: relative;
+  float: left;
+  margin-right: 10px;
+}
+/** Comment fixes **/
+#modal-content .comment,
+#modal-content .comment .content,
+#modal-content .comment .links,
+#modal-content .comment .header-holder,
+#modal-content .comment-holder .user-picture {
+  display: none;
+}
+#modal-content .field-name-field-shared-files .panel-heading {
+  display: none;
+}
+#modal-content .field-name-field-shared-files .panel-default.form-wrapper {
+  margin-top: 0;
+  border: 0;
+}
+#modal-content form.comment-form fieldset.notifies {
+  width: 100%;
+}
+/** Task restyle **/
+.openlucius-task-holder {
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 5px;
+  outline: 0;
+  display: table;
+  width: 100%;
+}
+.openlucius-task-holder i {
+  width: 20px;
+  top: 2px;
+  position: relative;
+  color: #999;
+}
+.openlucius-task-holder i,
+.openlucius-task-holder input {
+  display: table-cell;
+}
+.openlucius-task-holder input {
+  border: 0;
+  -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.0);
+  padding: 0;
+}
+.openlucius-task-holder input:focus {
+  outline: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.0);
+}
+.openlucius-task-holder .form-item-title,
+.openlucius-tool-row .form-group {
+  margin: 0 !important;
+}
+.modal-body .openlucius-hide-label label,
+.modal-body .openlucius-hide-first-label > div > label,
+.modal-body .form-item-title label,
+.form-type-dragndrop-upload label,
+.page-group-files #block-system-main > .content > p > label,
+.page-tasks-my-board #block-system-main .form-type-select label,
+.page-comment-edit .comment-form .form-todo-label-wrapper label,
+.page-comment-edit .comment-form .form-item-field-todo-due-date-singledate label,
+body:not(.node-type-ol-group) .openlucius-hide-label label,
+body:not(.node-type-ol-group) .openlucius-hide-first-label > div > label,
+body:not(.node-type-ol-group) .form-item-title label {
+  display: none;
+}
+.openlucius-icon-holder {
+  display: inline-block;
+  position: absolute;
+  z-index: 100;
+  left: 8px;
+  bottom: 0;
+  height: 100%;
+  top: 0;
+}
+.openlucius-icon-holder-inline {
+  display: table-cell;
+  vertical-align: middle;
+  padding-right: 10px;
+  width: 1.5em;
+}
+.openlucius-icon-holder-inline i {
+  color: #999;
+}
+.openlucius-icon-holder i {
+  position: relative;
+  top: 5px;
+  color: #999;
+}
+.openlucius-tool-row {
+  display: table;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.openlucius-tool-row:last-child {
+  margin-bottom: 0;
+  padding-bottom: 25px;
+}
+.openlucius-inline-row {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.openlucius-tool-row .cell {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  padding-right: 5px;
+}
+.openlucius-tool-row .in-label {
+  color: #898e95;
+  font-size: 12px;
+  padding: 0 10px 0 5px;
+  text-align: right;
+  text-transform: uppercase;
+  width: 143px;
+}
+.openlucius-tool-row .in-label.w3 {
+  width: 41px;
+}
+.openlucius-tool-row .cell ul.dropdown-menu.inner {
+  width: 100%;
+}
+.openlucius-tool-row .cell.group-reference .caret {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+.openlucius-tool-row .cell:last-child {
+  padding: 0;
+}
+.openlucius-tool-row .cell .container-inline-date .form-item input,
+.openlucius-tool-row .cell .container-inline-date .form-item select,
+.openlucius-tool-row .cell .container-inline-date .form-item option,
+.openlucius-tool-row .cell .container-inline-date .form-item,
+.openlucius-tool-row .cell .container-inline-date .date-padding,
+.openlucius-tool-row .cell .container-inline-date {
+  width: 100%;
+  margin: 0;
+  border-radius: 5px;
+}
+.openlucius-tool-row .cell .container-inline-date .form-item input,
+.openlucius-tool-row .cell .field-name-field-shared-time-maximum .form-item input {
+  padding-left: 25px;
+}
+.form-item-personal-task {
+  min-height: 1px;
+  margin: 0;
+}
+.form-item-personal-task label,
+.form-item-personal-task input[type="checkbox"] {
+  display: table-cell;
+  white-space: nowrap;
+}
+.form-item-personal-task input[type="checkbox"],
+.form-item-personal-task label {
+  margin-left: -12px;
+  margin-right: 10px;
+}
+.form-item-personal-task input[type="checkbox"] {
+  margin-top: 3px;
+  float: left;
+}
+.task-modal-trigger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+#modalContent .bootstrap-select {
+  padding: 0;
+}
+/** Used for overriding the inline js added by bootstrap-select. **/
+#modalContent .bootstrap-select .dropdown-menu.open {
+  min-height: 0 !important;
+  width: 100%;
+}
+#modalContent .btn.dropdown-toggle {
+  width: 100%;
+}
+#modalContent i.check-mark {
+  display: none;
+}
+#modalContent .bootstrap-select .btn {
+  color: #222 !important;
+}
+#modalContent .dropdown-menu > li > a:hover {
+  color: #fff;
+}
+#modalContent div.node .ol-content {
+  margin-bottom: 20px;
+}
+/** Openlucius Help block **/
+.openlucius-help-feedback {
+  background-color: #fc616b;
+  padding: 10px 10px 5px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  color: #fff;
+  font-size: 0.8em;
+  position: fixed;
+  right: 20px;
+  bottom: 0;
+  z-index: 2;
+}
+.openlucius-help-feedback:hover {
+  color: #fff;
+  padding-bottom: 10px;
+}
+.openlucius-help-feedback-modal ul {
+  padding: 0;
+  width: 100%;
+  margin: 0px;
+}
+.openlucius-help-feedback-modal ul li {
+  display: inline-block;
+  width: 50%;
+  float: left;
+  margin-bottom: 25px;
+}
+.openlucius-help-feedback-modal ul li:nth-child(2n+2) {
+  clear: right;
+  float: right;
+}
+.openlucius-help-feedback-modal ul li a i {
+  font-size: 3em;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  top: 10px;
+  position: relative;
+}
+.openlucius-help-feedback-modal ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: #222;
+  outline: none;
+}
+.openlucius-help-feedback-modal ul li a i.icon-red {
+  background-color: #ff5f67;
+}
+.openlucius-help-feedback-modal ul li a i.icon-orange {
+  background-color: #f78e3d;
+}
+.openlucius-help-feedback-modal ul li a i.icon-green {
+  background-color: #a3cf3c;
+}
+/** To be removed when modals in core as well. **/
+#modalContent #modal-content {
+  overflow: scroll !important;
+  width: auto !important;
+}
+#modalContent.openlucius-comment-modal .field-name-field-todo-list-reference select {
+  width: 100%;
+}
+.views-table .btn-default {
+  background-color: #f9f9f9;
+  border-color: #eceaea;
+}
+#modalContent .field-name-field-shared-show-clients .form-type-radios label {
+  margin-right: 5px;
+}
+.node-form .field-name-field-shared-show-clients .form-radios {
+  float: left;
+}
+.node-form.node-form:not(.ctools-use-modal-processed) .field-name-field-shared-show-clients .form-radios {
+  margin: -2px 0 8px 0;
+}
+.node-form .field-name-field-shared-group-reference {
+  display: none;
+}
+#modalContent .openlucius-tool-row .bootstrap-select .filter-option {
+  max-width: 155px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+#modalContent .node-form .field-name-field-shared-group-reference {
+  display: block;
+}
+body.page-node-add-ol-todo .node-ol_todo-form .openlucius-tool-row .field-name-field-shared-show-clients .form-radios {
+  margin: initial;
+}
+body.page-node-add aside .region-sidebar-second {
+  padding-bottom: 10px;
+}
+.openlucius-tool-row.is-client {
+  display: none;
+}
+.spaced-cols-1 .openlucius-core-spaced-row .cell {
+  width: 100%;
+}
+.spaced-cols-2 .openlucius-core-spaced-row .cell {
+  width: 50%;
+}
+.spaced-cols-3 .openlucius-core-spaced-row .cell {
+  width: 33%;
+}
+.spaced-cols-4 .openlucius-core-spaced-row .cell {
+  width: 25%;
+}
+.spaced-cols-5 .openlucius-core-spaced-row .cell {
+  width: 20%;
+}
+.spaced-cols-7 .openlucius-core-spaced-row .cell {
+  width: 16.67%;
+}
+.spaced-cols-8 .openlucius-core-spaced-row .cell {
+  width: 12.5%;
+}
+#edit-notify-individual input.form-checkbox {
+  margin-right: 5px;
+}
+#edit-notify-individual input.form-checkbox,
+#edit-notify-individual input.form-checkbox + label {
+  float: left;
+}
+.openlucius-tool-row .cell.w38p {
+  width: 38%;
+}
+.hidden-default {
+  display: none !important;
+}
+.openlucius-controls {
+  padding: 10px 0 67px 10px;
+  float: right;
+}
+.openlucius-controls a {
+  color: #898e95;
+  border-bottom: 1px dotted #ccc;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  float: left;
+  display: inline-block;
+}
+.openlucius-controls a:last-child {
+  margin-right: 0;
+}
+#modalContent .cell .field-name-field-shared-files label,
+#modalContent .cell .field-type-text-with-summary .form-type-select {
+  display: none;
+}
+#modalContent .cell.personal-task label {
+  text-indent: -9999px;
+}
+.openlucius-tool-row .cell.align-top {
+  vertical-align: top;
+}
+#modalContent .openlucius-tool-row .w160 .bootstrap-select .filter-option {
+  max-width: 100px;
+}
+.openlucius-task-modal .modal-body {
+  padding: 40px 120px 20px 20px;
+}
+/** node/7079 **/
+.page-node .ol-node.activity-item-wrapper,
+.page-comment-reply .ol-node.activity-item-wrapper {
+  margin: 0;
+}
+.page-node .ol-node.activity-item-wrapper {
+  margin-bottom: 25px !important;
+}
+.activity-item-comments-wrapper .comment-form {
+  background-color: #fff;
+  padding: 0 20px;
+}
+#modal-content .node {
+  margin: -20px -20px 15px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #ddd;
+}
+.show-closed-tasks {
+  padding: 0;
+  margin: 10px 0px -10px -15px;
+}
+.view-text-documents-in-a-group,
+.view-all-todo-lists-in-a-group {
+  clear: both;
+}
+.view-all-todo-lists-in-a-group .views-field {
+  vertical-align: middle;
+}
+.view-all-todo-lists-in-a-group .views-field-delta .glyphicon {
+  float: left;
+  margin-right: 2px;
+}
+.node-type-ol-text-document .comment-wrapper {
+  background-color: transparent !important;
+}
+.view-todos-on-todo-list-page td.views-field {
+  vertical-align: middle;
+}
+#draggableviews-table-todos-on-todo-list-page-block + .form-actions button {
+  width: 150px;
+  text-align: center;
+  padding: 20px 30px !important;
+}
+#block-openlucius-core-ol-textdoc .textdoc_index,
+#block-openlucius-core-ol-textdoc ul.fancytree-container {
+  border: 0;
+}
+.page-node .form-actions #edit-unpublish,
+.ctools-use-modal-processed .form-actions #edit-unpublish {
+  display: none;
+}
+.node-type-ol-message .comment-form,
+.node-type-ol-text-document .comment-form {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+/** HACK **/
+#app-order th:last-child,
+#app-order td:last-child {
+  display: none;
+}
+#app-order a.tabledrag-handle {
+  display: inline-block !important;
+}
+#modalContent h4.modal-title {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+#modalContent h4.modal-title .modal-title {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.node-type-ol-event .field-name-field-event-date {
+  margin-bottom: 20px;
+}
+.my-groups-table {
+  display: table;
+  width: 100%;
+}
+.my-groups-table > span {
+  display: table-cell;
+  vertical-align: top;
+}
+.my-groups-table span.last {
+  width: 40px;
+  text-align: right;
+}
+/** Overview rebuild **/
+.overview-panel {
+  padding: 0;
+  border-radius: 5px;
+  flex: 1 1;
+  height: 100%;
+  margin-bottom: 0;
+}
+.overview-panel .panel-heading {
+  float: none;
+}
+.overview-panel .panel-body {
+  position: relative;
+}
+.overview-panel .panel-body a {
+  font-size: 0;
+  text-indent: -9999px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+.overview-panel ul {
+  padding-left: 20px;
+}
+.overview-panel table {
+  margin-bottom: 0;
+}
+.overview-panel.user-panel ul {
+  list-style-type: none;
+  padding: 0;
+}
+.overview-panel.user-panel ul li {
+  display: block;
+  margin: 0 5px 5px 0;
+  float: left;
+}
+.overview-panel.user-panel ul li img {
+  max-width: 100%;
+  height: auto !important;
+  border-radius: 50%;
+}
+.flex-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.flex-row {
+  display: flex;
+  display: -ms-flexbox;
+  margin-bottom: 40px;
+}
+.flex-item {
+  flex: 1 1;
+  ﻿-ms-flex-order: 1;
+  margin: 0 20px;
+  /** IE requirement **/
+  flex-grow: 1;
+}
+span.button-holder a {
+  border-radius: 50%;
+  background-color: #cecece;
+  float: right;
+  padding: 0 5px 2px;
+  cursor: pointer;
+  margin: -3px -5px 0 0;
+}
+span.button-holder a .glyphicon {
+  color: #fff;
+  font-size: .8em;
+}
+#block-openlucius-core-ol-group-activity-block {
+  margin: 0 10px;
+}
+#block-openlucius-core-ol-group-activity-block h2 {
+  margin: 0 10px 40px;
+}
+#block-openlucius-core-ol-group-activity-block a {
+  border-bottom: 0;
+}
+.ol-event-panel td {
+  background-color: transparent !important;
+  width: auto !important;
+}
+.ol-event-panel td:first-child {
+  background-color: #ebebeb !important;
+  width: 24% !important;
+}
+.overview-panel .panel-heading a {
+  color: #252729;
+}
+@media (max-width: 768px) {
+  .flex-wrapper {
+    margin: 20px -20px 0;
+  }
+  .flex-row {
+    display: block;
+    margin-bottom: 0;
+    /** Internet explorer 11 specific problem. **/
+    overflow: hidden;
+  }
+  .flex-row .flex-item {
+    margin-bottom: 20px;
+  }
+  #block-openlucius-core-ol-group-activity-block {
+    margin: 0 -10px;
+  }
+  #block-openlucius-core-ol-group-activity-block h2 {
+    margin-bottom: 20px;
+  }
+}
+/* Frontpage groups block */
+#block-openlucius-core-ol-mygroups .content {
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-top: -11px;
+}
+#block-openlucius-core-ol-mygroups .content a {
+  padding: 12px 15px 8px 15px;
+}
+form.node-ol_group-form .form-item-title,
+form.node-ol_group-form .field-name-field-shared-show-clients .form-type-checkbox,
+form.node-ol_group-form .form-wrapper {
+  margin-bottom: 30px;
+}
+form.node-ol_group-form .panel-body .form-group label {
+  font-size: 14px;
+  font-weight: normal;
+  color: #7c7c7c;
+  margin-bottom: 10px;
+}
+form.node-ol_group-form input.form-text::-webkit-input-placeholder {
+  font-size: 14px;
+  font-weight: normal;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+form.node-ol_group-form input.form-text {
+  width: inherit;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+form.node-ol_group-form .image-widget-data .btn.ajax-processed {
+  margin-left: 10px;
+}
+form.node-ol_group-form .field-type-list-boolean .form-type-checkbox {
+  padding-left: 0;
+}
+form.node-ol_group-form .field-type-list-boolean .form-type-checkbox input.form-checkbox {
+  width: 0 !important;
+}
+#edit-openlucius-core-group-settings .form-type-checkbox {
+  padding: 0;
+}
+#edit-openlucius-core-group-settings .form-type-checkbox:nth-child(odd),
+#edit-openlucius-core-group-settings .form-type-checkbox:nth-child(odd) .app-row {
+  background: #f2f2f2;
+}
+#edit-openlucius-core-group-settings .form-type-checkbox:nth-child(even),
+#edit-openlucius-core-group-settings .form-type-checkbox:nth-child(even) .app-row {
+  background: #fff;
+}
+#edit-openlucius-core-group-settings .form-type-checkbox:first-child .app-row {
+  border-top: 1px solid #ddd;
+}
+#edit-openlucius-core-group-settings .form-type-checkbox .app-row {
+  border-bottom: 1px solid #ddd;
+  /* Takes care of label rendering. */
+  margin-bottom: -17px;
+  position: relative;
+}
+#edit-openlucius-core-group-settings .form-type-checkbox {
+  display: table;
+  width: 100%;
+}
+#edit-openlucius-core-group-settings .app-row .column-icon,
+#edit-openlucius-core-group-settings .app-row .column-name,
+#edit-openlucius-core-group-settings .app-row .column-description,
+#edit-openlucius-core-group-settings .app-row .column-checkbox {
+  display: table-cell;
+  vertical-align: middle;
+  height: 67px;
+  line-height: 67px;
+}
+#edit-openlucius-core-group-settings .app-row .column-icon {
+  text-align: left;
+}
+#edit-openlucius-core-group-settings .app-row + label {
+  display: none;
+}
+#edit-openlucius-core-group-settings .app-row .column-icon i {
+  font-size: 35px;
+  vertical-align: middle;
+  color: #ccc;
+}
+#edit-openlucius-core-group-settings .app-row .column-name {
+  font-size: 17px;
+  font-weight: normal;
+  color: #999;
+}
+#edit-openlucius-core-group-settings .app-row .column-description {
+  font-size: 12px;
+  font-weight: normal;
+  color: #999;
+  vertical-align: text-top;
+  line-height: 16px;
+  padding: 5px 0;
+  height: auto;
+}
+#edit-openlucius-core-group-settings .app-row .column-description .description {
+  height: 65px;
+  vertical-align: middle;
+  display: table-cell;
+}
+#edit-openlucius-core-group-settings .app-row .column-checkbox {
+  text-align: right;
+}
+/* Node add book page */
+.page-node-add-ol-text-document h1.page-header {
+  display: none;
+}
+.page-node-add-ol-text-document .form-item-title {
+  margin-bottom: 20px !important;
+}
+.page-node-add-ol-text-document form.node-form .form-item-title input#edit-title {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: center;
+  font-size: 24px;
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  color: #222;
+}
+.page-node-add-ol-text-document form.node-form .field-name-body,
+.page-node-add-ol-text-document form.node-form .field-name-body .form-type-textarea {
+  margin-bottom: 0;
+}
+.page-node-add-ol-text-document form.node-form .form-item-field-show-signature {
+  background: #fff;
+  margin: 0;
+  padding: 15px 0 0 20px;
+}
+.page-node-add-ol-text-document form.node-form .field-name-field-shared-files {
+  background: #fff;
+  padding: 20px 20px 0 20px;
+}
+.page-node-add-ol-text-document form.node-form .field-name-field-shared-show-clients {
+  background: #fff;
+  width: 100%;
+  float: left;
+  padding: 15px 20px 20px 20px;
+  margin-bottom: 0;
+}
+.page-node-add-ol-text-document form.node-form fieldset.notifies {
+  padding: 0 20px 20px 20px;
+  margin-bottom: 0;
+}
+.page-node-add-ol-text-document form.node-form .field-name-field-shared-loopin-email {
+  padding: 0 20px 20px 20px;
+  margin-bottom: 0;
+  width: 100%;
+  border: 0;
+  min-height: 80px;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+html.js fieldset.field-name-field-shared-loopin-email {
+  height: auto;
+}
+html.js fieldset.field-name-field-shared-loopin-email.collapsed legend {
+  margin-bottom: 0;
+}
+html.js fieldset.field-name-field-shared-loopin-email.collapsed {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+.page-node-add-ol-text-document form.node-form .field-name-field-shared-loopin-email legend {
+  border: 1px solid #ddd;
+}
+.page-node-add-ol-text-document form.node-form .form-type-dragndrop-upload label {
+  display: none;
+}
+.page-node-add-ol-text-document form.node-form .form-actions {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  background-color: #fff;
+  padding: 0 0 20px;
+  margin-bottom: 20px;
+}
+.page-node-add-ol-text-document form.node-form .form-actions #edit-submit {
+  padding: 20px 100px;
+}
+.page-node-add-ol-text-document .text-format-wrapper .form-type-select {
+  background: #fff;
+  padding: 20px 20px 0 20px;
+  margin-bottom: 0;
+}
+/* Book page content revisions */
+.node-type-ol-text-document .diff-inline-form {
+  width: 200px;
+  position: absolute;
+  top: 80px;
+  right: 31px;
+  z-index: 2;
+}
+.node-type-ol-text-document .alert + .diff-inline-form {
+  top: 150px;
+}
+.node-type-ol-text-document .diff-inline-form .form-type-select {
+  margin-bottom: 0;
+}
+.node-type-ol-text-document .diff-inline-form + .region-content #block-system-main > div {
+  margin-top: 15px;
+}
+.page-node-edit.node-type-ol-text-document .region.region-well {
+  padding-top: 20px;
+}
+.help-block.password-help {
+  clear: both;
+}
+.date-form-element-content-multiline {
+  padding: 0;
+  border: 0;
+}
+.form-type-date .form-control {
+  height: auto;
+  min-height: 35px;
+}
+/* Bootstrap fixes */
+.tooltip {
+  position: absolute;
+}
+.todo-list.ui-sortable tr:first-child td {
+  background-color: transparent;
+}

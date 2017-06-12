@@ -1,0 +1,68 @@
+body {
+  font-family: Roboto, sans-serif;;
+  font-size: 15px;
+  line-height: 1.428571429;
+  color: #222;
+  margin: 5px 30px 0 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: Roboto, sans-serif;;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 21px;
+  margin-bottom: 10.5px;
+}
+
+h4,
+h5,
+h6 {
+  margin-top: 10.5px;
+  margin-bottom: 10.5px;
+}
+
+h2,
+.h2 {
+  font-size: 32px;
+}
+
+h3,
+.h3 {
+  font-size: 26px;
+}
+
+h4,
+.h4 {
+  font-size: 19px;
+}
+
+h5 {
+  text-align: left;
+}
+
+h5,
+.h5 {
+  font-size: 15px;
+}
+
+h6,
+.h6 {
+  font-size: 13px;
+}

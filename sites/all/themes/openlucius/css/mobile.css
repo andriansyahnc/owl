@@ -1,0 +1,1309 @@
+@media all and (max-width: 767px) {
+  .comment-form .field-name-field-todo-list-reference,
+  .comment-form .field-name-field-todo-label,
+  .comment-form .field-name-field-todo-user-reference,
+  .comment-form .field-name-field-todo-due-date-singledate,
+  .comment-form .notifies.form-wrapper .panel-default,
+  .page-comment-edit #comment-form .form-todo-list-wrapper,
+  .page-comment-edit #comment-form .form-todo-label-wrapper,
+  .page-comment-edit #comment-form .form-todo-user-wrapper,
+  .page-comment-edit #comment-form .form-todo-due-date-wrapper,
+  .node-ol_todo-form .field-name-field-todo-list-reference,
+  .node-ol_todo-form .field-name-field-todo-list-label,
+  .node-ol_todo-form .field-name-field-todo-label,
+  .node-ol_todo-form .field-name-field-todo-user-reference,
+  .node-ol_todo-form .field-name-field-todo-due-date-singledate,
+  .node-ol_todo-form .field-name-field-shared-time-maximum,
+  #edit-notify-individual-fieldset,
+  .notifies .team-companies,
+  .page-group-calendar aside #edit-title-wrapper,
+  .page-group-calendar aside #edit-type-wrapper,
+  .page-group-calendar aside #edit-field-todo-user-reference-uid-wrapper,
+  .page-node-add-ol-event .start-date-wrapper,
+  .page-node-add-ol-event .end-date-wrapper,
+  html #edit-field-event-date-und-0-value,
+  html #edit-field-event-date-und-0-value .form-item-field-event-date-und-0-value-date,
+  html #edit-field-event-date-und-0-value .form-item-field-event-date-und-0-value-date #edit-field-event-date-und-0-value-datepicker-popup-0,
+  html #edit-field-event-date-und-0-value .form-item-field-event-date-und-0-value-time,
+  html #edit-field-event-date-und-0-value .form-item-field-event-date-und-0-value-time #edit-field-event-date-und-0-value-timeEntry-popup-1,
+  html #edit-field-event-date-und-0-value2,
+  html #edit-field-event-date-und-0-value2 .form-item-field-event-date-und-0-value2-date,
+  html #edit-field-event-date-und-0-value2 .form-item-field-event-date-und-0-value2-date #edit-field-event-date-und-0-value2-datepicker-popup-0,
+  html #edit-field-event-date-und-0-value2 .form-item-field-event-date-und-0-value2-time,
+  html #edit-field-event-date-und-0-value2 .form-item-field-event-date-und-0-value2-time #edit-field-event-date-und-0-value2-timeEntry-popup-1,
+  .page-node-edit .field-type-datestamp,
+  .page-node-edit .field-type-datestamp #field-todo-due-date-singledate-add-more-wrapper,
+  .page-node-edit .field-type-datestamp #field-todo-due-date-singledate-add-more-wrapper .date-no-float,
+  .page-node-edit .field-type-datestamp #field-todo-due-date-singledate-add-more-wrapper .date-no-float .form-type-date-popup,
+  .page-node-edit .field-type-datestamp #field-todo-due-date-singledate-add-more-wrapper .date-no-float .form-type-date-popup .date-padding,
+  .page-node-edit .field-type-datestamp #field-todo-due-date-singledate-add-more-wrapper .date-no-float .form-type-date-popup .date-padding .form-type-textfield,
+  .page-node-edit .field-type-datestamp #field-todo-due-date-singledate-add-more-wrapper .date-no-float .form-type-date-popup .date-padding .form-type-textfield input {
+    float: left !important;
+    width: 100% !important;
+  }
+  h2.title.comment-form {
+    font-size: 29px;
+  }
+  .node-ol-message .field-name-body.field-type-text-with-summary,
+  .node-type-ol-todo-list #block-views-todos-on-todo-list-page-block .field-name-field-todolist-description {
+    padding-top: 20px;
+  }
+  .node-ol-todo #comments .indented {
+    margin-left: 30px;
+  }
+  #edit-field-todo-comm-show-clients.field-type-list-boolean {
+    margin-left: -20px;
+  }
+  #edit-notify-individual .form-type-checkbox {
+    height: 30px;
+    width: 100%;
+    display: inline-block;
+  }
+  form.node-form fieldset.notifies > .panel-body {
+    padding: 0;
+  }
+  form.node-form fieldset.notifies > .panel-body #edit-notify-individual .form-type-checkbox label,
+  .inividual-fieldset .form-type-checkbox label {
+    top: -2px;
+  }
+  #edit-notify-individual .form-type-checkbox input[type="checkbox"] {
+    top: 0;
+    float: left;
+    margin-right: 5px;
+  }
+  #edit-notify-individual .form-type-checkbox label {
+    overflow: hidden;
+    text-overflow: inherit;
+    width: auto;
+    display: inline-block;
+    white-space: nowrap;
+    float: left;
+  }
+  .panel-title {
+    font-size: 12px;
+  }
+  h1.page-header {
+    font-size: 18px;
+  }
+  .ol-content .nav-tabs {
+    height: 40px;
+  }
+  .field-name-field-todo-list-reference .field-items {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .field-name-field-shared-files .panel {
+    min-height: 100px;
+  }
+  .field-name-field-shared-files .panel .panel-body {
+    padding: 0;
+  }
+  .node-ol_todo-form .notifies .team-companies {
+    min-height: 175px !important;
+  }
+  .node-ol-todo #comments .header-holder h3 a {
+    width: 100%;
+    float: left;
+    padding: 0px 0 5px 0;
+  }
+  .page-group-calendar .view-group-calendar .view-header,
+  .page-group-calendar .view-group-calendar .view-header .pager {
+    margin: 0;
+    clear: both;
+  }
+  .page-group-calendar .view-group-calendar .view-header .date-heading {
+    display: inline-block;
+  }
+  .page-group-calendar .view-group-calendar .view-header .date-heading h3 {
+    margin-top: 50px;
+  }
+  .page-group-calendar aside .views-exposed-widget.views-reset-button {
+    float: left;
+    clear: none;
+  }
+  .page-group-calendar aside .block-views .content {
+    margin-top: -25px;
+  }
+  .page-group-calendar .view-action-link {
+    clear: both !important;
+    z-index: 1031 !important;
+    height: 50px;
+    width: 100%;
+  }
+  /* Recent stuff */
+  .page-recent-stuff span.activity {
+    font-size: 20px;
+  }
+  .page-recent-stuff blockquote {
+    border-left: 0px;
+    padding-left: 0px;
+  }
+  /* User picture */
+  .user-picture img {
+    max-height: 50px;
+    max-width: 50px;
+  }
+  /* Comment heading */
+  h2.title.comment-form,
+  .referenced-from-wrapper h3 {
+    font-size: 18px;
+  }
+  h2.title {
+    font-size: 22px;
+  }
+  .submitted {
+    font-size: 9px;
+  }
+  .comment .header-holder {
+    height: 30px;
+    width: 100%;
+    display: block;
+  }
+  .comment .header-holder h3 {
+    font-size: 12px;
+    padding-top: 2px;
+    width: 30px;
+    float: left;
+  }
+  .comment .header-holder .submitted {
+    top: 5px;
+    left: 30px;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+  }
+  .comment .content {
+    float: left;
+    width: 100%;
+  }
+  .comment .content .comment-alter-diff {
+    width: 100%;
+  }
+  .page-node .ol-node,
+  .page-comment-reply .ol-node {
+    margin: 0;
+  }
+  .region-content .user-picture,
+  .ol-new {
+    display: none;
+  }
+  .region-content .user-picture img {
+    max-height: 25px;
+    max-width: 25px;
+  }
+  #comments {
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+  /* Date field full width */
+  #comment-form .container-inline-date,
+  #comment-form .container-inline-date .form-type-date-popup,
+  #comment-form .container-inline-date .form-type-date-popup .date-padding,
+  #comment-form .container-inline-date .form-type-date-popup .date-padding .form-type-textfield,
+  #comment-form .container-inline-date .form-type-date-popup .date-padding .form-type-textfield input {
+    width: 100%;
+  }
+  /* Font sizes */
+  .node-ol-todo .submitted,
+  .node-ol-todo .submitted a {
+    font-size: 12px;
+  }
+  .node-ol-todo .comment ul.list-inline {
+    float: left;
+    padding: 5px 0;
+    width: 100%;
+  }
+  html .node-ol-todo #comment-form .panel.team-companies {
+    min-height: 0px !important;
+  }
+  .page-comment-reply .comment {
+    margin: 0;
+  }
+  .page-comment-reply .comment .list-inline {
+    height: 50px;
+  }
+  #edit-notify-individual-fieldset {
+    margin-bottom: 20px !important;
+  }
+  #edit-notify-individual-fieldset,
+  #edit-team-companies {
+    min-height: inherit !important;
+  }
+  .node-type-ol-text-document .region-content {
+    padding-top: 15px;
+  }
+  .node-type-ol-text-document #comment-form .notifies,
+  .node-type-ol-text-document #comment-form .field-name-field-shared-files,
+  .node-type-ol-text-document #comment-form .field-name-field-shared-files .panel {
+    background-image: url('../images/ol_paper.jpg');
+  }
+  #comments .indented {
+    position: relative;
+  }
+  .ol-new {
+    margin: 30px 0 0 0;
+  }
+  .menu-left .navbar-toggle {
+    margin-left: 30px;
+    margin-right: 0;
+  }
+  .navbar-header .header-search.header-search-xs-visible {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    display: block;
+    width: 100% !important;
+    max-width: none;
+    border-top: 1px solid #f9f9f9;
+  }
+  .nav-header .header-search.header-search-xs-visible form {
+    padding: 14px 14px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+  }
+  /** Mobile Tables */
+  table .views-field-last-updated,
+  table .views-field-comment-count,
+  table .views-field-delta,
+  table .views-field-created,
+  table .views-field-timestamp,
+  table .views-field-field-shared-group-reference,
+  table .views-field-body,
+  table .todo-list .views-field-edit-node,
+  table .todo-list .views-field-delete-node,
+  .page-all-files .file_info_wrapper,
+  .page-all-files table th:nth-child(2),
+  .page-all-files table td:nth-child(2),
+  #block-openlucius-files-ol-group-files table th:nth-child(2),
+  #block-openlucius-files-ol-group-files table td:nth-child(2),
+  #block-openlucius-files-ol-user-files table th:nth-child(2),
+  #block-openlucius-files-ol-user-files table td:nth-child(2),
+  .page-group-files table td:nth-child(2),
+  .page-group-files table th:nth-child(2),
+  .page-group-files table td:nth-child(3),
+  .page-group-files table th:nth-child(3),
+  .view-id-groups .views-field-changed,
+  .view-id-trash .views-field-changed,
+  #block-openlucius-files-ol-group-files .file_info_wrapper,
+  .page-group-files .file_info_wrapper,
+  #block-openlucius-files-ol-user-files .file_info_wrapper,
+  .view-dashboard-blocks .views-field-field-groups,
+  .mobile-hidden {
+    display: none;
+  }
+  .view-messages-in-a-group .views-field-picture {
+    display: block;
+  }
+  .view-all-todo-lists-in-a-group .views-field-title {
+    width: 60% !important;
+  }
+  .page-all-files table tr th:nth-child(1),
+  .page-all-files table tr td:nth-child(1) {
+    width: 80%;
+  }
+  .filelink,
+  .view-id-trash .views-field-title a,
+  .itu-attachment-list span.file a {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+  }
+  .filelink,
+  .view-id-trash .views-field-title a {
+    max-width: 250px;
+  }
+  .itu-attachment-list span.file a {
+    max-width: 188px;
+  }
+  .page-all-files table tr th:nth-child(3),
+  .page-all-files table tr td:nth-child(3) {
+    width: 20%;
+  }
+  .view-id-messages_in_a_group .views-field-title,
+  .page-user-dashboard #block-views-messages-in-a-group-block-2 .views-field-title {
+    width: auto;
+  }
+  .table-responsive {
+    margin-bottom: 21px;
+  }
+  #ui-theme-classic {
+    font-size: 0.8em;
+  }
+  .social-heading {
+    min-height: 135px;
+    max-height: 135px;
+    margin-top: -35px;
+  }
+  .region-content #news .content .add-news-button a {
+    margin: 15px 5px 0 0;
+  }
+  .openlucius-bookmark-modal .modal-body .modal-title {
+    font-size: 15px;
+  }
+  .openlucius-bookmark-modal .modal-body .left {
+    height: auto;
+    width: 100%;
+    font-size: 12px;
+  }
+  .openlucius-bookmark-modal .modal-body .right {
+    display: none;
+  }
+  .ui-autocomplete li.ui-menu-item {
+    font-size: 15px !important;
+  }
+}
+@media all and (max-width: 375px) {
+  html .region-content {
+    min-height: 0px !important;
+  }
+  #comment-form .notifies .panel-title,
+  #comment-form .notifies .panel-title .check-all {
+    font-size: 11px;
+  }
+  .node-type-ol-todo .page-header {
+    line-height: 25px;
+  }
+  .node-type-ol-group #block-views-todos-in-group-dashboard-block h2 a,
+  .node-type-ol-group #block-views-messages-in-a-group-block-1 h2 a,
+  .node-type-ol-group #block-views-1ed4d15ee5805f2f30eefdcf3a72a143 h2 a,
+  .node-type-ol-group #block-openlucius-files-ol-group-files h2 a {
+    font-size: 19px;
+  }
+  .node-type-ol-group #block-system-help {
+    margin: 0;
+  }
+  .page-group-todo-lists h2.block-title,
+  .node-type-ol-group h2.block-title,
+  #block-openlucius-core-ol-textdoc h2.block-title {
+    margin: 0;
+    padding: 0;
+  }
+  .node-type-ol-group #block-views-todos-in-group-dashboard-block {
+    margin-bottom: 0;
+  }
+  .node-type-ol-group .view-text-documents-in-a-group .view-header,
+  .node-type-ol-group .view-todos-in-group-dashboard .view-header {
+    margin: 10px 0;
+  }
+  .view-text-documents-in-a-group .views-fluid-grid-list li,
+  .view-text-documents-in-a-group .views-fluid-grid-list li.views-fluid-grid-inline {
+    height: auto;
+    width: 100%;
+    margin: 10px 0;
+  }
+  /* Text documents page */
+  #views-exposed-form-text-documents-in-a-group-page-1 #edit-keys-wrapper,
+  #views-exposed-form-text-documents-in-a-group-page-1 .views-submit-button,
+  #views-exposed-form-text-documents-in-a-group-page-1 .views-submit-button .btn {
+    width: 100%;
+    margin: 3px 0;
+    padding: 0;
+  }
+  #views-exposed-form-text-documents-in-a-group-page-1 .views-exposed-form {
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  #comment-form .form-group {
+    margin-bottom: 5px;
+  }
+  /* Calendar */
+  .page-group-calendar .view-group-calendar .view-actionlink,
+  .page-group-calendar .view-group-calendar .view-header {
+    width: 100%;
+    text-align: center;
+  }
+  .page-group-calendar .view-group-calendar .date-nav-wrapper .date-nav {
+    display: block;
+    float: left;
+    height: auto;
+    border: 0;
+    min-height: 0px;
+    margin: 0;
+  }
+  .page-group-calendar .view-group-calendar .view-header .date-heading {
+    display: block;
+  }
+  .page-group-calendar .view-group-calendar .view-header .pager {
+    float: left;
+    width: 100%;
+    margin: auto;
+  }
+  .page-group-calendar .view-group-calendar .view-header .pager .date-prev {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    text-align: center;
+  }
+  .page-group-calendar .view-group-calendar .view-header .pager .date-next {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    text-align: center;
+  }
+  .page-group-calendar .view-group-calendar .view-header .pager .date-prev a,
+  .page-group-calendar .view-group-calendar .view-header .pager .date-next a {
+    width: 100%;
+    margin: 0;
+  }
+  .page-group-calendar #block-views-exp-group-calendar-page-1 h2.block-title {
+    display: none;
+  }
+  .page-group-calendar #block-views-exp-group-calendar-page-1 .content,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 #edit-submit-all-todo-lists-in-a-group,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 #edit-reset {
+    margin-top: 0px;
+  }
+  .page-group-calendar #views-exposed-form-group-calendar-page-1 .views-exposed-widgets #edit-title-wrapper,
+  .page-group-calendar #views-exposed-form-group-calendar-page-1 .views-exposed-widgets #edit-type-wrapper,
+  .page-group-calendar #views-exposed-form-group-calendar-page-1 .views-exposed-widgets #edit-field-todo-user-reference-uid-wrapper {
+    padding: .5em 0;
+  }
+  /* Group users */
+  .page-group-users #views-exposed-form-users-in-groups-page,
+  .page-group-users #views-exposed-form-users-in-groups-page .views-exposed-widgets,
+  .page-group-users #views-exposed-form-users-in-groups-page .views-exposed-widgets #edit-name-wrapper,
+  .page-group-users #views-exposed-form-users-in-groups-page .views-exposed-widgets .views-submit-button,
+  .page-group-users #views-exposed-form-users-in-groups-page .views-exposed-widgets .views-submit-button .btn,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 #edit-status-1-wrapper,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 .views-submit-button,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 #edit-submit-all-todo-lists-in-a-group,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 .views-reset-button,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 #edit-reset,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 #edit-title-wrapper,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 #edit-field-todo-label-tid-wrapper,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 #edit-date-filter-wrapper {
+    padding: .5em 0;
+    width: 100%;
+  }
+  .page-group-users #views-exposed-form-users-in-groups-page .views-exposed-form {
+    margin: 0;
+    padding: 0;
+  }
+  .page-group-users #openlucius-core-add-form {
+    max-width: inherit;
+  }
+  .page-group-users .view-users-in-groups .views-fluid-grid-list,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 #edit-date-filter-wrapper .container-inline-date,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 #edit-date-filter-wrapper .container-inline-date .form-type-date-popup,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 #edit-date-filter-wrapper .container-inline-date .form-type-date-popup #edit-date-filter-value,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 #edit-date-filter-wrapper .container-inline-date .form-type-date-popup #edit-date-filter-value .form-group,
+  #views-exposed-form-all-todo-lists-in-a-group-page-1 #edit-date-filter-wrapper .container-inline-date .form-type-date-popup #edit-date-filter-value .form-group .form-text {
+    width: 100%;
+  }
+  .page-group-users .view-users-in-groups .views-fluid-grid-list .views-fluid-grid-item {
+    width: 45%;
+    margin: 0 6px;
+    min-height: 260px;
+  }
+  .page-group-users .view-users-in-groups .views-field-name {
+    text-align: left;
+  }
+  .page-group-users .view-users-in-groups .views-field-edit-node a {
+    top: 12px;
+    right: 8px;
+  }
+  #ol-file-folder-node-form .form-submit,
+  #file-node-form .form-submit {
+    width: 100%;
+  }
+  .node-ol-text-document #comments .indented {
+    margin-left: 30px;
+  }
+  .node-ol-message .submitted {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 8px;
+    width: 55%;
+  }
+  .node-ol-todo .tabs--primary {
+    float: left;
+    width: 100%;
+  }
+  .node-ol-todo .submitted {
+    clear: left;
+  }
+  .node-ol-todo .ol-content .field-name-field-todo-list-reference,
+  .node-ol-todo .ol-content .field-name-field-todo-label {
+    font-size: 12px;
+  }
+  h1.page-header {
+    font-size: 25px;
+  }
+  .node-ol-message #comments .submitted {
+    padding-top: 0;
+  }
+  .node-ol-message #comments .indented {
+    margin-left: 30px;
+  }
+  .node-ol-message .header-holder .submitted {
+    width: 85%;
+  }
+  .node-ol-text-document .notifies .team-companies {
+    min-height: inherit !important;
+  }
+  #edit-submit,
+  #edit-delete,
+  #edit-unpublish {
+    width: 100%;
+    margin: 5px 0;
+  }
+  .navbar-toggle.tab-toggle {
+    top: 48px !important;
+  }
+  html .social-heading .social-intro {
+    width: 100px !important;
+  }
+  #block-openlucius-news-promoted-news-block .content-inner .content-body {
+    max-width: 50%;
+  }
+  /* Buttons in header menu */
+  .menu-right .btn-custom.notifications_button,
+  .menu-left .btn-custom {
+    padding: 6px 11px;
+  }
+  .menu-right li.dropdown a {
+    padding: 13px 11px 6px 7px;
+  }
+  .group-local-tasks-wrapper.shown .group-local-tasks {
+    left: inherit;
+    right: 0;
+  }
+}
+@media all and (max-width: 320px) {
+  .page-group-users .view-users-in-groups .views-fluid-grid-list .views-fluid-grid-item {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .page-group-users .view-users-in-groups .views-field-edit-node a {
+    top: 13px;
+    right: 10px;
+  }
+  .node-type-ol-group #block-views-todos-in-group-dashboard-block h2 a,
+  .node-type-ol-group #block-views-messages-in-a-group-block-1 h2 a,
+  .node-type-ol-group #block-views-1ed4d15ee5805f2f30eefdcf3a72a143 h2 a,
+  .node-type-ol-group #block-openlucius-files-ol-group-files h2 a {
+    font-size: 14px;
+  }
+  .node-type-ol-group #block-views-todos-in-group-dashboard-block h2 a .btn,
+  .node-type-ol-group #block-views-messages-in-a-group-block-1 h2 a .btn,
+  .node-type-ol-group #block-views-1ed4d15ee5805f2f30eefdcf3a72a143 h2 a .btn,
+  .node-type-ol-group #block-openlucius-files-ol-group-files h2 a .btn {
+    padding: 2px 5px;
+  }
+  .node-ol-message .submitted {
+    width: 50%;
+  }
+  /* Sidebar */
+  .row.toggled .col-sm-3 {
+    width: 96%;
+    position: fixed;
+    top: 15%;
+    right: 0px;
+    display: block !important;
+    z-index: 1032;
+  }
+  /* Buttons in header menu */
+  .menu-right .btn-custom.notifications_button {
+    padding: 6px 4px 6px 12px;
+  }
+  .menu-right li.dropdown a {
+    padding: 12px 0px 6px 7px;
+  }
+  .menu-left .btn-custom {
+    padding: 6px 4px 6px 2px;
+  }
+}
+/* Remove text from group heading buttons. */
+@media all and (max-width: 531px) {
+  /* Group dashboard */
+  .node-type-ol-group #block-openlucius-core-ol-group-heading a {
+    font-size: 12px;
+  }
+  .node-type-ol-group #block-openlucius-core-ol-group-heading a .glyphicon {
+    margin-right: 5px;
+  }
+  .node-type-ol-group #block-openlucius-core-ol-group-heading a .text {
+    display: none;
+  }
+  #block-openlucius-core-ol-group-heading .add-button {
+    display: inline;
+  }
+  .social-heading .social-intro {
+    width: 150px !important;
+  }
+  table .views-field-name,
+  table .views-field-picture,
+  .view-id-trash table .views-field-name,
+  .view-dashboard-blocks .views-field-field-user-about-me {
+    display: none;
+  }
+}
+@media (min-width: 234px) and (max-width: 992px) {
+  /* Toggle sidebar button for all devices. */
+  .fixed-right {
+    display: block;
+    position: absolute;
+    z-index: 1032;
+    right: 0px;
+    bottom: -28px;
+  }
+}
+@media all and (min-width: 768px) {
+  .page-node-add-ol-text-document form.node-form {
+    margin: 0 15%;
+  }
+}
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .container,
+  .col-sm-9,
+  .container,
+  .col-sm-6 {
+    width: 100%;
+  }
+}
+/* Fix breakpoint tablet. */
+@media (max-width: 769px) {
+  .col-sm-9 {
+    width: 100%;
+  }
+  #comments {
+    clear: left;
+  }
+}
+@media (max-width: 1200px) {
+  .social-heading-profile .profile_picture span.profile_name,
+  .social-heading .social-intro {
+    width: 500px;
+  }
+}
+/**
+ * Ipad fixes.
+ */
+@media (max-width: 1000px) {
+  .navbar-collapse.collapse {
+    display: none !important;
+  }
+  .navbar-collapse {
+    overflow-x: visible !important;
+  }
+  .collapse.in {
+    display: block !important;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+  .navbar-header {
+    width: 100%;
+  }
+  html .navbar-collapse .navbar-nav .first {
+    clear: both !important;
+  }
+  .no-absolute {
+    margin-left: -12px;
+  }
+  .navbar #block-search-form {
+    clear: both;
+    max-width: none;
+    margin: 5px 0px 10px;
+  }
+}
+@media (max-width: 699px) {
+  /* Tabs vertically */
+  .page-admin-config .nav-tabs {
+    float: left;
+    width: 100%;
+  }
+  .page-admin-config .nav-tabs li {
+    width: 100%;
+  }
+  table .views-field-picture,
+  .view-id-trash table .views-field-name,
+  .view-dashboard-blocks .views-field-field-user-tags {
+    display: none;
+  }
+}
+@media (min-width: 700px) {
+  /* Tabs vertically */
+  .page-admin-config .nav-tabs {
+    float: left;
+    width: 25%;
+  }
+  .page-admin-config .nav-tabs li {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .navbar-toggle.tab-toggle {
+    top: 41px;
+    right: 15px;
+  }
+  .navbar-toggle.tab-toggle {
+    padding: 7px 8px;
+  }
+  .navbar-toggle.tab-toggle .icon-bar {
+    width: 8px;
+  }
+  .navbar-toggle.tab-toggle .icon-bar + .icon-bar {
+    margin-top: 2px;
+  }
+  .social-heading-profile .profile_picture span.profile_name,
+  .social-heading .social-intro {
+    width: 250px;
+  }
+  #navbar li.last .dropdown-toggle .username {
+    display: none;
+  }
+  .navbar-nav .open .dropdown-menu {
+    position: absolute;
+  }
+  .nav > li > a {
+    padding-top: 14px;
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+}
+@media all and (min-width: 768px) {
+  .navbar-toggle.tab-toggle {
+    top: 23px;
+    right: 15px;
+  }
+  /* Smaller close checkbox */
+  .view-todos-in-group-dashboard .views-field-nid {
+    max-width: 15px;
+  }
+  /* Text document alignment. */
+  .page-node .ol-node.ol-node-textdocument {
+    margin: 0 0 0 40px;
+  }
+}
+@media (max-width: 450px) {
+  .ol-new {
+    margin: 55px 0px 10px 0;
+  }
+  .itu-attachment-list .mime,
+  .itu-attachment-list .size {
+    display: none;
+  }
+  table .views-field-picture,
+  table .views-field-name,
+  table .views-field-type {
+    display: none;
+  }
+  .ol-node ul.tabs--primary {
+    height: auto;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .ol-node ul.tabs--primary li {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .ol-node .todo-breakdown {
+    display: none;
+  }
+}
+/* Display tabs */
+@media (min-width: 800px) {
+  .tabs--primary.collapse {
+    display: block;
+  }
+  .navbar-toggle.tab-toggle {
+    display: none;
+  }
+  .page-admin-config-openlucius .col-sm-12 .alert-block {
+    margin-left: 25%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .side-scroll #sidebar,
+  .side-scroll #side-overlay {
+    overflow-y: hidden;
+  }
+  .nav > li > a {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+  .page-node-add form.node-form:not(.node-ol_text_document-form) .form-actions {
+    display: none;
+  }
+}
+@media screen and (max-width: 991px) {
+  #sidebar {
+    width: 100%;
+    opacity: 0;
+  }
+  .sidebar-o-xs #sidebar {
+    opacity: 1;
+    -webkit-transform: translateX(0) translateY(0) translateZ(0);
+    -ms-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0) translateZ(0);
+  }
+}
+@media screen and (min-width: 992px) {
+  .sidebar-o #sidebar {
+    -webkit-transform: translateX(0) translateY(0) translateZ(0);
+    -ms-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0) translateZ(0);
+  }
+}
+@media screen and (max-width: 991px) {
+  #side-overlay {
+    width: 100%;
+    opacity: 0;
+  }
+  .side-overlay-o #side-overlay {
+    opacity: 1;
+    -webkit-transform: translateX(0) translateY(0) translateZ(0);
+    -ms-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0) translateZ(0);
+  }
+}
+@media screen and (max-width: 992px) {
+  #side-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1040;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transition: all 0.28s ease-out;
+    transition: all 0.28s ease-out;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+  .sidebar-l #side-overlay {
+    right: 0;
+    -webkit-transform: translateX(100%) translateY(0) translateZ(0);
+    -ms-transform: translateX(100%) translateY(0);
+    transform: translateX(100%) translateY(0) translateZ(0);
+  }
+  .sidebar-r #side-overlay {
+    left: 0;
+    -webkit-transform: translateX(-100%) translateY(0) translateZ(0);
+    -ms-transform: translateX(-100%) translateY(0);
+    transform: translateX(-100%) translateY(0) translateZ(0);
+  }
+  .sidebar-l #side-overlay {
+    -webkit-transform: translateX(110%) translateY(0) translateZ(0);
+    -ms-transform: translateX(110%) translateY(0);
+    transform: translateX(110%) translateY(0) translateZ(0);
+  }
+  .sidebar-r #side-overlay {
+    -webkit-transform: translateX(-110%) translateY(0) translateZ(0);
+    -ms-transform: translateX(-110%) translateY(0);
+    transform: translateX(-110%) translateY(0) translateZ(0);
+  }
+  .sidebar-l.side-overlay-hover #side-overlay {
+    -webkit-transform: translateX(300px) translateY(0) translateZ(0);
+    -ms-transform: translateX(300px) translateY(0);
+    transform: translateX(300px) translateY(0) translateZ(0);
+  }
+  .sidebar-r.side-overlay-hover #side-overlay {
+    -webkit-transform: translateX(-300px) translateY(0) translateZ(0);
+    -ms-transform: translateX(-300px) translateY(0);
+    transform: translateX(-300px) translateY(0) translateZ(0);
+  }
+  .side-overlay-hover #side-overlay:hover,
+  .side-overlay-o #side-overlay,
+  .side-overlay-o.side-overlay-hover #side-overlay {
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    -webkit-transform: translateX(0) translateY(0) translateZ(0);
+    -ms-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0) translateZ(0);
+  }
+}
+@media (max-width: 400px) {
+  .nav > li > a {
+    padding-top: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media (max-width: 370px) {
+  .nav > li > a {
+    padding-top: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+@media all and (max-width: 991px) {
+  #block-openlucius-core-ol-group-heading .group-navigation li a .button-text,
+    /* @todo check this. */
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a .button-text {
+    display: none !important;
+  }
+  #block-openlucius-core-ol-group-heading .group-navigation li,
+  #block-openlucius-core-ol-group-heading .group-navigation li a,
+  #block-openlucius-core-ol-group-heading .group-navigation li a span:not(.button-text),
+    /* @todo check this. */
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li,
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a,
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a span:not(.button-text) {
+    display: inline;
+  }
+  #block-openlucius-core-user-dashboard-tabs {
+    padding: 20px 0 0 0;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 56px;
+  }
+  .page-user-dashboard #block-openlucius-core-user-dashboard-tabs ul {
+    padding-left: 0;
+    text-align: center;
+  }
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li {
+    width: 14.2857143%;
+    text-align: center;
+  }
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a {
+    width: 100%;
+    padding: 0 25px 0 25px;
+    margin-right: 0;
+  }
+}
+@media all and (max-width: 767px) {
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li.active,
+  #block-openlucius-core-ol-group-heading .group-navigation li a:hover,
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li:hover {
+    border-bottom: 2px solid #4285f4;
+    padding-bottom: 9px;
+  }
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li span.tab-icon {
+    display: inline-block;
+    margin: 0 5px 0 5px;
+  }
+  .page-user-dashboard .view-all-todo-lists-in-a-group .view-actionlink {
+    display: block;
+    width: 100%;
+    text-align: right;
+  }
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs {
+    display: table;
+    width: 100%;
+  }
+}
+@media all and (max-width: 500px) {
+  html.openlucius-core-no-scroll,
+  html.openlucius-core-no-scroll body {
+    overflow: hidden;
+    height: 100%;
+  }
+  #block-openlucius-core-ol-group-heading .group-navigation li {
+    margin: 0 5px;
+  }
+  #block-openlucius-core-ol-group-heading .group-navigation li .button-amount,
+    /* @todo check this. */
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li .button-amount {
+    font-size: 10px;
+  }
+  #block-openlucius-core-ol-group-heading .group-heading {
+    padding-bottom: 0;
+  }
+  #block-openlucius-core-ol-group-heading .group-navigation {
+    width: 100%;
+    text-align: center;
+  }
+  #block-openlucius-core-ol-group-heading .group-navigation ul,
+    /* @todo check this. */
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs ul {
+    display: table;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  #block-openlucius-core-ol-group-heading .group-navigation li,
+    /* @todo check this. */
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li {
+    z-index: 10;
+    text-align: center;
+    display: table-cell;
+  }
+  #block-openlucius-core-ol-group-heading .group-navigation li a,
+    /* @todo check this. */
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a {
+    text-decoration: none;
+    padding: 0 5px 0 5px;
+    margin: 0;
+    display: block;
+    text-align: center;
+  }
+  #block-openlucius-core-ol-group-heading .group-navigation li a.active,
+  #block-openlucius-core-ol-group-heading .group-navigation li a:hover,
+    /* @todo check this. */
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li.active,
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li:hover {
+    border-bottom: 2px solid #4285f4;
+    padding-bottom: 9px;
+  }
+  .social-heading-profile {
+    padding: 0;
+  }
+  .social-heading-profile img,
+  .social-heading .logo img {
+    min-height: 50px;
+    max-width: 50px;
+  }
+  /* Group slogan to the left. */
+  .social-heading-profile .profile_picture span.profile_name {
+    left: 65px;
+  }
+  .file-search-form {
+    margin-bottom: 7px;
+  }
+  /* Flex tables for mobile. */
+  table.comment-alter-diff,
+  table.comment-alter-diff tr {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+  }
+  table.comment-alter-diff tr td {
+    flex: 0 0 100%;
+  }
+}
+@media all and (max-width: 400px) {
+  #block-openlucius-core-ol-group-heading .group-navigation li:not(.search-user) .button-amount {
+    display: none !important;
+  }
+}
+@media all and (min-width: 500px) and (max-width: 767px) {
+  #block-openlucius-core-ol-group-heading .group-navigation li a .button-amount,
+  #block-openlucius-core-ol-group-heading .group-navigation li a .glyphicon,
+  #block-openlucius-core-ol-group-heading .group-navigation li a .fa,
+    /* @todo check this. */
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a .glyphicon,
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a .fa {
+    font-size: 18px;
+  }
+  .group-navigation li.search-user .button-amount {
+    margin-right: -25px;
+  }
+}
+@media all and (min-width: 768px) {
+  #block-openlucius-core-ol-group-heading .group-navigation:not(.search-content):not(.search_user) li a .glyphicon,
+  #block-openlucius-core-ol-group-heading .group-navigation:not(.search-content):not(.search_user) li a .fa,
+    /* @todo check this. */
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a .glyphicon,
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a .fa {
+    display: none !important;
+  }
+  #block-openlucius-core-ol-group-heading .group-navigation li a .button-text,
+    /* @todo check this. */
+  #block-openlucius-core-user-dashboard-tabs .user-dashboard-tabs li a .button-text {
+    display: inline !important;
+  }
+  #block-openlucius-core-ol-group-heading .group-navigation li a.active,
+  #block-openlucius-core-ol-group-heading .group-navigation li a:hover,
+    /* @todo check this. */
+  #block-openlucius-core-user-dashboard-tabs li.active,
+  #block-openlucius-core-user-dashboard-tabs li:hover {
+    border-bottom: 2px solid #4285f4;
+    padding-bottom: 9px;
+  }
+  .group-navigation li.search-user .button-text.has-badge {
+    margin-right: 30px;
+  }
+}
+/* Login on small devices */
+@media all and (max-width: 340px) {
+  .page-user-login .nav-tabs li a {
+    font-size: 12px;
+  }
+}
+/* Social heading in groups. */
+@media all and (max-width: 320px) {
+  .social-heading-profile {
+    min-height: 60px;
+    padding: 0;
+    margin: 0;
+  }
+  .social-heading-profile img,
+  .social-heading .logo img {
+    min-height: 40px;
+    max-width: 40px;
+  }
+  .social-heading-profile .cover-gradient {
+    height: 20px;
+  }
+  .social-heading-profile .profile_picture {
+    margin: 5px 0 0 7px;
+  }
+  .social-heading-profile .profile_picture span.profile_name {
+    left: 50px;
+    width: 165px;
+    font-size: 12px;
+  }
+  .social-heading-profile .profile_picture span.profile_name.no-image {
+    margin-bottom: -33px;
+    width: 220px;
+  }
+}
+@media all and (min-width: 321px) and (max-width: 375px) {
+  .social-heading-profile {
+    min-height: 65px;
+    padding: 0;
+    margin: 0;
+  }
+  .social-heading-profile img,
+  .social-heading .logo img {
+    min-height: 40px;
+    max-width: 40px;
+  }
+  .social-heading-profile .cover-gradient {
+    height: 25px;
+  }
+  .social-heading-profile .profile_picture {
+    margin: 7px 0 0 10px;
+  }
+  .social-heading-profile .profile_picture span.profile_name {
+    left: 50px;
+    width: 185px;
+    font-size: 12px;
+  }
+  .social-heading-profile .profile_picture span.profile_name.no-image {
+    margin-bottom: -37px;
+    width: 240px;
+  }
+}
+@media all and (min-width: 376px) and (max-width: 480px) {
+  .social-heading-profile {
+    min-height: 75px;
+    padding: 0;
+    margin: 0;
+  }
+  .social-heading-profile img,
+  .social-heading .logo img {
+    min-height: 50px;
+    max-width: 50px;
+  }
+  .social-heading-profile .profile_picture {
+    margin: 7px 0 0 10px;
+  }
+  .social-heading-profile .profile_picture span.profile_name {
+    left: 65px;
+    width: 200px;
+  }
+  .social-heading-profile .profile_picture span.profile_name.no-image {
+    margin-bottom: -46px;
+    width: 275px;
+  }
+}
+@media all and (min-width: 481px) and (max-width: 768px) {
+  .social-heading-profile {
+    min-height: 100px;
+    padding: 0;
+    margin: 0;
+  }
+  .social-heading-profile img,
+  .social-heading .logo img {
+    min-height: 75px;
+    max-width: 75px;
+  }
+  .social-heading-profile .profile_picture {
+    margin: 7px 0 0 10px;
+  }
+  .social-heading-profile .profile_picture span.profile_name {
+    left: 90px;
+    width: 300px;
+  }
+  .social-heading-profile .profile_picture span.profile_name.no-image {
+    margin-bottom: -46px;
+    width: 275px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .openlucius-tool-row {
+    display: inline-block;
+    margin-bottom: 3px;
+  }
+  .openlucius-tool-row .cell {
+    display: list-item;
+    list-style: none;
+    width: 100% !important;
+    clear: both;
+    margin: 5px 0;
+    float: left;
+  }
+  .openlucius-task-modal .modal-body {
+    padding: 20px;
+  }
+  .openlucius-tool-row .in-label {
+    text-align: left;
+  }
+  .openlucius-controls {
+    max-width: 100%;
+    padding: 0;
+    margin: 25px 0 30px 0;
+    float: left;
+  }
+  .openlucius-controls a {
+    display: inline-block;
+    float: left;
+  }
+  .form-item-personal-task label {
+    display: block !important;
+    position: relative;
+    top: 2px;
+    left: 5px;
+  }
+  .openlucius-tool-row .form-item-field-show-signature {
+    padding-left: 0;
+    margin: 4px 0 11px 0;
+  }
+  .openlucius-tool-row .form-actions button.form-submit {
+    width: 100%;
+  }
+  .in-label {
+    display: none !important;
+  }
+  #modalContent .cell.personal-task label {
+    text-indent: 0;
+  }
+  .cell.group-reference {
+    margin-bottom: 0;
+    padding-right: 0;
+  }
+  .openlucius-tool-row .cell:last-child {
+    margin-top: 0;
+  }
+  .cell.list-reference {
+    margin: 7px 0 0 0;
+  }
+  .openlucius-tool-row #edit-notify-individual .form-type-checkbox label {
+    float: initial;
+    top: 2px !important;
+  }
+  .openlucius-tool-row #edit-notify-individual .form-type-checkbox {
+    height: initial;
+  }
+}
+@media all and (min-width: 1200px) {
+  .view-text-documents-in-a-group .view-actionlink {
+    margin-right: 56px;
+  }
+}
+@media all and (min-width: 992px) and (max-width: 1200px) {
+  .view-text-documents-in-a-group .view-actionlink {
+    margin-right: 168px;
+  }
+}

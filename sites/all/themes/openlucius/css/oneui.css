@@ -1,0 +1,109 @@
+.switch {
+  margin: 3px 0;
+}
+.switch.switch-sm {
+  margin: 8px 0 7px;
+  font-size: 12px;
+}
+.switch.switch-sm input + span {
+  width: 36px;
+  height: 20px;
+}
+.switch.switch-sm input + span:after {
+  width: 16px;
+}
+.switch.switch-sm input:checked + span:after {
+  -webkit-transform: translateX(15px);
+  -ms-transform: translateX(15px);
+  transform: translateX(15px);
+}
+.css-input {
+  position: relative;
+  display: inline-block;
+  margin: 2px 0;
+  font-weight: 400;
+  cursor: pointer;
+}
+label {
+  font-size: 13px;
+  font-weight: 600;
+}
+.css-input input {
+  position: absolute;
+  opacity: 0;
+}
+.switch input + span {
+  width: 54px;
+  height: 30px;
+  background-color: #eee;
+  border-radius: 30px;
+  -webkit-transition: background-color 0.4s;
+  transition: background-color 0.4s;
+}
+.css-input input + span {
+  position: relative;
+  display: inline-block;
+  margin-top: -2px;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+.switch input + span:after {
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  width: 26px;
+  background-color: #fff;
+  border-radius: 50%;
+  -webkit-box-shadow: 1px 0 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.1);
+  -webkit-transition: -webkit-transform 0.15s ease-out;
+  transition: transform 0.15s ease-out;
+}
+.css-input input + span:after {
+  position: absolute;
+  content: "";
+}
+.switch input:checked + span {
+  background-color: #ddd;
+}
+.switch-success input:checked + span {
+  background-color: #46c37b;
+}
+.switch input + span {
+  width: 54px;
+  height: 30px;
+  background-color: #eee;
+  border-radius: 30px;
+  -webkit-transition: background-color 0.4s;
+  transition: background-color 0.4s;
+}
+.css-input input + span {
+  position: relative;
+  display: inline-block;
+  margin-top: -2px;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+.switch input:checked + span:after {
+  -webkit-box-shadow: -2px 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 0 3px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateX(23px);
+  -ms-transform: translateX(23px);
+  transform: translateX(23px);
+}
+.switch input + span:after {
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  width: 26px;
+  background-color: #fff;
+  border-radius: 50%;
+  -webkit-box-shadow: 1px 0 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.1);
+  -webkit-transition: -webkit-transform 0.15s ease-out;
+  transition: transform 0.15s ease-out;
+}
+.css-input input + span:after {
+  position: absolute;
+  content: "";
+}
