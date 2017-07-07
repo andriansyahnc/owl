@@ -1,0 +1,12 @@
+name = openlucius_owl_features
+description = configuration needed for openlucius owl
+core = 7.x
+package = owl - openlucius
+version = 7.x-1.0
+dependencies[] = ctools
+dependencies[] = openlucius_board
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = todo_get_team
+project path = sites/all/modules/custom

@@ -1,0 +1,246 @@
+<?php
+
+function owl_openlucius_menu() {
+  return array(
+    'owl-openlucius-board/check-status-availability/%node' => array(
+      'title' => t('Check Status Availability'),
+      'page callback' => 'owl_openlucius_check_status',
+      'page arguments' => array(2),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK
+    )
+  );
+}
+
+function owl_openlucius_check_status($node) {
+  $return = FALSE;
+  if (drupal_valid_token($_POST['token']) && node_access('view', $node)) {
+    $tid = $_POST['tid'];
+    $available = views_get_view_result('get_term_availability_for_story', 'master', $node->nid, $tid, $_POST['team-nid']);
+    if(!empty($available)) {
+      $return = TRUE;
+    }
+  } 
+  
+  return drupal_json_output(['result' => $return]);
+}
+
+function owl_openlucius_theme_registry_alter(&$theme_registry) {
+  if(isset($theme_registry['openlucius_board_board'])) {
+    $theme_registry['openlucius_board_board']['theme path'] = drupal_get_path('module', 'owl_openlucius');
+    $theme_registry['openlucius_board_board']['template'] = drupal_get_path('module', 'owl_openlucius') . '/templates/openlucius_board_board';
+  }
+}
+
+function taxonomy_get_children_tid($tid) {
+  $children = [];
+  foreach(taxonomy_get_children($tid) as $children_tid => $children_data){
+    $children[] = $children_tid;
+  }
+  return $children;
+}
+
+function is_lists_empty($lists, $tid) {
+  $return = 'list-is-empty';
+  if(!empty($lists[$tid])) {
+    $return = '';
+  }
+  foreach(taxonomy_get_children_tid($tid) as $children_tid) {
+    if(!empty($lists[$children_tid])) {
+      $return = '';
+    }
+  }
+  return $return;
+}
+
+function owl_openlucius_js_alter(&$javascript) {
+  $openlucius_board_file_loc = drupal_get_path('module', 'openlucius_board') . '/js/owl_openlucius_board.js';  
+}
+
+function owl_openlucius_page_alter(&$page) {
+  // dpm($page);
+}
+
+function owl_openlucius_menu_alter(&$items) {
+  if($items['openlucius-board/%node']) {
+    $items['openlucius-board/%node']['page callback']  =  'openlucius_board_custom_page';
+    $items['openlucius-board/%node']['file path']      =  drupal_get_path('module', 'owl_openlucius');
+  }
+}
+
+class OpenluciusBoardCustom extends OpenluciusBoard {
+  public function __construct($id, $type) {
+
+    // Add ctools requirements for the modals.
+    ctools_include('ajax');
+    ctools_include('modal');
+    ctools_modal_add_js();
+
+    // Add the jquery sortable.
+    drupal_add_library('system', 'ui.sortable');
+
+    // Add the jquery date picker.
+    drupal_add_library('system', 'ui.datepicker');
+
+    // Get the path to the module.
+    $path_to_module = drupal_get_path('module', 'openlucius_board');
+    $path_to_custom = drupal_get_path('module', 'owl_openlucius');
+
+    // Add styling.
+    drupal_add_css($path_to_module . '/css/openlucius_board.css');
+
+    // Add the javascript.
+    drupal_add_js($path_to_custom . '/js/owl_openlucius_board.js');
+    drupal_add_css($path_to_custom . '/css/owl_openlucius_board.css');
+
+    $is_client = openlucius_core_user_is_client();
+
+    // Add whether the user is a client or not.
+    drupal_add_js(array(
+      'openlucius_board_client' => $is_client,
+      'openlucius_board_drag_drop' => user_access('drag and drop board items'),
+    ), 'setting');
+
+    // For storing the data before render.
+    $data = array(
+      'lists' => array(),
+      'token' => drupal_get_token(),
+    );
+
+    // Load the basic query.
+    $this->query = $this->getBaseQuery();
+
+    // Switch on entity type.
+    switch ($type) {
+
+      case 'node':
+        $this->query->condition('g.field_shared_group_reference_nid', $id, '=');
+
+        // Fetch the available group users.
+        $form = array(
+          'select' => array(
+            '#type'    => 'select',
+            '#options' => array('_none' => t('- None -')) + openlucius_core_fetch_group_users($id),
+          ),
+        );
+
+        $data['users'] = drupal_render($form);
+        break;
+
+      case 'user':
+        $this->query->join('field_data_field_todo_user_reference', 'u', 'n.nid = u.entity_id');
+        $this->query->condition('u.field_todo_user_reference_uid', $id, '=');
+        break;
+
+      default:
+        drupal_set_message(t('Option not found in board'));
+        return FALSE;
+    }
+
+    $this->query->leftJoin('openlucius_board_node_weights', 'b', 'n.nid = b.nid');
+    $this->query->addField('b', 'weight', 'board_weight');
+
+    // Add node access tag.
+    $this->query->addTag('node_access');
+
+    // Fetch all node id's.
+    $results = $this->query->execute()->fetchAllKeyed(0, 1);
+
+    // Fetch the available statuses.
+    $data['statuses'] = openlucius_core_get_terms('labels_todo_s');
+    $data['groups'] = array();
+    $data['user_is_client'] = $is_client;
+
+    if (!empty($results)) {
+      $node_ids = array_keys($results);
+      $nodes = node_load_multiple($node_ids);
+
+      // Loop through each of the todo's.
+      foreach ($nodes as $node) {
+
+        // Fetch prerendered node data.
+        $node_values = openlucius_board_extract_values($node);
+
+        // Override weight by board weight if set.
+        if (isset($results[$node->nid])) {
+          $node_values['weight'] = $results[$node->nid];
+        }
+
+        // Node and user boards are different so check.
+        if ($type == 'node') {
+
+          // Unset group as the node is the group so it's obvious.
+          unset($node_values['group']);
+
+          $team = views_get_view_result('get_team_from_assignee', 'master', $node_values['account']['uid']);
+          if(!empty($team)) {
+            $data['team'][$node_values['status']][$node_values['weight']][] = $team;
+          } else {
+            $data['team'][$node_values['status']][$node_values['weight']][] = null;
+          }
+          // Store renderable item in list at position.
+          $data['lists'][$node_values['status']][$node_values['weight']][] = theme('openlucius_board_item', $node_values);
+        }
+        else {
+
+          // Store group if not set for filtering.
+          if (!isset($data['groups'][$node_values['group_id']])) {
+            $data['groups'][$node_values['group_id']] = $node_values['group_title'];
+          }
+
+          // Store renderable item in list at position.
+          $data['lists'][$node_values['status']][$node_values['group_id']][$node_values['weight']][] = theme('openlucius_board_item', $node_values);
+        }
+      }
+
+      // Order by weight.
+      ksort($data['lists']);
+      foreach ($data['lists'] as &$list) {
+        ksort($list);
+      }
+    }
+
+    // Only add add button for node pages.
+    if ($type == 'node') {
+
+      // Append the add buttons.
+      foreach ($data['statuses'] as $key => $label) {
+        $data['modal_add_top'][$key] = ctools_modal_text_button(t('!icon Task', array('!icon' => '<span class="glyphicon glyphicon-plus-sign"></span>')), 'openlucius-board/nojs/' . $id . '/' . $key . '/ol_todo/form', t('Add task'), 'btn btn-default btn-xs board-top-link');
+      }
+
+      // Add setting for drag and drop ordering.
+      drupal_add_js(array(
+        'openlucius_board_ordering' => TRUE,
+      ), 'setting');
+    }
+    else {
+      // Build the filter.
+      $filter = array(
+        '#type' => 'select',
+        '#options' => array('_none' => t('Show all tasks')) + $data['groups'],
+        '#title' => t('Select group'),
+        '#attributes' => array(
+          'class' => array('board-filter'),
+        ),
+      );
+
+      // Render the filter.
+      $data['filter'] = drupal_render($filter);
+    }
+
+    // Store data for usage.
+    $this->data = $data;
+
+    // Return self for chaining.
+    return $this;
+  }
+
+  private function getBaseQuery() {
+    $query = db_select('node', 'n')->fields('n', array('nid'));
+    $query->join('field_data_field_todo_label', 'l', 'n.nid = l.entity_id');
+    $query->join('field_data_field_shared_group_reference', 'g', 'n.nid = g.entity_id');
+    return $query->condition('n.status', 1, '=')
+                 ->condition('n.type', 'ol_todo', '=')
+                 ->condition('l.field_todo_label_tid', variable_get('todo_closedstatus_tid'), '<>');
+  }
+}

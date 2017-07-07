@@ -1,0 +1,104 @@
+.region-content.openlucius-board.well {
+    border: 0px;
+}
+
+.openlucius-board-column {
+    padding: 0px;
+    border: 0px;
+    margin-left: 5px;
+    max-width: 444px;
+}
+
+.openlucius-board-column h2 {
+    text-align: center;
+    background-color: #fff;
+    font-size: 12px;
+}
+
+.openlucius-board-column h2.board-header,
+.openlucius-board-column h3.team-header,
+.openlucius-board-column h5.story-status {
+    text-align: center;
+    padding: 7px 15px;
+    background-color: #fff;
+    font-size: 12px;
+}
+
+.openlucius-board-column h2.board-header {
+    margin-bottom: 5px;
+    height: 27px;
+    padding: 5px 5px 5px 5px;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.openlucius-board-column.collapsed {
+    min-width: 30px;
+}
+
+.openlucius-board-column.collapsed h2.board-header {
+    height: 100%;
+    padding-top: 0px;
+    transform: none;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    filter: none;
+    text-align: left;
+}
+
+.openlucius-board-column h2.board-header i {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    margin: 2px 0px 5px 2px;
+}
+
+.openlucius-board-column.collapsed h2.board-header i {
+    margin: 7.5px 0px 10px 5px;
+}
+
+.openlucius-board-column h2.board-header span.badge.board-column-counter {
+    background-color: #aaaaaa;
+    color: #fff;
+    display: none;
+}
+
+.openlucius-board-column.collapsed h2.board-header span.badge.board-column-counter {
+    writing-mode: vertical-rl;
+    transform: rotate(270deg);
+}
+
+.openlucius-board-column h2 i {
+    transform: initial;
+    float: left;
+    color: green;
+}
+
+.openlucius-board-column .board-top-link {
+    float: right;
+    top: 1.5px;
+    position: absolute;
+    right: -10px;
+    display: none;
+}
+
+.openlucius-board-column h3.team-header {
+    margin-top: 0px;
+    background-color: #fcfcfc;
+    font-weight: bolder;
+    margin-bottom: 5px;
+}
+
+.openlucius-board-column .column-detail {
+    margin-left: 0px;
+    min-width: 0px;
+    min-height: 89.5px;
+    background-color: #f2f2f2;
+}
+
+.openlucius-board-column h5.story-status {
+    margin: 0px 0px 5px 0px;
+}
