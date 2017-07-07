@@ -39,11 +39,11 @@
 
         <!--Start Board Content-->
         <?php $tid_array = array($tid); ?>
-        <?php $team_datas = views_get_view_result('todo_get_team', 'block_2', implode("+", array_merge($children, $tid_array))); ?>
+        <?php $team_datas = views_get_view_result('vw_term_to_do_get_team', 'block_2', implode("+", array_merge($children, $tid_array))); ?>
         <!--Start List Teams that has particular status-->
         <?php foreach($team_datas as $team_data): ?>
           <div class="openlucius-board-team" data-nid="<?php print $team_data->nid; ?>">
-            <?php $status_datas = views_get_view_result('todo_get_team', 'master', implode("+", $children), $team_data->nid); ?>
+            <?php $status_datas = views_get_view_result('vw_term_to_do_get_team', 'master', implode("+", $children), $team_data->nid); ?>
             <!--Start Team Header-->
             
             <!--End Team Header-->

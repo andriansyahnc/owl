@@ -11,11 +11,11 @@ function openlucius_owl_features_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'todo_get_team';
+  $view->name = 'vw_term_to_do_get_team';
   $view->description = 'Get Team\'s Taxonomy From given TIDs';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Todo get Team';
+  $view->human_name = 'Term To Do Get Team';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -40,16 +40,26 @@ function openlucius_owl_features_views_default_views() {
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Status Todo */
+  $handler->display->display_options['fields']['field_status_todo']['id'] = 'field_status_todo';
+  $handler->display->display_options['fields']['field_status_todo']['table'] = 'field_data_field_status_todo';
+  $handler->display->display_options['fields']['field_status_todo']['field'] = 'field_status_todo';
+  $handler->display->display_options['fields']['field_status_todo']['label'] = '';
+  $handler->display->display_options['fields']['field_status_todo']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_status_todo']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_status_todo']['delta_offset'] = '0';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -65,6 +75,15 @@ function openlucius_owl_features_views_default_views() {
   $handler->display->display_options['arguments']['field_status_todo_tid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_status_todo_tid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['field_status_todo_tid']['break_phrase'] = TRUE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -79,7 +98,40 @@ function openlucius_owl_features_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'team' => 'team',
   );
-  $translatables['todo_get_team'] = array(
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_1');
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_2');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Status Todo (field_status_todo) */
+  $handler->display->display_options['arguments']['field_status_todo_tid']['id'] = 'field_status_todo_tid';
+  $handler->display->display_options['arguments']['field_status_todo_tid']['table'] = 'field_data_field_status_todo';
+  $handler->display->display_options['arguments']['field_status_todo_tid']['field'] = 'field_status_todo_tid';
+  $handler->display->display_options['arguments']['field_status_todo_tid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_status_todo_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_status_todo_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_status_todo_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_status_todo_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_status_todo_tid']['break_phrase'] = TRUE;
+  $translatables['vw_term_to_do_get_team'] = array(
     t('Master'),
     t('more'),
     t('Apply'),
@@ -95,8 +147,9 @@ function openlucius_owl_features_views_default_views() {
     t('next ›'),
     t('last »'),
     t('All'),
+    t('Block'),
   );
-  $export['todo_get_team'] = $view;
+  $export['vw_term_to_do_get_team'] = $view;
 
   return $export;
 }
