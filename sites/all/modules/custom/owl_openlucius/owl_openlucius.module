@@ -172,7 +172,7 @@ class OpenluciusBoardCustom extends OpenluciusBoard {
           // Unset group as the node is the group so it's obvious.
           unset($node_values['group']);
 
-          $team = views_get_view_result('get_team_from_assignee', 'master', $node_values['account']['uid']);
+          $team = views_get_view_result('vw_user_get_team', 'master', $node_values['account']['uid']);
           if(!empty($team)) {
             $data['team'][$node_values['status']][$node_values['weight']][] = $team;
           } else {

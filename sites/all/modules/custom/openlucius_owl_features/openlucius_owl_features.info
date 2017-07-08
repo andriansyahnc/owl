@@ -18,4 +18,5 @@ features[field_base][] = field_status_todo
 features[field_instance][] = node-ol_todo-field_user_teams
 features[field_instance][] = node-team-field_status_todo
 features[views_view][] = vw_term_to_do_get_team
+features[views_view][] = vw_user_get_team
 project path = sites/all/modules/custom
