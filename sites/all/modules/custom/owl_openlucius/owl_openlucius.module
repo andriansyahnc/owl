@@ -16,7 +16,7 @@ function owl_openlucius_check_status($node) {
   $return = FALSE;
   if (drupal_valid_token($_POST['token']) && node_access('view', $node)) {
     $tid = $_POST['tid'];
-    $available = views_get_view_result('get_term_availability_for_story', 'master', $node->nid, $tid, $_POST['team-nid']);
+    $available = views_get_view_result('vw_story_get_term_availability', 'master', $node->nid, $tid, $_POST['team-nid']);
     if(!empty($available)) {
       $return = TRUE;
     }
