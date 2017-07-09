@@ -10,8 +10,8 @@
 function openlucius_owl_features_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-ol_todo-field_user_teams'.
-  $field_instances['node-ol_todo-field_user_teams'] = array(
+  // Exported field_instance: 'node-ol_todo-field_story_teams'.
+  $field_instances['node-ol_todo-field_story_teams'] = array(
     'bundle' => 'ol_todo',
     'comment_alter' => 0,
     'default_value' => NULL,
@@ -19,7 +19,7 @@ function openlucius_owl_features_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'node_reference',
         'settings' => array(),
         'type' => 'node_reference_default',
@@ -39,7 +39,7 @@ function openlucius_owl_features_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_user_teams',
+    'field_name' => 'field_story_teams',
     'label' => 'Teams',
     'required' => 1,
     'settings' => array(
@@ -49,8 +49,8 @@ function openlucius_owl_features_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 13,
+      'type' => 'options_select',
+      'weight' => 4,
     ),
   );
 

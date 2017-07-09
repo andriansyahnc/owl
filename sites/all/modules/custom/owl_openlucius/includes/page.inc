@@ -1,5 +1,18 @@
 <?php 
 
+function owl_openlucius_check_status($node) {
+  $return = FALSE;
+  if (drupal_valid_token($_POST['token']) && node_access('view', $node)) {
+    $tid = $_POST['tid'];
+    $available = views_get_view_result('vw_story_get_term_availability', 'master', $node->nid, $tid, $_POST['team-nid']);
+    if(!empty($available)) {
+      $return = TRUE;
+    }
+  } 
+  
+  return drupal_json_output(['result' => $return]);
+}
+
 function openlucius_board_custom_page($object = NULL) {
   global $user;
   

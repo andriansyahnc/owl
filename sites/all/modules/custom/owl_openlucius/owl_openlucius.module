@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Implements hook_menu().
+ */
 function owl_openlucius_menu() {
   return array(
     'owl-openlucius-board/check-status-availability/%node' => array(
@@ -7,28 +9,24 @@ function owl_openlucius_menu() {
       'page callback' => 'owl_openlucius_check_status',
       'page arguments' => array(2),
       'access callback' => TRUE,
-      'type' => MENU_CALLBACK
+      'type' => MENU_CALLBACK,
+      'file' => 'page.inc',
+      'file path' => drupal_get_path('module', 'owl_openlucius') . '/includes'
     )
   );
-}
-
-function owl_openlucius_check_status($node) {
-  $return = FALSE;
-  if (drupal_valid_token($_POST['token']) && node_access('view', $node)) {
-    $tid = $_POST['tid'];
-    $available = views_get_view_result('vw_story_get_term_availability', 'master', $node->nid, $tid, $_POST['team-nid']);
-    if(!empty($available)) {
-      $return = TRUE;
-    }
-  } 
-  
-  return drupal_json_output(['result' => $return]);
 }
 
 function owl_openlucius_theme_registry_alter(&$theme_registry) {
   if(isset($theme_registry['openlucius_board_board'])) {
     $theme_registry['openlucius_board_board']['theme path'] = drupal_get_path('module', 'owl_openlucius');
     $theme_registry['openlucius_board_board']['template'] = drupal_get_path('module', 'owl_openlucius') . '/templates/openlucius_board_board';
+  }
+}
+
+function owl_openlucius_form_alter(&$form, &$form_state, $form_id) {
+  global $user;
+  if($form_id == 'ol_todo_node_form') {
+    $form['field_story_teams']['#attributes']['class'][] = 'openlucius-hide-label';
   }
 }
 
@@ -180,6 +178,7 @@ class OpenluciusBoardCustom extends OpenluciusBoard {
           } else {
             $data['team'][$node_values['status']][$node_values['weight']][] = null;
           }
+          $data['board_id'] = $id;
           // Store renderable item in list at position.
           $data['lists'][$node_values['status']][$node_values['weight']][] = theme('openlucius_board_item', $node_values);
         }

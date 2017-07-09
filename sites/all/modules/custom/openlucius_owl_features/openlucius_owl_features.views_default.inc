@@ -35,7 +35,7 @@ function openlucius_owl_features_views_default_views() {
   $handler->display->display_options['relationships']['field_todo_user_reference_uid']['table'] = 'field_data_field_todo_user_reference';
   $handler->display->display_options['relationships']['field_todo_user_reference_uid']['field'] = 'field_todo_user_reference_uid';
   $handler->display->display_options['relationships']['field_todo_user_reference_uid']['delta'] = '-1';
-  /* Relationship: Field: Teams (field_user_teams) */
+  /* Relationship: User: Teams (field_user_teams) */
   $handler->display->display_options['relationships']['field_user_teams_nid']['id'] = 'field_user_teams_nid';
   $handler->display->display_options['relationships']['field_user_teams_nid']['table'] = 'field_data_field_user_teams';
   $handler->display->display_options['relationships']['field_user_teams_nid']['field'] = 'field_user_teams_nid';
@@ -310,7 +310,7 @@ function openlucius_owl_features_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Field: Teams (field_user_teams) */
+  /* Relationship: User: Teams (field_user_teams) */
   $handler->display->display_options['relationships']['field_user_teams_nid']['id'] = 'field_user_teams_nid';
   $handler->display->display_options['relationships']['field_user_teams_nid']['table'] = 'field_data_field_user_teams';
   $handler->display->display_options['relationships']['field_user_teams_nid']['field'] = 'field_user_teams_nid';
