@@ -1,5 +1,6 @@
 .region-content.openlucius-board.well {
     border: 0px;
+    background: #c5c9be !important
 }
 
 .openlucius-board-column {
@@ -13,6 +14,7 @@
     text-align: center;
     background-color: #fff;
     font-size: 12px;
+    cursor: default;
 }
 
 .openlucius-board-column h2.board-header,
@@ -87,15 +89,16 @@
 
 .openlucius-board-column h3.team-header {
     margin-top: 0px;
-    background-color: #fcfcfc;
+    background-color: rgba(255, 255, 255, .8);
     font-weight: bolder;
     margin-bottom: 5px;
+    cursor: default;
 }
 
 .openlucius-board-column .column-detail {
     margin-left: 0px;
     min-width: 0px;
-    min-height: 89.5px;
+    min-height: 104px;
     background-color: #f2f2f2;
 }
 

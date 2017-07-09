@@ -399,6 +399,48 @@
         if (isUserBoard) {
           boardOptions.axis = 'x';
         }
+        var CLIPBOARD = "";
+        $('#openlucius-board').contextmenu({
+          delegate: ".openlucius-board-column",
+          autoFocus: true,
+          preventContextMenuForPopup: true,
+          preventSelect: true,
+          taphold: true,
+          menu: [
+            { title: "Add card", cmd: "add" },
+            { title: "Assign to", cmd: "assign" },
+          ],
+          // Handle menu selection to implement a fake-clipboard
+          select: function (event, ui) {
+            var $target = ui.target;
+            switch (ui.cmd) {
+              case "add":
+                $('.task-modal-add > a').click();
+                break;
+              case "assign":
+                CLIPBOARD = "";
+                break;
+            }
+            // alert("select " + ui.cmd + " on " + $target.text());
+            // Optionally return false, to prevent closing the menu now
+          },
+          // Implement the beforeOpen callback to dynamically change the entries
+          beforeOpen: function (event, ui) {
+            var $menu = ui.menu,
+              $target = ui.target,
+              extraData = ui.extraData; // passed when menu was opened by call to open()
+
+            // console.log("beforeOpen", event, ui, event.originalEvent.type);
+
+            $('#openlucius-board')
+              //        .contextmenu("replaceMenu", [{title: "aaa"}, {title: "bbb"}])
+              //        .contextmenu("replaceMenu", "#options2")
+              //        .contextmenu("setEntry", "cut", {title: "Cuty", uiIcon: "ui-icon-heart", disabled: true})
+              .contextmenu("setEntry", "copy", "Copy '" + $target.text() + "'")
+              .contextmenu("setEntry", "paste", "Paste" + (CLIPBOARD ? " '" + CLIPBOARD + "'" : ""))
+              .contextmenu("enableEntry", "paste", (CLIPBOARD !== ""));
+          }
+        });
 
         // Check if the user may drag and drop.
         if (settings.hasOwnProperty('openlucius_board_drag_drop') && settings.openlucius_board_drag_drop) {

@@ -16,6 +16,8 @@
   <?php print $filter; ?>
 <?php endif; ?>
 
+<?php print '<div class="task-modal-add hidden">' . l('test', 'openlucius-core/task-modal/3', array('attributes' => array('class' => 'ctools-use-modal'))) . '</div>'; ?>
+
 <div id="openlucius-board" data-token="<?php print $token; ?>" class="<?php if (isset($user_is_client) && $user_is_client): ?>user-is-client<?php endif; ?>">
   <?php foreach ($statuses as $tid => $status): ?>
     

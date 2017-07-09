@@ -72,6 +72,7 @@ class OpenluciusBoardCustom extends OpenluciusBoard {
   public function __construct($id, $type) {
 
     // Add ctools requirements for the modals.
+    ctools_include('node.pages', 'node', '');
     ctools_include('ajax');
     ctools_include('modal');
     ctools_modal_add_js();
@@ -90,6 +91,7 @@ class OpenluciusBoardCustom extends OpenluciusBoard {
     drupal_add_css($path_to_module . '/css/openlucius_board.css');
 
     // Add the javascript.
+    drupal_add_js("//cdn.jsdelivr.net/jquery.ui-contextmenu/1.17.0/jquery.ui-contextmenu.min.js");
     drupal_add_js($path_to_custom . '/js/owl_openlucius_board.js');
     drupal_add_css($path_to_custom . '/css/owl_openlucius_board.css');
 
