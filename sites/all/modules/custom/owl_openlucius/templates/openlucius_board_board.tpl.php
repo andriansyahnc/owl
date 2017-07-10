@@ -68,15 +68,13 @@
                       <?php if (isset($lists[$ctid]) && isset($team[$ctid])): ?>
                         <?php foreach ($lists[$ctid] as $items_key => $items): ?>
                           <?php foreach ($items as $item_key => $item): ?>
-                            <?php foreach($team[$ctid][$items_key][$item_key] as $team_idx => $user_team): ?>
-                              <?php if(!is_array($item) && $team_data->nid == $user_team->node_field_data_field_user_teams_nid): ?>
-                                <?php print $item; ?>
-                              <?php else: ?>
-                                <?php foreach ($item as $sub_item): ?>
-                                  <?php print $sub_item; ?>
-                                <?php endforeach; ?>
-                              <?php endif; ?>
-                            <?php endforeach; ?>
+                            <?php if(!is_array($item) && $team_data->nid == $raw_data[$ctid][$items_key][$item_key]['team']): ?>
+                              <?php print $item; ?>
+                            <?php else: ?>
+                              <?php foreach ($item as $sub_item): ?>
+                                <?php print $sub_item; ?>
+                              <?php endforeach; ?>
+                            <?php endif; ?>
                           <?php endforeach; ?>
                         <?php endforeach; ?>
                       <?php endif; ?>
@@ -86,26 +84,25 @@
               </div>
             <?php else: ?>
               <div class="openlucius-board-column column-detail <?php print is_lists_empty($lists, $ctid); ?>" data-tid="<?php print $tid; ?>" style="width:calc(<?php print $width ?>% - <?php print $diff ?>px)">
-                <h3 class="team-header"><?php print $team_data->node_title ?></h3>
+                <h3 class="team-header"><?php print $team_data->node_title; ?></h3>
                 <div class="team-content last-content">
                   <?php $tid_status_datas = views_get_view_result('vw_term_to_do_get_team', 'master', implode("+", $tid_array), $team_data->nid); ?>
                   <?php foreach($tid_status_datas as $status_data): ?>
-                    <?php $ctid = $status_data->field_data_field_status_todo_field_status_todo_tid; ?>
-                      <?php if (isset($lists[$ctid]) && isset($team[$ctid])): ?>
-                        <?php foreach ($lists[$ctid] as $items_key => $items): ?>
-                          <?php foreach ($items as $item_key => $item): ?>
-                            <?php foreach($team[$ctid][$items_key][$item_key] as $team_idx => $user_team): ?>
-                              <?php if(!is_array($item) && $team_data->nid == $user_team->node_field_data_field_user_teams_nid): ?>
-                                <?php print $item; ?>
-                              <?php else: ?>
-                                <?php foreach ($item as $sub_item): ?>
-                                  <?php print $sub_item; ?>
-                                <?php endforeach; ?>
-                              <?php endif; ?>
+                    <?php $cctid = $status_data->field_data_field_status_todo_field_status_todo_tid; ?>
+                    
+                    <?php if (isset($lists[$cctid]) && isset($team[$cctid])): ?>
+                      <?php foreach ($lists[$cctid] as $items_key => $items): ?>
+                        <?php foreach ($items as $item_key => $item): ?>
+                          <?php if(!is_array($item) && $team_data->nid == $raw_data[$cctid][$items_key][$item_key]['team']): ?>
+                            <?php print $item; ?>
+                          <?php else: ?>
+                            <?php foreach ($item as $sub_item): ?>
+                              <?php print $sub_item; ?>
                             <?php endforeach; ?>
-                          <?php endforeach; ?>
+                          <?php endif; ?>
                         <?php endforeach; ?>
-                      <?php endif; ?>
+                      <?php endforeach; ?>
+                    <?php endif; ?>
                   <?php endforeach; ?>
                 </div>
               </div>

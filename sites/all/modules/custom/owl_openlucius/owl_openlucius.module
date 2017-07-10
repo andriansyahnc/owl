@@ -159,7 +159,7 @@ class OpenluciusBoardCustom extends OpenluciusBoard {
       foreach ($nodes as $node) {
 
         // Fetch prerendered node data.
-        $node_values = openlucius_board_extract_values($node);
+        $node_values = owl_openlucius_board_extract_values($node);
 
         // Override weight by board weight if set.
         if (isset($results[$node->nid])) {
@@ -175,11 +175,14 @@ class OpenluciusBoardCustom extends OpenluciusBoard {
           $team = views_get_view_result('vw_user_get_team', 'master', $node_values['account']['uid']);
           if(!empty($team)) {
             $data['team'][$node_values['status']][$node_values['weight']][] = $team;
+            $data['account_uid'][$node_values['status']][$node_values['weight']][] = $node_values['account']['uid'];
           } else {
             $data['team'][$node_values['status']][$node_values['weight']][] = null;
+            $data['account_uid'][$node_values['status']][$node_values['weight']][] = $node_values['account']['uid'];
           }
           $data['board_id'] = $id;
           // Store renderable item in list at position.
+          $data['raw_data'][$node_values['status']][$node_values['weight']][]  = $node_values;
           $data['lists'][$node_values['status']][$node_values['weight']][] = theme('openlucius_board_item', $node_values);
         }
         else {
@@ -231,7 +234,7 @@ class OpenluciusBoardCustom extends OpenluciusBoard {
 
     // Store data for usage.
     $this->data = $data;
-    
+
     // Return self for chaining.
     return $this;
   }
@@ -244,4 +247,166 @@ class OpenluciusBoardCustom extends OpenluciusBoard {
                  ->condition('n.type', 'ol_todo', '=')
                  ->condition('l.field_todo_label_tid', variable_get('todo_closedstatus_tid'), '<>');
   }
+}
+
+/**
+ * Function to extract the node values for the ajax callback.
+ *
+ * @param \stdClass $node
+ *   The node object for which the values need to be extracted.
+ *
+ * @return array|bool
+ *   Returns either an array with values or FALSE when this is not a todo.
+ */
+function owl_openlucius_board_extract_values(\stdClass $node) {
+
+  // Check if this is a todo.
+  if ($node->type == 'ol_todo') {
+
+    // Wrap for easy access.
+    $wrapper = entity_metadata_wrapper('node', $node);
+
+    // Fetch label term id.
+    $label = $wrapper->field_todo_label->value();
+
+    // Fetch list.
+    $list = $wrapper->field_todo_list_reference->value();
+
+    // Fetch group.
+    $group = $wrapper->field_shared_group_reference->value();
+
+    // Build renderable array.
+    $data = array(
+      'nid'    => $node->nid,
+      'title'  => ctools_modal_text_button($node->title, 'openlucius-board/nojs/' . $node->nid . '/comment/form/node-view', t('View')),
+      'status' => $label->tid,
+      'list'   => l($list->title, 'node/' . $list->nid),
+      'group'  => l(t('!title', array('!title' => $group->title)), 'node/' . $group->nid, array(
+        'attributes' => array(
+          'class' => array(
+            'board-group-label',
+          ),
+        ),
+      )),
+      'group_id' => $group->nid,
+      'group_title' => $group->title,
+      'group_no_clients' => $group->field_shared_show_clients[LANGUAGE_NONE][0]['value'] == 0,
+    );
+
+    // Load the move include.
+    module_load_include('inc', 'openlucius_core', 'includes/openlucius_core_move_node');
+
+    // Load the lists in the group.
+    $lists = openlucius_core_load_todo_list($group->nid);
+
+    // Check if there is more than one list.
+    if (empty($lists) || count($lists) < 2) {
+
+      // Hide the label.
+      $data['hide_label'] = TRUE;
+    }
+
+    // Only add the edit link if the user may edit the node.
+    if (node_access('update', $node)) {
+      $data['edit_link'] = ctools_modal_text_button('', 'openlucius-board/nojs/' . $node->nid . '/form', t('Edit task'), 'glyphicon glyphicon-pencil edit-board-item ctools-modal-max-width');
+    }
+
+    // Fetch weight.
+    $data['weight'] = $wrapper->field_todo_weight->value();
+    if (empty($data['weight'])) {
+      $data['weight'] = 0;
+    }
+
+    $files = $wrapper->field_shared_files->value();
+
+    // The amount of comments for this item.
+    $data['comments'] = array(
+      'link'  => ctools_modal_text_button('<span class="badge-text"> ' . $node->comment_count .'</span>', 'openlucius-board/nojs/' . $node->nid . '/comment/form/comment-view', t('Add comment'), 'badge glyphicon glyphicon-comment add-board-comment'),
+    );
+
+    // The amount of attachments for this item.
+    $data['attachments'] = array(
+      'count' => count($files),
+      'title' => t('Attachments'),
+    );
+
+    // The clients icons is bit different.
+    $show_clients_label = $wrapper->field_shared_show_clients->value() ? t('Yes') : t('No');
+
+    // Whether clients can see this.
+    if (!openlucius_core_user_is_client() && !$data['group_no_clients']) {
+      $icon = openlucius_core_icons('node_show_clients');
+      $data['show_clients'] = array(
+        'class' => openlucius_core_icon_classes($icon),
+        'title' => t('Can clients see this?'),
+        'label' => $show_clients_label,
+      );
+    }
+
+    // Check the due date and set it to future or past task.
+    $due_date = $wrapper->field_todo_due_date_singledate->value();
+    $current_time = time();
+    if (!empty($due_date)) {
+      $current_time = time();
+      $data['due_date'] = array(
+        'class' => ($current_time > $due_date) ? 'is-due-past' : 'is-due-future',
+        'date' => format_date($due_date, 'custom', 'd M'),
+        'year' => date('Y', $due_date),
+        'month' => date('m', $due_date),
+        'day' => date('d', $due_date),
+        'title' => ($current_time > $due_date) ? t('This task is running late') : t('This tasks due date lies in the future'),
+      );
+    }
+    else {
+      $data['due_date'] = array(
+        'class' => 'is-due-future',
+        'date' => '-',
+        'year' => date('Y', $current_time),
+        'month' => date('m', $current_time),
+        'day' => date('d', $current_time),
+        'title' => t('This tasks due date lies in the future'),
+      );
+    }
+
+    // Load the required user data.
+    $account = $wrapper->field_todo_user_reference->value();
+    if (!empty($account)) {
+
+      // Fetch username.
+      $name = isset($account->realname) ? $account->realname : $account->name;
+      $data['account'] = array(
+        'uid'     => $account->uid,
+        'name'    => $name,
+        'picture' => openlucius_core_fetch_user_image($account, 'ol_50x50', $name, $name),
+      );
+    }
+    // Set to unassigned.
+    else {
+      $data['account'] = array(
+        'uid'     => '_none',
+        'name'    => t('Unassigned'),
+        'picture' => '<i class="fa fa-user-times"></i>',
+        'unassigned' => TRUE,
+      );
+    }
+
+    // Allow other modules to interact with the node values.
+    drupal_alter('openlucius_board_node_values', $data);
+
+    // Render placeholders if set.
+    $placeholders = array('before', 'after');
+    foreach ($placeholders as $placeholder) {
+      if (!empty($data[$placeholder])) {
+        $data[$placeholder] = drupal_render($data[$placeholder]);
+      }
+    }
+
+    // Build meta information for the board item.
+    $data['meta'] = theme('openlucius_board_item_meta', $data);
+    $data['team'] = $wrapper->field_story_teams->value() === NULL ? NULL : $wrapper->field_story_teams->value()->nid;  
+
+    return $data;
+  }
+
+  return FALSE;
 }

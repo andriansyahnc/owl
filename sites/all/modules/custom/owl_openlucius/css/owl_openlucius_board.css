@@ -118,10 +118,10 @@
 .team-content,
 .story-content {
     min-height: 104px;
-    margin-bottom: 6px;
 }
 
 .last-content {
     background-color: #dee0da;
     background: rgba(255, 255, 255, .4);
+    margin-bottom: 6px;
 }
