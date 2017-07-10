@@ -6,7 +6,6 @@
 .openlucius-board-column {
     padding: 0px;
     border: 0px;
-    margin-left: 5px;
     max-width: 444px;
 }
 
@@ -22,7 +21,6 @@
 .openlucius-board-column h5.story-status {
     text-align: center;
     padding: 7px 15px;
-    background-color: #fff;
     font-size: 12px;
 }
 
@@ -33,6 +31,7 @@
     font-weight: 700;
     font-size: 14px;
     text-transform: uppercase;
+    background: #fff;
 }
 
 .openlucius-board-column.collapsed {
@@ -99,9 +98,30 @@
     margin-left: 0px;
     min-width: 0px;
     min-height: 104px;
-    background-color: #f2f2f2;
+    /*background-color: #f2f2f2;*/
 }
 
 .openlucius-board-column h5.story-status {
     margin: 0px 0px 5px 0px;
+    background: rgba(255, 255, 255, .6)
+}
+
+#openlucius-board,
+.openlucius-board-column.column-master {
+    background-color: #c5c9be;
+}
+
+.openlucius-board-column {
+    margin-left: 5px;
+}
+
+.team-content,
+.story-content {
+    min-height: 104px;
+    margin-bottom: 6px;
+}
+
+.last-content {
+    background-color: #dee0da;
+    background: rgba(255, 255, 255, .4);
 }

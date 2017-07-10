@@ -231,7 +231,7 @@ class OpenluciusBoardCustom extends OpenluciusBoard {
 
     // Store data for usage.
     $this->data = $data;
-
+    
     // Return self for chaining.
     return $this;
   }

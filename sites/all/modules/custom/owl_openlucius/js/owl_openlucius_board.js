@@ -371,10 +371,12 @@
           if (_this.hasClass('collapsed')) {
             _this.find('i.fa').removeClass('fa-plus').addClass('fa-minus');
             _this.removeClass('collapsed');
+            _this.find('.openlucius-board-team').removeClass('collapsed');
           }
           else {
             _this.find('i.fa').removeClass('fa-minus').addClass('fa-plus');
             _this.addClass('collapsed');
+            _this.find('.openlucius-board-team').addClass('collapsed');
           }
         });
 
