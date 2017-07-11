@@ -139,6 +139,7 @@
           return false;
         }
 
+        
         target.popover({
           html: true,
           placement: 'bottom',
@@ -236,7 +237,7 @@
        * Function for counting and recounting the todo's in the columns.
        */
       function recountColumnTodos(filter) {
-        $('.openlucius-board-column').each(function() {
+        $('.last-content').each(function() {
           var _this = $(this);
           var columnValue = $('.openlucius-board-item:not(.hidden-task)', _this).length;
 
@@ -258,7 +259,7 @@
 
       // Initialize board options.
       var boardOptions = {
-        connectWith: '.openlucius-board-column',
+        connectWith: '.last-content',
         appendTo: "parent",
         cursor: "move",
         tolerance: "pointer",
@@ -276,7 +277,7 @@
         },
         stop: function (event, ui) {
           var board = $('#openlucius-board');
-          var target = $(ui.item).parents('.openlucius-board-column');
+          var target = $(ui.item).parents('.last-content');
           var newTermId = target.attr('data-tid');
           var nid = ui.item.attr('data-nid');
           var token = board.attr('data-token');
@@ -293,9 +294,9 @@
 
           $.post(Drupal.settings.basePath + 'owl-openlucius-board/check-status-availability/' + nid, postData,
             function (data) {
-              $('.openlucius-board-column').removeClass('hover');
+              $('.last-content').removeClass('hover');
               if (data.result === false) {
-                myTarget.sortable("cancel");
+                myTarget.sortable("cancel", "revert");
               } else {
                 // Check if we should send the order as well.
                 if (settings.hasOwnProperty('openlucius_board_ordering')) {
@@ -314,22 +315,23 @@
               }
               // Recount the column amounts.
               recountColumnTodos();
+              
             });
         },
         over: function (event, ui) {
-          if($(".ui-sortable-placeholder").parents(".openlucius-board-column").hasClass("hover")) {
-            $(".ui-sortable-placeholder").parents(".openlucius-board-column").removeClass("hover");
+          if($(".ui-sortable-placeholder").parents(".last-content").hasClass("hover")) {
+            $(".ui-sortable-placeholder").parents(".last-content").removeClass("hover");
           }
-          if(!$(".ui-sortable-placeholder").parents(".openlucius-board-column").eq(0).hasClass("hover")) {
-            $(".ui-sortable-placeholder").parents(".openlucius-board-column").eq(0).addClass("hover");
+          if(!$(".ui-sortable-placeholder").parents(".last-content").eq(0).hasClass("hover")) {
+            $(".ui-sortable-placeholder").parents(".last-content").eq(0).addClass("hover");
           }
         },
         out: function (event, ui) {
-          if($(".ui-sortable-placeholder").parents(".openlucius-board-column").eq(0).hasClass("hover")) {
-            $(".ui-sortable-placeholder").parents(".openlucius-board-column").eq(0).removeClass("hover");
+          if($(".ui-sortable-placeholder").parents(".last-content").eq(0).hasClass("hover")) {
+            $(".ui-sortable-placeholder").parents(".last-content").eq(0).removeClass("hover");
           }
-          if($(".ui-sortable-placeholder").parents(".openlucius-board-column").hasClass("hover")) {
-            $(".ui-sortable-placeholder").parents(".openlucius-board-column").removeClass("hover");
+          if($(".ui-sortable-placeholder").parents(".last-content").hasClass("hover")) {
+            $(".ui-sortable-placeholder").parents(".last-content").removeClass("hover");
           }
         }
       };
@@ -384,7 +386,7 @@
         $('.list-is-empty h2 > i').click();
 
         // Bind drag and drop behaviour.
-        var lists = $('.openlucius-board-column');
+        var lists = $('.last-content');
         lists.on('click', function(event) {
           event.stopPropagation();
 
@@ -453,12 +455,13 @@
 
         // Check if user is client.
         if (settings.hasOwnProperty('openlucius_board_client') && !settings.openlucius_board_client) {
-
           // Bind behaviour for inline user swap on click.
           bindUserPopover('.assigned-to');
 
           // Bind behaviour for the date popover.
           bindDatePopover('.board-date-picker');
+
+          bindUserSelectBehaviour();
 
           // Trigger on popup being fully opened.
           $(document).on('shown.bs.popover', function () {
@@ -523,7 +526,7 @@
             var element = $('.openlucius-board-item[data-nid=' + response.data.nid + ']');
 
             // Fetch column this todo currently resides in.
-            var currentTid = element.parents('.openlucius-board-column').attr('data-tid');
+            var currentTid = element.parents('.last-content').attr('data-tid');
 
             // If the user has decided to move the todo using edit move it to
             // the correct column.
@@ -533,7 +536,7 @@
               element.fadeOut(500, function () {
 
                 // Fetch column.
-                var column = $('.openlucius-board-column[data-tid=' + response.data.status + ']');
+                var column = $('.last-content[data-tid=' + response.data.status + ']');
                 var heading = $('h2', column);
 
                 // Open column if it has no values.
@@ -575,7 +578,7 @@
           if (response.hasOwnProperty('data')) {
 
             // Fetch the correct column, heading and make usable.
-            var column = $('.openlucius-board-column[data-tid=' + response.data.tid + ']');
+            var column = $('.last-content[data-tid=' + response.data.tid + ']');
             var heading = $('h2', column);
             var element = $(response.data.html);
 

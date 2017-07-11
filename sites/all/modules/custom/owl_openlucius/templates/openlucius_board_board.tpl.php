@@ -62,9 +62,9 @@
               <div class="team-content">
                 <?php foreach($status_datas as $status_data): ?>
                   <?php $ctid = $status_data->field_data_field_status_todo_field_status_todo_tid; ?>
-                  <div class="openlucius-board-column column-detail <?php print is_lists_empty($lists, $ctid); ?>" data-tid="<?php print $ctid; ?>" style="width:calc(<?php print $width ?>% - <?php print $diff ?>px)">
+                  <div class="openlucius-board-column column-detail <?php print is_lists_empty($lists, $ctid); ?>" style="width:calc(<?php print $width ?>% - <?php print $diff ?>px)">
                     <h5 class="story-status"><?php print $statuses[$ctid]; ?></h5>
-                    <div class="story-content last-content">
+                    <div class="story-content last-content" data-tid="<?php print $ctid; ?>">
                       <?php if (isset($lists[$ctid]) && isset($team[$ctid])): ?>
                         <?php foreach ($lists[$ctid] as $items_key => $items): ?>
                           <?php foreach ($items as $item_key => $item): ?>
@@ -83,9 +83,9 @@
                 <?php endforeach; ?>
               </div>
             <?php else: ?>
-              <div class="openlucius-board-column column-detail <?php print is_lists_empty($lists, $ctid); ?>" data-tid="<?php print $tid; ?>" style="width:calc(<?php print $width ?>% - <?php print $diff ?>px)">
+              <div class="openlucius-board-column column-detail <?php print is_lists_empty($lists, $ctid); ?>" style="width:calc(<?php print $width ?>% - <?php print $diff ?>px)">
                 <h3 class="team-header"><?php print $team_data->node_title; ?></h3>
-                <div class="team-content last-content">
+                <div class="team-content last-content" data-tid="<?php print $tid; ?>">
                   <?php $tid_status_datas = views_get_view_result('vw_term_to_do_get_team', 'master', implode("+", $tid_array), $team_data->nid); ?>
                   <?php foreach($tid_status_datas as $status_data): ?>
                     <?php $cctid = $status_data->field_data_field_status_todo_field_status_todo_tid; ?>

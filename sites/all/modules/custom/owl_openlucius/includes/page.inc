@@ -2,6 +2,11 @@
 
 function owl_openlucius_check_status($node) {
   $return = FALSE;
+  $wrapper = entity_metadata_wrapper('node', $node);
+  $team_nid = $wrapper->field_story_teams->value() === NULL ? NULL : $wrapper->field_story_teams->value()->nid;
+  if($team_nid != $_POST['team-nid']) {
+    return drupal_json_output(['result' => $return]);
+  }
   if (drupal_valid_token($_POST['token']) && node_access('view', $node)) {
     $tid = $_POST['tid'];
     $available = views_get_view_result('vw_story_get_term_availability', 'master', $node->nid, $tid, $_POST['team-nid']);

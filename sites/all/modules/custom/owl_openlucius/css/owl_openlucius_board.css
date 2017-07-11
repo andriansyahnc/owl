@@ -125,3 +125,7 @@
     background: rgba(255, 255, 255, .4);
     margin-bottom: 6px;
 }
+
+.last-content.hover {
+    border: 1px dashed #8d8d8d;
+}
