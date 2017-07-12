@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * openlucius_owl_features.features.field_instance.inc
+ * openlucius_story_board.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function openlucius_owl_features_field_default_field_instances() {
+function openlucius_story_board_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-ol_todo-field_story_teams'.

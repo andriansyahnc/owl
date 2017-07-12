@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * openlucius_owl_features.views_default.inc
+ * openlucius_story_board.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function openlucius_owl_features_views_default_views() {
+function openlucius_story_board_views_default_views() {
   $export = array();
 
   $view = new view();

@@ -1,5 +1,5 @@
-name = openlucius_owl_features
-description = configuration needed for openlucius owl
+name = Openlucius Story Board
+description = configuration needed for openlucius storyboard
 core = 7.x
 package = owl - openlucius
 version = 7.x-1.0

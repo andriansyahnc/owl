@@ -41,7 +41,7 @@
   <?php endif; ?>
 </div>
 <!--// End Heading row //-->
-<?php if(isset($form['field_story_teams'])): ?>
+<?php if(isset($form['field_story_teams']) && $form['field_story_teams']['#access'] == TRUE): ?>
   <div class="openlucius-tool-row non-personal">
     <div class="cell non-personal in-label">
       <?php print t('Team', array(), array('context' => 'ol-todo-form')); ?>

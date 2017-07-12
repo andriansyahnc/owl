@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * openlucius_owl_features.features.field_base.inc
+ * openlucius_story_board.features.field_base.inc
  */
 
 /**
  * Implements hook_field_default_field_bases().
  */
-function openlucius_owl_features_field_default_field_bases() {
+function openlucius_story_board_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'field_status_todo'.

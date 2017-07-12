@@ -1,6 +1,6 @@
 <?php 
 
-function owl_openlucius_check_status($node) {
+function openlucius_story_board_check_status($node) {
   $return = FALSE;
   $wrapper = entity_metadata_wrapper('node', $node);
   $team_nid = $wrapper->field_story_teams->value() === NULL ? NULL : $wrapper->field_story_teams->value()->nid;
@@ -23,7 +23,7 @@ function openlucius_board_custom_page($object = NULL) {
   
   // Check if this is a group board.
   if (!empty($object->nid)) {
-    $board = new OpenluciusBoardCustom($object->nid, 'node');
+    $board = new OpenluciusStoryBoard($object->nid, 'node');
   }
   // Check if this is a user board.
   elseif (!empty($object->uid)) {
@@ -34,12 +34,12 @@ function openlucius_board_custom_page($object = NULL) {
     // Check if this user is either viewing is own profile,
     // is associated with the user he / she is trying to view or is admin.
     if ($user->uid == $object->uid || in_array($object->uid, $associated) || $user->uid == 1) {
-      $board = new OpenluciusBoardCustom($object->uid, 'user');
+      $board = new OpenluciusStoryBoard($object->uid, 'user');
     }
   }
   // Check if this method was called without parameters.
   elseif ($object == NULL) {
-    $board = new OpenluciusBoardCustom($user->uid, 'user');
+    $board = new OpenluciusStoryBoard($user->uid, 'user');
   }
 
   // Check if we have a board.

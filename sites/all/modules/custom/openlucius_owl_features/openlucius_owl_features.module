@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the openlucius_owl_features feature.
- */
-
-include_once 'openlucius_owl_features.features.inc';
