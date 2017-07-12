@@ -76,7 +76,7 @@ function openlucius_story_board_form_ol_todo_node_form_alter(&$form, &$form_stat
 }
 
 function openlucius_story_board_js_alter(&$javascript) {
-  $openlucius_board_file_loc = drupal_get_path('module', 'openlucius_board') . '/js/openlucius_story_board_board.js';  
+  $openlucius_board_file_loc = drupal_get_path('module', 'openlucius_board') . '/js/openlucius_story_board.js';  
 }
 
 function openlucius_story_board_page_alter(&$page) {
@@ -114,8 +114,8 @@ class OpenluciusStoryBoard extends OpenluciusBoard {
 
     // Add the javascript.
     drupal_add_js("//cdn.jsdelivr.net/jquery.ui-contextmenu/1.17.0/jquery.ui-contextmenu.min.js");
-    drupal_add_js($path_to_custom . '/js/openlucius_story_board_board.js');
-    drupal_add_css($path_to_custom . '/css/openlucius_story_board_board.css');
+    drupal_add_js($path_to_custom . '/js/openlucius_story_board.js');
+    drupal_add_css($path_to_custom . '/css/openlucius_story_board.css');
 
     $is_client = openlucius_core_user_is_client();
 
@@ -183,7 +183,7 @@ class OpenluciusStoryBoard extends OpenluciusBoard {
       foreach ($nodes as $node) {
 
         // Fetch prerendered node data.
-        $node_values = openlucius_story_board_board_extract_values($node);
+        $node_values = openlucius_story_board_extract_values($node);
 
         // Override weight by board weight if set.
         if (isset($results[$node->nid])) {
@@ -282,7 +282,7 @@ class OpenluciusStoryBoard extends OpenluciusBoard {
  * @return array|bool
  *   Returns either an array with values or FALSE when this is not a todo.
  */
-function openlucius_story_board_board_extract_values(\stdClass $node) {
+function openlucius_story_board_extract_values(\stdClass $node) {
 
   // Check if this is a todo.
   if ($node->type == 'ol_todo') {
