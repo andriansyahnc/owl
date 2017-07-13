@@ -41,6 +41,18 @@
   <?php endif; ?>
 </div>
 <!--// End Heading row //-->
+<?php if(isset($form['field_story_teams']) && $form['field_story_teams']['#access'] == TRUE): ?>
+  <div class="openlucius-tool-row non-personal">
+    <div class="cell non-personal in-label">
+      <?php print t('Team', array(), array('context' => 'ol-todo-form')); ?>
+    </div>
+    <div class="cell non-personal">
+      <div class="openlucius-user-holder">
+        <?php print drupal_render($form['field_story_teams']); ?>
+      </div>
+    </div>
+  </div>
+<?php endif; ?>
 <?php if (isset($form['field_todo_user_reference'])): ?>
   <div class="openlucius-tool-row non-personal">
     <div class="cell non-personal in-label">
