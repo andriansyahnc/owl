@@ -403,7 +403,7 @@
         if (isUserBoard) {
           boardOptions.axis = 'x';
         }
-        var CLIPBOARD = "";
+        var boardItem = "";
         $('#openlucius-board').contextmenu({
           delegate: ".openlucius-board-column",
           autoFocus: true,
@@ -412,8 +412,11 @@
           taphold: true,
           menu: [
             { title: "Add card", cmd: "add" },
-            { title: "Assign to", cmd: "assign" },
+            { title: "Assign to", cmd: "assign", disabled: true },
           ],
+          blur: function(event, ui) {
+			      boardItem = "";
+		      },
           // Handle menu selection to implement a fake-clipboard
           select: function (event, ui) {
             var $target = ui.target;
@@ -433,16 +436,14 @@
             var $menu = ui.menu,
               $target = ui.target,
               extraData = ui.extraData; // passed when menu was opened by call to open()
-
+            var currentTarget = $(event.currentTarget);
             // console.log("beforeOpen", event, ui, event.originalEvent.type);
-
-            $('#openlucius-board')
-              //        .contextmenu("replaceMenu", [{title: "aaa"}, {title: "bbb"}])
-              //        .contextmenu("replaceMenu", "#options2")
-              //        .contextmenu("setEntry", "cut", {title: "Cuty", uiIcon: "ui-icon-heart", disabled: true})
-              .contextmenu("setEntry", "copy", "Copy '" + $target.text() + "'")
-              .contextmenu("setEntry", "paste", "Paste" + (CLIPBOARD ? " '" + CLIPBOARD + "'" : ""))
-              .contextmenu("enableEntry", "paste", (CLIPBOARD !== ""));
+            if(currentTarget.hasClass('column-detail')) {
+              if(currentTarget.find('openlucius-board-item')) {
+                boardItem = currentTarget.find('openlucius-board-item');
+              }
+            }
+            $('#openlucius-board').contextmenu("enableEntry", 'assign', (boardItem != ""));
           }
         });
 
