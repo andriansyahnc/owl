@@ -572,6 +572,41 @@
           recountColumnTodos();
         };
 
+        Drupal.ajax.prototype.commands.addNewTodoInlineBoard = function (ajax, response, status) {
+          // Check if we have data.
+          if (response.hasOwnProperty('data')) {
+
+            // Fetch the correct column, heading and make usable.
+            var column = $('.openlucius-board-team[data-nid=' + response.data.team +'] .last-content[data-tid=' + response.data.tid + ']');
+            var element = $(response.data.html);
+
+            // Insert it after the h2.
+            column.append(element);
+            // element.insertAfter(column);
+
+            // Bind popover to new html.
+            bindUserPopover(element.find('.assigned-to'));
+            bindDatePopover(element.find('.board-date-picker'));
+
+            // Bind default ctools modal functionality.
+            reAttachCtoolsBehaviour(element);
+
+            // Recount the column amounts.
+            recountColumnTodos();
+
+            // Reset items entry in boardOptions.
+            boardOptions.items = $('.openlucius-board-item', lists);
+
+            // Only allow horizontal dragging.
+            if (isUserBoard) {
+              boardOptions.axis = 'x';
+            }
+
+            // Refresh after adding a new item.
+            $('.openlucius-board-column').sortable().sortable('destroy').sortable(boardOptions);
+          }
+        };
+
         // Command for adding a new todo to one of the columns.
         Drupal.ajax.prototype.commands.addNewTodoInline = function (ajax, response, status) {
 
