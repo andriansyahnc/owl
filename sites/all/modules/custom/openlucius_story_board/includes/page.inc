@@ -51,3 +51,17 @@ function openlucius_board_custom_page($object = NULL) {
     drupal_exit();
   }
 }
+
+function openlucius_story_board_fetch_group_modal_fields_options($group_id, $team_id) {
+  $return = array();
+  $return[] = array('id' => '_none', 'title' => '- Select a user -');
+  $views_results = views_get_view_result('vw_user_get_user_from_group_and_team', 'master', $group_id, $team_id);
+  foreach($views_results as $view_result) {
+    $return_data = array(
+      'id' => $view_result->uid,
+      'title' => $view_result->users_name
+    );
+    $return[] = $return_data;
+  }
+  return drupal_json_output($return);
+}

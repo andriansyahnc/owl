@@ -83,7 +83,7 @@
                 <?php endforeach; ?>
               </div>
             <?php else: ?>
-              <div class="openlucius-board-column column-detail <?php print is_lists_empty($lists, $ctid); ?>" style="width:calc(<?php print $width ?>% - <?php print $diff ?>px)">
+              <div class="openlucius-board-column column-detail <?php print is_lists_empty($lists, $ctid); ?>" style="width:100%">
                 <h3 class="team-header"><?php print $team_data->node_title; ?></h3>
                 <div class="team-content last-content" data-tid="<?php print $tid; ?>">
                   <?php $tid_status_datas = views_get_view_result('vw_term_to_do_get_team', 'master', implode("+", $tid_array), $team_data->nid); ?>
