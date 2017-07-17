@@ -44,7 +44,15 @@ function openlucius_story_board_menu() {
       'file'             => 'page.inc',
       'file path'        => drupal_get_path('module', 'openlucius_story_board') . '/includes',
       'type'             => MENU_CALLBACK,
-    )
+    ),
+    'openlucius-story-board/%ctools_js/%node/%/ol_todo/form' => array(
+      'page callback' => 'openlucius_story_board_modal_node_add_todo_form',
+      'page arguments' => array(1, 2, 3, 4),
+      'access callback' => 'openlucius_core_user_in_group',
+      'access arguments' => array(2),
+      'file'             => 'includes/page.inc',
+      'type' => MENU_CALLBACK,
+    ),
   );
 }
 
@@ -94,7 +102,7 @@ function openlucius_story_board_form_ol_todo_node_form_alter(&$form, &$form_stat
     }
   }
   
-  $form['field_todo_user_reference'][LANGUAGE_NONE]['#options'] = array('_none' => t('- Select a user -')) + $user_list;
+  // $form['field_todo_user_reference'][LANGUAGE_NONE]['#options'] = array('_none' => t('- Select a user -')) + $user_list;
 
   // dpm($form);
 }

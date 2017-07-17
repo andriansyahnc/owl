@@ -16,7 +16,10 @@
   <?php print $filter; ?>
 <?php endif; ?>
 
-<?php isset($board_id) ? print '<div class="task-modal-add hidden">' . l('test', 'openlucius-core/task-modal/' . $board_id, array('attributes' => array('class' => 'ctools-use-modal'))) . '</div>' : print ""; ?>
+<?php 
+  isset($board_id) ? print '<div class="task-modal-add hidden">' . ctools_modal_text_button(t('!icon', array('!icon' => '')), 'openlucius-story-board/nojs/' . $board_id . '/%tid/ol_todo/form', t('Add task')) . '</div>' : print ""; 
+  // isset($board_id) ? print '<div class="task-modal-assign">' . ctools_modal_text_button('assign', 'openlucius-assign/task-modal/' . $board_id, t('Edit task'), 'ctools-modal-max-width') . '</div>' : print "";
+?>
 
 <div id="openlucius-board" data-token="<?php print $token; ?>" class="<?php if (isset($user_is_client) && $user_is_client): ?>user-is-client<?php endif; ?>">
   <?php foreach ($statuses as $tid => $status): ?>
