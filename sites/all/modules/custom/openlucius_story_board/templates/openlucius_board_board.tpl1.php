@@ -16,6 +16,11 @@
   <?php print $filter; ?>
 <?php endif; ?>
 
+<?php 
+  isset($board_id) ? print '<div class="task-modal-add hidden">' . ctools_modal_text_button(t('!icon', array('!icon' => '')), 'openlucius-story-board/nojs/' . $board_id . '/%tid/ol_todo/form', t('Add task')) . '</div>' : print ""; 
+  // isset($board_id) ? print '<div class="task-modal-assign">' . ctools_modal_text_button('assign', 'openlucius-assign/task-modal/' . $board_id, t('Edit task'), 'ctools-modal-max-width') . '</div>' : print "";
+?>
+
 <div id="openlucius-board" data-token="<?php print $token; ?>" class="<?php if (isset($user_is_client) && $user_is_client): ?>user-is-client<?php endif; ?>">
   <?php foreach ($statuses as $tid => $status): ?>
     
@@ -57,15 +62,41 @@
                 $diff = round($padding, 2, PHP_ROUND_HALF_DOWN);
                 $width = round(100 / $divisor, 2, PHP_ROUND_HALF_DOWN);
               ?>
-              <?php foreach($status_datas as $status_data): ?>
-                <?php $ctid = $status_data->field_data_field_status_todo_field_status_todo_tid; ?>
-                <div class="openlucius-board-column column-detail <?php print is_lists_empty($lists, $ctid); ?>" data-tid="<?php print $ctid; ?>" style="width:calc(<?php print $width ?>% - <?php print $diff ?>px)">
-                  <h5 class="story-status"><?php print $statuses[$ctid]; ?></h5>
-                  <?php if (isset($lists[$ctid]) && isset($team[$ctid])): ?>
-                    <?php foreach ($lists[$ctid] as $items_key => $items): ?>
-                      <?php foreach ($items as $item_key => $item): ?>
-                        <?php foreach($team[$ctid][$items_key][$item_key] as $team_idx => $user_team): ?>
-                          <?php if(!is_array($item) && $team_data->nid == $user_team->node_field_data_field_user_teams_nid): ?>
+              <div class="team-content">
+                <?php foreach($status_datas as $status_data): ?>
+                  <?php $ctid = $status_data->field_data_field_status_todo_field_status_todo_tid; ?>
+                  <div class="openlucius-board-column column-detail <?php print is_lists_empty($lists, $ctid); ?>" style="width:calc(<?php print $width ?>% - <?php print $diff ?>px)">
+                    <h5 class="story-status"><?php print $statuses[$ctid]; ?></h5>
+                    <div class="story-content last-content" data-tid="<?php print $ctid; ?>">
+                      <?php if (isset($lists[$ctid]) && isset($team[$ctid])): ?>
+                        <?php foreach ($lists[$ctid] as $items_key => $items): ?>
+                          <?php foreach ($items as $item_key => $item): ?>
+                            <?php if(!is_array($item) && $team_data->nid == $raw_data[$ctid][$items_key][$item_key]['team']): ?>
+                              <?php print $item; ?>
+                            <?php else: ?>
+                              <?php foreach ($item as $sub_item): ?>
+                                <?php print $sub_item; ?>
+                              <?php endforeach; ?>
+                            <?php endif; ?>
+                          <?php endforeach; ?>
+                        <?php endforeach; ?>
+                      <?php endif; ?>
+                    </div>
+                  </div>
+                <?php endforeach; ?>
+              </div>
+            <?php else: ?>
+              <div class="openlucius-board-column column-detail <?php print is_lists_empty($lists, $ctid); ?>" style="width:100%">
+                <h3 class="team-header"><?php print $team_data->node_title; ?></h3>
+                <div class="team-content last-content" data-tid="<?php print $tid; ?>">
+                  <?php $tid_status_datas = views_get_view_result('vw_term_to_do_get_team', 'master', implode("+", $tid_array), $team_data->nid); ?>
+                  <?php foreach($tid_status_datas as $status_data): ?>
+                    <?php $cctid = $status_data->field_data_field_status_todo_field_status_todo_tid; ?>
+                    
+                    <?php if (isset($lists[$cctid]) && isset($team[$cctid])): ?>
+                      <?php foreach ($lists[$cctid] as $items_key => $items): ?>
+                        <?php foreach ($items as $item_key => $item): ?>
+                          <?php if(!is_array($item) && $team_data->nid == $raw_data[$cctid][$items_key][$item_key]['team']): ?>
                             <?php print $item; ?>
                           <?php else: ?>
                             <?php foreach ($item as $sub_item): ?>
@@ -74,13 +105,9 @@
                           <?php endif; ?>
                         <?php endforeach; ?>
                       <?php endforeach; ?>
-                    <?php endforeach; ?>
-                  <?php endif; ?>
+                    <?php endif; ?>
+                  <?php endforeach; ?>
                 </div>
-              <?php endforeach; ?>
-            <?php else: ?>
-              <div class="openlucius-board-column column-detail <?php print is_lists_empty($lists, $ctid); ?>" data-tid="<?php print $tid; ?>" style="width:calc(<?php print $width ?>% - <?php print $diff ?>px)">
-                <h3 class="team-header"><?php print $team_data->node_title ?></h3>
               </div>
             <?php endif; ?>
             <!--End Team Content-->
