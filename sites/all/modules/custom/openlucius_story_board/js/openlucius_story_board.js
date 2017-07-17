@@ -412,7 +412,7 @@
           taphold: true,
           menu: [
             { title: "Add card", cmd: "add" },
-            { title: "Assign to", cmd: "assign", disabled: true },
+            // { title: "Assign to", cmd: "assign", disabled: true },
           ],
           blur: function(event, ui) {
 			      boardItem = "";
