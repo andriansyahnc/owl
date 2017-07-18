@@ -38,7 +38,7 @@ function is_lists_empty($lists, $tid) {
 function openlucius_story_board_get_teams($string_tid, $is_parent = TRUE) {
   $return = [];
   $teams = views_get_view_result('vw_term_to_do_get_teams', 'block_1', $string_tid);
-  dpm($teams);
+  
   if(count($teams) > 0) {
     foreach($teams as $team) {
       if($team->field_data_field_teams_field_teams_nid !== NULL) {
