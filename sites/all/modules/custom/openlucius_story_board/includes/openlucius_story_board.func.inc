@@ -38,14 +38,19 @@ function is_lists_empty($lists, $tid) {
 function openlucius_story_board_get_teams($string_tid, $is_parent = TRUE) {
   $return = [];
   $teams = views_get_view_result('vw_term_to_do_get_teams', 'block_1', $string_tid);
+  dpm($teams);
   if(count($teams) > 0) {
     foreach($teams as $team) {
-      $return[] = array(
-        'nid' => $team->field_data_field_teams_field_teams_nid,
-        'node_title' => $team->node_field_data_field_teams_title
-      );
+      if($team->field_data_field_teams_field_teams_nid !== NULL) {
+        $return[] = array(
+          'nid' => $team->field_data_field_teams_field_teams_nid,
+          'node_title' => $team->node_field_data_field_teams_title
+        );
+      }
     }
-  } else {
+  } 
+  
+  if(count($teams) == 0 || count($return) == 0) {
     if($is_parent !== FALSE) {
       $teams = views_get_view_result('get_teams', 'master');
       foreach($teams as $team) {
