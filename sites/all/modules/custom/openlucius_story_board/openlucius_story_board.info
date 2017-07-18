@@ -22,6 +22,7 @@ features[field_instance][] = user-user-field_user_teams
 features[views_view][] = get_teams
 features[views_view][] = vw_term_to_do_get_team
 features[views_view][] = vw_term_to_do_get_teams
+features[views_view][] = vw_user_get_available_user
 features[views_view][] = vw_user_get_team
 features[views_view][] = vw_user_get_user_from_group_and_team
 features_exclude[field_base][field_user_teams] = field_user_teams

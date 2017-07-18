@@ -346,6 +346,81 @@ function openlucius_story_board_views_default_views() {
   $export['vw_term_to_do_get_teams'] = $view;
 
   $view = new view();
+  $view->name = 'vw_user_get_available_user';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'users';
+  $view->human_name = 'User get available user';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'access user profiles';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  /* Sort criterion: User: Created date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'users';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: User: Teams (field_user_teams) */
+  $handler->display->display_options['arguments']['field_user_teams_nid']['id'] = 'field_user_teams_nid';
+  $handler->display->display_options['arguments']['field_user_teams_nid']['table'] = 'field_data_field_user_teams';
+  $handler->display->display_options['arguments']['field_user_teams_nid']['field'] = 'field_user_teams_nid';
+  $handler->display->display_options['arguments']['field_user_teams_nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_user_teams_nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_user_teams_nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_user_teams_nid']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: User: Groups (field_groups) */
+  $handler->display->display_options['arguments']['field_groups_nid']['id'] = 'field_groups_nid';
+  $handler->display->display_options['arguments']['field_groups_nid']['table'] = 'field_data_field_groups';
+  $handler->display->display_options['arguments']['field_groups_nid']['field'] = 'field_groups_nid';
+  $handler->display->display_options['arguments']['field_groups_nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_groups_nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_groups_nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_groups_nid']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  $translatables['vw_user_get_available_user'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('All'),
+  );
+  $export['vw_user_get_available_user'] = $view;
+
+  $view = new view();
   $view->name = 'vw_user_get_team';
   $view->description = '';
   $view->tag = 'default';

@@ -53,6 +53,14 @@ function openlucius_story_board_menu() {
       'file'             => 'includes/page.inc',
       'type' => MENU_CALLBACK,
     ),
+    'ajax/openlucius-story-board/%node/%node/user-select' => array(
+      'page callback' => 'openlucius_story_board_group_user_select',
+      'page arguments' => array(2,3),
+      'access callback' => 'openlucius_core_user_in_group',
+      'access arguments' => array(2),
+      'file'             => 'includes/page.inc',
+      'type' => MENU_CALLBACK,
+    )
   );
 }
 

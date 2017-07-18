@@ -59,7 +59,9 @@
           return false;
         }
 
-        target.popover({
+        target.tooltip({ container: 'body' }) 
+
+        var pAttr = {
           html: true,
           placement: 'bottom',
           title: Drupal.t('Assign to user') + '<a href="#" class="close" data-dismiss="popover">×</a>',
@@ -69,52 +71,46 @@
             var originalUser = $(this).parents('.board-meta').find('button').attr('data-uid');
             var form_elements = $('#user-selection');
             var nid = $(this).parents('.openlucius-board-item').attr('data-group-nid');
+            var this_nid = $(this).parents('.openlucius-board-item').attr('data-nid');
 
             // If we're on the user dasboard we have form elements so we fetch them per item.
-            if (form_elements.length === 0) {
-              $.get(Drupal.settings.basePath + 'ajax/openlucius-board/' + nid + '/user-select', null,
-                function (data) {
-                  form_elements = $(data);
+            $.get(Drupal.settings.basePath + 'ajax/openlucius-story-board/' + nid +'/'+ this_nid + '/user-select', null,
+              function (data) {
+                form_elements = $(data);
 
-                  // Unset hard selected item if any.
-                  form_elements.find('option[selected=selected]').removeAttr('selected');
+                // Unset hard selected item if any.
+                form_elements.find('option[selected=selected]').removeAttr('selected');
 
-                  // Alter the default select to match the original user.
-                  form_elements.find('select').val(originalUser);
-                  form_elements.find(':selected').attr('selected', true);
+                // Alter the default select to match the original user.
+                form_elements.find('select').val(originalUser);
+                form_elements.find(':selected').attr('selected', true);
 
-                  // There seems to be some kind of delay so add it using a hard replace.
-                  $('.popover-content').html(form_elements.html());
+                // There seems to be some kind of delay so add it using a hard replace.
+                $('.popover-content').html(form_elements.html());
 
-                  // Bind user select on change behaviour.
-                  bindUserSelectBehaviour();
+                // Bind user select on change behaviour.
+                bindUserSelectBehaviour();
 
-                  // ReAttach the ctools behaviour.
-                  reAttachCtoolsBehaviour(form_elements);
+                // ReAttach the ctools behaviour.
+                reAttachCtoolsBehaviour(form_elements);
 
-                  // Return html.
-                  // Todo figure out why this doesn't work.
-                  return form_elements.html();
-                }
-              );
-            }
-            else {
-
-              // Unset hard selected item if any.
-              form_elements.find('option[selected=selected]').removeAttr('selected');
-
-              // Alter the default select to match the original user.
-              form_elements.find('select').val(originalUser);
-              form_elements.find(':selected').attr('selected', true);
-
-              // ReAttach the ctools behaviour.
-              reAttachCtoolsBehaviour(form_elements);
-
-              // Return html.
-              return form_elements.html();
-            }
+                // Return html.
+                // Todo figure out why this doesn't work.
+                return form_elements.html();
+              }
+            );
           }
-        });
+        };
+
+        var popover = target.popover(pAttr);
+
+        if(context == document) {
+          target.on('click', function() {
+            popover.popover('destroy');
+            popover.popover(pAttr);
+          })
+        }
+        
       }
 
       /**
@@ -140,7 +136,7 @@
         }
 
         
-        target.popover({
+        var pAttr = {
           html: true,
           placement: 'bottom',
           title: Drupal.t('Change due-date') + '<a href="#" class="close" data-dismiss="popover">×</a>',
@@ -189,7 +185,15 @@
               }
             });
           }
-        });
+        }
+        var popover = target.popover(pAttr);
+
+        if(context == document) {
+          target.on('click', function() {
+            popover.popover('destroy');
+            popover.popover(pAttr);
+          })
+        }
       }
 
       /**
@@ -336,6 +340,14 @@
         }
       };
 
+      $('html').on('mouseup', function(e) {
+        if (!$(e.target).closest('.popover').length) {
+          $('.popover').each(function () {
+            $(this.previousSibling).popover('hide');
+          });
+        }
+      });
+
       // Only trigger once.
       if (context === document) {
 
@@ -428,7 +440,6 @@
                 CLIPBOARD = "";
                 break;
             }
-            // alert("select " + ui.cmd + " on " + $target.text());
             // Optionally return false, to prevent closing the menu now
           },
           // Implement the beforeOpen callback to dynamically change the entries
@@ -437,7 +448,6 @@
               $target = ui.target,
               extraData = ui.extraData; // passed when menu was opened by call to open()
             var currentTarget = $(event.currentTarget);
-            // console.log("beforeOpen", event, ui, event.originalEvent.type);
             if(currentTarget.hasClass('column-detail')) {
               if(currentTarget.find('openlucius-board-item')) {
                 boardItem = currentTarget.find('openlucius-board-item');
@@ -559,7 +569,6 @@
             // Replace current values in the container.
             $('p[data-attr=title]', element).html(response.data.title);
             $('.board-meta', element).html(response.data.meta);
-
             // Bind popover to new html.
             bindUserPopover(element.find('.assigned-to'));
             bindDatePopover(element.find('.board-date-picker'));

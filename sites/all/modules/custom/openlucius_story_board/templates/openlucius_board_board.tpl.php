@@ -30,6 +30,11 @@
           <i class="fa fa-minus"></i>
           <span class="badge board-column-counter"></span> 
           <?php print $status; ?>
+          <?php if (isset($user_is_client) && !$user_is_client): ?>
+            <?php if (!empty($modal_add_top[$tid])): ?>
+              <?php print $modal_add_top[$tid]; ?>
+            <?php endif; ?>
+          <?php endif; ?>
         </h2>
         <?php $tid_array = array($tid); ?>
         <?php $team_datas = openlucius_story_board_get_teams(implode("+", $tid_array)); ?>
