@@ -31,6 +31,11 @@
   <?php print render($title_suffix); ?>
 
   <?php // TODO we shouldn't have code like this all items are built the same. ?>
+  <?php if (!empty($switch_menu_todo)): ?>
+    <div class="epic-switch">
+      <?php print $switch_menu_todo ?>
+    </div>
+  <?php endif; ?>
   <?php if (!empty($order_todo_lists)): ?>
     <div class="view-actionlink">
       <h4><span class="glyphicon glyphicon-sort"></span>

@@ -1,0 +1,7 @@
+.epic-switch {
+    display: inline-block;
+}
+
+.epic-switch a+a {
+    margin-left: 5px;
+}

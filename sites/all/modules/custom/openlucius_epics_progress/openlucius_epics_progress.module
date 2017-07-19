@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Openlucius epics progress feature.
+ */
+
+include_once 'openlucius_epics_progress.features.inc';

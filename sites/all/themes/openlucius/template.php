@@ -499,11 +499,27 @@ function openlucius_preprocess_views_view(&$variables) {
         $variables['action_link'] = l(t("Add Task List"), "node/add/ol-todo-list/" . $arg[0]);
         $attributes = $dest_self + array('attributes' => array('class' => array('trigger-task-modal')));
         $variables['action_link_2'] = l(t("Add Task"), "node/add/ol-todo/" . $arg[0], $attributes);
-
+        
         // Check if a user may reorder the lists.
         if (user_access('openlucius todolist prioritize')) {
           $variables['order_todo_lists'] = t('Order Task Lists');
         }
+      }
+      elseif (user_access("create ol_todo_list content") && $view->name == 'vw_epic_task_list' && $view->current_display == 'page') {
+        $variables['action_link'] = l(t("Add Task List"), "node/add/ol-todo-list/" . $arg[0]);
+        $attributes = $dest_self + array('attributes' => array('class' => array('trigger-task-modal')));
+        // $variables['action_link_2'] = l(t("Add Task"), "node/add/ol-todo/" . $arg[0], $attributes);
+        
+        // Check if a user may reorder the lists.
+        if (user_access('openlucius todolist prioritize')) {
+          $variables['order_todo_lists'] = t('Order Task Lists');
+        }
+      }
+      if ($view->name == 'all_todo_lists_in_a_group' && $view->current_display == 'page_1') {
+        $variables['switch_menu_todo'] = l('Column', 'group-task-lists/' . $arg[0]) . l('Table', 'group-task-lists/' . $arg[0] . '/table');
+      }
+      if ($view->name == 'vw_epic_task_list' && $view->current_display == 'page') {
+        $variables['switch_menu_todo'] = l('Column', 'group-task-lists/' . $arg[0]) . l('Table', 'group-task-lists/' . $arg[0] . '/table');
       }
     }
   }
