@@ -196,7 +196,6 @@
         }
         $.get(Drupal.settings.basePath + 'openlucius-story-board/task-modal/' + group + '/' + team + '/options', null,
           function (data) {
-            console.log(data);
             groupUserSelector.replaceOptions(data);
         });
       })
@@ -515,8 +514,6 @@
 
               // Replace the image.
               if (data.hasOwnProperty('data')) {
-                console.log(data.data);
-
                 // Replace self.
                 parent.html(data.data.status);
 

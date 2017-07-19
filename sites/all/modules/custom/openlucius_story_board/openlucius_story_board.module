@@ -53,6 +53,14 @@ function openlucius_story_board_menu() {
       'file'             => 'includes/page.inc',
       'type' => MENU_CALLBACK,
     ),
+    'ajax/openlucius-story-board/%node/%node/user-select' => array(
+      'page callback' => 'openlucius_story_board_group_user_select',
+      'page arguments' => array(2,3),
+      'access callback' => 'openlucius_core_user_in_group',
+      'access arguments' => array(2),
+      'file'             => 'includes/page.inc',
+      'type' => MENU_CALLBACK,
+    )
   );
 }
 
@@ -78,8 +86,7 @@ function openlucius_story_board_form_ol_todo_node_form_alter(&$form, &$form_stat
   }
   $form['field_todo_user_reference']['#prefix'] = "<div id='todo-user-wrapper'>";
   $form['field_todo_user_reference']['#suffix'] = "</div>";
-  // dpm($form['field_todo_user_reference']);
-
+  
   $form['field_story_teams']['#ajax'] = array(
     'callback' => 'owl_story_teams_onchange',
     'wrapper' => 'todo-user-wrapper',
@@ -104,7 +111,6 @@ function openlucius_story_board_form_ol_todo_node_form_alter(&$form, &$form_stat
   
   // $form['field_todo_user_reference'][LANGUAGE_NONE]['#options'] = array('_none' => t('- Select a user -')) + $user_list;
 
-  // dpm($form);
 }
 
 function openlucius_story_board_js_alter(&$javascript) {
@@ -112,7 +118,6 @@ function openlucius_story_board_js_alter(&$javascript) {
 }
 
 function openlucius_story_board_page_alter(&$page) {
-  // dpm($page);
 }
 
 function openlucius_story_board_menu_alter(&$items) {

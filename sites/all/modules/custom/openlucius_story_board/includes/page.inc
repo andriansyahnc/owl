@@ -4,13 +4,9 @@ function openlucius_story_board_check_status($node) {
   $return = FALSE;
   $wrapper = entity_metadata_wrapper('node', $node);
   $team_nid = $wrapper->field_story_teams->value() === NULL ? NULL : $wrapper->field_story_teams->value()->nid;
-  if($team_nid != $_POST['team-nid']) {
-    return drupal_json_output(['result' => $return]);
-  }
+  
   if (drupal_valid_token($_POST['token']) && node_access('view', $node)) {
-    $tid = $_POST['tid'];
-    $available = views_get_view_result('vw_story_get_term_availability', 'master', $node->nid, $tid, $_POST['team-nid']);
-    if(!empty($available)) {
+    if($_POST['team-nid'] == $team_nid) {
       $return = TRUE;
     }
   } 
@@ -198,5 +194,41 @@ function openlucius_story_board_modal_node_add_todo_form($js = FALSE, \stdClass 
   }
 
   print ajax_render($commands);
+  drupal_exit();
+}
+
+function openlucius_story_fetch_group_users($group_id, $team_node) {
+  $result = [];
+  if($team_node === NULL) {
+    return $result;
+  }
+  $view_results = views_get_view_result('vw_user_get_available_user', 'master', $team_node->nid, $group_id->nid);
+  foreach($view_results as $view_result) {
+    $result[$view_result->uid] = $view_result->users_name;
+  }
+  return $result;
+}
+
+/**
+ * Function to fetch user select via ajax.
+ *
+ * @param \stdClass $node
+ *   The node for which the ajax selector is requested.
+ */
+function openlucius_story_board_group_user_select(\stdClass $group_node, \stdClass $node) {
+  $wrapper = entity_metadata_wrapper('node', $node);
+  // Fetch the available group users.
+  $form = array(
+    'select' => array(
+      '#type'    => 'select',
+      '#options' => array('_none' => t('- None -')) + openlucius_story_fetch_group_users($group_node, $wrapper->field_story_teams->value()),
+    ),
+  );
+
+  // Render the html.
+  $html = drupal_render($form);
+
+  // Output the object for replacement.
+  drupal_json_output($html);
   drupal_exit();
 }
