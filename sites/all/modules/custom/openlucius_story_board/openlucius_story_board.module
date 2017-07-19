@@ -8,18 +8,58 @@ include_once 'openlucius_story_board.features.inc';
 include_once "includes/openlucius_story_board.func.inc";
 
 /**
+ * Implements hook_init().
+ */
+function openlucius_story_board_init() {
+  if (user_is_logged_in()) {
+
+    // Fetch path to module.
+    $path_to_module = drupal_get_path('module', 'openlucius_story_board');
+
+    // Add the javascript.
+    drupal_add_js($path_to_module . '/js/openlucius_story_board_modal.js');
+  }
+}
+
+/**
  * Implements hook_menu().
  */
 function openlucius_story_board_menu() {
   return array(
     'owl-openlucius-board/check-status-availability/%node' => array(
-      'title' => t('Check Status Availability'),
-      'page callback' => 'openlucius_story_board_check_status',
-      'page arguments' => array(2),
-      'access callback' => TRUE,
+      'title'            => t('Check Status Availability'),
+      'page callback'    => 'openlucius_story_board_check_status',
+      'page arguments'   => array(2),
+      'access callback'  => TRUE,
+      'type'             => MENU_CALLBACK,
+      'file'             => 'page.inc',
+      'file path'        => drupal_get_path('module', 'openlucius_story_board') . '/includes'
+    ),
+    'openlucius-story-board/task-modal/%/%/options' => array(
+      'title'            => t('Get Options based on teams and group'),
+      'page callback'    => 'openlucius_story_board_fetch_group_modal_fields_options',
+      'page arguments'   => array(2, 3),
+      'access callback'  => 'openlucius_core_user_in_group',
+      'access arguments' => array(2),
+      'file'             => 'page.inc',
+      'file path'        => drupal_get_path('module', 'openlucius_story_board') . '/includes',
+      'type'             => MENU_CALLBACK,
+    ),
+    'openlucius-story-board/%ctools_js/%node/%/ol_todo/form' => array(
+      'page callback' => 'openlucius_story_board_modal_node_add_todo_form',
+      'page arguments' => array(1, 2, 3, 4),
+      'access callback' => 'openlucius_core_user_in_group',
+      'access arguments' => array(2),
+      'file'             => 'includes/page.inc',
       'type' => MENU_CALLBACK,
-      'file' => 'page.inc',
-      'file path' => drupal_get_path('module', 'openlucius_story_board') . '/includes'
+    ),
+    'ajax/openlucius-story-board/%node/%node/user-select' => array(
+      'page callback' => 'openlucius_story_board_group_user_select',
+      'page arguments' => array(2,3),
+      'access callback' => 'openlucius_core_user_in_group',
+      'access arguments' => array(2),
+      'file'             => 'includes/page.inc',
+      'type' => MENU_CALLBACK,
     )
   );
 }
@@ -46,8 +86,7 @@ function openlucius_story_board_form_ol_todo_node_form_alter(&$form, &$form_stat
   }
   $form['field_todo_user_reference']['#prefix'] = "<div id='todo-user-wrapper'>";
   $form['field_todo_user_reference']['#suffix'] = "</div>";
-  // dpm($form['field_todo_user_reference']);
-
+  
   $form['field_story_teams']['#ajax'] = array(
     'callback' => 'owl_story_teams_onchange',
     'wrapper' => 'todo-user-wrapper',
@@ -70,9 +109,8 @@ function openlucius_story_board_form_ol_todo_node_form_alter(&$form, &$form_stat
     }
   }
   
-  $form['field_todo_user_reference'][LANGUAGE_NONE]['#options'] = array('_none' => t('- Select a user -')) + $user_list;
+  // $form['field_todo_user_reference'][LANGUAGE_NONE]['#options'] = array('_none' => t('- Select a user -')) + $user_list;
 
-  // dpm($form);
 }
 
 function openlucius_story_board_js_alter(&$javascript) {
@@ -80,7 +118,6 @@ function openlucius_story_board_js_alter(&$javascript) {
 }
 
 function openlucius_story_board_page_alter(&$page) {
-  // dpm($page);
 }
 
 function openlucius_story_board_menu_alter(&$items) {

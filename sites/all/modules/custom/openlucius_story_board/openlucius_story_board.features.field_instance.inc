@@ -54,54 +54,71 @@ function openlucius_story_board_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-team-field_status_todo'.
-  $field_instances['node-team-field_status_todo'] = array(
-    'bundle' => 'team',
-    'comment_alter' => 0,
+  // Exported field_instance: 'taxonomy_term-labels_todo_s-field_teams'.
+  $field_instances['taxonomy_term-labels_todo_s-field_teams'] = array(
+    'bundle' => 'labels_todo_s',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
+        'module' => 'node_reference',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'node_reference_default',
         'weight' => 0,
       ),
     ),
-    'entity_type' => 'node',
-    'field_name' => 'field_status_todo',
-    'label' => 'Status Todo',
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_teams',
+    'label' => 'Teams',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'shs',
-      'settings' => array(
-        'shs' => array(
-          'create_new_levels' => FALSE,
-          'create_new_terms' => FALSE,
-          'force_deepest' => FALSE,
-          'node_count' => FALSE,
-        ),
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'user-user-field_user_teams'.
+  $field_instances['user-user-field_user_teams'] = array(
+    'bundle' => 'user',
+    'comment_enabled' => 0,
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'node_reference',
+        'settings' => array(),
+        'type' => 'node_reference_default',
+        'weight' => 3,
       ),
-      'type' => 'taxonomy_shs',
-      'weight' => -4,
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_user_teams',
+    'label' => 'Teams',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => 1,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 11,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Status Todo');
   t('Teams');
 
   return $field_instances;

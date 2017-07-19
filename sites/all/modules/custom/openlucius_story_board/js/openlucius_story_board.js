@@ -59,7 +59,9 @@
           return false;
         }
 
-        target.popover({
+        target.tooltip({ container: 'body' }) 
+
+        var pAttr = {
           html: true,
           placement: 'bottom',
           title: Drupal.t('Assign to user') + '<a href="#" class="close" data-dismiss="popover">×</a>',
@@ -69,52 +71,46 @@
             var originalUser = $(this).parents('.board-meta').find('button').attr('data-uid');
             var form_elements = $('#user-selection');
             var nid = $(this).parents('.openlucius-board-item').attr('data-group-nid');
+            var this_nid = $(this).parents('.openlucius-board-item').attr('data-nid');
 
             // If we're on the user dasboard we have form elements so we fetch them per item.
-            if (form_elements.length === 0) {
-              $.get(Drupal.settings.basePath + 'ajax/openlucius-board/' + nid + '/user-select', null,
-                function (data) {
-                  form_elements = $(data);
+            $.get(Drupal.settings.basePath + 'ajax/openlucius-story-board/' + nid +'/'+ this_nid + '/user-select', null,
+              function (data) {
+                form_elements = $(data);
 
-                  // Unset hard selected item if any.
-                  form_elements.find('option[selected=selected]').removeAttr('selected');
+                // Unset hard selected item if any.
+                form_elements.find('option[selected=selected]').removeAttr('selected');
 
-                  // Alter the default select to match the original user.
-                  form_elements.find('select').val(originalUser);
-                  form_elements.find(':selected').attr('selected', true);
+                // Alter the default select to match the original user.
+                form_elements.find('select').val(originalUser);
+                form_elements.find(':selected').attr('selected', true);
 
-                  // There seems to be some kind of delay so add it using a hard replace.
-                  $('.popover-content').html(form_elements.html());
+                // There seems to be some kind of delay so add it using a hard replace.
+                $('.popover-content').html(form_elements.html());
 
-                  // Bind user select on change behaviour.
-                  bindUserSelectBehaviour();
+                // Bind user select on change behaviour.
+                bindUserSelectBehaviour();
 
-                  // ReAttach the ctools behaviour.
-                  reAttachCtoolsBehaviour(form_elements);
+                // ReAttach the ctools behaviour.
+                reAttachCtoolsBehaviour(form_elements);
 
-                  // Return html.
-                  // Todo figure out why this doesn't work.
-                  return form_elements.html();
-                }
-              );
-            }
-            else {
-
-              // Unset hard selected item if any.
-              form_elements.find('option[selected=selected]').removeAttr('selected');
-
-              // Alter the default select to match the original user.
-              form_elements.find('select').val(originalUser);
-              form_elements.find(':selected').attr('selected', true);
-
-              // ReAttach the ctools behaviour.
-              reAttachCtoolsBehaviour(form_elements);
-
-              // Return html.
-              return form_elements.html();
-            }
+                // Return html.
+                // Todo figure out why this doesn't work.
+                return form_elements.html();
+              }
+            );
           }
-        });
+        };
+
+        var popover = target.popover(pAttr);
+
+        if(context == document) {
+          target.on('click', function() {
+            popover.popover('destroy');
+            popover.popover(pAttr);
+          })
+        }
+        
       }
 
       /**
@@ -140,7 +136,7 @@
         }
 
         
-        target.popover({
+        var pAttr = {
           html: true,
           placement: 'bottom',
           title: Drupal.t('Change due-date') + '<a href="#" class="close" data-dismiss="popover">×</a>',
@@ -189,7 +185,15 @@
               }
             });
           }
-        });
+        }
+        var popover = target.popover(pAttr);
+
+        if(context == document) {
+          target.on('click', function() {
+            popover.popover('destroy');
+            popover.popover(pAttr);
+          })
+        }
       }
 
       /**
@@ -336,6 +340,14 @@
         }
       };
 
+      $('html').on('mouseup', function(e) {
+        if (!$(e.target).closest('.popover').length) {
+          $('.popover').each(function () {
+            $(this.previousSibling).popover('hide');
+          });
+        }
+      });
+
       // Only trigger once.
       if (context === document) {
 
@@ -403,7 +415,7 @@
         if (isUserBoard) {
           boardOptions.axis = 'x';
         }
-        var CLIPBOARD = "";
+        var boardItem = "";
         $('#openlucius-board').contextmenu({
           delegate: ".openlucius-board-column",
           autoFocus: true,
@@ -412,8 +424,11 @@
           taphold: true,
           menu: [
             { title: "Add card", cmd: "add" },
-            { title: "Assign to", cmd: "assign" },
+            // { title: "Assign to", cmd: "assign", disabled: true },
           ],
+          blur: function(event, ui) {
+			      boardItem = "";
+		      },
           // Handle menu selection to implement a fake-clipboard
           select: function (event, ui) {
             var $target = ui.target;
@@ -425,7 +440,6 @@
                 CLIPBOARD = "";
                 break;
             }
-            // alert("select " + ui.cmd + " on " + $target.text());
             // Optionally return false, to prevent closing the menu now
           },
           // Implement the beforeOpen callback to dynamically change the entries
@@ -433,16 +447,13 @@
             var $menu = ui.menu,
               $target = ui.target,
               extraData = ui.extraData; // passed when menu was opened by call to open()
-
-            // console.log("beforeOpen", event, ui, event.originalEvent.type);
-
-            $('#openlucius-board')
-              //        .contextmenu("replaceMenu", [{title: "aaa"}, {title: "bbb"}])
-              //        .contextmenu("replaceMenu", "#options2")
-              //        .contextmenu("setEntry", "cut", {title: "Cuty", uiIcon: "ui-icon-heart", disabled: true})
-              .contextmenu("setEntry", "copy", "Copy '" + $target.text() + "'")
-              .contextmenu("setEntry", "paste", "Paste" + (CLIPBOARD ? " '" + CLIPBOARD + "'" : ""))
-              .contextmenu("enableEntry", "paste", (CLIPBOARD !== ""));
+            var currentTarget = $(event.currentTarget);
+            if(currentTarget.hasClass('column-detail')) {
+              if(currentTarget.find('openlucius-board-item')) {
+                boardItem = currentTarget.find('openlucius-board-item');
+              }
+            }
+            $('#openlucius-board').contextmenu("enableEntry", 'assign', (boardItem != ""));
           }
         });
 
@@ -558,7 +569,6 @@
             // Replace current values in the container.
             $('p[data-attr=title]', element).html(response.data.title);
             $('.board-meta', element).html(response.data.meta);
-
             // Bind popover to new html.
             bindUserPopover(element.find('.assigned-to'));
             bindDatePopover(element.find('.board-date-picker'));
@@ -569,6 +579,41 @@
 
           // Recount the column amounts.
           recountColumnTodos();
+        };
+
+        Drupal.ajax.prototype.commands.addNewTodoInlineBoard = function (ajax, response, status) {
+          // Check if we have data.
+          if (response.hasOwnProperty('data')) {
+
+            // Fetch the correct column, heading and make usable.
+            var column = $('.openlucius-board-team[data-nid=' + response.data.team +'] .last-content[data-tid=' + response.data.tid + ']');
+            var element = $(response.data.html);
+
+            // Insert it after the h2.
+            column.append(element);
+            // element.insertAfter(column);
+
+            // Bind popover to new html.
+            bindUserPopover(element.find('.assigned-to'));
+            bindDatePopover(element.find('.board-date-picker'));
+
+            // Bind default ctools modal functionality.
+            reAttachCtoolsBehaviour(element);
+
+            // Recount the column amounts.
+            recountColumnTodos();
+
+            // Reset items entry in boardOptions.
+            boardOptions.items = $('.openlucius-board-item', lists);
+
+            // Only allow horizontal dragging.
+            if (isUserBoard) {
+              boardOptions.axis = 'x';
+            }
+
+            // Refresh after adding a new item.
+            $('.openlucius-board-column').sortable().sortable('destroy').sortable(boardOptions);
+          }
         };
 
         // Command for adding a new todo to one of the columns.
