@@ -5,3 +5,61 @@
 .epic-switch a+a {
     margin-left: 5px;
 }
+
+.openlucius-epic-task-lists .table>thead>tr>th {
+    background-color: #E6E6E6;
+}
+
+.openlucius-epic-task-lists .table>tbody>tr>td {
+    background-color: #FFF;
+}
+
+.openlucius-epic-task-lists .table>thead>tr>th.epic-header-priority,
+.openlucius-epic-task-lists .table>tbody>tr>td.epic-body-priority {
+    text-align: center;
+    width: 60px;
+    background-color: #ECF4FD;
+}
+
+.openlucius-epic-task-lists .table>thead>tr>th.epic-header-priority {
+    background-color: #81A8CF;
+    color: #fff;
+}
+
+.openlucius-epic-task-lists .draggable .epic-body-priority>a.tabledrag-handle {
+    width: 100%;
+    margin-left: -0.5em;
+}
+
+.openlucius-epic-task-lists .draggable .epic-body-title>a {
+    font-weight: 700;
+}
+
+.story-slider {
+    padding: 0px;
+}
+
+.story-slider-wrapper .rangeslider--horizontal .rangeslider,
+.story-slider-wrapper .rangeslider--horizontal .rangeslider__fill {
+    display: block;
+    -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.story-slider-wrapper .rangeslider--horizontal {
+    background: inherit;
+    box-shadow: none;
+}
+
+.story-slider-wrapper .rangeslider--horizontal .rangeslider__handle {
+    display: none;
+}
+
+.story-slider-wrapper .rangeslider--horizontal .rangeslider__fill {
+    background-color: #D1E0EF;
+    height: 10px;
+}

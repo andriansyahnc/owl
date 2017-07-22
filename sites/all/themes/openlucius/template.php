@@ -521,6 +521,11 @@ function openlucius_preprocess_views_view(&$variables) {
       if ($view->name == 'vw_epic_task_list' && $view->current_display == 'page') {
         $variables['switch_menu_todo'] = l('Column', 'group-task-lists/' . $arg[0]) . l('Table', 'group-task-lists/' . $arg[0] . '/table');
       }
+      if ($view->name == 'vw_epic_task_list' && $view->current_display == 'page') {
+        drupal_add_css(drupal_get_path('theme', 'openlucius') . '/css/rangeslider.css');
+        drupal_add_js(drupal_get_path('theme', 'openlucius') . '/js/rangeslider.min.js');
+        drupal_add_js(drupal_get_path('theme', 'openlucius') . '/js/custom.js');
+      }
     }
   }
 
@@ -1621,4 +1626,41 @@ function openlucius_facetapi_title($variables) {
     $variables['title'] = t('Group reference');
   }
   return t('Filter by @title:', array('@title' => drupal_strtolower($variables['title'])));
+}
+
+function openlucius_preprocess_views_view_field(&$vars) {
+  if($vars['theme_hook_original'] == 'views_view_field__vw_epic_task_list__page__nothing_1') {
+    $count_data = views_get_view_result('vw_epic_get_story_property', 'block_1', $vars['row']->nid);
+    $data_query = "SELECT max(count_reference) as max_count FROM (";
+    $data_query .= "SELECT n.nid, count(flr.field_todo_list_reference_nid) as count_reference";
+    $data_query .= " FROM node n";
+    $data_query .= " LEFT JOIN field_data_field_todo_list_reference flr ON flr.field_todo_list_reference_nid = n.nid";
+    $data_query .= " LEFT JOIN field_data_field_shared_group_reference sgr ON n.nid = sgr.entity_id";
+    $data_query .= " WHERE n.type = 'ol_todo_list' and sgr.field_shared_group_reference_nid = " . $vars['view']->args[0];
+    $data_query .= " GROUP BY nid";
+    $data_query .= " ) a";
+    $query = db_query($data_query);
+    $result = $query->fetchObject();
+
+    $story_count = $count_data[0]->field_todo_list_reference_node_nid;
+    $max_story_count = $result->max_count;
+
+    $new_output = "" . 
+      "<div class='story'>" .
+        "<div class='story-count'>" . 
+          $story_count . 
+        "</div>" . 
+        "<div class='story-slider-wrapper hide'>" . 
+          "<input id='story-slider-" . $vars['row']->nid . "' class='story-slider' type='range' value='".$story_count."' max='".$max_story_count."' min='0' step='1'>" . 
+        "</div>".
+      "</div>";
+    $vars['output'] = $new_output;
+  }
+  if($vars['theme_hook_original'] == 'views_view_field__vw_epic_task_list__page__nothing_2') {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node');
+    $query->entityCondition('bundle', 'ol_todo');
+    $query->fieldCondition('field_todo_list_reference', 'nid', $vars['row']->nid);
+    $results_all = $query->count()->execute();
+  }
 }
