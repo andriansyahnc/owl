@@ -5,3 +5,128 @@
  */
 
 include_once 'openlucius_epics_progress.features.inc';
+include_once 'includes/openlucius_epics_progress.func.inc';
+
+define('OPENLUCIUS_EPICS_PROGRESS_EPIC_STATUS_VOCABULARY_NAME', 'epic_state');
+
+/**
+* Implements hook_menu().
+*/
+function openlucius_epics_progress_menu() {
+  $items = array();
+  $items['admin/config/openlucius/ol-to-do-list-status'] = array(
+    'title'            => 'Epic status',
+    'description'      => 'Configure epic statuses.',
+    'file'             => 'epics.forms.inc',
+    'file path'        => drupal_get_path('module', 'openlucius_epics_progress') . '/includes',
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('openlucius_epic_progress_ol_to_do_list_status_settings_form'),
+    'access arguments' => array('administer openlucius configuration'),
+    'type'             => MENU_LOCAL_TASK,
+    'tab_parent'       => 'admin/config/openlucius',
+  );
+  
+  return $items;
+}
+
+/**
+* Implements hook_menu_alter().
+*/
+function openlucius_epics_progress_menu_alter(&$items) {
+  $items['admin/config/openlucius/task-status']['file path'] = drupal_get_path('module', 'openlucius_epics_progress') . '/includes';
+  $items['admin/config/openlucius/task-status']['page arguments'] = array('openlucius_epics_progress_todo_status_settings_form');
+  $items['admin/config/openlucius/task-status']['module'] = 'openlucius_epics_progress';
+}
+
+/**
+* Implements hook_form_FORM_ID_alter().
+*/
+function openlucius_epics_progress_form_ol_todo_list_node_form_alter(&$form, &$form_state, $form_id) {
+  if(isset($form['field_todo_list_status'])) {
+    $form['field_todo_list_status']['#access'] = FALSE;
+  }
+}
+
+/**
+* Implements hook_form_FORM_ID_alter().
+*/
+function openlucius_epics_progress_form_openlucius_core_taxonomy_term_edit_alter(&$form, &$form_state, $form_id) {
+  $form['#submit'][] = 'openlucius_epics_progress_taxonomy_term_edit_submit';
+}
+
+/**
+* Implements hook_form_FORM_ID_alter().
+*/
+function openlucius_epics_progress_form_openlucius_core_taxonomy_term_delete_alter(&$form, &$form_state, $form_id) {
+  $term_machine = $form_state['build_info']['args'][0]->vocabulary_machine_name;
+  if($term_machine == OPENLUCIUS_EPICS_PROGRESS_EPIC_STATUS_VOCABULARY_NAME) {
+    $form_state['redirect'] = 'admin/config/openlucius/ol-to-do-list-status';
+    $form['#submit'] = array('openlucius_epics_progress_taxonomy_term_delete_submit');
+  }
+}
+
+function openlucius_epics_progress_theme() {
+  $items = array(
+    'openlucius_epics_progress_todo_status_settings_form' => array(
+      'render element' => 'element',
+    ),
+    'openlucius_epic_progress_ol_to_do_list_status_settings_form' => array(
+      'render element' => 'element',
+    ),
+  );
+  return $items;
+}
+
+/**
+* Implements hook_token_info().
+*/
+function openlucius_epics_progress_token_info() {
+
+  // Add tokens.
+  $site['epic_todo_label'] = array(
+    'name' => t('Epic todo label'),
+    'description' => t('Label for epic todo term'),
+  );
+
+  return array(
+    'tokens' => array(
+      'site' => $site,
+    ),
+  );
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function openlucius_epics_progress_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+
+ if ($type == 'site') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'epic_todo_label':
+          $epic_todo_label = variable_get('epic_todo_label');
+          $replacements[$original] = $sanitize ? check_plain($epic_todo_label) : $epic_todo_label;
+          break;
+      }
+    }
+  }
+
+  // Return the replacements.
+  return $replacements;
+}
+
+/**
+ * Implements hook_openlucius_core_editable_vocabularies_alter().
+ */
+function openlucius_epics_progress_openlucius_core_editable_vocabularies_alter(&$editable_vocabularies) {
+  $editable_vocabularies[] = OPENLUCIUS_EPICS_PROGRESS_EPIC_STATUS_VOCABULARY_NAME;
+}
+
+function openlucius_epics_progress_openlucius_core_deletable_vocabularies_alter(&$editable_vocabularies) {
+  $editable_vocabularies[] = OPENLUCIUS_EPICS_PROGRESS_EPIC_STATUS_VOCABULARY_NAME;
+}
+
+function openlucius_epics_progress_openlucius_core_config_places_alter(&$places) {
+  $places[] = 'admin/config/openlucius/ol-to-do-list-status';
+}

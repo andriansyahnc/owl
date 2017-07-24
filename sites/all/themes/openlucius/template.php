@@ -523,7 +523,9 @@ function openlucius_preprocess_views_view(&$variables) {
       }
       if ($view->name == 'vw_epic_task_list' && $view->current_display == 'page') {
         drupal_add_css(drupal_get_path('theme', 'openlucius') . '/css/rangeslider.css');
+        drupal_add_css(drupal_get_path('theme', 'openlucius') . '/css/jquery.ui.multiprogressbar.css');
         drupal_add_js(drupal_get_path('theme', 'openlucius') . '/js/rangeslider.min.js');
+        drupal_add_js(drupal_get_path('theme', 'openlucius') . '/js/jquery.ui.multiprogressbar.js');
         drupal_add_js(drupal_get_path('theme', 'openlucius') . '/js/custom.js');
       }
     }
@@ -1067,7 +1069,7 @@ function openlucius_preprocess_page(&$vars) {
 
   // Fetch all places where the tabs need to be displayed.
   $places = openlucius_core_fetch_config_places();
-
+  
   if (isset($path['path'])) {
     if (in_array($path['path'], $places)) {
       $vars['print_tabs'] = TRUE;
@@ -1651,7 +1653,7 @@ function openlucius_preprocess_views_view_field(&$vars) {
           $story_count . 
         "</div>" . 
         "<div class='story-slider-wrapper hide'>" . 
-          "<input id='story-slider-" . $vars['row']->nid . "' class='story-slider' type='range' value='".$story_count."' max='".$max_story_count."' min='0' step='1'>" . 
+          "<input disabled='disabled' id='story-slider-" . $vars['row']->nid . "' class='story-slider' type='range' value='".($story_count == "" ? 0 : $story_count)."' max='".$max_story_count."' min='0' step='1'>" . 
         "</div>".
       "</div>";
     $vars['output'] = $new_output;
