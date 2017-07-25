@@ -32,8 +32,9 @@ function openlucius_epic_progress_ol_to_do_list_status_settings_form($form, &$fo
     '#theme' => 'openlucius_epic_progress_ol_to_do_list_status_settings_form',
   );
 
-  $epics_start = variable_get('epics_start_state', NULL);
-  $epics_close = variable_get('epics_close_state', NULL);
+  $epics_start = variable_get('epic_start_state', NULL);
+  $epics_in_progress = variable_get('epic_in_progress_state', NULL);
+  $epics_close = variable_get('epic_close_state', NULL);
   
   // Loop through the terms.
   foreach ($terms as $entity) {
@@ -69,6 +70,12 @@ function openlucius_epic_progress_ol_to_do_list_status_settings_form($form, &$fo
       '#type' => 'radio',
       '#return_value' => $entity->tid,
       '#default_value' => $entity->tid == $epics_start ? $epics_start : NULL
+    );
+
+    $form['openlucius_epic_progress_ol_to_do_list_status_settings_form'][$entity->tid]['epic_in_progress'] = array(
+      '#type' => 'radio',
+      '#return_value' => $entity->tid,
+      '#default_value' => $entity->tid == $epics_in_progress ? $epics_in_progress : NULL
     );
 
     $form['openlucius_epic_progress_ol_to_do_list_status_settings_form'][$entity->tid]['epic_close'] = array(
@@ -148,6 +155,7 @@ function openlucius_epic_progress_ol_to_do_list_status_settings_form_submit($for
   }
 
   $epic_start = NULL;
+  $epic_in_progress = NULL;
   $epic_close = NULL;
 
   // Loop through the values.
@@ -166,6 +174,10 @@ function openlucius_epic_progress_ol_to_do_list_status_settings_form_submit($for
         $epic_start = $tid;
       }
 
+      if($value['epic_in_progress'] != '') {
+        $epic_in_progress = $tid;
+      }
+
       if($value['epic_close'] != '') {
         $epic_close = $tid;
       }
@@ -175,8 +187,9 @@ function openlucius_epic_progress_ol_to_do_list_status_settings_form_submit($for
     }
   }
 
-  variable_set('epics_start_state', $epic_start);
-  variable_set('epics_close_state', $epic_close);
+  variable_set('epic_start_state', $epic_start);
+  variable_set('epic_in_progress_state', $epic_in_progress);
+  variable_set('epic_close_state', $epic_close);
 
 }
 
@@ -196,6 +209,7 @@ function theme_openlucius_epic_progress_ol_to_do_list_status_settings_form($vari
       t('Weight'),
       array('data' => t('Operations'), 'colspan' => 2),
       t('Epic Start'),
+      t('Epic In Progress'),
       t('Epic Complete')
     );
 
@@ -224,6 +238,10 @@ function theme_openlucius_epic_progress_ol_to_do_list_status_settings_form($vari
         $row['data'][] = array(
           'data' => drupal_render($element['openlucius_epic_progress_ol_to_do_list_status_settings_form'][$id]['epic_start']),
           'class' => array('epic-start')
+        );
+        $row['data'][] = array(
+          'data' => drupal_render($element['openlucius_epic_progress_ol_to_do_list_status_settings_form'][$id]['epic_in_progress']),
+          'class' => array('epic-in-progress')
         );
         $row['data'][] = array(
           'data' => drupal_render($element['openlucius_epic_progress_ol_to_do_list_status_settings_form'][$id]['epic_close']),

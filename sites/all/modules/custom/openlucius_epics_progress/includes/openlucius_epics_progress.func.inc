@@ -57,3 +57,7 @@ function openlucius_epics_progress_taxonomy_term_delete_submit($form, &$form_sta
     drupal_goto('admin/config/openlucius/task-status');
   }
 }
+
+function get_property($emw, $field, $property) {
+  return $emw->{$field}->value() !== NULL ? $emw->{$field}->value()->{$property} : NULL; 
+}

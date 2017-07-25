@@ -5,6 +5,7 @@
     attach: function (context, settings) {
       $(document).ready(function () {
         radiocheck('epic-start');
+        radiocheck('epic-in-progress');
         radiocheck('epic-close');
       });
 

@@ -65,6 +65,16 @@ function openlucius_epics_progress_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: Content: Status (field_todo_label) */
+  $handler->display->display_options['arguments']['field_todo_label_tid']['id'] = 'field_todo_label_tid';
+  $handler->display->display_options['arguments']['field_todo_label_tid']['table'] = 'field_data_field_todo_label';
+  $handler->display->display_options['arguments']['field_todo_label_tid']['field'] = 'field_todo_label_tid';
+  $handler->display->display_options['arguments']['field_todo_label_tid']['relationship'] = 'reverse_field_todo_list_reference_node';
+  $handler->display->display_options['arguments']['field_todo_label_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_todo_label_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_todo_label_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_todo_label_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_todo_label_tid']['break_phrase'] = TRUE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -78,165 +88,6 @@ function openlucius_epics_progress_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'ol_todo_list' => 'ol_todo_list',
-  );
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block_1');
-
-  /* Display: Block 2 */
-  $handler = $view->new_display('block', 'Block 2', 'block_2');
-
-  /* Display: To Do */
-  $handler = $view->new_display('views_rules', 'To Do', 'views_rules_1');
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'ol_todo_list' => 'ol_todo_list',
-  );
-  /* Filter criterion: Content: Status (field_todo_label) */
-  $handler->display->display_options['filters']['field_todo_label_tid']['id'] = 'field_todo_label_tid';
-  $handler->display->display_options['filters']['field_todo_label_tid']['table'] = 'field_data_field_todo_label';
-  $handler->display->display_options['filters']['field_todo_label_tid']['field'] = 'field_todo_label_tid';
-  $handler->display->display_options['filters']['field_todo_label_tid']['relationship'] = 'reverse_field_todo_list_reference_node';
-  $handler->display->display_options['filters']['field_todo_label_tid']['value'] = array(
-    3 => '3',
-  );
-  $handler->display->display_options['filters']['field_todo_label_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_todo_label_tid']['vocabulary'] = 'labels_todo_s';
-  $handler->display->display_options['rules_parameter'] = array(
-    'nid' => array(
-      'enabled' => 1,
-      'type' => 'integer',
-      'label' => 'Content: Nid',
-      'name' => 'nid',
-    ),
-  );
-  $handler->display->display_options['rules_variables'] = array(
-    'nid_1' => array(
-      'enabled' => 0,
-      'rendered' => 0,
-      'type' => '',
-      'label' => 'Content: Nid',
-      'name' => 'nid_1',
-    ),
-    'nid' => array(
-      'enabled' => 1,
-      'rendered' => 1,
-      'type' => 'integer',
-      'label' => 'Todo Count',
-      'name' => 'todo_count',
-    ),
-  );
-
-  /* Display: Archived & Done */
-  $handler = $view->new_display('views_rules', 'Archived & Done', 'views_rules_2');
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'ol_todo_list' => 'ol_todo_list',
-  );
-  /* Filter criterion: Content: Status (field_todo_label) */
-  $handler->display->display_options['filters']['field_todo_label_tid']['id'] = 'field_todo_label_tid';
-  $handler->display->display_options['filters']['field_todo_label_tid']['table'] = 'field_data_field_todo_label';
-  $handler->display->display_options['filters']['field_todo_label_tid']['field'] = 'field_todo_label_tid';
-  $handler->display->display_options['filters']['field_todo_label_tid']['relationship'] = 'reverse_field_todo_list_reference_node';
-  $handler->display->display_options['filters']['field_todo_label_tid']['value'] = array(
-    8 => '8',
-    4 => '4',
-  );
-  $handler->display->display_options['filters']['field_todo_label_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_todo_label_tid']['vocabulary'] = 'labels_todo_s';
-  $handler->display->display_options['rules_parameter'] = array(
-    'nid' => array(
-      'enabled' => 1,
-      'type' => 'integer',
-      'label' => 'Content: Nid',
-      'name' => 'nid',
-    ),
-  );
-  $handler->display->display_options['rules_variables'] = array(
-    'nid_1' => array(
-      'enabled' => 0,
-      'rendered' => 0,
-      'type' => '',
-      'label' => 'Content: Nid',
-      'name' => 'nid_1',
-    ),
-    'nid' => array(
-      'enabled' => 1,
-      'rendered' => 1,
-      'type' => 'integer',
-      'label' => 'Complete Count',
-      'name' => 'complete_count',
-    ),
-  );
-
-  /* Display: All */
-  $handler = $view->new_display('views_rules', 'All', 'views_rules_3');
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'ol_todo_list' => 'ol_todo_list',
-  );
-  $handler->display->display_options['rules_parameter'] = array(
-    'nid' => array(
-      'enabled' => 1,
-      'type' => 'integer',
-      'label' => 'Content: Nid',
-      'name' => 'nid',
-    ),
-  );
-  $handler->display->display_options['rules_variables'] = array(
-    'nid_1' => array(
-      'enabled' => 0,
-      'rendered' => 0,
-      'type' => '',
-      'label' => 'Content: Nid',
-      'name' => 'nid_1',
-    ),
-    'nid' => array(
-      'enabled' => 1,
-      'rendered' => 1,
-      'type' => 'integer',
-      'label' => 'All Count',
-      'name' => 'all_count',
-    ),
   );
   $translatables['vw_epic_get_story_property'] = array(
     t('Master'),
@@ -248,10 +99,6 @@ function openlucius_epics_progress_views_default_views() {
     t('Desc'),
     t('field_todo_list_reference'),
     t('All'),
-    t('Block'),
-    t('Block 2'),
-    t('To Do'),
-    t('Archived & Done'),
   );
   $export['vw_epic_get_story_property'] = $view;
 
@@ -360,11 +207,10 @@ function openlucius_epics_progress_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['label'] = 'Stories';
   $handler->display->display_options['fields']['nothing_1']['element_class'] = 'col-xs-1 epic-body-stories';
   $handler->display->display_options['fields']['nothing_1']['element_label_class'] = 'col-xs-1 epic-header-stories';
-  /* Field: Content: Status */
+  /* Field: Content: State */
   $handler->display->display_options['fields']['field_todo_list_status']['id'] = 'field_todo_list_status';
   $handler->display->display_options['fields']['field_todo_list_status']['table'] = 'field_data_field_todo_list_status';
   $handler->display->display_options['fields']['field_todo_list_status']['field'] = 'field_todo_list_status';
-  $handler->display->display_options['fields']['field_todo_list_status']['label'] = 'State';
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
   $handler->display->display_options['fields']['nothing_2']['table'] = 'views';

@@ -14,11 +14,7 @@ function openlucius_epics_progress_field_default_field_instances() {
   $field_instances['node-ol_todo_list-field_todo_list_status'] = array(
     'bundle' => 'ol_todo_list',
     'comment_alter' => 0,
-    'default_value' => array(
-      0 => array(
-        'tid' => 11,
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -44,8 +40,8 @@ function openlucius_epics_progress_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_todo_list_status',
-    'label' => 'Status',
-    'required' => 1,
+    'label' => 'State',
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -60,7 +56,7 @@ function openlucius_epics_progress_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Status');
+  t('State');
 
   return $field_instances;
 }

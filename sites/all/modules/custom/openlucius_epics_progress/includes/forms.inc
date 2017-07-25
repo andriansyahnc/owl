@@ -33,10 +33,10 @@ function openlucius_epics_progress_todo_status_settings_form($form, &$form_state
   );
 
   // Get our saved variable - epic start
-  $epic_starts = explode("+", (variable_get('openlucius_epics_progress_epic_start', array())));
+  $epic_starts = explode("+", (variable_get('openlucius_epics_progress_epic_start_todo_state', array())));
 
   // Get our saved variable - epic close
-  $epic_closes = explode("+", (variable_get('openlucius_epics_progress_epic_close', array())));
+  $epic_closes = explode("+", (variable_get('openlucius_epics_progress_epic_close_todo_state', array())));
 
   // Loop through the terms.
   foreach ($terms as $entity) {
@@ -173,10 +173,10 @@ function openlucius_epics_progress_todo_status_settings_form_submit($form, &$for
   }
 
   // Save epic start values
-  variable_set('openlucius_epics_progress_epic_start', implode('+', $epic_start));
+  variable_set('openlucius_epics_progress_epic_start_todo_state', implode('+', $epic_start));
 
   // Save epic close values
-  variable_set('openlucius_epics_progress_epic_close', implode('+', $epic_close));
+  variable_set('openlucius_epics_progress_epic_close_todo_state', implode('+', $epic_close));
 }
 
 /**

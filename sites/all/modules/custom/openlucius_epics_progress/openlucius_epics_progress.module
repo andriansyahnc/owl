@@ -78,43 +78,48 @@ function openlucius_epics_progress_theme() {
 }
 
 /**
-* Implements hook_token_info().
+* Implements hook_node_update().
 */
-function openlucius_epics_progress_token_info() {
+function openlucius_epics_progress_node_update($node) {
+  if($node->type == 'ol_todo') {
+    $epic_start = variable_get('openlucius_epics_progress_epic_start_todo_state', '');
+    $epic_stop = variable_get('openlucius_epics_progress_epic_close_todo_state', '');
+    
+    $enode = entity_metadata_wrapper('node', $node);
 
-  // Add tokens.
-  $site['epic_todo_label'] = array(
-    'name' => t('Epic todo label'),
-    'description' => t('Label for epic todo term'),
-  );
+    $epic_nid = get_property($enode, 'field_todo_list_reference', 'nid');
 
-  return array(
-    'tokens' => array(
-      'site' => $site,
-    ),
-  );
-}
-
-/**
- * Implements hook_tokens().
- */
-function openlucius_epics_progress_tokens($type, $tokens, array $data = array(), array $options = array()) {
-  $replacements = array();
-
- if ($type == 'site') {
-    foreach ($tokens as $name => $original) {
-      switch ($name) {
-        case 'epic_todo_label':
-          $epic_todo_label = variable_get('epic_todo_label');
-          $replacements[$original] = $sanitize ? check_plain($epic_todo_label) : $epic_todo_label;
-          break;
+    if($epic_nid !== NULL) {
+      $views_count_all = views_get_view_result('vw_epic_get_story_property', 'master', $epic_nid);
+      $count_all = $views_count_all[0]->field_todo_list_reference_node_nid;
+      
+      $views_count_start = views_get_view_result('vw_epic_get_story_property', 'master', $epic_nid, $epic_start);
+      $count_start = $views_count_start[0]->field_todo_list_reference_node_nid;
+      
+      $views_count_complete = views_get_view_result('vw_epic_get_story_property', 'master', $epic_nid, $epic_stop);
+      $count_stop = $views_count_complete[0]->field_todo_list_reference_node_nid;
+      
+      $epic = entity_metadata_wrapper('node', $epic_nid);
+      
+      if($count_all === $count_start) {
+        $epic_state = variable_get('epic_start_state', '');
+        $epic->field_todo_list_status->set($epic_state);
+        $epic->save();
+      } 
+      else if($count_all === $count_stop) {
+        $epic_state = variable_get('epic_close_state', '');
+        $epic->field_todo_list_status->set($epic_state);
+        $epic->save();
+      }
+      else {
+        $epic_state = variable_get('epic_in_progress_state', '');
+        $epic->field_todo_list_status->set($epic_state);
+        $epic->save();
       }
     }
   }
-
-  // Return the replacements.
-  return $replacements;
 }
+
 
 /**
  * Implements hook_openlucius_core_editable_vocabularies_alter().

@@ -27,7 +27,7 @@ function openlucius_epics_progress_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'type_todo_list',
+          'vocabulary' => 'epic_state',
           'parent' => 0,
         ),
       ),
