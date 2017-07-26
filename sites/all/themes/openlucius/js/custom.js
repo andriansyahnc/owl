@@ -3,7 +3,7 @@
 
   Drupal.behaviors.openlucius_limitslider = {
     attach: function (context, settings) {
-      $(document).ready(function() {
+      $(document).ready(function () {
         $('input[type="range"]').rangeslider({
           // Feature detection the default is `true`.
           // Set this to `false` if you want to use
@@ -20,13 +20,13 @@
           handleClass: 'rangeslider__handle',
 
           // Callback function
-          onInit: function() {},
+          onInit: function () { },
 
           // Callback function
-          onSlide: function(position, value) {},
+          onSlide: function (position, value) { },
 
           // Callback function
-          onSlideEnd: function(position, value) {}
+          onSlideEnd: function (position, value) { }
         });
         $('.story-slider-wrapper').removeClass('hide');
       })

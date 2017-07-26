@@ -63,3 +63,22 @@
     background-color: #D1E0EF;
     height: 10px;
 }
+
+.epic-progress-wrapper .progress {
+    height: 20px;
+    padding: 0px;
+    border: none;
+    border-radius: 5px;
+}
+
+.epic-progress-wrapper .progress .progress-epic-start {
+    background-color: #55BD10
+}
+
+.epic-progress-wrapper .progress .progress-epic-in-progress {
+    background-color: #B3DA82
+}
+
+.epic-progress-wrapper .progress .progress-epic-stop {
+    background-color: #DAE9F0;
+}

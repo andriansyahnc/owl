@@ -45,6 +45,15 @@ function openlucius_epics_progress_form_ol_todo_list_node_form_alter(&$form, &$f
   if(isset($form['field_todo_list_status'])) {
     $form['field_todo_list_status']['#access'] = FALSE;
   }
+  $shared_group = $form['field_shared_group_reference'][LANGUAGE_NONE]['#default_value'];
+  $option_views = views_get_view_result('vw_milestone_get_property_from_group', 'master', $shared_group);
+  $options = array();
+
+  foreach($option_views as $option_view) {
+    $options[$option_view->nid] = $option_view->node_title;
+  }
+  
+  $form['field_milestone'][LANGUAGE_NONE]['#options'] = array('_none' => t('- Select a value -')) + $options;
 }
 
 /**
