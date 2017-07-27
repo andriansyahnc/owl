@@ -499,11 +499,32 @@ function openlucius_preprocess_views_view(&$variables) {
         $variables['action_link'] = l(t("Add Task List"), "node/add/ol-todo-list/" . $arg[0]);
         $attributes = $dest_self + array('attributes' => array('class' => array('trigger-task-modal')));
         $variables['action_link_2'] = l(t("Add Task"), "node/add/ol-todo/" . $arg[0], $attributes);
-
+        
         // Check if a user may reorder the lists.
         if (user_access('openlucius todolist prioritize')) {
           $variables['order_todo_lists'] = t('Order Task Lists');
         }
+      }
+      elseif (user_access("create ol_todo_list content") && $view->name == 'vw_epic_task_list' && $view->current_display == 'page') {
+        $variables['action_link'] = l(t("Add Task List"), "node/add/ol-todo-list/" . $arg[0]);
+        $attributes = $dest_self + array('attributes' => array('class' => array('trigger-task-modal')));
+        // $variables['action_link_2'] = l(t("Add Task"), "node/add/ol-todo/" . $arg[0], $attributes);
+        
+        // Check if a user may reorder the lists.
+        if (user_access('openlucius todolist prioritize')) {
+          $variables['order_todo_lists'] = t('Order Task Lists');
+        }
+      }
+      if ($view->name == 'all_todo_lists_in_a_group' && $view->current_display == 'page_1') {
+        $variables['switch_menu_todo'] = l('Column', 'group-task-lists/' . $arg[0]) . l('Table', 'group-task-lists/' . $arg[0] . '/table');
+      }
+      if ($view->name == 'vw_epic_task_list' && $view->current_display == 'page') {
+        $variables['switch_menu_todo'] = l('Column', 'group-task-lists/' . $arg[0]) . l('Table', 'group-task-lists/' . $arg[0] . '/table');
+      }
+      if ($view->name == 'vw_epic_task_list' && $view->current_display == 'page') {
+        drupal_add_css(drupal_get_path('theme', 'openlucius') . '/css/rangeslider.css');
+        drupal_add_js(drupal_get_path('theme', 'openlucius') . '/js/rangeslider.min.js');
+        drupal_add_js(drupal_get_path('theme', 'openlucius') . '/js/custom.js');
       }
     }
   }
@@ -1046,7 +1067,7 @@ function openlucius_preprocess_page(&$vars) {
 
   // Fetch all places where the tabs need to be displayed.
   $places = openlucius_core_fetch_config_places();
-
+  
   if (isset($path['path'])) {
     if (in_array($path['path'], $places)) {
       $vars['print_tabs'] = TRUE;
@@ -1605,4 +1626,103 @@ function openlucius_facetapi_title($variables) {
     $variables['title'] = t('Group reference');
   }
   return t('Filter by @title:', array('@title' => drupal_strtolower($variables['title'])));
+}
+
+function openlucius_preprocess_views_view_field(&$vars) {
+  if($vars['theme_hook_original'] == 'views_view_field__vw_epic_task_list__page__nothing_1') {
+    $count_data = views_get_view_result('vw_epic_get_story_property', 'block_1', $vars['row']->nid);
+    $data_query = "SELECT max(count_reference) as max_count FROM (";
+    $data_query .= "SELECT n.nid, count(flr.field_todo_list_reference_nid) as count_reference";
+    $data_query .= " FROM node n";
+    $data_query .= " LEFT JOIN field_data_field_todo_list_reference flr ON flr.field_todo_list_reference_nid = n.nid";
+    $data_query .= " LEFT JOIN field_data_field_shared_group_reference sgr ON n.nid = sgr.entity_id";
+    $data_query .= " WHERE n.type = 'ol_todo_list' and sgr.field_shared_group_reference_nid = " . $vars['view']->args[0];
+    $data_query .= " GROUP BY nid";
+    $data_query .= " ) a";
+    $query = db_query($data_query);
+    $result = $query->fetchObject();
+
+    $story_count = $count_data[0]->field_todo_list_reference_node_nid;
+    $max_story_count = $result->max_count;
+
+    $new_output = "" . 
+      "<div class='story'>" .
+        "<div class='story-count'>" . 
+          $story_count . 
+        "</div>" . 
+        "<div class='story-slider-wrapper hide'>" . 
+          "<input disabled='disabled' id='story-slider-" . $vars['row']->nid . "' class='story-slider' type='range' value='".($story_count == "" ? 0 : $story_count)."' max='".$max_story_count."' min='0' step='1'>" . 
+        "</div>".
+      "</div>";
+    $vars['output'] = $new_output;
+  }
+  if($vars['theme_hook_original'] == 'views_view_field__vw_epic_task_list__page__nothing_2') {
+    $epic_start = variable_get('openlucius_epics_progress_epic_start_todo_state', '');
+    $epic_stop = variable_get('openlucius_epics_progress_epic_close_todo_state', '');
+
+    $epic_start_state = taxonomy_term_load(variable_get('epic_start_state', ''))->name;
+    $epic_inp_state = taxonomy_term_load(variable_get('epic_in_progress_state', ''))->name;
+    $epic_stop_state = taxonomy_term_load(variable_get('epic_close_state', ''))->name;
+    
+    $views_count_all = views_get_view_result('vw_epic_get_story_property', 'master', $vars['row']->nid);
+    $count_all = !empty($views_count_all) ? $views_count_all[0]->field_todo_list_reference_node_nid : 0;
+
+    $views_count_start = views_get_view_result('vw_epic_get_story_property', 'master', $vars['row']->nid, $epic_start);
+    $count_start = !empty($views_count_start) ? $views_count_start[0]->field_todo_list_reference_node_nid : 0;
+    
+    $views_count_complete = views_get_view_result('vw_epic_get_story_property', 'master', $vars['row']->nid, $epic_stop);
+    $count_stop = !empty($views_count_complete) ? $views_count_complete[0]->field_todo_list_reference_node_nid : 0;
+
+    $in_progress =  $count_all - ($count_start + $count_stop);
+
+    $start_percent = ($count_start / $count_all * 100);
+    $inp_percent = ($in_progress / $count_all * 100);
+    $stop_percent = ($count_stop / $count_all * 100);
+
+    $texts = [];
+    if($count_all == 0) {
+      $texts[] = t('No Story Created');
+    } else {
+      if($start_percent > 0) {
+        $texts[] = round($start_percent, 2) . '% ' . $epic_start_state;
+      }
+      if($inp_percent > 0) {
+        $texts[] = round($inp_percent, 2) . '% ' . $epic_inp_state;
+      }
+      if($stop_percent > 0) {
+        $texts[] = round($stop_percent, 2) . '% ' . $epic_stop_state;
+      }
+    }
+    $text = implode(', ', $texts);
+
+    $replacement = array(
+      '@epic_all' => $count_all,
+      '@epic_start' => $start_percent,
+      '@epic_stop' => $stop_percent,
+      '@in_progress' => $inp_percent,
+      '@id' => 'epic-progress-' . $vars['row']->nid,
+      '@text' => $text
+    );
+
+    $output = "<div class='epic-progress-wrapper'>" . 
+                "<div class='epic-progress progress-text'>@text</div>" . 
+                "<div class='epic-progress progress' id='@id' " . 
+                  "data-attr-all='@epic_all'" . 
+                  "data-attr-start='@epic_start'" . 
+                  "data-attr-stop='@epic_stop'" . 
+                  "data-attr-in-progress='@in_progress'>" . 
+                    "<div class='progress-bar progress-epic-start' role='progressbar' style='width:@epic_start%'></div>" . 
+                    "<div class='progress-bar progress-epic-in-progress' role='progressbar' style='width:@in_progress%'></div>" . 
+                    "<div class='progress-bar progress-epic-stop' role='progressbar' style='width:@epic_stop%'></div>" . 
+                "</div>" .
+              "</div>";
+
+    $vars['output'] = t($output, $replacement);
+  }
+  if($vars['theme_hook_original'] == 'views_view_field__vw_epic_task_list__page__nothing_3') {
+    $views_count_all = views_get_view_result('vw_epic_get_story_property', 'master', $vars['row']->nid);
+    $count_all = !empty($views_count_all) ? ($views_count_all[0]->field_todo_list_reference_node__field_data_field_todo_due_da !== NULL ? date('M j Y', $views_count_all[0]->field_todo_list_reference_node__field_data_field_todo_due_da) : "no date") : "no date";
+
+    $vars['output'] = $count_all;
+  }
 }

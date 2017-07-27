@@ -70,6 +70,7 @@ stylesheets[all][] = css/stepper.css
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/mobile.css
 stylesheets[all][] = css/oneui.css
+stylesheets[all][] = css/custom.css
 
 ; Information added by Drupal.org packaging script on 2017-01-11
 version = "7.x-1.7"
