@@ -1,11 +1,3 @@
-.epic-switch {
-    display: inline-block;
-}
-
-.epic-switch a+a {
-    margin-left: 5px;
-}
-
 .openlucius-epic-task-lists .table>thead>tr>th {
     background-color: #E6E6E6;
 }
@@ -81,4 +73,34 @@
 
 .epic-progress-wrapper .progress .progress-epic-stop {
     background-color: #DAE9F0;
+}
+
+.epic-switch a {
+    background: #666666;
+    color: #E3E3E3;
+    padding: 5px 10px;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.epic-switch a {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.epic-switch a.active {
+    background: #E3E3E3;
+    color: #666666
+}
+
+.epic-switch a:hover,
+.epic-switch a:active {
+    background: #F3F3F3;
+    color: #777777 !important;
+    text-decoration: none !important
+}
+
+.epic-switch a.active:hover {
+    background: #777777;
+    color: #F3F3F3 !important;
 }
