@@ -1,3 +1,9 @@
+.page-milestone-list .region.region-content.well {
+    background-color: #f2f2f2 !important;
+    border: none;
+    box-shadow: none;
+}
+
 .epic-switch {
     display: inline-block;
 }
@@ -71,14 +77,34 @@
     border-radius: 5px;
 }
 
+.milestone-card-header-body .progress .progress-epic-start,
 .epic-progress-wrapper .progress .progress-epic-start {
     background-color: #55BD10
 }
 
+.view-id-milestone_list {
+    overflow-x: auto;
+    overflow-y: hidden;
+    background-color: #f2f2f2;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    height: inherit;
+    width: 100%;
+    white-space: nowrap;
+    padding: 10px;
+}
+
+.view-id-milestone_list * {
+    white-space: normal;
+}
+
+.milestone-card-header-body .progress .progress-epic-in-progress,
 .epic-progress-wrapper .progress .progress-epic-in-progress {
     background-color: #B3DA82
 }
 
+.milestone-card-header-body .progress .progress-epic-stop,
 .epic-progress-wrapper .progress .progress-epic-stop {
     background-color: #DAE9F0;
 }
@@ -93,23 +119,43 @@
     box-shadow: 0px 3px 3px #888888;
 }
 
+.milestone-card-empty {
+    background-color: #F3FAFB;
+}
+
 .milestone-card-header,
-.milestone-card-body {
-    padding: 5px 10px;
+.milestone-card-body-row {
+    padding: 10px;
+}
+
+.milestone-card-body-row {
+    border-top: 1px solid #cccccc;
 }
 
 .milestone-card-header-body {
     color: #aaaaaa;
+    clear: both;
+}
+
+.milestone-state-status {
+    float: left;
+    font-size: 10px;
+    border: 1px solid #A3A3A3;
+    color: #A3A3A3;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.milestone-state-status i {
+    margin-right: 5px;
 }
 
 .milestone-card-title {
-    padding: 10px 0px;
     font-weight: bolder;
     font-size: 20px;
 }
 
 .milestone-card-header {
-    border-bottom: 1px solid #cccccc;
     min-height: 135px;
 }
 
@@ -134,12 +180,33 @@
 
 .milestone-epic-header-progress {
     clear: both;
-    height: 15px;
     width: 50px;
     margin-left: 20px;
 }
 
 .milestone-epic-header-progress .epic-progress-wrapper .progress {
     height: 10px;
-    margin-bottom: 0px
+    margin-bottom: 0px;
+    background-color: #DAE9F0;
+}
+
+.milestone-state {
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+.milestone-card-header-body .progress {
+    margin-bottom: 0px;
+}
+
+.milestone-card-header-body .progress-text {
+    font-size: 14px;
+    font-weight: bolder;
+    color: #000000;
+    padding-top: 10px;
+}
+
+.milestone-state-count {
+    padding: 3px;
+    float: left;
 }

@@ -528,7 +528,7 @@ function openlucius_preprocess_views_view(&$variables) {
       }
     }
   }
-
+  
   // Page 'all-users'.
   if ($view->name == 'users_in_groups' && $view->current_display == 'page_1') {
     if (user_access("administer users")) {
@@ -1753,7 +1753,7 @@ function openlucius_preprocess_views_view_field(&$vars) {
     $replacement = array(
       '@epic_all' => $count_all,
       '@epic_start' => $stop_percent,
-      '@epic_stop' => $stop_percent,
+      '@epic_stop' => $start_percent,
       '@in_progress' => $inp_percent,
       '@id' => 'epic-progress-' . $vars['row']->nid,
       '@text' => $text
@@ -1774,4 +1774,11 @@ function openlucius_preprocess_views_view_field(&$vars) {
 
     $vars['output'] = t($output, $replacement);
   }
+
+  if($vars['theme_hook_original'] == 'views_view_field__milestone_list__page__title') {
+    $milestone_title = $vars['row']->node_field_data_field_milestone_title;
+    
+    
+  }
+  
 }
