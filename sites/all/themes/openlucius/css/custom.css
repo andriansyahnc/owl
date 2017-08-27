@@ -119,5 +119,27 @@
 
 .milestone-row i,
 .milestone-row .epic-title-wrapper {
-    display: inline-block;
+    float: left;
+    line-height: 25px;
+    margin-bottom: 5px;
+}
+
+.milestone-row i {
+    padding-right: 5px;
+}
+
+.milestone-row .epic-title-wrapper span {
+    font-weight: bolder;
+}
+
+.milestone-epic-header-progress {
+    clear: both;
+    height: 15px;
+    width: 50px;
+    margin-left: 20px;
+}
+
+.milestone-epic-header-progress .epic-progress-wrapper .progress {
+    height: 10px;
+    margin-bottom: 0px
 }
