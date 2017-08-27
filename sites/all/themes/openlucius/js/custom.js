@@ -32,8 +32,10 @@
       });
       $(window).load(function () {
         if ($('.epic-header-priority').length > 0) {
-          $('.epic-body-priority').addClass('hide');
-          $('.epic-header-priority').addClass('hide');
+          if (!$('.epic-header-priority').hasClass('hide')) {
+            $('.epic-body-priority').addClass('hide');
+            $('.epic-header-priority').addClass('hide');
+          }
           $('#openlucius_order_todolists').unbind('click');
           $('.openlucius-epic-task-lists #edit-submit').addClass('hide');
           $('#openlucius_order_todolists').click(function (e) {

@@ -208,8 +208,8 @@ function openlucius_epics_progress_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Priority';
-  $handler->display->display_options['fields']['nothing']['element_class'] = 'col-xs-1 epic-body-priority';
-  $handler->display->display_options['fields']['nothing']['element_label_class'] = 'col-xs-1 epic-header-priority';
+  $handler->display->display_options['fields']['nothing']['element_class'] = 'col-xs-1 epic-body-priority hide';
+  $handler->display->display_options['fields']['nothing']['element_label_class'] = 'col-xs-1 epic-header-priority hide';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
