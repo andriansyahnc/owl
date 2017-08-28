@@ -125,6 +125,10 @@ function openlucius_story_board_menu_alter(&$items) {
     $items['openlucius-board/%node']['page callback']  =  'openlucius_board_custom_page';
     $items['openlucius-board/%node']['file path']      =  drupal_get_path('module', 'openlucius_story_board');
   }
+  if($items['tasks/my-board']) {
+    $items['tasks/my-board']['page callback']  =  'openlucius_board_custom_page';
+    $items['tasks/my-board']['file path']      =  drupal_get_path('module', 'openlucius_story_board');
+  }
 }
 
 class OpenluciusStoryBoard extends OpenluciusBoard {
@@ -251,6 +255,14 @@ class OpenluciusStoryBoard extends OpenluciusBoard {
           // Store group if not set for filtering.
           if (!isset($data['groups'][$node_values['group_id']])) {
             $data['groups'][$node_values['group_id']] = $node_values['group_title'];
+          }
+          $team = views_get_view_result('vw_user_get_team', 'master', $node_values['account']['uid']);
+          if(!empty($team)) {
+            $data['team'][$node_values['status']][$node_values['weight']][] = $team;
+            $data['account_uid'][$node_values['status']][$node_values['weight']][] = $node_values['account']['uid'];
+          } else {
+            $data['team'][$node_values['status']][$node_values['weight']][] = null;
+            $data['account_uid'][$node_values['status']][$node_values['weight']][] = $node_values['account']['uid'];
           }
 
           // Store renderable item in list at position.
