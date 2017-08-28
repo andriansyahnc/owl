@@ -1,3 +1,47 @@
+.page-milestone-list .region.region-content.well {
+    background-color: #f2f2f2 !important;
+    border: none;
+    box-shadow: none;
+}
+
+.epic-switch {
+    display: inline-block;
+}
+
+.epic-switch a+a {
+    margin-left: 5px;
+}
+
+.epic-switch a {
+    background: #666666;
+    color: #E3E3E3;
+    padding: 5px 10px;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.epic-switch a {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.epic-switch a.active {
+    background: #E3E3E3;
+    color: #666666
+}
+
+.epic-switch a:hover,
+.epic-switch a:active {
+    background: #F3F3F3;
+    color: #777777 !important;
+    text-decoration: none !important
+}
+
+.epic-switch a.active:hover {
+    background: #777777;
+    color: #F3F3F3 !important;
+}
+
 .openlucius-epic-task-lists .table>thead>tr>th {
     background-color: #E6E6E6;
 }
@@ -63,44 +107,137 @@
     border-radius: 5px;
 }
 
+.milestone-card-header-body .progress .progress-epic-start,
 .epic-progress-wrapper .progress .progress-epic-start {
     background-color: #55BD10
 }
 
+.view-id-milestone_list {
+    overflow-x: auto;
+    overflow-y: hidden;
+    background-color: #f2f2f2;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    height: inherit;
+    width: 100%;
+    white-space: nowrap;
+    padding: 10px;
+}
+
+.view-id-milestone_list * {
+    white-space: normal;
+}
+
+.milestone-card-header-body .progress .progress-epic-in-progress,
 .epic-progress-wrapper .progress .progress-epic-in-progress {
     background-color: #B3DA82
 }
 
+.milestone-card-header-body .progress .progress-epic-stop,
 .epic-progress-wrapper .progress .progress-epic-stop {
     background-color: #DAE9F0;
 }
 
-.epic-switch a {
-    background: #666666;
-    color: #E3E3E3;
-    padding: 5px 10px;
+.milestone-card,
+.milestone-card-empty {
+    width: 300px;
     display: inline-block;
-    margin-bottom: 4px;
+    vertical-align: top;
+    background-color: white;
+    margin: 5px;
+    box-shadow: 0px 3px 3px #888888;
 }
 
-.epic-switch a {
-    padding-left: 10px;
-    padding-right: 10px;
+.milestone-card-empty {
+    background-color: #F3FAFB;
 }
 
-.epic-switch a.active {
-    background: #E3E3E3;
-    color: #666666
+.milestone-card-header,
+.milestone-card-body-row {
+    padding: 10px;
 }
 
-.epic-switch a:hover,
-.epic-switch a:active {
-    background: #F3F3F3;
-    color: #777777 !important;
-    text-decoration: none !important
+.milestone-card-body-row {
+    border-top: 1px solid #cccccc;
 }
 
-.epic-switch a.active:hover {
-    background: #777777;
-    color: #F3F3F3 !important;
+.milestone-card-header-body {
+    color: #aaaaaa;
+    clear: both;
+}
+
+.milestone-state-status {
+    float: left;
+    font-size: 10px;
+    border: 1px solid #A3A3A3;
+    color: #A3A3A3;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.milestone-state-status i {
+    margin-right: 5px;
+}
+
+.milestone-card-title {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.milestone-card-header {
+    min-height: 135px;
+}
+
+.milestone-card-body {
+    min-height: 60px;
+}
+
+.milestone-row i,
+.milestone-row .epic-title-wrapper {
+    float: left;
+    line-height: 25px;
+    margin-bottom: 5px;
+}
+
+.milestone-row i {
+    padding-right: 5px;
+}
+
+.milestone-row .epic-title-wrapper span {
+    font-weight: bolder;
+}
+
+.milestone-epic-header-progress {
+    clear: both;
+    width: 50px;
+    margin-left: 20px;
+}
+
+.milestone-epic-header-progress .epic-progress-wrapper .progress {
+    height: 10px;
+    margin-bottom: 0px;
+    background-color: #DAE9F0;
+}
+
+.milestone-state {
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+.milestone-card-header-body .progress {
+    margin-bottom: 0px;
+}
+
+.milestone-card-header-body .progress-text {
+    font-size: 14px;
+    font-weight: bolder;
+    color: #000000;
+    padding-top: 10px;
+}
+
+.milestone-state-count {
+    padding: 3px;
+    float: left;
+    >>>>>>>master
 }
