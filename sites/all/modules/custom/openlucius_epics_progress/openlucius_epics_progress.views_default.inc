@@ -140,6 +140,8 @@ function openlucius_epics_progress_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Filter';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
@@ -182,6 +184,11 @@ function openlucius_epics_progress_views_default_views() {
       'empty_column' => 0,
     ),
   );
+  /* Footer: Global: Result summary */
+  $handler->display->display_options['footer']['result']['id'] = 'result';
+  $handler->display->display_options['footer']['result']['table'] = 'views';
+  $handler->display->display_options['footer']['result']['field'] = 'result';
+  $handler->display->display_options['footer']['result']['content'] = '@start - @end of @total';
   /* Field: Draggableviews: Content */
   $handler->display->display_options['fields']['draggableviews']['id'] = 'draggableviews';
   $handler->display->display_options['fields']['draggableviews']['table'] = 'node';
@@ -201,8 +208,8 @@ function openlucius_epics_progress_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Priority';
-  $handler->display->display_options['fields']['nothing']['element_class'] = 'col-xs-1 epic-body-priority';
-  $handler->display->display_options['fields']['nothing']['element_label_class'] = 'col-xs-1 epic-header-priority';
+  $handler->display->display_options['fields']['nothing']['element_class'] = 'col-xs-1 epic-body-priority hide';
+  $handler->display->display_options['fields']['nothing']['element_label_class'] = 'col-xs-1 epic-header-priority hide';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -285,19 +292,38 @@ function openlucius_epics_progress_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ol_todo_list' => 'ol_todo_list',
   );
+  /* Filter criterion: Content: Milestone (field_milestone) */
+  $handler->display->display_options['filters']['field_milestone_nid']['id'] = 'field_milestone_nid';
+  $handler->display->display_options['filters']['field_milestone_nid']['table'] = 'field_data_field_milestone';
+  $handler->display->display_options['filters']['field_milestone_nid']['field'] = 'field_milestone_nid';
+  $handler->display->display_options['filters']['field_milestone_nid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_milestone_nid']['expose']['operator_id'] = 'field_milestone_nid_op';
+  $handler->display->display_options['filters']['field_milestone_nid']['expose']['label'] = 'Milestone';
+  $handler->display->display_options['filters']['field_milestone_nid']['expose']['operator'] = 'field_milestone_nid_op';
+  $handler->display->display_options['filters']['field_milestone_nid']['expose']['identifier'] = 'field_milestone_nid';
+  $handler->display->display_options['filters']['field_milestone_nid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    5 => 0,
+    6 => 0,
+    4 => 0,
+    3 => 0,
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'group-task-lists/%/table';
   $translatables['vw_epic_task_list'] = array(
     t('Master'),
     t('Task-Lists'),
     t('more'),
-    t('Apply'),
+    t('Filter'),
     t('Reset'),
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('@start - @end of @total'),
     t('Priority'),
     t('ID'),
     t('Title'),
