@@ -5,3 +5,26 @@
  */
 
 include_once 'openlucius_milestone.features.inc';
+include_once drupal_get_path('module', 'openlucius_milestone') . '/includes/class.inc';
+
+function openlucius_milestone_menu() {
+  return array(
+    'group-calendar/milestone/list/%' => [
+      'title' => t('Milestone List'),
+      'page callback' => 'openlucius_milestone_list_page',
+      'page arguments' => [3],
+      'access arguments' => ['access content'],
+      'file' => 'page.inc',
+      'file path' => drupal_get_path('module', 'openlucius_milestone') . '/includes'
+    ]
+  );
+}
+
+function openlucius_milestone_theme() {
+  return [
+    'openlucius_milestone_list' => [
+      'template' => 'templates/openlucius_milestone_list',
+    ]
+  ];
+}
+

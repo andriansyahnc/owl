@@ -1,0 +1,355 @@
+.milestones-column-view,
+.milestone-columns-outer,
+.milestone-columns-inner {
+    height: 400px;
+}
+
+.milestone-columns-inner {
+    overflow-x: auto;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    overflow-y: hidden;
+}
+
+.fa,
+.fa-stack {
+    display: inline-block;
+}
+
+.fa {
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-paper-plane-o {
+    color: #888;
+}
+
+.action .fa,
+.styled-select {
+    position: relative;
+}
+
+.action .fa {
+    left: -2px;
+    opacity: .6;
+}
+
+.milestones-column-view .milestone-stats .milestone-stat,
+.milestones-column-view label {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 700;
+    font-family: Lato, Helvetica, Arial, sans-serif;
+}
+
+.milestones-column-view .orphan-epics {
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    box-sizing: border-box;
+    float: left;
+    background: #f3fafb;
+    margin: 0 12px 0 0px;
+    padding: 16px 0 0;
+    position: relative;
+    width: 300px;
+}
+
+.milestones-column-view .orphan-epics .milestone-column-header h2 {
+    margin: 0 0 10px;
+}
+
+.milestones-column-view .milestone-column-header {
+    padding: 0 20px;
+    height: 96px;
+}
+
+.milestones-column-view h2 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    margin: 0;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.milestones-column-view .orphan-epics .milestone-column-header h3 {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    color: #777;
+    margin: 0;
+}
+
+.milestones-column-view .epic-cards {
+    border-top: 1px solid #ddd;
+    margin: 16px 0 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 58px;
+}
+
+.milestones-column-view .epic-card {
+    border-bottom: 1px solid #ddd;
+    margin: 0;
+    padding: 9px 12px 7px 36px;
+    position: relative;
+}
+
+.milestones-column-view .epic-card .drag-handle,
+.milestones-column-view .epic-card .progress-bar-container h3 {
+    display: none;
+}
+
+.milestones-column-view .drag-handle {
+    background: #fff;
+    border-radius: 100%;
+    color: #999;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    font-size: 16px;
+    height: 34px;
+    line-height: 34px;
+    right: 0;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 34px;
+}
+
+.milestones-column-view .epic-card>div {
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+    color: #444;
+}
+
+.fa-flag {
+    color: #1e8bc9;
+}
+
+.milestones-column-view .epic-card .epic-icon {
+    font-size: 16px;
+    left: 8px;
+    position: absolute;
+    text-align: center;
+    top: 10px;
+    width: 24px;
+}
+
+.story-badges .story-badge,
+.url-attachment-form label {
+    font-weight: 700;
+    font-family: Lato, Helvetica, Arial, sans-serif;
+}
+
+.story-badges .story-badge {
+    font-size: 11px;
+    line-height: 14px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 2px 1px 3px 0;
+    padding: 3px 6px;
+}
+
+.story-badges .epic-stat {
+    background: rgba(0, 0, 0, .04);
+    color: #888;
+}
+
+.fa-file-text-o {
+    color: #999;
+}
+
+.story-badges .story-badge .fa {
+    text-align: center;
+    width: 14px;
+}
+
+.story-badges .epic-stat .fa {
+    color: #999;
+}
+
+.milestones-column-view .epic-card .progress-bar-container {
+    margin: 0;
+    width: 50px;
+}
+
+.story-badges .epic-stat {
+    background: rgba(0, 0, 0, .04);
+    color: #888;
+}
+
+.progress-bar-container h3 {
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 13px;
+    color: #444;
+    margin: 0 0 3px;
+}
+
+.progressbar,
+.progressbar .bar {
+    display: inline-block;
+    height: 11px;
+    line-height: 11px;
+}
+
+.progressbar {
+    width: 100%;
+}
+
+.progressbar .bar {
+    background: #3c0;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#3c0), to(#070));
+    background: -webkit-linear-gradient(#3c0, #070);
+    background: -moz-linear-gradient(#3c0, #070);
+    background: -ms-linear-gradient(#3c0, #070);
+    background: -o-linear-gradient(#3c0, #070);
+    background: linear-gradient(#3c0, #070);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#3c0', endColorstr='#070', GradientType=0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+}
+
+.progress-bar-container .progressbar .bar {
+    background: #55bd10;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    float: left;
+    height: 16px;
+}
+
+.progress-bar-container .progressbar .bar-1 {
+    border-radius: 3px 0 0 3px;
+}
+
+.milestones-column-view .epic-card .progress-bar-container .progressbar .bar {
+    height: 8px;
+    line-height: 8px;
+}
+
+.progress-bar-container .progressbar .bar-2 {
+    background: #b3da82;
+}
+
+.progress-bar-container .progressbar .bar-3 {
+    background: #dae9f0;
+}
+
+.milestones-column-view .milestone {
+    background: #fff;
+    margin: 0 12px 0 0;
+    padding: 16px 0 0;
+    position: relative;
+    width: 310px;
+}
+
+.milestones-column-view .milestone,
+.milestones-column-view .orphan-epics {
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    box-sizing: border-box;
+    float: left;
+}
+
+.milestones-column-view .milestone-stats {
+    margin: 8px 0 0;
+    white-space: nowrap;
+}
+
+.action,
+.action.medium {
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+}
+
+.action {
+    font-size: 18px;
+    line-height: 21px;
+    background: #e47900;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 -2px 0 -1px rgba(0, 0, 0, .12) inset;
+    color: #fff;
+    display: inline-block;
+    margin: 0 10px 0 0;
+    outline: 0;
+    padding: 10px 20px;
+}
+
+.action.micro,
+.action.mini {
+    font-weight: 700;
+    border-radius: 4px;
+    font-family: Lato, Helvetica, Arial, sans-serif;
+}
+
+.action.micro {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0 4px 0 0;
+    padding: 3px 8px;
+}
+
+.action.flat-white {
+    background: 0 0;
+    border: 1px solid #ddd;
+    box-shadow: none;
+    color: #777;
+    padding: 9px 20px;
+}
+
+.action.flat-white.micro {
+    padding: 2px 8px;
+}
+
+.milestones-column-view .milestone-stats button.action {
+    margin-right: 6px;
+}
+
+.milestones-column-view .milestone-stats .milestone-stat {
+    color: #777;
+    display: inline-block;
+    margin: 0 7px 0 0;
+}
+
+.milestones-column-view .milestone-stats .milestone-stat .fa {
+    color: #777;
+    font-size: 14px;
+    margin: 0 1px 0 0;
+}
+
+.milestones-column-view .milestone-stats button.action,
+.milestones-column-view .milestone-stats .milestone-stat,
+.story-badges .epic-stat {
+    font-weight: normal;
+}
+
+.progress-bar-container {
+    margin: 12px 0 0;
+}
+
+.milestones-column-view .milestone-column-header .progress-bar-container {
+    margin: 10px 0 0;
+}
+
+.progress-bar-container h3 {
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 13px;
+    color: #444;
+    margin: 0 0 3px;
+}
+
+.milestones-column-view .milestone-progress h3 {
+    margin: 0 0 4px;
+}

@@ -36,6 +36,11 @@
       <?php print $switch_menu_todo ?>
     </div>
   <?php endif; ?>
+  <?php if (!empty($extra_nav_link)): ?>
+    <div class="extra-nav-link">
+      <?php print $extra_nav_link ?>
+    </div>
+  <?php endif; ?>
   <?php if (!empty($order_todo_lists)): ?>
     <div class="view-actionlink">
       <h4><span class="glyphicon glyphicon-sort"></span>
