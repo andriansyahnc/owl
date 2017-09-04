@@ -6,6 +6,5 @@ dependencies[] = ctools
 dependencies[] = views
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
-features[views_view][] = milestone_list
 features[views_view][] = vw_milestone_get_story_property
 project path = sites/all/modules/custom

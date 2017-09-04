@@ -594,6 +594,10 @@ function openlucius_preprocess_views_view(&$variables) {
       $variables['action_link'] = l(t("Add Task in this Task List"), "node/add/ol-todo/" . $groupid . '/' . $node->nid, array('attributes' => array('class' => array('trigger-task-modal'))));
     }
   }
+  if ($view->name == 'group_calendar' && $view->current_display == 'page_1') {
+    $variables['extra_nav_link'] = l(t('Calendar'), 'group-calendar/month/' . date('Y') . '-' . date('m') . '/' . arg(3)); 
+    $variables['extra_nav_link'] .= l(t('List'), 'group-calendar/milestone/list/' . arg(3)); 
+  }
 }
 
 /**
