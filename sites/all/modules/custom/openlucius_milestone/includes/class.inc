@@ -38,11 +38,16 @@ class OpenluciusMilestone {
    *   The type of entity the todos have to be fetched for.
    */
   public function __construct($id, $type) {
+    $epic_start = variable_get('epic_start_state', '');
+    
     $this->id = $id;
     $this->type = $type;
     ctools_include('ajax');
     ctools_include('modal');
     ctools_modal_add_js();
+
+    // Add the jquery draggable
+    drupal_add_library('system', 'ui.draggable');
 
     // Add the jquery sortable.
     drupal_add_library('system', 'ui.sortable');
@@ -59,6 +64,7 @@ class OpenluciusMilestone {
     $path_to_module = drupal_get_path('module', 'openlucius_milestone');
 
     drupal_add_css($path_to_module . '/css/openlucius_milestone.css');
+    drupal_add_js($path_to_module . '/js/openlucius_milestone.js');
     
 
     $this->query = $this->getBaseQuery();
@@ -86,6 +92,13 @@ class OpenluciusMilestone {
       $nodes = node_load_multiple($node_ids);
 
       foreach($nodes as $node) {
+        $milestone_status = NULL;
+        if(empty($node->field_todo_list_status)) {
+          $milestone_status = $epic_start;
+        } else {
+          $milestone_status = $node->field_todo_list_status[LANGUAGE_NONE][0]['tid'];
+        }
+        $data['lists']['status'][$node->nid] = taxonomy_term_load($milestone_status)->name;
         $data['lists']['milestone'][$node->nid] = $node;
         $data['lists']['event'][$node->nid] = array();
         $event_query = $this->getEpicBaseQuery($node->nid);

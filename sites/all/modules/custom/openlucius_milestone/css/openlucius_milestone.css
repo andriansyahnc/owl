@@ -106,6 +106,14 @@
     display: none;
 }
 
+.milestone-column-header .drag-handle {
+    display: none;
+}
+
+.milestone-column-header:hover .drag-handle {
+    display: block;
+}
+
 .milestones-column-view .drag-handle {
     background: #fff;
     border-radius: 100%;
@@ -352,4 +360,12 @@
 
 .milestones-column-view .milestone-progress h3 {
     margin: 0 0 4px;
+}
+
+.sortable-milestone-columns {
+    display: flex;
+}
+
+.milestone-wrapper {
+    height: 100%;
 }

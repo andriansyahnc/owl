@@ -28,3 +28,17 @@ function openlucius_milestone_theme() {
   ];
 }
 
+function openlucius_milestone_form_ol_event_node_form_alter(&$form, &$form_state, $form_id) {
+  if($form['field_todo_list_status']) {
+    $form['field_todo_list_status']['#access'] = FALSE;
+  }
+}
+
+function openlucius_milestone_node_presave($node) {
+  if ($node->is_new == TRUE) {
+    $epic_start = variable_get('openlucius_epics_progress_epic_start_todo_state', '');
+    if($epic_start != '') {
+      $node->field_todo_list_status[LANGUAGE_NONE] = ['0' => ['tid' => $epic_start]];
+    }
+  }
+}
