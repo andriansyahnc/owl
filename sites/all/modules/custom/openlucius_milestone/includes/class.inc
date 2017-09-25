@@ -69,8 +69,10 @@ class OpenluciusMilestone {
 
     $this->query = $this->getBaseQuery();
 
-    $this->query->leftJoin('field_data_field_shared_weight', 'w', 'n.nid = w.entity_id');
-    $this->query->addField('w', 'field_shared_weight_value', 'board_weight');
+    $this->query->leftJoin('openlucius_board_node_weights', 'w', 'n.nid = w.nid');
+    $this->query->addField('w', 'weight', 'board_weight');
+
+    $this->query->orderBy('w.weight', 'ASC');
 
     $results = $this->query->execute()->fetchAllKeyed(0, 1);
 

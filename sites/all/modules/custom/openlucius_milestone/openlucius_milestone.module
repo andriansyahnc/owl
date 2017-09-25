@@ -16,6 +16,13 @@ function openlucius_milestone_menu() {
       'access arguments' => ['access content'],
       'file' => 'page.inc',
       'file path' => drupal_get_path('module', 'openlucius_milestone') . '/includes'
+    ],
+    'openlucius-milestone/%node/update' => [
+      'page callback'    => 'openlucius_milestone_update_todo',
+      'page arguments'   => array(1),
+      'access arguments' => array('access content'),
+      'file'             => 'includes/page.inc',
+      'type'             => MENU_NORMAL_ITEM,
     ]
   );
 }
