@@ -62,7 +62,7 @@
                   </div>
                   <div class="epic-cards">
                     <?php foreach($lists['event'][$milestone->nid] as $event) { ?>
-                      <div class="epic-card">
+                      <div class="epic-card" data-id="<?php print $event->nid ?>">
                         <div class="epic-summary">
                           <div data-id="<?php print $event->nid ?>" data-toggle="tooltip" title="">      
                             <span class="epic-icon fa fa-flag"></span><?php print $event->title ?>

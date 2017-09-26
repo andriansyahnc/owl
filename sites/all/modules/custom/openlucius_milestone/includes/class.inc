@@ -78,6 +78,7 @@ class OpenluciusMilestone {
 
     $event_query = $this->getEpicBaseQuery(NULL);
     // $event_query->addTag('node_access');
+    
     $event_result = $event_query->execute()->fetchAllKeyed(0, 1);
     $event_node_ids = array_keys($event_result);
     $event_nodes = node_load_multiple($event_node_ids);
@@ -105,6 +106,10 @@ class OpenluciusMilestone {
         $data['lists']['event'][$node->nid] = array();
         $event_query = $this->getEpicBaseQuery($node->nid);
         // $event_query->addTag('node_access');
+        $event_query->leftJoin('openlucius_board_node_weights', 'w', 'n.nid = w.nid');
+        $event_query->addField('w', 'weight', 'board_weight');
+    
+        $event_query->orderBy('w.weight', 'ASC');
         $event_result = $event_query->execute()->fetchAllKeyed(0, 1);
         $event_node_ids = array_keys($event_result);
         $event_nodes = node_load_multiple($event_node_ids);
