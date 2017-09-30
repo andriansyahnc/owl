@@ -1701,8 +1701,8 @@ function openlucius_preprocess_views_view_field(&$vars) {
 
     $replacement = array(
       '@epic_all' => $count_all,
-      '@epic_start' => $start_percent,
-      '@epic_stop' => $stop_percent,
+      '@epic_start' => $stop_percent,
+      '@epic_stop' => $start_percent,
       '@in_progress' => $inp_percent,
       '@id' => 'epic-progress-' . $vars['row']->nid,
       '@text' => $text
